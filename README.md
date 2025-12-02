@@ -1,5 +1,12 @@
-# Vue 3 + Vite
+# FF14 材料计算器
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+这是一个用 Vue 3 + Vite 写的 FF14 材料计算器侧项目。
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+目标：
+
+- 根据物品名称搜索配方
+- 查看成品的直接材料
+- 未来支持递归展开材料树
+- 支持显示/隐藏水晶/碎晶等特殊材料
+
+更多设计细节见：`docs/architecture.md` 和 `docs/decisions.md`。
