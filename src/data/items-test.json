@@ -1,0 +1,38 @@
+[
+  {
+    "id": 4421,
+    "name": "兽骨戒指",
+    "isCrystal": false,
+    "obtainMethods": ["CRAFT", "MARKET"]
+  },
+  {
+    "id": 1370,
+    "name": "骨片",
+    "isCrystal": false,
+    "obtainMethods": ["GATHER_MINER", "MARKET", "NPC"]
+  },
+  {
+    "id": 2210,
+    "name": "砂岩磨刀石",
+    "isCrystal": false,
+    "obtainMethods": ["CRAFT", "MARKET", "NPC"]
+  },
+  {
+    "id": 3240,
+    "name": "砂岩",
+    "isCrystal": false,
+    "obtainMethods": ["GATHER_MINER", "MARKET", "NPC"]
+  },
+  {
+    "id": 1000,
+    "name": "风之碎晶",
+    "isCrystal": true,
+    "obtainMethods": ["GATHER_MINER", "GATHER_BOTANIST", "MARKET"]
+  },
+  {
+    "id": "1001",
+    "name": "火之碎晶",
+    "isCrystal": true,
+    "obtainMethods": ["GATHER_MINER", "GATHER_BOTANIST", "MARKET"]
+  }
+]

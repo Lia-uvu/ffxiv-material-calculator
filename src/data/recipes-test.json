@@ -1,0 +1,28 @@
+[
+  {
+    "id": 2000,
+    "resultItemId": 4421,
+    "resultAmount": 1,
+    "job": "GOLDSMITH",
+    "itemLevel": 9,
+    "patch": "1.23",
+    "materials": [
+      { "itemId": 1370, "amount": 1 },
+      { "itemId": 2210, "amount": 1 },
+      { "itemId": 1000, "amount": 1 },
+      { "itemId": 1001, "amount": 1 }
+    ]
+  },
+  {
+   "id": 1000,
+    "resultItemId": 2210,
+    "resultAmount": 1,
+    "job": "GOLDSMITH",
+    "itemLevel": 6,
+    "patch": "1.23",
+    "materials": [
+      { "itemId": 3240, "amount": 2 },
+      { "itemId": 1000, "amount": 1 }
+    ] 
+  }
+]
