@@ -22,13 +22,13 @@
 
 ```jsonc
 {
-  "id": 2000,
-  "resultItemId": 4421,
-  "resultAmount": 1,
-  "job": "GOLDSMITH",
-  "itemLevel": 9,
-  "patch": "1.23",
-  "materials": [
+  "id": 2000,             // 配方id
+  "resultItemId": 4421,   // 产物的物品id
+  "resultAmount": 1,      // 制作一次配方生成几个成品
+  "job": "GOLDSMITH",     // 该配方对应的职业
+  "itemLevel": 9,         // 成品品级
+  "patch": "1.23",        // 配方实装版本
+  "materials": [          // 材料清单
     { "itemId": 1370, "amount": 1 },
     { "itemId": 2210, "amount": 1 },
     { "itemId": 1000, "amount": 1 },
