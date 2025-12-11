@@ -1,43 +1,60 @@
-<script setup>
-import { ref } from 'vue'
-
-defineProps({
-  msg: String,
-})
-
-const count = ref(0)
-</script>
-
 <template>
-  <h1>{{ msg }}</h1>
+  <section class="target-item-panel">
+    <h2 class="title">目标成品</h2>
 
-  <div class="card">
-    <button type="button" @click="count++">点击敲木鱼 count  {{ count }}</button>
-    <p>
-      Edit
-      <code>components/HelloWorld.vue</code> to test HMR
-    </p>
-  </div>
-
-  <p>
-    Check out
-    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank"
-      >create-vue</a
-    >, the official Vue + Vite starter
-  </p>
-  <p>
-    Learn more about IDE Support for Vue in the
-    <a
-      href="https://vuejs.org/guide/scaling-up/tooling.html#ide-support"
-      target="_blank"
-      >Vue Docs Scaling up Guide</a
-    >.
-  </p>
-  <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
+    <table class="target-item-table">
+      <thead>
+        <tr>
+          <th>名称</th>
+          <th>数量</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="item in items"
+          :key="item.id"
+        >
+          <td>{{ item.name }}</td>
+          <td>{{ item.quantity ?? '-' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 </template>
 
+<script setup>
+const props = defineProps({
+  // 成品列表，比如：
+  // [{ id: 1, name: '铁剑', quantity: 1 }, { id: 2, name: '魔导书', quantity: 3 }]
+  items: {
+    type: Array,
+    default: () => [],
+  },
+})
+</script>
+
 <style scoped>
-.read-the-docs {
-  color: #dba1a1;
+.target-item-panel {
+  padding: 12px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.target-item-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.target-item-table th,
+.target-item-table td {
+  border: 1px solid #444;
+  padding: 4px 8px;
+  text-align: left;
 }
 </style>

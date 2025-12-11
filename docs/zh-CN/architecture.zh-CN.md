@@ -11,7 +11,7 @@ src/
     components/             // ui组件
       ItemSearchBar.vue     // 搜索框
       TargetItemPanel.vue   // 成品选择栏
-      CraftOptionsPanel.vue // 界面小组件
+      CraftOptionsControls.vue  // 界面小组件
       MaterialTree.vue      // 材料树
 
     composables/
@@ -26,6 +26,23 @@ src/
     recipes.json
 ```
 
+```html
+<template>
+  <!-- 1. 结构 -->
+</template>
+
+<script setup>
+// 2.1 import
+// 2.2 defineProps / defineEmits / defineExpose
+// 2.3 const refs / reactive / computed
+// 2.4 functions
+// 2.5 lifecycle hooks
+</script>
+
+<style scoped>
+/* 3. 样式 */
+</style>
+```
 
 ## 数据拆分
 
@@ -69,3 +86,64 @@ src/
   ]
 }
 ```
+
+## 数据流向
+
+```txt
+src/
+  calculator/
+    pages/
+      CalculatorPage.vue
+
+    components/
+      ItemSearchBar.vue     // 搜索框，接受用户输入信息
+      TargetItemPanel.vue   // 传回成品数量信息，根据接收到的当前目标列表渲染
+      CraftOptionsControls.vue  // 界面小组件
+      MaterialTree.vue      // 材料树
+
+    composables/
+      useItemSearch.js      // 接收搜索框的input信息，去data里拿数据，做模糊匹配，输出搜索待选；同时输出成品列表
+      useMaterialTree.js    // 继承core中计算js文件输出的结果，选择哪些可见，输出成品材料表
+      settingStore.js       // 记录动态数据
+
+    core/
+      calcMaterials.js      // 从data里取配方和成品数据，输出全部材料结果
+
+  data/                     // 静态数据
+    items.json
+    recipes.json
+```
+
+### 视图方向（下行）
+
+useCalculatorSettings() 暴露出 settings；
+
+CalculatorPage.vue 调用它，拿到 settings；
+
+CalculatorPage.vue 把 settings 的某些字段作为 props 传给子组件（搜索栏 / 开关控件 / 材料树之类）。
+
+这条线是：Settings Store → Page → 子组件（props）
+
+### 事件方向（上行）
+
+子组件里，用户点按钮 / 输入文字 → 用 emit('update:xxx', value) 或者自定义事件；
+
+CalculatorPage.vue 接到这个事件；
+
+在 CalculatorPage.vue 里调用 useCalculatorSettings 提供的 方法（或者直接改 settings.xxx）；
+
+settings 改了，所有依赖它的 computed / 组件自动更新。
+
+这条线是：子组件（emit） → Page → Settings Store
+
+这样其实完全符合“一向数据流”那套思路：
+
+数据的“真源”只有一个：settingsStore；
+
+读总是从上往下（store → page → 子）；
+
+写总是通过事件从下往上（子 → page → store）。
+
+区别只是：
+在 React 里“store”常常在根组件；
+而你这里是把“store”挪到了 composables/useCalculatorSettings.js 这个模块里，CalculatorPage 只是拿来用。
