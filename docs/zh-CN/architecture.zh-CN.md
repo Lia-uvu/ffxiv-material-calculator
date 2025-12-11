@@ -1,5 +1,32 @@
 # 架构与数据模型（v0.1）
 
+## 文件结构
+
+```txt
+src/
+  calculator/
+    pages/                  // 页面（单个）
+      CalculatorPage.vue
+
+    components/             // ui组件
+      ItemSearchBar.vue     // 搜索框
+      TargetItemPanel.vue   // 成品选择栏
+      CraftOptionsPanel.vue // 界面小组件
+      MaterialTree.vue      // 材料树
+
+    composables/
+      useItemSearch.js      // 组件逻辑-搜索框
+      useMaterialTree.js    // 组件逻辑-材料树
+
+    core/
+      calcMaterials.js      // 底层计算逻辑
+
+  data/                     // 数据来源
+    items.json
+    recipes.json
+```
+
+
 ## 数据拆分
 
 内部数据拆分为两类实体：
@@ -11,10 +38,16 @@
 
 ```jsonc
 {
-  "id": 4421,             // 物品id
-  "name": "兽骨戒指",      // 物品中文名
-  "isCrystal": false,     // 是否为水晶
-  "obtainMethods": ["CRAFT", "MARKET"]  //该物品获取方式
+  "id": 4421,
+  "name": "兽骨戒指",      // 多语言物品名（未来会写成列表）
+  "isCrystal": false,     // 是否为“水晶类素材”（碎晶/水晶/晶簇），用于在计算时决定要不要单独统计/排除
+  "obtainMethods": [      // 该物品所有获取方式，用于标记
+    "CRAFT",              // 玩家制作
+    "MARKET",             // 市场交易
+    "NPC",                // 商人NPC购买
+    "GATHER_MINER",       // 矿工采集
+    "GATHER_BOTANIST"     // 园艺工采集
+    ]
 }
 ```
 
