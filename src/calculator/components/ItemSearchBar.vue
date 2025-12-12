@@ -1,21 +1,17 @@
 <template>
   <input
-    v-model="keyword"
-    type="text"
-    placeholder="输入物品名..."
+    :value="props.query"
+    placeholder="Search item..."
+    @input="emit('update:query', $event.target.value)"
   />
-  <button @click="search" >搜索</button>
 </template>
 
 <script setup>
-import { ref } from 'vue'
 const props = defineProps({
-// 传入对象
-}
-)
-const keyword = ref('')
+  query: { type: String, default: "" },
+});
+
+const emit = defineEmits(["update:query"]);
 </script>
 
-<style scoped>
 
-</style>

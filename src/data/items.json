@@ -30,7 +30,7 @@
     "obtainMethods": ["GATHER_MINER", "GATHER_BOTANIST", "MARKET"]
   },
   {
-    "id": "1001",
+    "id": 1001,
     "name": "火之碎晶",
     "isCrystal": true,
     "obtainMethods": ["GATHER_MINER", "GATHER_BOTANIST", "MARKET"]

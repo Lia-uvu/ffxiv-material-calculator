@@ -64,22 +64,13 @@ data文件夹内只存静态数据，动态数据保存在settingStore.js里，�
 
 ---
 
-## 2025-12-11：规范watch/props/emit使用位置
+## 2025-12-12：settingStore设置
 **类型**：代码规范
-**结论**：ref / reactive 和 watch 应该“挨着逻辑放”
+**结论**：settings给只读，只能通过函数修改setting的值
 
-和“设置本身”相关的东西（默认值、当前值、持久化、重置）
-👉 全都放在 useCalculatorSettings.js 里，那里就是这块逻辑的“老家”。
+**原因**：只暴露 settings + “改它的函数”，能强迫保持“上行必须走函数/事件”，避免不小心到处改 state。
 
-和“某个页面临时 UI 状态”相关的（比如某个弹窗是否打开，只对这个页面有意义）
-👉 放在 CalculatorPage.vue 里，用自己的 ref 管就好。
+**影响**：
+- 组件emit提交给pages，再由pages调用settingStore里export的修改函数
 
-watch 要放在哪？
-👉 放在需要产生“副作用”的那个地方，比如：
-
-设置变了要写 localStorage → 放在 useCalculatorSettings 里；
-
-设置变了要触发某个页面特效 → 放在 CalculatorPage.vue 里。
-
-
-谁关心这件事，谁就 import ref/watch，在自己那边贴着用。
+**状态**：有效

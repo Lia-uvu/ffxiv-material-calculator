@@ -5,28 +5,29 @@
 ```txt
 src/
   calculator/
-    pages/                  // 页面（单个）
+    pages/
       CalculatorPage.vue
 
-    components/             // ui组件
-      ItemSearchBar.vue     // 搜索框
-      TargetItemPanel.vue   // 成品选择栏
+    components/                 // ui组件
+      ItemSearchBar.vue         // 搜索框
+      TargetItemPanel.vue       // 成品选择栏
       CraftOptionsControls.vue  // 界面小组件
-      MaterialTree.vue      // 材料树
+      MaterialList.vue          // 材料列表
 
     composables/
-      useItemSearch.js      // 组件逻辑-搜索框
-      useMaterialTree.js    // 组件逻辑-材料树
+      settingStore.js           // 存储设置
+      useItemSearch.js          // 组件逻辑-搜索框
+      useMaterialTree.js        // 组件逻辑-材料树
 
     core/
-      calcMaterials.js      // 底层计算逻辑
+      calcMaterial.js           // 底层计算逻辑
 
-  data/                     // 数据来源
+  data/                         // 静态数据来源
     items.json
     recipes.json
 ```
 
-```html
+```vue
 <template>
   <!-- 1. 结构 -->
 </template>
@@ -89,30 +90,11 @@ src/
 
 ## 数据流向
 
-```txt
-src/
-  calculator/
-    pages/
-      CalculatorPage.vue
+数据源头只有一个：settingsStore；
 
-    components/
-      ItemSearchBar.vue     // 搜索框，接受用户输入信息
-      TargetItemPanel.vue   // 传回成品数量信息，根据接收到的当前目标列表渲染
-      CraftOptionsControls.vue  // 界面小组件
-      MaterialTree.vue      // 材料树
+读总是从上往下（store → page → 子）；
 
-    composables/
-      useItemSearch.js      // 接收搜索框的input信息，去data里拿数据，做模糊匹配，输出搜索待选；同时输出成品列表
-      useMaterialTree.js    // 继承core中计算js文件输出的结果，选择哪些可见，输出成品材料表
-      settingStore.js       // 记录动态数据
-
-    core/
-      calcMaterials.js      // 从data里取配方和成品数据，输出全部材料结果
-
-  data/                     // 静态数据
-    items.json
-    recipes.json
-```
+写总是通过事件从下往上（子 → page → store）。
 
 ### 视图方向（下行）
 
@@ -136,14 +118,3 @@ settings 改了，所有依赖它的 computed / 组件自动更新。
 
 这条线是：子组件（emit） → Page → Settings Store
 
-这样其实完全符合“一向数据流”那套思路：
-
-数据的“真源”只有一个：settingsStore；
-
-读总是从上往下（store → page → 子）；
-
-写总是通过事件从下往上（子 → page → store）。
-
-区别只是：
-在 React 里“store”常常在根组件；
-而你这里是把“store”挪到了 composables/useCalculatorSettings.js 这个模块里，CalculatorPage 只是拿来用。

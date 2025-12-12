@@ -24,8 +24,7 @@
 
 <script setup>
 const props = defineProps({
-  // 成品列表，比如：
-  // [{ id: 1, name: '铁剑', quantity: 1 }, { id: 2, name: '魔导书', quantity: 3 }]
+  // 成品列表
   items: {
     type: Array,
     default: () => [],
