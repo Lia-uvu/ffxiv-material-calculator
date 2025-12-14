@@ -36,3 +36,39 @@ Internal data is split into two entity types:
   ]
 }
 ```
+
+## Data flow
+
+There is only **one** source of truth for dynamic state: `settingsStore`.
+
+- Reads always flow **top-down** (store → page → children).
+- Writes always go **bottom-up via events** (children → page → store).
+
+---
+
+### View direction (downstream)
+
+- `useCalculatorSettings()` exposes `settings`.
+- `CalculatorPage.vue` calls it to get `settings`.
+- `CalculatorPage.vue` passes selected fields from `settings` down to child components as `props`  
+  (search bar / toggle controls / material tree, etc.).
+
+This line is:
+
+> Settings Store → Page → child components (via `props`)
+
+---
+
+### Event direction (upstream)
+
+- Inside child components, when the user clicks a button / types in an input,  
+  they emit events, e.g. `emit('update:xxx', value)` or custom events.
+- `CalculatorPage.vue` listens to these events.
+- In `CalculatorPage.vue`, we call the functions provided by `useCalculatorSettings()`  
+  (or in some cases directly update `settings.xxx`, depending on the design).
+- Once `settings` changes, all computed values / components that depend on it update automatically.
+
+This line is:
+
+> Child components (emit) → Page → Settings Store
+
