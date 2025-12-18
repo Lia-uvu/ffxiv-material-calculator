@@ -215,3 +215,22 @@ type TargetItemList = TargetItem[];
 ---
 
 **状态**：有效  
+
+---
+
+## 2025-12-16：composable 入参同时支持 ref 与普通值（内部统一 unref）
+
+**类型**：代码架构 / Composables 约定  
+**结论**：composable 的参数**允许传 ref 或普通值**（调用端推荐传 ref）；composable 内部在 `computed` / `watch` 等响应式上下文里对输入做 `unref()`，保证兼容性与可维护性。
+
+**原因**：
+- 调用端推荐传 ref，便于保持数据流清晰；但实践中偶尔会忘记传 ref，内部 `unref` 可作为兜底，减少“忘写 `.value`”导致的 bug。
+- composable 更通用：既能被组件直接使用，也能被其它 composable 复用，不强绑调用方的状态形态。
+- 在 `computed` / `watch` 内部 `unref`，依赖仍可被 Vue 正确追踪，不会破坏响应式更新。
+
+**影响**：
+- composable 内部需要统一遵守：**只在 `computed` / `watch` 内部解包**，避免在外部提前 `unref` 导致依赖丢失。
+- 参数命名建议仍使用 `xxxRef`（提示“推荐传 ref”），但实现上不强制必须是 ref。
+- 约定：模板内不写 `.value`（自动解包）；脚本内如需兼容 ref/普通值，使用 `unref()`。
+
+**状态**：有效

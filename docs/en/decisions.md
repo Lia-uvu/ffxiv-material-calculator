@@ -286,3 +286,22 @@ Regardless of how target items are chosen (search results, recent items, presets
 ---
 
 **Status**: Active  
+
+---
+
+## 2025-12-16: Composable inputs accept both refs and plain values (unref internally)
+
+**Type**: Code Architecture / Composables Convention  
+**Decision**: Composables may accept **either refs or plain values** (call sites should prefer refs). Inside composables, inputs are `unref()`’d within reactive contexts such as `computed` / `watch` to ensure compatibility and maintainability.
+
+**Rationale**:
+- Call sites should prefer refs to keep data flow explicit. However, in practice it’s easy to occasionally forget and pass a plain value; internal `unref()` provides a safety net and reduces bugs caused by missing `.value`.
+- Composables become more reusable: they can be used directly by components or composed by other composables without forcing a specific state shape on callers.
+- When `unref()` is used inside `computed` / `watch`, Vue can still track dependencies correctly, so reactivity is preserved.
+
+**Impact**:
+- Composable implementations must follow: **only unwrap via `unref()` inside `computed` / `watch`** (or similar reactive scopes) to avoid losing dependency tracking by unwrapping too early.
+- Parameter names may still use the `xxxRef` suffix (to signal “ref recommended”), but implementations should not require inputs to be refs.
+- Convention: avoid `.value` in templates (auto-unwrapped). In scripts, use `unref()` when you want to support both refs and plain values.
+
+**Status**: Active

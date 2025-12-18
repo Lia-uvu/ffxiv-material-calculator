@@ -4,7 +4,7 @@ export function useItemSearch(itemsRef, queryRef, limit = 20) {
   const results = computed(() => {
     const items = unref(itemsRef) ?? [];
     const q = String(unref(queryRef) ?? "").trim().toLowerCase();
-
+    // trim()负责清洗前后空格
     if (!q) return [];
 
     const matched = items.filter((it) =>

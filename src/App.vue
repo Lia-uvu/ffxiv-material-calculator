@@ -3,9 +3,5 @@ import CalculatorPage from './calculator/pages/CalculatorPage.vue';
 </script>
 
 <template>
-  <CalculatorPage></CalculatorPage>
+  <CalculatorPage class="calculator"></CalculatorPage>
 </template>
-
-<style scoped>
-
-</style>
