@@ -1,7 +1,7 @@
 <template>
   <ul>
-    <li v-for="it in results" :key="it.id">//这个key是什么又忘了
-      <button @click="$emit('select', it.id)"> //这里没看懂
+    <li v-for="it in results" :key="it.id">
+      <button @click="onSelect(it.id)">
         {{ it.name }} ({{ it.id }})
       </button>
     </li>
@@ -14,7 +14,11 @@ defineProps({
     type: Array,
     default: () => [],
   },
-});
+})
 
-defineEmits(["select"]);//这里没看懂
+const emit = defineEmits(["select"])
+
+function onSelect(id) {
+  emit("select", id)
+}
 </script>
