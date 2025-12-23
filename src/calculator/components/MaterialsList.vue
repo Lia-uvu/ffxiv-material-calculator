@@ -1,8 +1,8 @@
 <template>
   <section class="materials">
-    <h2>Materials</h2>
+    <h2>Materials List</h2>
 
-    <p v-if="!entries.length" class="empty">
+    <p v-if="!props.entries.length" class="empty">
       No materials yet. Add a target item to see the list.
     </p>
 
@@ -13,7 +13,7 @@
         <ul class="list">
           <li v-for="m in crystals" :key="m.id" class="row">
             <span class="name">{{ m.name }}</span>
-            <span class="meta">#{{ m.id }}</span>
+            <!-- <span class="meta">#{{ m.id }}</span> -->
             <span class="amount">× {{ m.amount }}</span>
           </li>
         </ul>
@@ -24,20 +24,20 @@
         <ul class="list">
           <li v-for="m in others" :key="m.id" class="row">
             <span class="name">{{ m.name }}</span>
-            <span class="meta">#{{ m.id }}</span>
+            <!-- <span class="meta">#{{ m.id }}</span> -->
             <span class="amount">× {{ m.amount }}</span>
           </li>
         </ul>
       </div>
 
       <!-- 调试：总计多少种材料 -->
-      <p class="footer">Total: {{ entries.length }} items</p>
+      <p class="footer">Total: {{ props.entries.length }} items</p>
     </template>
   </section>
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, PropType } from "vue";
 
 type MaterialEntry = {
   id: number;
@@ -46,9 +46,12 @@ type MaterialEntry = {
   isCrystal?: boolean;
 };
 
-const props = defineProps<{
-  entries: MaterialEntry[];
-}>();
+const props = defineProps({
+  entries: {
+    type: Array as PropType<MaterialEntry[]>,
+    required: true,
+  },
+});
 
 const crystals = computed(() => props.entries.filter((e) => e.isCrystal));
 const others = computed(() => props.entries.filter((e) => !e.isCrystal));
@@ -67,6 +70,8 @@ const others = computed(() => props.entries.filter((e) => !e.isCrystal));
 
 .group {
   margin-top: 12px;
+  /* 强制左对齐 */
+  text-align: left;
 }
 
 .list {

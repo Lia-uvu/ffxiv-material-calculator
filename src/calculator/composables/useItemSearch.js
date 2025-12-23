@@ -1,3 +1,4 @@
+// 做了输入清洗和匹配
 import { computed, unref } from "vue";
 
 export function useItemSearch(itemsRef, queryRef, limit = 20) {

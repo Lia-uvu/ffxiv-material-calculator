@@ -19,19 +19,20 @@
       <TargetItemPanel
         :targets="targetEntries"
         @remove="removeTarget"
+        @update-amount="updateTargetAmount"
       />
     </div>
     <!-- 材料列表 -->
     <div>
-      <!-- <MaterialsList
+      <MaterialsList
         :entries="materialEntries"
-      /> -->
+      />
     </div>
   </div>
 </template>
 
 <script setup>
-import { shallowRef, toRef, computed } from "vue";
+import { toRef, computed, watchEffect } from "vue";
 
 import itemsRaw from "../../data/items.json";
 import recipesRaw from "../../data/recipes.json";
@@ -41,31 +42,38 @@ import ItemSearchResults from "../components/ItemSearchResults.vue";
 import TargetItemPanel from "../components/TargetItemPanel.vue";
 import MaterialsList from "../components/MaterialsList.vue";
 
-import { useCalculatorSettings } from "../composables/settingStore.js";
+import { useSettingStore } from "../composables/settingStore.js";
 import { useItemSearch } from "../composables/useItemSearch.js";
-import { useMaterialsList } from "../composables/useMaterialsList";
+import { useMaterialsList } from "../composables/useMaterialsList.js";
 
-const items = shallowRef(itemsRaw);
 
-const { settings, targets, setSearchQuery, addTarget, removeTarget } =
-  useCalculatorSettings();
+const {
+  settings,
+  targets,
+  setSearchQuery,
+  addTarget,
+  removeTarget,
+  updateTargetAmount,
+} = useSettingStore();
+
 
 const queryRef = toRef(settings, "searchQuery");
-const { results } = useItemSearch(items, queryRef, 20);
+const { results } = useItemSearch(itemsRaw, queryRef, 20);
 
 // id -> item 的索引（给 page 内部用来映射）
 const itemById = computed(() => {
   const map = new Map();
-  for (const it of items.value) map.set(it.id, it);
+  for (const it of itemsRaw) map.set(it.id, it);
   return map;
 });
 
 // page 负责把 targets(id[]) 映射成“可展示的数据”
 const targetEntries = computed(() => {
-  return targets.map((id) => {
-    const item = itemById.value.get(id);
+  return targets.map((t) => {
+    const item = itemById.value.get(t.id);
     return {
-      id,
+      id: t.id,
+      amount: t.amount,
       name: item?.name ?? "Unknown",
     };
   });
@@ -77,11 +85,16 @@ function selectResultById(id) {
   setSearchQuery(""); // 选中后清空输入（保留你的行为）
 }
 
-// const { materialEntries, calcResult } = useMaterialsList({
-//   targets: computed(() => settings.targets),          // targets: [{itemId, amount}]
-//   overrides: computed(() => settings.recipeOverrides),// Map<resultItemId, recipeId>（先没有也行）
-//   items:itemsRaw,
-//   recipes:recipesRaw,
-// });
+const { materialEntries, calcResult } = useMaterialsList({
+  targets: computed(() => targets),
+  overrides: computed(() => settings.recipeOverrides),
+  items: itemsRaw,
+  recipes: recipesRaw,
+});
 
+watchEffect(() => {
+  console.log("targets =", settings.targets);
+  console.log("materials size =", calcResult.value.materials?.size);
+  console.log("materials entries =", [...(calcResult.value.materials?.entries?.() ?? [])]);
+});
 </script>
