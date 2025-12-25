@@ -1,14 +1,12 @@
 <template>
   <div>
     <!-- 搜索框 -->
-    <div>
+    <div class="mb-4 rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm relative">
       <ItemSearchBar 
 				:query="settings.searchQuery" 
 				@update:query="setSearchQuery" 
 			/>
-    </div>
     <!-- 搜索结果 -->
-    <div> 
       <ItemSearchResults
         :results="results"
         @select="selectResultById"

@@ -1,26 +1,57 @@
 <template>
-  <ul>
-    <li v-for="t in targets" :key="t.id" class="row">
-      <span class="name">
-        {{ t.name }} ({{ t.id }})
-      </span>
+  <section class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
+    <div class="flex items-baseline justify-between gap-3">
+      <h2 class="text-lg font-semibold tracking-tight">Targets</h2>
+      <p class="text-xs text-zinc-500">Total: {{ targets.length }}</p>
+    </div>
 
-      <input
-        class="qty"
-        type="number"
-        min="1"
-        step="1"
-        :value="t.amount ?? 1"
-        @input="onAmountInput(t.id, $event)"
-        @blur="onAmountBlur(t.id, $event)"
-      />
+    <p v-if="!targets.length" class="mt-2 text-sm text-zinc-600">
+      No targets yet. Search an item and add it.
+    </p>
 
-      <button @click="onRemove(t.id)">remove</button>
-    </li>
-  </ul>
+    <ul v-else class="mt-4 space-y-2">
+      <li
+        v-for="t in targets"
+        :key="t.id"
+        class="flex items-center gap-3 rounded-xl bg-zinc-50 px-3 py-2"
+      >
+        <!-- name -->
+        <div class="min-w-0 flex-1">
+          <div class="truncate text-sm font-medium text-zinc-900">
+            {{ t.name }}
+          </div>
+          <div class="text-xs text-zinc-500">#{{ t.id }}</div>
+        </div>
+
+        <!-- qty -->
+        <input
+          class="h-9 w-20 rounded-xl border border-zinc-200 bg-white px-2 text-sm text-zinc-900 outline-none focus:ring-4 focus:ring-zinc-200"
+          type="number"
+          min="1"
+          step="1"
+          :value="t.amount ?? 1"
+          @input="onAmountInput(t.id, $event)"
+          @blur="onAmountBlur(t.id, $event)"
+        />
+
+        <!-- remove -->
+        <button
+          type="button"
+          class="inline-flex h-9 items-center justify-center rounded-xl border border-zinc-200 bg-white px-3 text-sm text-zinc-700 hover:bg-zinc-100 active:bg-zinc-200"
+          @click="onRemove(t.id)"
+          aria-label="Remove target"
+          title="Remove"
+        >
+          Remove
+        </button>
+      </li>
+    </ul>
+  </section>
 </template>
 
 <script setup>
+import { toRefs } from "vue";
+
 const props = defineProps({
   targets: {
     type: Array,
@@ -28,7 +59,8 @@ const props = defineProps({
   },
 });
 
-// 两个事件：删除、更新数量
+const { targets } = toRefs(props);
+
 const emit = defineEmits(["remove", "update-amount"]);
 
 function clampAmount(raw) {
@@ -41,30 +73,14 @@ function onRemove(id) {
   emit("remove", id);
 }
 
-// 输入时就更新（即时反馈）
 function onAmountInput(id, e) {
   const next = clampAmount(e.target.value);
   emit("update-amount", { id, amount: next });
 }
 
-// blur 时再强制把输入框里的值“纠正”为合法整数（体验更稳）
 function onAmountBlur(id, e) {
   const next = clampAmount(e.target.value);
   e.target.value = String(next);
   emit("update-amount", { id, amount: next });
 }
 </script>
-
-<style scoped>
-.row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.name {
-  flex: 1;
-}
-.qty {
-  width: 80px;
-}
-</style>

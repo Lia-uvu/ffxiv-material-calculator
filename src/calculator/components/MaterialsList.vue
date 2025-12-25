@@ -1,37 +1,63 @@
 <template>
-  <section class="materials">
-    <h2>Materials List</h2>
+  <section class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
+    <div class="flex items-baseline justify-between gap-3">
+      <h2 class="text-lg font-semibold tracking-tight">Materials List</h2>
 
-    <p v-if="!props.entries.length" class="empty">
+      <p class="text-xs text-zinc-500">
+        Total: {{ props.entries.length }} items
+      </p>
+    </div>
+
+    <p v-if="!props.entries.length" class="mt-2 text-sm text-zinc-600">
       No materials yet. Add a target item to see the list.
     </p>
 
     <template v-else>
-      <!-- 可选：先把水晶单独拎出来（你不想分组就把这段删掉） -->
-      <div v-if="crystals.length" class="group">
-        <h3>Crystals</h3>
-        <ul class="list">
-          <li v-for="m in crystals" :key="m.id" class="row">
-            <span class="name">{{ m.name }}</span>
-            <!-- <span class="meta">#{{ m.id }}</span> -->
-            <span class="amount">× {{ m.amount }}</span>
+      <!-- Crystals -->
+      <div v-if="crystals.length" class="mt-4">
+        <div class="mb-2 flex items-center justify-between">
+          <h3 class="text-sm font-medium text-zinc-700">Crystals</h3>
+          <span class="text-xs text-zinc-500">{{ crystals.length }}</span>
+        </div>
+
+        <ul class="space-y-2">
+          <li
+            v-for="m in crystals"
+            :key="m.id"
+            class="flex items-center justify-between rounded-xl bg-zinc-50 px-3 py-2"
+          >
+            <span class="min-w-0 flex-1 truncate text-sm text-zinc-900">
+              {{ m.name }}
+            </span>
+            <span class="ml-4 shrink-0 text-sm font-medium text-zinc-900">
+              × {{ m.amount }}
+            </span>
           </li>
         </ul>
       </div>
 
-      <div v-if="others.length" class="group">
-        <h3>Materials</h3>
-        <ul class="list">
-          <li v-for="m in others" :key="m.id" class="row">
-            <span class="name">{{ m.name }}</span>
-            <!-- <span class="meta">#{{ m.id }}</span> -->
-            <span class="amount">× {{ m.amount }}</span>
+      <!-- Materials -->
+      <div v-if="others.length" class="mt-6">
+        <div class="mb-2 flex items-center justify-between">
+          <h3 class="text-sm font-medium text-zinc-700">Materials</h3>
+          <span class="text-xs text-zinc-500">{{ others.length }}</span>
+        </div>
+
+        <ul class="space-y-2">
+          <li
+            v-for="m in others"
+            :key="m.id"
+            class="flex items-center justify-between rounded-xl bg-zinc-50 px-3 py-2"
+          >
+            <span class="min-w-0 flex-1 truncate text-sm text-zinc-900">
+              {{ m.name }}
+            </span>
+            <span class="ml-4 shrink-0 text-sm font-medium text-zinc-900">
+              × {{ m.amount }}
+            </span>
           </li>
         </ul>
       </div>
-
-      <!-- 调试：总计多少种材料 -->
-      <p class="footer">Total: {{ props.entries.length }} items</p>
     </template>
   </section>
 </template>
@@ -56,51 +82,3 @@ const props = defineProps({
 const crystals = computed(() => props.entries.filter((e) => e.isCrystal));
 const others = computed(() => props.entries.filter((e) => !e.isCrystal));
 </script>
-
-<style scoped>
-.materials {
-  padding: 12px;
-  border: 1px solid #333;
-  border-radius: 8px;
-}
-
-.empty {
-  opacity: 0.8;
-}
-
-.group {
-  margin-top: 12px;
-  /* 强制左对齐 */
-  text-align: left;
-}
-
-.list {
-  list-style: none;
-  padding: 0;
-  margin: 8px 0 0;
-}
-
-.row {
-  display: flex;
-  gap: 8px;
-  padding: 6px 0;
-  border-bottom: 1px dashed #444;
-}
-
-.name {
-  flex: 1;
-}
-
-.meta {
-  opacity: 0.7;
-}
-
-.amount {
-  font-weight: 600;
-}
-
-.footer {
-  margin-top: 12px;
-  opacity: 0.8;
-}
-</style>

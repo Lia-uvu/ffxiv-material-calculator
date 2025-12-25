@@ -1,0 +1,16 @@
+/* src/styles/base.css */
+
+@import "tailwindcss";
+
+/* 全局：让字体/颜色/背景更像现代工具站 */
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  line-height: 1.5;
+  background: rgb(250 250 250); /* zinc-50 */
+  color: rgb(24 24 27);         /* zinc-900 */
+}

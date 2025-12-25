@@ -10,14 +10,15 @@ src/
 
     components/                 // ui组件
       ItemSearchBar.vue         // 搜索框
+      ItemSearchResults.vue     // 下拉搜索结果
       TargetItemPanel.vue       // 成品选择栏
-      CraftOptionsControls.vue  // 界面小组件
-      MaterialList.vue          // 材料列表
+      CraftOptionsControls.vue  // 界面设置小组件
+      MaterialList.vue          // 计算出的材料列表
 
     composables/
       settingStore.js           // 存储设置
-      useItemSearch.js          // 组件逻辑-搜索框
-      useMaterialTree.js        // 组件逻辑-材料树
+      useItemSearch.js          // 搜索逻辑
+      useMaterialTree.js        // 材料列表逻辑，带计算入口
 
     core/
       calcMaterial.js           // 底层计算逻辑
@@ -25,24 +26,6 @@ src/
   data/                         // 静态数据来源
     items.json
     recipes.json
-```
-
-```vue
-<template>
-  <!-- 1. 结构 -->
-</template>
-
-<script setup>
-// 2.1 import
-// 2.2 defineProps / defineEmits / defineExpose
-// 2.3 const refs / reactive / computed
-// 2.4 functions
-// 2.5 lifecycle hooks
-</script>
-
-<style scoped>
-/* 3. 样式 */
-</style>
 ```
 
 ## 数据拆分
