@@ -24,7 +24,6 @@
     <div>
       <MaterialsList
         :entries="materialEntries"
-        :get-breakdown-rows="getMaterialBreakdownRows"
       />
     </div>
   </div>
@@ -84,26 +83,12 @@ function selectResultById(id) {
   setSearchQuery(""); // 选中后清空输入（保留你的行为）
 }
 
-const {
-  materialEntries,
-  calcResult,
-
-  // 列表小 i 用
-  sourcesBreakdowns,
-  getMaterialBreakdownRows,
-
-  // 未来树模式用
-  childrenByParentId,
-  getChildrenRows,
-} = useMaterialsList({
-  // ✅ 不要 computed(() => targets)，直接传；composable 里会 unref
-  targets,
-
-  overrides: computed(() => settings.recipeOverrides),
-
+const { materialEntries, calcResult } = useMaterialsList({
+  targets,     // composable 里会 unref
   items: itemsRaw,
   recipes: recipesRaw,
 });
+
 
 
 watchEffect(() => {

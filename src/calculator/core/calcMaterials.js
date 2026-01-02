@@ -7,19 +7,22 @@
  *     id: number,
  *     resultItemId: number,
  *     resultAmount: number,
- *     job: string,
- *     itemLevel?: number,
- *     patch?: string,
  *     materials: Array<{ itemId: number, amount: number }>
  *   }>
- * - overrides?: Map<resultItemId, recipeId>
+ * - overrides?: Map<resultItemId, recipeId>   // optional, internal-use
+ *
+ * returns:
+ * - materials: Map<itemId, amount>                       // leaf materials only
+ * - crafts: Map<resultItemId, { recipeId: number, times: number }>
+ * - picks: Map<resultItemId, recipeId>
+ * - warnings: Array<{ kind: string, ... }>
  */
 export function calcMaterials(options) {
-  const { targets, recipes, overrides = new Map() } = options;
+  const { targets = [], recipes = [], overrides = new Map() } = options ?? {};
 
   // resultItemId -> Recipe[]
   const recipesByResultId = new Map();
-  for (const r of recipes || []) {
+  for (const r of recipes) {
     const list = recipesByResultId.get(r.resultItemId) ?? [];
     list.push(r);
     recipesByResultId.set(r.resultItemId, list);
@@ -30,11 +33,8 @@ export function calcMaterials(options) {
   const picks = new Map();     // resultItemId -> recipeId
   const warnings = [];
 
-  // NEW: childItemId -> Map<parentItemId, amount>
-  const sources = new Map();
-
-  // NEW: track total demanded qty per itemId (for correct ceil + delta expansion)
-  const needs = new Map();
+  // Track total demanded qty per craftable itemId, so we expand only delta crafts.
+  const needs = new Map();     // itemId -> total required amount so far
 
   const path = [];
   const inPath = new Set();
@@ -42,16 +42,6 @@ export function calcMaterials(options) {
   function addMaterial(itemId, qty) {
     if (qty <= 0) return;
     materials.set(itemId, (materials.get(itemId) ?? 0) + qty);
-  }
-
-  function addSource(childItemId, parentItemId, qty) {
-    if (qty <= 0) return;
-    let byParent = sources.get(childItemId);
-    if (!byParent) {
-      byParent = new Map();
-      sources.set(childItemId, byParent);
-    }
-    byParent.set(parentItemId, (byParent.get(parentItemId) ?? 0) + qty);
   }
 
   function pickRecipe(resultItemId, candidates) {
@@ -67,16 +57,10 @@ export function calcMaterials(options) {
     return candidates[0];
   }
 
-  // NOTE: parentItemId is used only for sources tracking (direct parent)
-  function need(itemId, qty, parentItemId = null) {
+  function need(itemId, qty) {
     if (qty <= 0) return;
 
-    // record direct parent contribution (optional for roots)
-    if (parentItemId != null) {
-      addSource(itemId, parentItemId, qty);
-    }
-
-    // cycle guard (still needed as safety belt)
+    // cycle guard (safety belt)
     if (inPath.has(itemId)) {
       warnings.push({ kind: "cycle", path: [...path, itemId] });
       addMaterial(itemId, qty);
@@ -104,39 +88,37 @@ export function calcMaterials(options) {
       return;
     }
 
-    // accumulate total demand first
+    // accumulate total demand
     const prevNeed = needs.get(itemId) ?? 0;
     const nextNeed = prevNeed + qty;
     needs.set(itemId, nextNeed);
 
-    const prevCraft = crafts.get(itemId);
-    const prevTimes = prevCraft?.times ?? 0;
-
+    const prevTimes = crafts.get(itemId)?.times ?? 0;
     const nextTimes = Math.ceil(nextNeed / yieldAmt);
     const deltaTimes = nextTimes - prevTimes;
 
-    // record pick + crafts using the TOTAL times
+    // record chosen recipe + total craft times
     picks.set(itemId, recipe.id);
     crafts.set(itemId, { recipeId: recipe.id, times: nextTimes });
 
-    // If this call doesn't increase required craft times, do NOT expand materials again.
+    // no extra crafts needed -> no expansion
     if (deltaTimes <= 0) return;
 
-    // Only expand newly required crafts (deltaTimes) to avoid repeated ceil explosion
+    // expand only newly required crafts
     path.push(itemId);
     inPath.add(itemId);
 
     for (const m of recipe.materials || []) {
-      need(m.itemId, m.amount * deltaTimes, itemId);
+      need(m.itemId, m.amount * deltaTimes);
     }
 
     inPath.delete(itemId);
     path.pop();
   }
 
-  for (const t of targets || []) {
-    need(t.id, t.amount, null);
+  for (const t of targets) {
+    need(t.id, t.amount);
   }
 
-  return { materials, crafts, picks, warnings, sources };
+  return { materials, crafts, picks, warnings };
 }
