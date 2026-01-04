@@ -9,7 +9,7 @@
     "id": 1370,
     "name": "骨片",
     "isCrystal": false,
-    "obtainMethods": ["GATHER_MINER", "MARKET", "NPC"]
+    "obtainMethods": ["CRAFT", "GATHER_MINER", "MARKET", "NPC"]
   },
   {
     "id": 2210,
@@ -21,7 +21,7 @@
     "id": 3240,
     "name": "砂岩",
     "isCrystal": false,
-    "obtainMethods": ["GATHER_MINER", "MARKET", "NPC"]
+    "obtainMethods": ["CRAFT", "GATHER_MINER", "MARKET", "NPC"]
   },
   {
     "id": 1000,
@@ -34,5 +34,18 @@
     "name": "火之碎晶",
     "isCrystal": true,
     "obtainMethods": ["GATHER_MINER", "GATHER_BOTANIST", "MARKET"]
+  },
+
+  {
+    "id": 1371,
+    "name": "兽骨",
+    "isCrystal": false,
+    "obtainMethods": ["NPC", "MARKET"]
+  },
+  {
+    "id": 3241,
+    "name": "砂砾",
+    "isCrystal": false,
+    "obtainMethods": ["GATHER_MINER", "MARKET", "NPC"]
   }
 ]

@@ -2,35 +2,42 @@
   <div>
     <!-- 搜索框 -->
     <div class="mb-4 rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm relative">
-      <ItemSearchBar 
-				:query="settings.searchQuery" 
-				@update:query="setSearchQuery" 
-			/>
-    <!-- 搜索结果 -->
+      <ItemSearchBar
+        :query="settings.searchQuery"
+        @update:query="setSearchQuery"
+      />
+
+      <!-- 搜索结果 -->
       <ItemSearchResults
         :results="results"
         @select="selectResultById"
       />
     </div>
+
     <!-- 成品列表 -->
     <div>
       <TargetItemPanel
-        :targets="targetEntries"
-        @remove="removeTarget"
-        @update-amount="updateTargetAmount"
+      :targets="targetEntries"
+      @remove="targetsCtrl.remove"
+      @update-amount="targetsCtrl.updateAmount"
+      @clear="targetsCtrl.clear"
       />
     </div>
+
     <!-- 材料列表 -->
     <div>
       <MaterialsList
-        :entries="materialEntries"
+        :ui="ui"
+        @toggle-expand="materialsCtrl.toggle"
+        @collapse-all="materialsCtrl.collapseAll"
+        @expand-all="handleExpandAll"
       />
     </div>
   </div>
 </template>
 
 <script setup>
-import { toRef, computed, watchEffect } from "vue";
+import { toRef, computed } from "vue";
 
 import itemsRaw from "../../data/items.json";
 import recipesRaw from "../../data/recipes.json";
@@ -44,16 +51,12 @@ import { useSettingStore } from "../composables/settingStore.js";
 import { useItemSearch } from "../composables/useItemSearch.js";
 import { useMaterialsList } from "../composables/useMaterialsList.js";
 
-
 const {
   settings,
-  targets,
   setSearchQuery,
-  addTarget,
-  removeTarget,
-  updateTargetAmount,
+  targetsCtrl,
+  materialsCtrl, // 锁链要用
 } = useSettingStore();
-
 
 const queryRef = toRef(settings, "searchQuery");
 const { results } = useItemSearch(itemsRaw, queryRef, 20);
@@ -65,9 +68,9 @@ const itemById = computed(() => {
   return map;
 });
 
-// page 负责把 targets(id[]) 映射成“可展示的数据”
+// page 负责把 targets 映射成“可展示的数据”
 const targetEntries = computed(() => {
-  return targets.map((t) => {
+  return targetsCtrl.targets.map((t) => {
     const item = itemById.value.get(t.id);
     return {
       id: t.id,
@@ -79,21 +82,26 @@ const targetEntries = computed(() => {
 
 // page 负责响应子组件事件，然后调用 store 接口
 function selectResultById(id) {
-  addTarget(id);
+  targetsCtrl.add(id);
   setSearchQuery(""); // 选中后清空输入（保留你的行为）
 }
 
-const { materialEntries, calcResult } = useMaterialsList({
-  targets,     // composable 里会 unref
+const { ui, calcResult, reachableCraftableIds } = useMaterialsList({
+  targets: targetsCtrl.targets,
   items: itemsRaw,
   recipes: recipesRaw,
+  expandedIds: materialsCtrl.expandedIds,
 });
 
+function handleExpandAll() {
+  materialsCtrl.expandMany([...reachableCraftableIds.value]);
+}
 
-
-watchEffect(() => {
-  console.log("targets =", settings.targets);
-  console.log("materials size =", calcResult.value.materials?.size);
-  console.log("materials entries =", [...(calcResult.value.materials?.entries?.() ?? [])]);
-});
+// 需要调试时再打开：
+// import { watchEffect } from "vue";
+// watchEffect(() => {
+//   console.log("targets =", targetsCtrl.targets);
+//   console.log("materials size =", calcResult.value.materials?.size);
+//   console.log("materials entries =", [...(calcResult.value.materials?.entries?.() ?? [])]);
+// });
 </script>

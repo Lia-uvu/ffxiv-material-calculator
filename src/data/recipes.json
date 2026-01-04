@@ -14,7 +14,7 @@
     ]
   },
   {
-   "id": 1000,
+    "id": 1000,
     "resultItemId": 2210,
     "resultAmount": 1,
     "job": "GOLDSMITH",
@@ -23,6 +23,31 @@
     "materials": [
       { "itemId": 3240, "amount": 2 },
       { "itemId": 1000, "amount": 1 }
-    ] 
+    ]
+  },
+
+  {
+    "id": 2002,
+    "resultItemId": 1370,
+    "resultAmount": 1,
+    "job": "GOLDSMITH",
+    "itemLevel": 4,
+    "patch": "1.23",
+    "materials": [
+      { "itemId": 1371, "amount": 2 },
+      { "itemId": 1001, "amount": 1 }
+    ]
+  },
+  {
+    "id": 2003,
+    "resultItemId": 3240,
+    "resultAmount": 1,
+    "job": "GOLDSMITH",
+    "itemLevel": 3,
+    "patch": "1.23",
+    "materials": [
+      { "itemId": 3241, "amount": 3 },
+      { "itemId": 1000, "amount": 1 }
+    ]
   }
 ]
