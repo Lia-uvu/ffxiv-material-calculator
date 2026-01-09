@@ -149,5 +149,5 @@ export function useMaterialsList(params) {
     return { craftable, nonCraftable };
   });
 
-  return { itemById, calcResult, ui, reachableCraftableIds };
+  return { itemById, ui, reachableCraftableIds };
 }

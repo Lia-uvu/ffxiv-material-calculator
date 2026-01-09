@@ -242,4 +242,7 @@ type TargetItemList = TargetItem[];
 
 修数量计算bug的时候出现了一个新bug，remove成品再加回来lock//unlock的状态不会刷新，纠结是保留这个bug作为特性还是修了……感觉好像从用户角度出发都解锁了肯定是不想搓了，是不是保留比较好。那原来清除状态相关的代码删干净了吗   哈哈gpt根本没写
 
-展开全部那个，选一个方案，原来的return要么用上要么删干净[想拉屎了这个还没做]
+dfs写进了materiallist的composable，因为这个是ui展示逻辑。calcResult在calcMaterials内部作为逻辑有被用到，return出来只为了给监控debug留个接口
+改了，我有代码洁癖 接口删了，调试再自己加回来
+
+给原来的CraftOptionsControls.vue改名了，因为本来打算按钮单独拎出来写，后来发现不方便，直接写到大块里面了。现在这个文件决定改作页面ui小部件，遂改名CalculatorLayout.vue

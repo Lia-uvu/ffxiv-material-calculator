@@ -86,7 +86,8 @@ function selectResultById(id) {
   setSearchQuery(""); // 选中后清空输入（保留你的行为）
 }
 
-const { ui, calcResult, reachableCraftableIds } = useMaterialsList({
+const { ui, reachableCraftableIds } = useMaterialsList({
+  // calcResult是调试接口，要用自己加，记得这个文件👆 return里也加
   targets: targetsCtrl.targets,
   items: itemsRaw,
   recipes: recipesRaw,
