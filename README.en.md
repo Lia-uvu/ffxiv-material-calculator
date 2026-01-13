@@ -5,7 +5,7 @@ An open-source, frontend-only Single Page Application (SPA) built with Vue 3 for
 Based on the project’s built-in static item/recipe data, it breaks down crafting targets into recipe trees and aggregates required materials, turning “what to craft and how many” into a clear materials list and craft breakdown to help plan gathering/buying/crafting routes.
 
 ## Live
-- Live: https://msjcalc.pages.dev
+Live: https://msjcalc.pages.dev
 
 ## Design & Specs
 - [docs/en/01-architecture-dataflow.md](docs/en/01-architecture-dataflow.en.md): Project structure, module boundaries, data flow

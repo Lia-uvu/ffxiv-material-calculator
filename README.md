@@ -5,7 +5,7 @@
 它基于项目内置的静态道具/配方数据，对制作目标进行配方树拆解与材料汇总，用来把“想做哪些成品、各做多少”转换成清晰的材料清单与可制作拆解结果，方便规划采集/购买/制作路线。
 
 ## 在线使用
-- Live: https://msjcalc.pages.dev
+Live: https://msjcalc.pages.dev
 
 ## 详细设计与规范
 - [docs/zh-CN/01-architecture-dataflow.md](docs/zh-CN/01-architecture-dataflow.md)：项目结构、模块边界、数据流
