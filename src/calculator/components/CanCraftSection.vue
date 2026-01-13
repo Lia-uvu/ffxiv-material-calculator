@@ -1,1 +1,6 @@
-// null 暂时跑不通
+<template>
+  </template>
+
+<script>
+  
+</script>

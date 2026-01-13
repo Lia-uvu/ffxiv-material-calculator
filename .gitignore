@@ -25,3 +25,5 @@ pnpm-debug.log*
 .env.*
 
 draft.md
+roadmap.md
+architecture.zh-CN.md

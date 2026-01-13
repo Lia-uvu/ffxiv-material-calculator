@@ -10,10 +10,11 @@ import { buildRecipesByResultId, pickRecipe } from "./recipeUtils";
  *
  * returns:
  * - materials: Map<itemId, amount>   // 当前边界叶子（不可制作 + 未展开可制作）
- * - crafts: Map<resultItemId, { recipeId, times }>
+ * - crafts: Map<resultItemId, { recipeId, times }> // 在当前 needs 下，
+ * 按选定配方的产出量，理论上要做多少次（times 是基于总需求 nextNeed 算出来的）
  * - needs: Map<itemId, amount>       // 总需求（含 targets + 中间需求）
  * - rootNeeds: Map<itemId, amount>   // 来自 targets 的那份需求
- * - picks: Map<resultItemId, recipeId>
+ * - picks: Map<resultItemId, recipeId> // 这个 item 最终选中的 recipeId 是哪个（方便 UI 或后续逻辑直接用）
  * - warnings: Array
  */
 export function calcMaterials(options) {
