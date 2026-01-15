@@ -29,6 +29,14 @@
           清空勾选
         </button>
 
+        <button
+          type="button"
+          class="px-3 py-1.5 rounded-xl border border-red-200 text-sm text-red-700 hover:bg-red-50"
+          @click="onResetMaterials"
+        >
+          重置材料进度
+        </button>
+
       </div>
     </div>
 
@@ -123,7 +131,7 @@ const emit = defineEmits([
   "expand-all",
   "toggle-check",
   "clear-checked",
-  "reset-all",// 这个是留着一键清除的接口
+  "reset-materials",
 ]);
 
 function toggleCheck(id) {
@@ -132,6 +140,14 @@ function toggleCheck(id) {
 
 function clearChecked() {
   emit("clear-checked");
+}
+
+function onResetMaterials() {
+  const ok = window.confirm(
+    "确定要重置材料列表进度吗？\n（会清空：已拆/拆的先后顺序/勾选，不影响目标列表）"
+  );
+  if (!ok) return;
+  emit("reset-materials");
 }
 
 const crystals = computed(() => {

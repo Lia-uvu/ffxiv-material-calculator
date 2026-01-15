@@ -268,6 +268,19 @@ function clearChecked() {
   saveToStorage(state);
 }
 
+// -------- 材料列表：一键重置（只清材料相关，不影响 targets / search） --------
+function resetMaterials() {
+  // 展开状态 + 展开顺序
+  state.expandedResultItemIds.clear();
+  state.expandedOrderById.clear();
+  state.expandSeq = 0;
+
+  // 勾选
+  state.checkedItemIds.clear();
+
+  saveToStorage(state);
+}
+
 export function useSettingStore() {
   const targetsCtrl = {
     targets: readonly(state.targets),
@@ -297,6 +310,9 @@ export function useSettingStore() {
     isChecked,
     toggleCheck: toggleChecked,
     clearChecked,
+
+    // ✅ 重置材料列表状态（不影响 targets/search）
+    resetMaterials,
   };
 
   return {

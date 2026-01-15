@@ -35,6 +35,7 @@
         @expand-all="handleExpandAll"
         @toggle-check="materialsCtrl.toggleCheck"
         @clear-checked="materialsCtrl.clearChecked"
+        @reset-materials="materialsCtrl.resetMaterials"
       />
     </div>
   </div>
