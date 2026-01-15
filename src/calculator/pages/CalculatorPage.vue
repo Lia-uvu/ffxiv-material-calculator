@@ -28,9 +28,13 @@
     <div>
       <MaterialsList
         :ui="ui"
+        :checked-ids="materialsCtrl.checkedIds"
+        :expand-order="materialsCtrl.expandedOrder"
         @toggle-expand="materialsCtrl.toggle"
         @collapse-all="materialsCtrl.collapseAll"
         @expand-all="handleExpandAll"
+        @toggle-check="materialsCtrl.toggleCheck"
+        @clear-checked="materialsCtrl.clearChecked"
       />
     </div>
   </div>
@@ -57,6 +61,7 @@ const {
   targetsCtrl,
   materialsCtrl, // 锁链要用
 } = useSettingStore();
+
 
 const queryRef = toRef(settings, "searchQuery");
 const { results } = useItemSearch(itemsRaw, queryRef, 20);

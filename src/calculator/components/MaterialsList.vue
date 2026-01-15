@@ -28,12 +28,14 @@
         >
           清空勾选
         </button>
+
       </div>
     </div>
 
     <CanCraftSection
       :craftable="ui.craftable"
       :checked-ids="checkedIds"
+      :expand-order="expandOrder"
       @toggle-check="toggleCheck"
       @toggle-expand="(id) => $emit('toggle-expand', id)"
     />
@@ -92,7 +94,7 @@
 </template>
 
 <script setup>
-import { shallowReactive, computed } from "vue";
+import { computed } from "vue";
 import CanCraftSection from "./CanCraftSection.vue";
 import NotCraftSection from "./NotCraftSection.vue";
 
@@ -101,19 +103,35 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+
+  // ✅ 由 page/store 传入：持久化勾选状态
+  checkedIds: {
+    type: Object,
+    required: true,
+  },
+
+  // ✅ 由 page/store 传入：已拆顺序（可选，用于 CanCraftSection 排序）
+  expandOrder: {
+    type: Object,
+    default: () => new Map(),
+  },
 });
 
-defineEmits(["toggle-expand", "collapse-all", "expand-all"]);
-
-const checkedIds = shallowReactive(new Set());
+const emit = defineEmits([
+  "toggle-expand",
+  "collapse-all",
+  "expand-all",
+  "toggle-check",
+  "clear-checked",
+  "reset-all",// 这个是留着一键清除的接口
+]);
 
 function toggleCheck(id) {
-  if (checkedIds.has(id)) checkedIds.delete(id);
-  else checkedIds.add(id);
+  emit("toggle-check", id);
 }
 
 function clearChecked() {
-  checkedIds.clear();
+  emit("clear-checked");
 }
 
 const crystals = computed(() => {

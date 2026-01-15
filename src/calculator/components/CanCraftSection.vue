@@ -20,7 +20,6 @@
           checkedIds.has(r.item.id) ? 'opacity-80' : ''
         ]"
       >
-        <!-- 勾选蒙版（只影响视觉，不改变顺序） -->
         <div
           v-if="checkedIds.has(r.item.id)"
           class="absolute inset-0 rounded-2xl bg-violet-200/40 pointer-events-none flex items-center justify-center"
@@ -84,28 +83,33 @@ import { computed } from "vue";
 const props = defineProps({
   craftable: { type: Array, default: () => [] },
   checkedIds: { type: Object, required: true }, // Set
+  // Map<itemId, order>：先拆的 order 更小
+  expandOrder: { type: Object, default: () => new Map() },
 });
 
 defineEmits(["toggle-check", "toggle-expand"]);
 
-/** 水晶不在此区显示 */
 const items = computed(() => (props.craftable ?? []).filter((e) => !e?.isCrystal));
 
-/**
- * 简单排序：
- * - 已拆（isExpanded=true）的放上面
- * - 未拆的放下面
- * - 组内保持原顺序（calcMaterials / composable 的排序结果不被破坏）
- */
 const rows = computed(() => {
   const arr = items.value ?? [];
   const withIdx = arr.map((item, idx) => ({ item, idx }));
+  const orderMap = props.expandOrder;
+
   withIdx.sort((a, b) => {
     const ea = a.item?.isExpanded ? 1 : 0;
     const eb = b.item?.isExpanded ? 1 : 0;
     if (ea !== eb) return eb - ea; // expanded first
-    return a.idx - b.idx; // stable
+
+    if (ea === 1) {
+      const oa = orderMap?.get?.(a.item.id) ?? Number.POSITIVE_INFINITY;
+      const ob = orderMap?.get?.(b.item.id) ?? Number.POSITIVE_INFINITY;
+      if (oa !== ob) return oa - ob; // 先拆在最上面
+    }
+
+    return a.idx - b.idx; // 其他保持上游顺序稳定
   });
+
   return withIdx;
 });
 </script>
