@@ -69,6 +69,32 @@ export function useMaterialsList(params) {
 
     const entryById = new Map();
 
+    const obtainMethodLabels = {
+      CRAFT: "制作",
+      MARKET: "市场",
+      NPC: "NPC",
+      GATHER_MINER: "采集-采矿",
+      GATHER_BOTANIST: "采集-园艺",
+    };
+
+    function formatObtainMethods(item) {
+      const methods = item?.obtainMethods;
+      if (!Array.isArray(methods) || methods.length === 0) {
+        return item?.source ?? null;
+      }
+
+      const labels = methods.map((m) => obtainMethodLabels[m] ?? m).filter(Boolean);
+      if (labels.length === 0) return item?.source ?? null;
+      return labels.join(" / ");
+    }
+
+    function resolveJob(itemId, fallbackRecipeId) {
+      const recipeId = fallbackRecipeId ?? picks?.get?.(itemId) ?? null;
+      if (recipeId == null) return null;
+      const recipe = byRecipeId.get(recipeId);
+      return recipe?.job ?? null;
+    }
+
     // 1) 边界叶子：不可制作 + 未展开可制作
     for (const [id, amount] of (materials?.entries?.() ?? [])) {
       const item = byId.get(id);
@@ -84,8 +110,8 @@ export function useMaterialsList(params) {
         craftTimes: 0,
         recipeId: null,
 
-        job: item?.job ?? null,
-        source: item?.source ?? null,
+        job: resolveJob(id, null),
+        source: formatObtainMethods(item),
       });
     }
 
@@ -115,8 +141,8 @@ export function useMaterialsList(params) {
         craftTimes: taskTimes,
         recipeId,
 
-        job: item?.job ?? null,
-        source: item?.source ?? null,
+        job: resolveJob(id, recipeId),
+        source: formatObtainMethods(item),
       };
 
       entryById.set(id, {
