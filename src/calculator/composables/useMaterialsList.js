@@ -73,8 +73,8 @@ export function useMaterialsList(params) {
       CRAFT: "制作",
       MARKET: "市场",
       NPC: "NPC",
-      GATHER_MINER: "采集-采矿",
-      GATHER_BOTANIST: "采集-园艺",
+      GATHER_MINER: "采矿",
+      GATHER_BOTANIST: "园艺",
     };
 
     function formatObtainMethods(item) {
@@ -184,7 +184,7 @@ export function useMaterialsList(params) {
 
     const lines = [];
 
-    lines.push("目标材料（可制作）");
+    lines.push("可制作材料");
     for (const e of craftable) {
       const job = e.job ?? "—";
       const suffix = e.displaySuffix ?? "";
