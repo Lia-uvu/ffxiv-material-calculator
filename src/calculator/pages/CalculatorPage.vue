@@ -36,6 +36,7 @@
         @toggle-check="materialsCtrl.toggleCheck"
         @clear-checked="materialsCtrl.clearChecked"
         @reset-materials="materialsCtrl.resetMaterials"
+        @copy-materials="handleCopyMaterials"
       />
     </div>
   </div>
@@ -92,7 +93,7 @@ function selectResultById(id) {
   setSearchQuery(""); // 选中后清空输入（保留你的行为）
 }
 
-const { ui, reachableCraftableIds } = useMaterialsList({
+const { ui, reachableCraftableIds, exportText } = useMaterialsList({
   // calcResult是调试接口，要用自己加，记得这个文件👆 return里也加
   targets: targetsCtrl.targets,
   items: itemsRaw,
@@ -102,6 +103,34 @@ const { ui, reachableCraftableIds } = useMaterialsList({
 
 function handleExpandAll() {
   materialsCtrl.expandMany([...reachableCraftableIds.value]);
+}
+
+function fallbackCopy(text) {
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.setAttribute("readonly", "readonly");
+  textarea.style.position = "absolute";
+  textarea.style.left = "-9999px";
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand("copy");
+  document.body.removeChild(textarea);
+}
+
+async function handleCopyMaterials() {
+  const text = exportText.value?.trim();
+  if (!text) return;
+
+  if (navigator?.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return;
+    } catch (error) {
+      fallbackCopy(text);
+    }
+  } else {
+    fallbackCopy(text);
+  }
 }
 
 // 需要调试时再打开：

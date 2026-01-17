@@ -69,6 +69,32 @@ export function useMaterialsList(params) {
 
     const entryById = new Map();
 
+    const obtainMethodLabels = {
+      CRAFT: "制作",
+      MARKET: "市场",
+      NPC: "NPC",
+      GATHER_MINER: "采集-采矿",
+      GATHER_BOTANIST: "采集-园艺",
+    };
+
+    function formatObtainMethods(item) {
+      const methods = item?.obtainMethods;
+      if (!Array.isArray(methods) || methods.length === 0) {
+        return item?.source ?? null;
+      }
+
+      const labels = methods.map((m) => obtainMethodLabels[m] ?? m).filter(Boolean);
+      if (labels.length === 0) return item?.source ?? null;
+      return labels.join(" / ");
+    }
+
+    function resolveJob(itemId, fallbackRecipeId) {
+      const recipeId = fallbackRecipeId ?? picks?.get?.(itemId) ?? null;
+      if (recipeId == null) return null;
+      const recipe = byRecipeId.get(recipeId);
+      return recipe?.job ?? null;
+    }
+
     // 1) 边界叶子：不可制作 + 未展开可制作
     for (const [id, amount] of (materials?.entries?.() ?? [])) {
       const item = byId.get(id);
@@ -84,8 +110,8 @@ export function useMaterialsList(params) {
         craftTimes: 0,
         recipeId: null,
 
-        job: item?.job ?? null,
-        source: item?.source ?? null,
+        job: resolveJob(id, null),
+        source: formatObtainMethods(item),
       });
     }
 
@@ -115,8 +141,8 @@ export function useMaterialsList(params) {
         craftTimes: taskTimes,
         recipeId,
 
-        job: item?.job ?? null,
-        source: item?.source ?? null,
+        job: resolveJob(id, recipeId),
+        source: formatObtainMethods(item),
       };
 
       entryById.set(id, {
@@ -149,5 +175,37 @@ export function useMaterialsList(params) {
     return { craftable, nonCraftable };
   });
 
-  return { itemById, ui, reachableCraftableIds };
+  const exportText = computed(() => {
+    const craftable = (ui.value?.craftable ?? []).filter((e) => !e?.isCrystal);
+    const nonCraftable = (ui.value?.nonCraftable ?? []).filter((e) => !e?.isCrystal);
+    const crystals = [...(ui.value?.craftable ?? []), ...(ui.value?.nonCraftable ?? [])].filter(
+      (e) => e?.isCrystal
+    );
+
+    const lines = [];
+
+    lines.push("目标材料（可制作）");
+    for (const e of craftable) {
+      const job = e.job ?? "—";
+      const suffix = e.displaySuffix ?? "";
+      lines.push(`- ${e.name} × ${e.displayAmount}${suffix} （${job}）`);
+    }
+
+    lines.push("", "不可制作材料");
+    for (const e of nonCraftable) {
+      const source = e.source ?? "—";
+      const suffix = e.displaySuffix ?? "";
+      lines.push(`- ${e.name} × ${e.displayAmount}${suffix} （${source}）`);
+    }
+
+    lines.push("", "水晶");
+    for (const e of crystals) {
+      const suffix = e.displaySuffix ?? "";
+      lines.push(`- ${e.name} × ${e.displayAmount}${suffix}`);
+    }
+
+    return lines.join("\n");
+  });
+
+  return { itemById, ui, reachableCraftableIds, exportText };
 }
