@@ -1,7 +1,6 @@
 # 模块通信（v1.0）
-本文档按数据流向顺序记录模块之间的通信接口与字段约定。
+本文档按数据流向顺序记录模块之间的通信接口与字段。覆盖 calculator/ 下页面、组件、composables、core 之间的接口约定。
 
-> 范围：只覆盖 calculator/ 下页面、组件、composables、core 之间的接口约定。
 > 架构概览见：[`01-architecture-dataflow.md`](01-architecture-dataflow.md)。
 > 静态数据结构见：[`03-deployment-data.md`](03-deployment-data.md)。
 
