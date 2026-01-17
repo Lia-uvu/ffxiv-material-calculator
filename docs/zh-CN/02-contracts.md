@@ -1,4 +1,5 @@
 # 模块通信（v1.0）
+
 本文档按数据流向顺序记录模块之间的通信接口与字段。覆盖 calculator/ 下页面、组件、composables、core 之间的接口约定。
 
 > 架构概览见：[`01-architecture-dataflow.md`](01-architecture-dataflow.md)。
@@ -97,8 +98,8 @@ type Entry = {
   needAmount: number
   craftTimes: number
   recipeId: number | null
-  job: string | null
-  source: string | null
+  job: string | null // 来自配方（未来可能改为职业 icon 绑定）
+  source: string | null // 由 obtainMethods 转为可读文本（未来多语言）
   displayAmount: number // 可展示数量（展开后为制作次数）
   displaySuffix: string // 展开时为 "次"，否则为空
 }
@@ -264,3 +265,5 @@ Page 将 store 中 `targets` 映射为展示结构：
 `useMaterialsList` 将计算结果转为 `Entry`，并在 UI 中进一步展示：
 - `displayAmount`：若 `isCraftable && isExpanded` 则显示 `craftTimes`，否则显示 `needAmount`。
 - `displaySuffix`：展开时显示 `"次"`，否则为空。
+- `job`：来自配方 `recipe.job`（展示层可替换为图标）。
+- `source`：由 `items.obtainMethods` 映射为可读文本（未来可替换为多语言映射）。
