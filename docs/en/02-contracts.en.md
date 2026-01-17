@@ -68,6 +68,7 @@ This document records the interfaces and field contracts between modules in data
 - `toggle-check(id: number)` - Check/uncheck a material.
 - `clear-checked()` - Clear checked state.
 - `reset-materials()` - Reset materials progress (expand + checked).
+- `copy-materials()` - Copy the materials list text.
 
 **Source**
 - Page passes in `ui` from `useMaterialsList` and `checkedIds/expandOrder` from `materialsCtrl`.
@@ -198,6 +199,7 @@ useMaterialsList({
 - `itemById: ComputedRef<Map<number, Item>>`
 - `ui: ComputedRef<{ craftable: Entry[], nonCraftable: Entry[] }>`
 - `reachableCraftableIds: ComputedRef<Set<number>>` (reachable craftable ids for "expand all")
+- `exportText: ComputedRef<string>` (materials export text)
 
 **Notes**
 - `overrides` is reserved for selecting a recipe; currently not passed from Page.
@@ -267,3 +269,16 @@ Page maps store `targets` to display objects:
 - `displaySuffix`: shows `"times"` when expanded, otherwise empty.
 - `job`: from `recipe.job` (UI may replace with icons).
 - `source`: mapped from `items.obtainMethods` into readable text (localized later).
+- `exportText`: output format:
+```
+目标材料（可制作）
+- XXX × 3次 （职业）
+- YYY × 5次 （职业）
+
+不可制作材料
+- AAA × 12 （获取方式）
+- BBB × 4 （获取方式）
+
+水晶
+- 风之水晶 × 20
+```

@@ -175,5 +175,37 @@ export function useMaterialsList(params) {
     return { craftable, nonCraftable };
   });
 
-  return { itemById, ui, reachableCraftableIds };
+  const exportText = computed(() => {
+    const craftable = (ui.value?.craftable ?? []).filter((e) => !e?.isCrystal);
+    const nonCraftable = (ui.value?.nonCraftable ?? []).filter((e) => !e?.isCrystal);
+    const crystals = [...(ui.value?.craftable ?? []), ...(ui.value?.nonCraftable ?? [])].filter(
+      (e) => e?.isCrystal
+    );
+
+    const lines = [];
+
+    lines.push("目标材料（可制作）");
+    for (const e of craftable) {
+      const job = e.job ?? "—";
+      const suffix = e.displaySuffix ?? "";
+      lines.push(`- ${e.name} × ${e.displayAmount}${suffix} （${job}）`);
+    }
+
+    lines.push("", "不可制作材料");
+    for (const e of nonCraftable) {
+      const source = e.source ?? "—";
+      const suffix = e.displaySuffix ?? "";
+      lines.push(`- ${e.name} × ${e.displayAmount}${suffix} （${source}）`);
+    }
+
+    lines.push("", "水晶");
+    for (const e of crystals) {
+      const suffix = e.displaySuffix ?? "";
+      lines.push(`- ${e.name} × ${e.displayAmount}${suffix}`);
+    }
+
+    return lines.join("\n");
+  });
+
+  return { itemById, ui, reachableCraftableIds, exportText };
 }

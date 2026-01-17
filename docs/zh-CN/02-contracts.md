@@ -68,6 +68,7 @@
 - `toggle-check(id: number)` - 勾选/取消勾选材料。
 - `clear-checked()` - 清空勾选。
 - `reset-materials()` - 重置材料进度（展开状态 + 勾选）。
+- `copy-materials()` - 复制材料清单文本。
 
 **来源**
 - Page 传入 `useMaterialsList` 的 `ui` 和 `materialsCtrl` 的 `checkedIds/expandOrder`。
@@ -198,6 +199,7 @@ useMaterialsList({
 - `itemById: ComputedRef<Map<number, Item>>`
 - `ui: ComputedRef<{ craftable: Entry[], nonCraftable: Entry[] }>`
 - `reachableCraftableIds: ComputedRef<Set<number>>`（“拆到底”所需的可达可制作 item id）
+- `exportText: ComputedRef<string>`（材料清单导出文本）
 
 **说明**
 - `overrides` 预留接口，用于“指定配方”；目前 Page 未传。
@@ -267,3 +269,16 @@ Page 将 store 中 `targets` 映射为展示结构：
 - `displaySuffix`：展开时显示 `"次"`，否则为空。
 - `job`：来自配方 `recipe.job`（展示层可替换为图标）。
 - `source`：由 `items.obtainMethods` 映射为可读文本（未来可替换为多语言映射）。
+- `exportText`：导出格式如下：
+```
+目标材料（可制作）
+- XXX × 3次 （职业）
+- YYY × 5次 （职业）
+
+不可制作材料
+- AAA × 12 （获取方式）
+- BBB × 4 （获取方式）
+
+水晶
+- 风之水晶 × 20
+```

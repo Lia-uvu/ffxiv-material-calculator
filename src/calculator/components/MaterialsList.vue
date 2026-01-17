@@ -37,6 +37,14 @@
           重置材料进度
         </button>
 
+        <button
+          type="button"
+          class="px-3 py-1.5 rounded-xl border border-zinc-200 text-sm hover:bg-zinc-50"
+          @click="$emit('copy-materials')"
+        >
+          复制材料清单
+        </button>
+
       </div>
     </div>
 
@@ -132,6 +140,7 @@ const emit = defineEmits([
   "toggle-check",
   "clear-checked",
   "reset-materials",
+  "copy-materials",
 ]);
 
 function toggleCheck(id) {
