@@ -20,8 +20,9 @@ Defaults:
 - `LIMIT=500`
 - `MIN_DELAY_MS=200`
 - `PATCH_MAX=7.0`
+- `XIVAPI_VERSION=7.0`
 
-The script uses `fields=ItemResult,AmountResult,Ingredient,AmountIngredient,PatchNumber` and paginates with `after + limit`. It writes one JSON object per line and updates the checkpoint after each page.
+The script uses `fields=ItemResult@as(raw),AmountResult,Ingredient@as(raw),AmountIngredient,PatchNumber` and paginates with `after + limit`. It writes one JSON object per line and updates the checkpoint after each page.
 
 ## Items (streamed JSONL)
 
@@ -36,6 +37,7 @@ Defaults:
 - `BATCH_SIZE=100`
 - `CONCURRENCY=1` (max 2)
 - `MIN_DELAY_MS=200`
+- `XIVAPI_VERSION=7.0`
 
 The script derives item IDs from the recipe JSONL and fetches item data in batches. Output uses only IDs plus minimal fields:
 
@@ -59,7 +61,7 @@ node scripts/xivapi/jsonl-to-array.mjs
 
 - `XIVAPI_BASE_URL` (default `https://v2.xivapi.com/api/sheet`)
 - `XIVAPI_SHEET` (default `Recipe` or `Item`)
-- `XIVAPI_LANGUAGE` (default `zh`)
-- `IDS_PARAM` (default `ids`)
+- `XIVAPI_LANGUAGE` (default `en`)
+- `ROWS_PARAM` (default `rows`)
 
 If the API uses a different base path or ID parameter, override these env vars.

@@ -52,5 +52,5 @@
 - 道具：`scripts/xivapi/fetch-items.mjs` 根据配方统计涉及的物品 ID，再批量查询并写入 JSONL（`items_7.0.jsonl`）。  
 - 转换：`scripts/xivapi/jsonl-to-array.mjs` 将 JSONL 转成 JSON 数组，覆盖 `src/data/*.json`。  
 
-脚本默认使用 `fields` 参数拉取最小字段，并包含断点续跑、限速、指数退避等礼貌访问策略。  
+脚本默认使用 `fields` 参数拉取最小字段（对关联字段使用 `@as(raw)` 仅取 ID），并包含断点续跑、限速、指数退避等礼貌访问策略。  
 具体用法见 `scripts/xivapi/README.md`。  

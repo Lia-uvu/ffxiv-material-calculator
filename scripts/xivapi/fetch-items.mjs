@@ -14,8 +14,9 @@ import {
 const config = {
   baseUrl: process.env.XIVAPI_BASE_URL ?? "https://v2.xivapi.com/api/sheet",
   sheet: process.env.XIVAPI_SHEET ?? "Item",
-  language: process.env.XIVAPI_LANGUAGE ?? "zh",
-  idsParam: process.env.IDS_PARAM ?? "ids",
+  language: process.env.XIVAPI_LANGUAGE ?? "en",
+  version: process.env.XIVAPI_VERSION ?? "7.0",
+  rowsParam: process.env.ROWS_PARAM ?? "rows",
   batchSize: Number(process.env.BATCH_SIZE ?? "100"),
   concurrency: Math.min(Number(process.env.CONCURRENCY ?? "1"), 2),
   minDelayMs: Number(process.env.MIN_DELAY_MS ?? "200"),
@@ -83,9 +84,10 @@ const fields = [
 
 async function fetchBatch(batch) {
   const url = new URL(`${config.baseUrl}/${config.sheet}`);
-  url.searchParams.set(config.idsParam, batch.join(","));
+  url.searchParams.set(config.rowsParam, batch.join(","));
   url.searchParams.set("fields", fields);
   url.searchParams.set("language", config.language);
+  if (config.version) url.searchParams.set("version", config.version);
 
   const { payload, retries, durationMs } = await fetchJsonWithRetry(
     url,
@@ -104,21 +106,20 @@ function toItemRows(payload) {
   return payload?.rows ?? payload?.results ?? payload?.data ?? [];
 }
 
-function buildObtainMethods(item) {
+function buildObtainMethods(itemFields, itemId) {
   const methods = new Set();
-  const id = extractId(item?.row_id ?? item?.ID ?? item?.id);
-  if (id != null && craftableIds.has(id)) methods.add("CRAFT");
+  if (itemId != null && craftableIds.has(itemId)) methods.add("CRAFT");
 
-  const canBeMarketed = item?.CanBeMarketed;
-  if (canBeMarketed === true || item?.IsUntradable === false) {
+  const canBeMarketed = itemFields?.CanBeMarketed;
+  if (canBeMarketed === true || itemFields?.IsUntradable === false) {
     methods.add("MARKET");
   }
 
-  if ((item?.PriceLow ?? 0) > 0) {
+  if ((itemFields?.PriceLow ?? 0) > 0) {
     methods.add("NPC");
   }
 
-  if (item?.IsCrystal === true) {
+  if (itemFields?.IsCrystal === true) {
     methods.add("GATHER_MINER");
     methods.add("GATHER_BOTANIST");
   }
@@ -144,12 +145,13 @@ async function runWorker(workerId) {
     const rows = toItemRows(payload);
 
     for (const row of rows) {
+      const fieldsData = row?.fields ?? row?.Fields ?? row ?? {};
       const id = extractId(row?.row_id ?? row?.ID ?? row?.id);
-      const name = row?.Name ?? "";
-      const isCrystal = Boolean(row?.IsCrystal);
+      const name = fieldsData?.Name ?? "";
+      const isCrystal = Boolean(fieldsData?.IsCrystal);
       if (id == null || !name) continue;
 
-      const obtainMethods = buildObtainMethods(row);
+      const obtainMethods = buildObtainMethods(fieldsData, id);
       writeJsonlLine(outputStream, {
         id,
         name,

@@ -18,7 +18,8 @@ import {
 const config = {
   baseUrl: process.env.XIVAPI_BASE_URL ?? "https://v2.xivapi.com/api/sheet",
   sheet: process.env.XIVAPI_SHEET ?? "Recipe",
-  language: process.env.XIVAPI_LANGUAGE ?? "zh",
+  language: process.env.XIVAPI_LANGUAGE ?? "en",
+  version: process.env.XIVAPI_VERSION ?? "7.0",
   patchMax: Number(process.env.PATCH_MAX ?? "7.0"),
   limit: Number(process.env.LIMIT ?? "500"),
   minDelayMs: Number(process.env.MIN_DELAY_MS ?? "200"),
@@ -46,9 +47,9 @@ let after = checkpoint?.after ?? null;
 let written = checkpoint?.written ?? countJsonlLines(config.outputPath);
 
 const fields = [
-  "ItemResult",
+  "ItemResult@as(raw)",
   "AmountResult",
-  "Ingredient",
+  "Ingredient@as(raw)",
   "AmountIngredient",
   "PatchNumber",
 ].join(",");
@@ -58,6 +59,7 @@ async function fetchPage(currentAfter) {
   url.searchParams.set("fields", fields);
   url.searchParams.set("limit", String(config.limit));
   url.searchParams.set("language", config.language);
+  if (config.version) url.searchParams.set("version", config.version);
   if (currentAfter != null) url.searchParams.set("after", String(currentAfter));
 
   const { payload, retries, durationMs } = await fetchJsonWithRetry(
@@ -105,15 +107,19 @@ while (hasMore) {
 
   let accepted = 0;
   for (const row of rows) {
-    const patchNumber = toNumber(row?.PatchNumber);
+    const fieldsData = row?.fields ?? row?.Fields ?? row ?? {};
+    const patchNumber = toNumber(fieldsData?.PatchNumber);
     if (patchNumber == null || patchNumber > config.patchMax) continue;
 
     const id = extractId(row?.row_id ?? row?.ID ?? row?.id);
-    const resultItemId = extractId(row?.ItemResult);
-    const resultAmount = toNumber(row?.AmountResult) ?? 1;
+    const resultItemId = extractId(fieldsData?.["ItemResult@as(raw)"] ?? fieldsData?.ItemResult);
+    const resultAmount = toNumber(fieldsData?.AmountResult) ?? 1;
     if (id == null || resultItemId == null) continue;
 
-    const materials = normalizeIngredients(row?.Ingredient, row?.AmountIngredient);
+    const materials = normalizeIngredients(
+      fieldsData?.["Ingredient@as(raw)"] ?? fieldsData?.Ingredient,
+      fieldsData?.AmountIngredient
+    );
     const patch = toPatchString(patchNumber);
 
     writeJsonlLine(outputStream, {
