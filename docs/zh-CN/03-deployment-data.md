@@ -32,8 +32,8 @@
   "id": 2000,             // 配方id
   "resultItemId": 4421,   // 产物的物品id
   "resultAmount": 1,      // 制作一次配方生成几个成品
-  "job": "GOLDSMITH",     // 该配方对应的职业
-  "itemLevel": 9,         // 成品品级
+  "job": "GOLDSMITH",     // 该配方对应的职业（可选）
+  "itemLevel": 9,         // 成品品级（可选）
   "patch": "1.23",        // 配方实装版本
   "materials": [          // 材料清单
     { "itemId": 1370, "amount": 1 },
@@ -43,3 +43,14 @@
   ]
 }
 ```
+
+## XIVAPI v2 数据更新脚本（Patch ≤ 7.0）
+
+项目提供了脚本来拉取 XIVAPI v2 的配方与道具数据，并按当前静态数据格式输出：  
+
+- 配方：`scripts/xivapi/fetch-recipes.mjs` 以 JSONL 形式流式写入（`recipes_7.0.jsonl`）。  
+- 道具：`scripts/xivapi/fetch-items.mjs` 根据配方统计涉及的物品 ID，再批量查询并写入 JSONL（`items_7.0.jsonl`）。  
+- 转换：`scripts/xivapi/jsonl-to-array.mjs` 将 JSONL 转成 JSON 数组，覆盖 `src/data/*.json`。  
+
+脚本默认使用 `fields` 参数拉取最小字段，并包含断点续跑、限速、指数退避等礼貌访问策略。  
+具体用法见 `scripts/xivapi/README.md`。  
