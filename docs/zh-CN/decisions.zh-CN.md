@@ -246,3 +246,5 @@ dfs写进了materiallist的composable，因为这个是ui展示逻辑。calcResu
 改了，我有代码洁癖 接口删了，调试再自己加回来
 
 给原来的CraftOptionsControls.vue改名了，因为本来打算按钮单独拎出来写，后来发现不方便，直接写到大块里面了。现在这个文件决定改作页面ui小部件，遂改名CalculatorLayout.vue
+
+t 永远只留给 i18n 翻译函数，循环变量统一用 target / item / entry

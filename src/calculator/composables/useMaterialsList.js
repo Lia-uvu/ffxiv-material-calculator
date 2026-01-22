@@ -59,7 +59,7 @@ export function useMaterialsList(params) {
       visiting.delete(resultItemId);
     }
 
-    for (const t of targetsArr.value) dfs(t.id);
+    for (const target of targetsArr.value) dfs(target.id);
     return reachable;
   });
 

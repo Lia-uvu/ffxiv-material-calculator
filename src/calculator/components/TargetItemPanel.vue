@@ -32,7 +32,7 @@
         <!-- name -->
         <div class="min-w-0 flex-1">
           <div class="truncate text-sm font-medium text-zinc-900">
-            {{ t.name }}
+            {{ target.name }}
           </div>
           <div class="text-xs text-zinc-500">#{{ target.id }}</div>
         </div>
@@ -43,7 +43,7 @@
           type="number"
           min="1"
           step="1"
-          :value="t.amount ?? 1"
+          :value="target.amount ?? 1"
           @input="onAmountInput(target.id, $event)"
           @blur="onAmountBlur(target.id, $event)"
         />
