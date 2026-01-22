@@ -25,8 +25,8 @@
 
     <ul v-else class="mt-4 space-y-2">
       <li
-        v-for="t in targets"
-        :key="t.id"
+        v-for="target in targets"
+        :key="target.id"
         class="flex items-center gap-3 rounded-xl bg-zinc-50 px-3 py-2"
       >
         <!-- name -->
@@ -34,7 +34,7 @@
           <div class="truncate text-sm font-medium text-zinc-900">
             {{ t.name }}
           </div>
-          <div class="text-xs text-zinc-500">#{{ t.id }}</div>
+          <div class="text-xs text-zinc-500">#{{ target.id }}</div>
         </div>
 
         <!-- qty -->
@@ -44,15 +44,15 @@
           min="1"
           step="1"
           :value="t.amount ?? 1"
-          @input="onAmountInput(t.id, $event)"
-          @blur="onAmountBlur(t.id, $event)"
+          @input="onAmountInput(target.id, $event)"
+          @blur="onAmountBlur(target.id, $event)"
         />
 
         <!-- remove -->
         <button
           type="button"
           class="inline-flex h-9 items-center justify-center rounded-xl border border-zinc-200 bg-white px-3 text-sm text-zinc-700 hover:bg-zinc-100 active:bg-zinc-200"
-          @click="onRemove(t.id)"
+          @click="onRemove(target.id)"
           :aria-label="t('targets.removeAria')"
           :title="t('targets.removeTitle')"
         >
