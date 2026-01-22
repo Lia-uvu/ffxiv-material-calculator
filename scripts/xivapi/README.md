@@ -39,10 +39,15 @@ Defaults:
 - `MIN_DELAY_MS=200`
 - `XIVAPI_VERSION=7.0`
 
-The script derives item IDs from the recipe JSONL and fetches item data in batches. Output uses only IDs plus minimal fields:
+The script derives item IDs from the recipe JSONL and fetches item data in batches. Output uses only IDs plus minimal fields (with localized names in a map):
 
 ```json
-{ "id": 123, "name": "Item Name", "isCrystal": false, "obtainMethods": ["CRAFT", "MARKET"] }
+{
+  "id": 123,
+  "name": { "en": "Item Name", "zh-CN": "中文名", "ja": "日本語名" },
+  "isCrystal": false,
+  "obtainMethods": ["CRAFT", "MARKET"]
+}
 ```
 
 ## Convert JSONL to JSON array
@@ -60,8 +65,10 @@ node scripts/xivapi/jsonl-to-array.mjs
 ## Optional configuration
 
 - `XIVAPI_BASE_URL` (default `https://v2.xivapi.com/api/sheet`)
+- `XIVAPI_CN_BASE_URL` (default `https://cafemaker.wakingsands.com/api/sheet`)
 - `XIVAPI_SHEET` (default `Recipe` or `Item`)
-- `XIVAPI_LANGUAGE` (default `en`)
+- `XIVAPI_LOCALES` (default `en,zh-CN,ja`)
+- `XIVAPI_PRIMARY_LOCALE` (default `en`)
 - `ROWS_PARAM` (default `rows`)
 
 If the API uses a different base path or ID parameter, override these env vars.

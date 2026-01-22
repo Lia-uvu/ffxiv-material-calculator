@@ -13,8 +13,14 @@ import {
 
 const config = {
   baseUrl: process.env.XIVAPI_BASE_URL ?? "https://v2.xivapi.com/api/sheet",
+  cnBaseUrl:
+    process.env.XIVAPI_CN_BASE_URL ?? "https://cafemaker.wakingsands.com/api/sheet",
   sheet: process.env.XIVAPI_SHEET ?? "Item",
-  language: process.env.XIVAPI_LANGUAGE ?? "en",
+  locales: (process.env.XIVAPI_LOCALES ?? "en,zh-CN,ja")
+    .split(",")
+    .map((locale) => locale.trim())
+    .filter(Boolean),
+  primaryLocale: process.env.XIVAPI_PRIMARY_LOCALE ?? "en",
   version: process.env.XIVAPI_VERSION ?? "7.0",
   rowsParam: process.env.ROWS_PARAM ?? "rows",
   batchSize: Number(process.env.BATCH_SIZE ?? "100"),
@@ -82,11 +88,22 @@ const fields = [
   "PriceLow",
 ].join(",");
 
-async function fetchBatch(batch) {
-  const url = new URL(`${config.baseUrl}/${config.sheet}`);
+function resolveBaseUrl(locale) {
+  if (locale === "zh-CN") return config.cnBaseUrl;
+  return config.baseUrl;
+}
+
+function resolveLanguage(locale) {
+  if (locale === "zh-CN") return "zh";
+  return locale;
+}
+
+async function fetchBatch(batch, locale, requestedFields) {
+  const baseUrl = resolveBaseUrl(locale);
+  const url = new URL(`${baseUrl}/${config.sheet}`);
   url.searchParams.set(config.rowsParam, batch.join(","));
-  url.searchParams.set("fields", fields);
-  url.searchParams.set("language", config.language);
+  url.searchParams.set("fields", requestedFields);
+  url.searchParams.set("language", resolveLanguage(locale));
   if (config.version) url.searchParams.set("version", config.version);
 
   const { payload, retries, durationMs } = await fetchJsonWithRetry(
@@ -141,7 +158,18 @@ async function runWorker(workerId) {
     const batch = batches[index];
     batchIndex += 1;
 
-    const { payload, retries, durationMs } = await fetchBatch(batch);
+    const nameLocales = config.locales.includes(config.primaryLocale)
+      ? config.locales
+      : [config.primaryLocale, ...config.locales];
+
+    const batchEntries = new Map();
+
+    const primaryLocale = config.primaryLocale;
+    const { payload, retries, durationMs } = await fetchBatch(
+      batch,
+      primaryLocale,
+      fields
+    );
     const rows = toItemRows(payload);
 
     for (const row of rows) {
@@ -151,14 +179,41 @@ async function runWorker(workerId) {
       const isCrystal = Boolean(fieldsData?.IsCrystal);
       if (id == null || !name) continue;
 
-      const obtainMethods = buildObtainMethods(fieldsData, id);
-      writeJsonlLine(outputStream, {
+      const entry = batchEntries.get(id) ?? {
         id,
-        name,
+        name: {},
         isCrystal,
-        obtainMethods,
-      });
+        obtainMethods: [],
+      };
+      entry.name[primaryLocale] = name;
+      const obtainMethods = buildObtainMethods(fieldsData, id);
+      entry.isCrystal = isCrystal;
+      entry.obtainMethods = obtainMethods;
+      batchEntries.set(id, entry);
       processed += 1;
+    }
+
+    for (const locale of nameLocales) {
+      if (locale === primaryLocale) continue;
+      const { payload: localePayload } = await fetchBatch(
+        batch,
+        locale,
+        "Name"
+      );
+      const localeRows = toItemRows(localePayload);
+      for (const row of localeRows) {
+        const fieldsData = row?.fields ?? row?.Fields ?? row ?? {};
+        const id = extractId(row?.row_id ?? row?.ID ?? row?.id);
+        const name = fieldsData?.Name ?? "";
+        if (id == null || !name) continue;
+        const entry = batchEntries.get(id);
+        if (!entry) continue;
+        entry.name[locale] = name;
+      }
+    }
+
+    for (const entry of batchEntries.values()) {
+      writeJsonlLine(outputStream, entry);
     }
 
     console.log(

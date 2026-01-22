@@ -28,7 +28,11 @@ https://cafemaker.wakingsands.com/  （会跳到 GitHub Wiki 的说明页）
 ```jsonc
 {
   "id": 4421,
-  "name": "兽骨戒指",      // 多语言物品名（未来会写成map）
+  "name": {              // 多语言物品名
+    "zh-CN": "兽骨戒指",
+    "ja": "ボーンリング",
+    "en": "Bone Ring"
+  },
   "isCrystal": false,     // 是否为“水晶类素材”（碎晶/水晶/晶簇），用于在计算时决定要不要单独统计/排除
   "obtainMethods": [      // 该物品所有获取方式，用于标记
     "CRAFT",              // 玩家制作

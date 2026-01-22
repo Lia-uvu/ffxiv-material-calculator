@@ -261,7 +261,7 @@ Page maps store `targets` to display objects:
 ```ts
 { id: number, amount: number, name: string }
 ```
-`name` is resolved from `items.json`; falls back to `"Unknown"` if missing.
+`name` is resolved from the localized `name` map in `items.json`, falling back to `"Unknown"` if missing.
 
 ### 4.2 Materials UI entries
 `useMaterialsList` converts results to `Entry`, then the UI shows:
