@@ -75,13 +75,5 @@ const { t } = useI18n();
 
 const nonCraftableNonCrystal = computed(() => props.nonCraftable.filter((e) => !e?.isCrystal));
 
-// 未完成在上，已完成沉底；保持“添加进来”的顺序（不按名字排序）
-const displayList = computed(() => {
-  const pending = [];
-  const done = [];
-  for (const e of nonCraftableNonCrystal.value) {
-    (props.checkedIds.has(e.id) ? done : pending).push(e);
-  }
-  return [...pending, ...done];
-});
+const displayList = computed(() => nonCraftableNonCrystal.value);
 </script>
