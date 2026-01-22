@@ -82,7 +82,8 @@ flowchart LR
   不允许依赖（import）：`components` / `settingStore`
 
 - `core/`  
-  `calcMaterials`：允许依赖（import）`data/` 静态数据，并导入 `core/` 内其他工具函数  
+  不允许依赖`data/`
+  `calcMaterials`：允许导入 `core/` 内其他工具函数
   `core/` 内其他工具函数：只接收输入并返回结果，不依赖其他层
 
 - `data/`  
