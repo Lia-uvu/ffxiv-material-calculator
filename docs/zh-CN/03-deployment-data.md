@@ -3,6 +3,20 @@
 
 架构见：[`01-architecture-dataflow.md`](03-architecture-dataflow.md)  
 通信规则见：[`02-contracts.md`](02-contracts.md)
+
+## 数据来源
+### 国际服 / 通用：XIVAPI
+Base URL (v1 风格常用)：https://xivapi.com
+Docs（v1/v2 总入口）：https://xivapi.com/
+v1 文档（老版 /Item 这种路由）：https://xivapi.com/docs
+v2 文档（/api/sheet/... 这种路由）：https://xivapi.com/docs/v2
+Patch list（XIVAPI 自带的 patchlist）：http://cafemaker.wakingsands.com/patchlist   # 文档里给的这个地址
+### 国服同步（FFCafe / CafeMaker：XIVAPI 的国服分支，返回中文内容、支持中文搜索）
+Base URL：https://cafemaker.wakingsands.com
+说明（官方写法：把你原来访问 https://xivapi.com 的地方，改成 https://cafemaker.wakingsands.com 即可）
+https://cafemaker.wakingsands.com/  （会跳到 GitHub Wiki 的说明页）
+
+
 ## 静态数据结构
 
 内部数据拆分为两类实体：
@@ -56,6 +70,6 @@
 具体用法见 `scripts/xivapi/README.md`。  
 
 
-## `data/`内容
+## `data/`内容格式
 包含测试数据，正式数据和版本信息
-写一下版本信息文件的格式
+**codex你看到这个帮我写一下版本信息version文件的格式规范**
