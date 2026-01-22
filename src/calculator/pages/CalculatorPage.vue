@@ -80,11 +80,11 @@ const itemById = computed(() => {
 
 // page 负责把 targets 映射成“可展示的数据”
 const targetEntries = computed(() => {
-  return targetsCtrl.targets.map((t) => {
-    const item = itemById.value.get(t.id);
+  return targetsCtrl.targets.map((target) => {
+    const item = itemById.value.get(target.id);
     return {
-      id: t.id,
-      amount: t.amount,
+      id: target.id,
+      amount: target.amount,
       name: resolveItemName(item, locale.value) ?? t("common.unknown"),
     };
   });
