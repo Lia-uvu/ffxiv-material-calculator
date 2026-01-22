@@ -4,17 +4,15 @@ import time
 import urllib.parse
 import urllib.request
 
-BASE_URL = os.environ.get("XIVAPI_BASE_URL", "https://v2.xivapi.com/api/sheet")
-CN_BASE_URL = os.environ.get(
-    "XIVAPI_CN_BASE_URL", "https://cafemaker.wakingsands.com/api/sheet"
-)
+BASE_URL = os.environ.get("XIVAPI_BASE_URL", "https://xivapi.com/api/sheet")
+CN_BASE_URL = os.environ.get("XIVAPI_CN_BASE_URL", "https://cafemaker.wakingsands.com")
 SHEET = os.environ.get("XIVAPI_SHEET", "Item")
 LOCALES = [
     locale.strip()
-    for locale in os.environ.get("XIVAPI_LOCALES", "ja,zh-CN").split(",")
+    for locale in os.environ.get("XIVAPI_LOCALES", "en,ja,zh-CN").split(",")
     if locale.strip()
 ]
-VERSION = os.environ.get("XIVAPI_VERSION", "7.0")
+VERSION = os.environ.get("XIVAPI_VERSION", "")
 ROWS_PARAM = os.environ.get("ROWS_PARAM", "rows")
 BATCH_SIZE = int(os.environ.get("BATCH_SIZE", "100"))
 MIN_DELAY_MS = int(os.environ.get("MIN_DELAY_MS", "200"))
@@ -40,19 +38,33 @@ def resolve_language(locale: str) -> str:
 
 
 def to_item_rows(payload: dict) -> list:
-    return payload.get("rows") or payload.get("results") or payload.get("data") or []
+    return (
+        payload.get("rows")
+        or payload.get("results")
+        or payload.get("data")
+        or payload.get("Results")
+        or []
+    )
 
 
 def fetch_names(batch: list[int], locale: str) -> list[dict]:
     base_url = resolve_base_url(locale)
-    query = {
-        ROWS_PARAM: ",".join(str(item_id) for item_id in batch),
-        "fields": "Name",
-        "language": resolve_language(locale),
-    }
-    if VERSION:
-        query["version"] = VERSION
-    url = f"{base_url}/{SHEET}?{urllib.parse.urlencode(query)}"
+    if locale == "zh-CN":
+        query = {
+            "ids": ",".join(str(item_id) for item_id in batch),
+            "columns": "ID,Name",
+            "language": resolve_language(locale),
+        }
+        url = f"{base_url}/{SHEET}?{urllib.parse.urlencode(query)}"
+    else:
+        query = {
+            ROWS_PARAM: ",".join(str(item_id) for item_id in batch),
+            "fields": "Name",
+            "language": resolve_language(locale),
+        }
+        if VERSION:
+            query["version"] = VERSION
+        url = f"{base_url}/{SHEET}?{urllib.parse.urlencode(query)}"
     request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     with urllib.request.urlopen(request) as response:
         payload = json.loads(response.read().decode("utf-8"))
