@@ -2,12 +2,16 @@
 <template>
   <div>
     <div class="flex items-baseline justify-between mt-2 mb-2">
-      <div class="text-sm font-semibold text-zinc-800">不可制作材料</div>
-      <div class="text-xs text-zinc-500">{{ displayList.length }} 项</div>
+      <div class="text-sm font-semibold text-zinc-800">
+        {{ t("materials.nonCraftable.title") }}
+      </div>
+      <div class="text-xs text-zinc-500">
+        {{ t("common.itemCount", { count: displayList.length }) }}
+      </div>
     </div>
 
     <div v-if="displayList.length === 0" class="text-sm text-zinc-500">
-      当前没有不可制作材料。
+      {{ t("materials.nonCraftable.empty") }}
     </div>
 
     <div v-else class="space-y-2">
@@ -21,7 +25,9 @@
           v-if="checkedIds.has(e.id)"
           class="absolute inset-0 rounded-2xl bg-violet-200/40 pointer-events-none flex items-center justify-center"
         >
-          <div class="text-violet-900 font-semibold text-sm">✓ 已完成</div>
+          <div class="text-violet-900 font-semibold text-sm">
+            ✓ {{ t("common.completed") }}
+          </div>
         </div>
 
         <div class="flex items-start gap-3">
@@ -41,7 +47,7 @@
             </div>
 
             <div class="text-xs text-zinc-500 mt-1">
-              获取来源：{{ e.source ?? "—" }}
+              {{ t("materials.sourceLabel") }}：{{ e.source ?? t("common.placeholder") }}
             </div>
           </div>
 
@@ -56,6 +62,7 @@
 
 <script setup>
 import { computed } from "vue";
+import { useI18n } from "vue-i18n";
 
 const props = defineProps({
   nonCraftable: { type: Array, default: () => [] },
@@ -63,6 +70,8 @@ const props = defineProps({
 });
 
 defineEmits(["toggle-check"]);
+
+const { t } = useI18n();
 
 const nonCraftableNonCrystal = computed(() => props.nonCraftable.filter((e) => !e?.isCrystal));
 

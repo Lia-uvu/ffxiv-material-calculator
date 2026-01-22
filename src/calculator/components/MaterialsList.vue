@@ -2,7 +2,7 @@
 <template>
   <div class="rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm">
     <div class="flex items-center justify-between mb-3">
-      <div class="text-base font-semibold text-zinc-900">材料列表</div>
+      <div class="text-base font-semibold text-zinc-900">{{ t("materials.title") }}</div>
 
       <div class="flex items-center gap-2">
         <button
@@ -10,7 +10,7 @@
           class="px-3 py-1.5 rounded-xl border border-zinc-200 text-sm hover:bg-zinc-50"
           @click="$emit('collapse-all')"
         >
-          折叠到顶层
+          {{ t("materials.collapseAll") }}
         </button>
 
         <button
@@ -18,7 +18,7 @@
           class="px-3 py-1.5 rounded-xl border border-zinc-200 text-sm hover:bg-zinc-50"
           @click="$emit('expand-all')"
         >
-          拆到底
+          {{ t("materials.expandAll") }}
         </button>
 
         <button
@@ -26,7 +26,7 @@
           class="px-3 py-1.5 rounded-xl border border-zinc-200 text-sm hover:bg-zinc-50"
           @click="clearChecked"
         >
-          清空勾选
+          {{ t("materials.clearChecked") }}
         </button>
 
         <button
@@ -34,7 +34,7 @@
           class="px-3 py-1.5 rounded-xl border border-red-200 text-sm text-red-700 hover:bg-red-50"
           @click="onResetMaterials"
         >
-          重置材料进度
+          {{ t("materials.resetProgress") }}
         </button>
 
         <button
@@ -42,8 +42,15 @@
           class="px-3 py-1.5 rounded-xl border border-zinc-200 text-sm hover:bg-zinc-50"
           @click="$emit('copy-materials')"
         >
-          复制材料清单
+          {{ t("materials.copyList") }}
         </button>
+
+        <span
+          v-if="copySuccess"
+          class="text-xs text-emerald-600"
+        >
+          {{ t("materials.copySuccess") }}
+        </span>
 
       </div>
     </div>
@@ -64,12 +71,14 @@
 
     <!-- 水晶（独立区域：不参与勾选；emoji 占位） -->
     <div class="flex items-baseline justify-between mt-6 mb-2">
-      <div class="text-sm font-semibold text-zinc-800">水晶</div>
-      <div class="text-xs text-zinc-500">{{ crystals.length }} 项</div>
+      <div class="text-sm font-semibold text-zinc-800">{{ t("materials.crystals") }}</div>
+      <div class="text-xs text-zinc-500">
+        {{ t("common.itemCount", { count: crystals.length }) }}
+      </div>
     </div>
 
     <div v-if="crystals.length === 0" class="text-sm text-zinc-500">
-      当前没有水晶消耗。
+      {{ t("materials.noCrystals") }}
     </div>
 
     <div v-else class="space-y-2">
@@ -89,14 +98,16 @@
                 {{ e.name }}
               </div>
               <span class="text-[11px] px-2 py-0.5 rounded-full bg-zinc-100 text-zinc-700">
-                水晶
+                {{ t("materials.crystals") }}
               </span>
             </div>
 
             <div class="text-xs text-zinc-500 mt-1">
-              <template v-if="e.job">制作职业：{{ e.job }}</template>
-              <template v-else-if="e.source">获取来源：{{ e.source }}</template>
-              <template v-else>—</template>
+              <template v-if="e.job">{{ t("materials.jobLabel") }}：{{ e.job }}</template>
+              <template v-else-if="e.source">
+                {{ t("materials.sourceLabel") }}：{{ e.source }}
+              </template>
+              <template v-else>{{ t("common.placeholder") }}</template>
             </div>
           </div>
 
@@ -111,6 +122,7 @@
 
 <script setup>
 import { computed } from "vue";
+import { useI18n } from "vue-i18n";
 import CanCraftSection from "./CanCraftSection.vue";
 import NotCraftSection from "./NotCraftSection.vue";
 
@@ -130,6 +142,11 @@ const props = defineProps({
   expandOrder: {
     type: Object,
     default: () => new Map(),
+  },
+
+  copySuccess: {
+    type: Boolean,
+    default: false,
   },
 });
 
@@ -152,12 +169,12 @@ function clearChecked() {
 }
 
 function onResetMaterials() {
-  const ok = window.confirm(
-    "确定要重置材料列表进度吗？\n（会清空：已拆/拆的先后顺序/勾选，不影响目标列表）"
-  );
+  const ok = window.confirm(t("materials.resetConfirm"));
   if (!ok) return;
   emit("reset-materials");
 }
+
+const { t } = useI18n();
 
 const crystals = computed(() => {
   const craftable = props.ui?.craftable ?? [];

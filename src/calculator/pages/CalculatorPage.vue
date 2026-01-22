@@ -30,6 +30,7 @@
         :ui="ui"
         :checked-ids="materialsCtrl.checkedIds"
         :expand-order="materialsCtrl.expandedOrder"
+        :copy-success="copySuccess"
         @toggle-expand="materialsCtrl.toggle"
         @collapse-all="materialsCtrl.collapseAll"
         @expand-all="handleExpandAll"
@@ -43,10 +44,10 @@
 </template>
 
 <script setup>
-import { toRef, computed } from "vue";
+import { toRef, computed, ref } from "vue";
+import { useI18n } from "vue-i18n";
 
-import itemsRaw from "../../data/items.json";
-import recipesRaw from "../../data/recipes.json";
+import { items as itemsRaw, recipes as recipesRaw, resolveItemName } from "../../data";
 
 import ItemSearchBar from "../components/ItemSearchBar.vue";
 import ItemSearchResults from "../components/ItemSearchResults.vue";
@@ -56,6 +57,7 @@ import MaterialsList from "../components/MaterialsList.vue";
 import { useSettingStore } from "../composables/settingStore.js";
 import { useItemSearch } from "../composables/useItemSearch.js";
 import { useMaterialsList } from "../composables/useMaterialsList.js";
+import { useMaterialsExport } from "../composables/useMaterialsExport.js";
 
 const {
   settings,
@@ -64,6 +66,7 @@ const {
   materialsCtrl, // 锁链要用
 } = useSettingStore();
 
+const { locale, t } = useI18n();
 
 const queryRef = toRef(settings, "searchQuery");
 const { results } = useItemSearch(itemsRaw, queryRef, 20);
@@ -82,7 +85,7 @@ const targetEntries = computed(() => {
     return {
       id: t.id,
       amount: t.amount,
-      name: item?.name ?? "Unknown",
+      name: resolveItemName(item, locale.value) ?? t("common.unknown"),
     };
   });
 });
@@ -93,13 +96,17 @@ function selectResultById(id) {
   setSearchQuery(""); // 选中后清空输入（保留你的行为）
 }
 
-const { ui, reachableCraftableIds, exportText } = useMaterialsList({
+const { ui, reachableCraftableIds } = useMaterialsList({
   // calcResult是调试接口，要用自己加，记得这个文件👆 return里也加
   targets: targetsCtrl.targets,
   items: itemsRaw,
   recipes: recipesRaw,
   expandedIds: materialsCtrl.expandedIds,
 });
+const { exportText } = useMaterialsExport(ui);
+
+const copySuccess = ref(false);
+let copyTimer = null;
 
 function handleExpandAll() {
   materialsCtrl.expandMany([...reachableCraftableIds.value]);
@@ -124,13 +131,24 @@ async function handleCopyMaterials() {
   if (navigator?.clipboard?.writeText) {
     try {
       await navigator.clipboard.writeText(text);
+      showCopySuccess();
       return;
     } catch (error) {
       fallbackCopy(text);
+      showCopySuccess();
     }
   } else {
     fallbackCopy(text);
+    showCopySuccess();
   }
+}
+
+function showCopySuccess() {
+  copySuccess.value = true;
+  if (copyTimer) window.clearTimeout(copyTimer);
+  copyTimer = window.setTimeout(() => {
+    copySuccess.value = false;
+  }, 2000);
 }
 
 // 需要调试时再打开：

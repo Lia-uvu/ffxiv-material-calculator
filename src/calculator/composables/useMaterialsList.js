@@ -1,9 +1,12 @@
 // useMaterialsList.js
 import { computed, unref } from "vue";
+import { useI18n } from "vue-i18n";
+import { resolveItemName } from "../../data";
 import { calcMaterials } from "../core/calcMaterials";
 import { buildRecipesByResultId, pickRecipe } from "../core/recipeUtils";
 
 export function useMaterialsList(params) {
+  const { locale, t } = useI18n();
   const itemsArr = computed(() => unref(params.items) || []);
   const recipesArr = computed(() => unref(params.recipes) || []);
   const targetsArr = computed(() => unref(params.targets) || []);
@@ -64,17 +67,20 @@ export function useMaterialsList(params) {
     const byId = itemById.value;
     const byRecipeId = recipeById.value;
     const expanded = expandedIdsSet.value;
+    const currentLocale = locale.value;
+    const placeholder = t("common.placeholder");
+    const fallbackName = t("common.unknown");
 
     const { materials, crafts, needs, rootNeeds, picks } = calcResult.value;
 
     const entryById = new Map();
 
     const obtainMethodLabels = {
-      CRAFT: "制作",
-      MARKET: "市场",
-      NPC: "NPC",
-      GATHER_MINER: "采矿",
-      GATHER_BOTANIST: "园艺",
+      CRAFT: t("obtainMethods.CRAFT"),
+      MARKET: t("obtainMethods.MARKET"),
+      NPC: t("obtainMethods.NPC"),
+      GATHER_MINER: t("obtainMethods.GATHER_MINER"),
+      GATHER_BOTANIST: t("obtainMethods.GATHER_BOTANIST"),
     };
 
     function formatObtainMethods(item) {
@@ -100,7 +106,7 @@ export function useMaterialsList(params) {
       const item = byId.get(id);
       entryById.set(id, {
         id,
-        name: item?.name ?? "Unknown",
+        name: resolveItemName(item, currentLocale) ?? fallbackName,
         isCrystal: item?.isCrystal ?? false,
 
         isCraftable: false,
@@ -111,7 +117,7 @@ export function useMaterialsList(params) {
         recipeId: null,
 
         job: resolveJob(id, null),
-        source: formatObtainMethods(item),
+        source: formatObtainMethods(item) ?? placeholder,
       });
     }
 
@@ -134,7 +140,7 @@ export function useMaterialsList(params) {
 
       const base = entryById.get(id) ?? {
         id,
-        name: item?.name ?? "Unknown",
+        name: resolveItemName(item, currentLocale) ?? fallbackName,
         isCrystal: item?.isCrystal ?? false,
 
         needAmount: taskNeed,
@@ -142,7 +148,7 @@ export function useMaterialsList(params) {
         recipeId,
 
         job: resolveJob(id, recipeId),
-        source: formatObtainMethods(item),
+        source: formatObtainMethods(item) ?? placeholder,
       };
 
       entryById.set(id, {
@@ -157,55 +163,24 @@ export function useMaterialsList(params) {
 
     const allEntries = [...entryById.values()].map((e) => {
       const displayAmount = e.isCraftable && e.isExpanded ? e.craftTimes : e.needAmount;
-      const displaySuffix = e.isCraftable && e.isExpanded ? "次" : "";
+      const displaySuffix =
+        e.isCraftable && e.isExpanded ? t("materials.craftTimesSuffix") : "";
       return { ...e, displayAmount, displaySuffix };
     });
 
     const craftable = allEntries
       .filter((e) => e.isCraftable)
-      .sort((a, b) => a.name.localeCompare(b.name));
+      .sort((a, b) => a.name.localeCompare(b.name, currentLocale));
 
     const nonCraftable = allEntries
       .filter((e) => !e.isCraftable)
       .sort((a, b) => {
         if (a.isCrystal !== b.isCrystal) return a.isCrystal ? -1 : 1;
-        return a.name.localeCompare(b.name);
+        return a.name.localeCompare(b.name, currentLocale);
       });
 
     return { craftable, nonCraftable };
   });
 
-  const exportText = computed(() => {
-    const craftable = (ui.value?.craftable ?? []).filter((e) => !e?.isCrystal);
-    const nonCraftable = (ui.value?.nonCraftable ?? []).filter((e) => !e?.isCrystal);
-    const crystals = [...(ui.value?.craftable ?? []), ...(ui.value?.nonCraftable ?? [])].filter(
-      (e) => e?.isCrystal
-    );
-
-    const lines = [];
-
-    lines.push("可制作材料");
-    for (const e of craftable) {
-      const job = e.job ?? "—";
-      const suffix = e.displaySuffix ?? "";
-      lines.push(`- ${e.name} × ${e.displayAmount}${suffix} （${job}）`);
-    }
-
-    lines.push("", "不可制作材料");
-    for (const e of nonCraftable) {
-      const source = e.source ?? "—";
-      const suffix = e.displaySuffix ?? "";
-      lines.push(`- ${e.name} × ${e.displayAmount}${suffix} （${source}）`);
-    }
-
-    lines.push("", "水晶");
-    for (const e of crystals) {
-      const suffix = e.displaySuffix ?? "";
-      lines.push(`- ${e.name} × ${e.displayAmount}${suffix}`);
-    }
-
-    return lines.join("\n");
-  });
-
-  return { itemById, ui, reachableCraftableIds, exportText };
+  return { itemById, ui, reachableCraftableIds };
 }

@@ -2,12 +2,14 @@
 <template>
   <div>
     <div class="flex items-baseline justify-between mt-2 mb-2">
-      <div class="text-sm font-semibold text-zinc-800">可制作材料</div>
-      <div class="text-xs text-zinc-500">{{ rows.length }} 项</div>
+      <div class="text-sm font-semibold text-zinc-800">{{ t("materials.craftable.title") }}</div>
+      <div class="text-xs text-zinc-500">
+        {{ t("common.itemCount", { count: rows.length }) }}
+      </div>
     </div>
 
     <div v-if="rows.length === 0" class="text-sm text-zinc-500 mb-4">
-      当前没有可制作材料。
+      {{ t("materials.craftable.empty") }}
     </div>
 
     <div v-else class="space-y-2 mb-4">
@@ -24,7 +26,9 @@
           v-if="checkedIds.has(r.item.id)"
           class="absolute inset-0 rounded-2xl bg-violet-200/40 pointer-events-none flex items-center justify-center"
         >
-          <div class="text-violet-900 font-semibold text-sm">✓ 已完成</div>
+          <div class="text-violet-900 font-semibold text-sm">
+            ✓ {{ t("common.completed") }}
+          </div>
         </div>
 
         <div class="flex items-start gap-3">
@@ -46,13 +50,19 @@
                 class="text-[11px] px-2 py-0.5 rounded-full"
                 :class="r.item.isExpanded ? 'bg-violet-100 text-violet-700' : 'bg-zinc-100 text-zinc-700'"
               >
-                {{ r.item.isExpanded ? '已拆' : '未拆' }}
+                {{
+                  r.item.isExpanded
+                    ? t("materials.craftable.expanded")
+                    : t("materials.craftable.collapsed")
+                }}
               </span>
             </div>
 
             <div class="text-xs text-zinc-500 mt-1">
-              制作职业：{{ r.item.job ?? "—" }}
-              <template v-if="r.item.isExpanded"> · 需求：{{ r.item.needAmount }}</template>
+              {{ t("materials.jobLabel") }}：{{ r.item.job ?? t("common.placeholder") }}
+              <template v-if="r.item.isExpanded">
+                · {{ t("materials.craftable.needsLabel") }}：{{ r.item.needAmount }}
+              </template>
             </div>
           </div>
 
@@ -65,7 +75,11 @@
               type="button"
               class="h-8 w-8 rounded-xl border border-zinc-200 flex items-center justify-center hover:bg-zinc-50"
               @click="$emit('toggle-expand', r.item.id)"
-              :title="r.item.isExpanded ? '锁回去（不拆）' : '拆开（展开）'"
+              :title="
+                r.item.isExpanded
+                  ? t('materials.craftable.toggleCollapse')
+                  : t('materials.craftable.toggleExpand')
+              "
             >
               <span v-if="r.item.isExpanded">🔓</span>
               <span v-else>🔗</span>
@@ -79,6 +93,7 @@
 
 <script setup>
 import { computed } from "vue";
+import { useI18n } from "vue-i18n";
 
 const props = defineProps({
   craftable: { type: Array, default: () => [] },
@@ -88,6 +103,8 @@ const props = defineProps({
 });
 
 defineEmits(["toggle-check", "toggle-expand"]);
+
+const { t } = useI18n();
 
 const items = computed(() => (props.craftable ?? []).filter((e) => !e?.isCrystal));
 

@@ -1,7 +1,7 @@
-import { createApp } from 'vue'
+import { createApp } from "vue";
 // import './style.css'
-import "./base.css"
-import App from './App.vue'
+import "./base.css";
+import App from "./App.vue";
+import i18n from "./i18n";
 
-createApp(App).mount('#app')
-
+createApp(App).use(i18n).mount("#app");
