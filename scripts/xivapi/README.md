@@ -64,7 +64,7 @@ node scripts/xivapi/jsonl-to-array.mjs
 
 ## Update item names (localized)
 
-Refresh localized item names (ja + zh-CN by default) for `src/data/items.json`:
+Refresh localized item names (en + ja + zh-CN by default) for `src/data/items.json`:
 
 ```bash
 USER_AGENT="ffxiv-material-calculator/1.0 (contact@example.com)" \
@@ -75,15 +75,15 @@ Defaults:
 - `ITEMS_PATH=src/data/items.json`
 - `BATCH_SIZE=100`
 - `MIN_DELAY_MS=200`
-- `XIVAPI_LOCALES=ja,zh-CN`
-- `XIVAPI_VERSION=7.0`
+- `XIVAPI_LOCALES=en,ja,zh-CN`
+- `XIVAPI_VERSION=` (latest)
 
 ## Optional configuration
 
-- `XIVAPI_BASE_URL` (default `https://v2.xivapi.com/api/sheet`)
-- `XIVAPI_CN_BASE_URL` (default `https://cafemaker.wakingsands.com/api/sheet`)
+- `XIVAPI_BASE_URL` (default `https://xivapi.com/api/sheet`)
+- `XIVAPI_CN_BASE_URL` (default `https://cafemaker.wakingsands.com`)
 - `XIVAPI_SHEET` (default `Recipe` or `Item`)
-- `XIVAPI_LOCALES` (default `en,zh-CN,ja`)
+- `XIVAPI_LOCALES` (default `en,ja,zh-CN`)
 - `XIVAPI_PRIMARY_LOCALE` (default `en`)
 - `ROWS_PARAM` (default `rows`)
 

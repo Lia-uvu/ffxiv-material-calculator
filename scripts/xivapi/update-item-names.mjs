@@ -9,15 +9,14 @@ import {
 } from "./utils.mjs";
 
 const config = {
-  baseUrl: process.env.XIVAPI_BASE_URL ?? "https://v2.xivapi.com/api/sheet",
-  cnBaseUrl:
-    process.env.XIVAPI_CN_BASE_URL ?? "https://cafemaker.wakingsands.com/api/sheet",
+  baseUrl: process.env.XIVAPI_BASE_URL ?? "https://xivapi.com/api/sheet",
+  cnBaseUrl: process.env.XIVAPI_CN_BASE_URL ?? "https://cafemaker.wakingsands.com",
   sheet: process.env.XIVAPI_SHEET ?? "Item",
-  locales: (process.env.XIVAPI_LOCALES ?? "ja,zh-CN")
+  locales: (process.env.XIVAPI_LOCALES ?? "en,ja,zh-CN")
     .split(",")
     .map((locale) => locale.trim())
     .filter(Boolean),
-  version: process.env.XIVAPI_VERSION ?? "7.0",
+  version: process.env.XIVAPI_VERSION ?? "",
   rowsParam: process.env.ROWS_PARAM ?? "rows",
   batchSize: Number(process.env.BATCH_SIZE ?? "100"),
   minDelayMs: Number(process.env.MIN_DELAY_MS ?? "200"),
@@ -44,16 +43,27 @@ function resolveLanguage(locale) {
 }
 
 function toItemRows(payload) {
-  return payload?.rows ?? payload?.results ?? payload?.data ?? [];
+  return (
+    payload?.rows ??
+    payload?.results ??
+    payload?.data ??
+    payload?.Results ??
+    []
+  );
 }
 
 async function fetchNames(batch, locale) {
   const baseUrl = resolveBaseUrl(locale);
   const url = new URL(`${baseUrl}/${config.sheet}`);
-  url.searchParams.set(config.rowsParam, batch.join(","));
-  url.searchParams.set("fields", "Name");
+  if (locale === "zh-CN") {
+    url.searchParams.set("ids", batch.join(","));
+    url.searchParams.set("columns", "ID,Name");
+  } else {
+    url.searchParams.set(config.rowsParam, batch.join(","));
+    url.searchParams.set("fields", "Name");
+    if (config.version) url.searchParams.set("version", config.version);
+  }
   url.searchParams.set("language", resolveLanguage(locale));
-  if (config.version) url.searchParams.set("version", config.version);
 
   const { payload, retries, durationMs } = await fetchJsonWithRetry(
     url,
