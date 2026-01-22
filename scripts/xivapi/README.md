@@ -62,6 +62,22 @@ OUTPUT_PATH=src/data/items.json \
 node scripts/xivapi/jsonl-to-array.mjs
 ```
 
+## Update item names (localized)
+
+Refresh localized item names (ja + zh-CN by default) for `src/data/items.json`:
+
+```bash
+USER_AGENT="ffxiv-material-calculator/1.0 (contact@example.com)" \
+python scripts/xivapi/update-item-names.py
+```
+
+Defaults:
+- `ITEMS_PATH=src/data/items.json`
+- `BATCH_SIZE=100`
+- `MIN_DELAY_MS=200`
+- `XIVAPI_LOCALES=ja,zh-CN`
+- `XIVAPI_VERSION=7.0`
+
 ## Optional configuration
 
 - `XIVAPI_BASE_URL` (default `https://v2.xivapi.com/api/sheet`)
