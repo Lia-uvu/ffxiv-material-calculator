@@ -1,26 +1,26 @@
 <template>
   <section class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
     <div class="flex items-baseline justify-between gap-3">
-      <h2 class="text-lg font-semibold tracking-tight">Targets</h2>
+      <h2 class="text-lg font-semibold tracking-tight">{{ t("targets.title") }}</h2>
 
       <div class="flex items-center gap-2">
-        <p class="text-xs text-zinc-500">Total: {{ targets.length }}</p>
+        <p class="text-xs text-zinc-500">{{ t("targets.total", { count: targets.length }) }}</p>
 
         <button
           v-if="targets.length"
           type="button"
           class="inline-flex h-8 items-center justify-center rounded-xl border border-zinc-200 bg-white px-3 text-xs text-zinc-700 hover:bg-zinc-100 active:bg-zinc-200"
           @click="onClear"
-          aria-label="Clear all targets"
-          title="Clear all"
+          :aria-label="t('targets.clearAria')"
+          :title="t('targets.clearTitle')"
         >
-          Clear
+          {{ t("targets.clear") }}
         </button>
       </div>
     </div>
 
     <p v-if="!targets.length" class="mt-2 text-sm text-zinc-600">
-      No targets yet. Search an item and add it.
+      {{ t("targets.empty") }}
     </p>
 
     <ul v-else class="mt-4 space-y-2">
@@ -53,10 +53,10 @@
           type="button"
           class="inline-flex h-9 items-center justify-center rounded-xl border border-zinc-200 bg-white px-3 text-sm text-zinc-700 hover:bg-zinc-100 active:bg-zinc-200"
           @click="onRemove(t.id)"
-          aria-label="Remove target"
-          title="Remove"
+          :aria-label="t('targets.removeAria')"
+          :title="t('targets.removeTitle')"
         >
-          Remove
+          {{ t("targets.remove") }}
         </button>
       </li>
     </ul>
@@ -65,6 +65,7 @@
 
 <script setup>
 import { toRefs } from "vue";
+import { useI18n } from "vue-i18n";
 
 const props = defineProps({
   targets: {
@@ -74,6 +75,7 @@ const props = defineProps({
 });
 
 const { targets } = toRefs(props);
+const { t } = useI18n();
 
 // ✅ 新增 clear
 const emit = defineEmits(["remove", "update-amount", "clear"]);

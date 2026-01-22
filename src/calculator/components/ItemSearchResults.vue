@@ -23,12 +23,14 @@
 
     <!-- 可选：底部提示（你想要就留，不想要删） -->
     <div class="border-t border-zinc-200 px-3 py-2 text-xs text-zinc-500">
-      Click an item to add it.
+      {{ t("search.hint") }}
     </div>
   </div>
 </template>
 
 <script setup>
+import { useI18n } from "vue-i18n";
+
 const props = defineProps({
   results: {
     type: Array,
@@ -37,6 +39,7 @@ const props = defineProps({
 })
 
 const emit = defineEmits(["select"])
+const { t } = useI18n();
 
 function onSelect(id) {
   emit("select", id)
