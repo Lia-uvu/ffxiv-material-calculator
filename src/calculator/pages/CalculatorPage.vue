@@ -127,20 +127,22 @@ function fallbackCopy(text) {
 async function handleCopyMaterials() {
   const text = exportText.value?.trim();
   if (!text) return;
+  let copied = false;
 
   if (navigator?.clipboard?.writeText) {
     try {
       await navigator.clipboard.writeText(text);
-      showCopySuccess();
-      return;
+      copied = true;
     } catch (error) {
       fallbackCopy(text);
-      showCopySuccess();
+      copied = true;
     }
   } else {
     fallbackCopy(text);
-    showCopySuccess();
+    copied = true;
   }
+
+  if (copied) showCopySuccess();
 }
 
 function showCopySuccess() {
