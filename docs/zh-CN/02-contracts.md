@@ -261,7 +261,7 @@ Page 将 store 中 `targets` 映射为展示结构：
 ```ts
 { id: number, amount: number, name: string }
 ```
-`name` 从 `items.json` 中查得，缺失时为 `"Unknown"`。
+`name` 从 `items.json` 的多语言 `name` map 中按当前语言解析，缺失时为 `"Unknown"`。
 
 ### 4.2 Materials UI entries
 `useMaterialsList` 将计算结果转为 `Entry`，并在 UI 中进一步展示：

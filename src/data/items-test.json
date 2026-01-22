@@ -1,51 +1,114 @@
 [
   {
     "id": 4421,
-    "name": "兽骨戒指",
+    "name": {
+      "en": "兽骨戒指",
+      "zh-CN": "兽骨戒指",
+      "ja": "兽骨戒指"
+    },
     "isCrystal": false,
-    "obtainMethods": ["CRAFT", "MARKET"]
+    "obtainMethods": [
+      "CRAFT",
+      "MARKET"
+    ]
   },
   {
     "id": 1370,
-    "name": "骨片",
+    "name": {
+      "en": "骨片",
+      "zh-CN": "骨片",
+      "ja": "骨片"
+    },
     "isCrystal": false,
-    "obtainMethods": ["CRAFT", "GATHER_MINER", "MARKET", "NPC"]
+    "obtainMethods": [
+      "CRAFT",
+      "GATHER_MINER",
+      "MARKET",
+      "NPC"
+    ]
   },
   {
     "id": 2210,
-    "name": "砂岩磨刀石",
+    "name": {
+      "en": "砂岩磨刀石",
+      "zh-CN": "砂岩磨刀石",
+      "ja": "砂岩磨刀石"
+    },
     "isCrystal": false,
-    "obtainMethods": ["CRAFT", "MARKET", "NPC"]
+    "obtainMethods": [
+      "CRAFT",
+      "MARKET",
+      "NPC"
+    ]
   },
   {
     "id": 3240,
-    "name": "砂岩",
+    "name": {
+      "en": "砂岩",
+      "zh-CN": "砂岩",
+      "ja": "砂岩"
+    },
     "isCrystal": false,
-    "obtainMethods": ["CRAFT", "GATHER_MINER", "MARKET", "NPC"]
+    "obtainMethods": [
+      "CRAFT",
+      "GATHER_MINER",
+      "MARKET",
+      "NPC"
+    ]
   },
   {
     "id": 1000,
-    "name": "风之碎晶",
+    "name": {
+      "en": "风之碎晶",
+      "zh-CN": "风之碎晶",
+      "ja": "风之碎晶"
+    },
     "isCrystal": true,
-    "obtainMethods": ["GATHER_MINER", "GATHER_BOTANIST", "MARKET"]
+    "obtainMethods": [
+      "GATHER_MINER",
+      "GATHER_BOTANIST",
+      "MARKET"
+    ]
   },
   {
     "id": 1001,
-    "name": "火之碎晶",
+    "name": {
+      "en": "火之碎晶",
+      "zh-CN": "火之碎晶",
+      "ja": "火之碎晶"
+    },
     "isCrystal": true,
-    "obtainMethods": ["GATHER_MINER", "GATHER_BOTANIST", "MARKET"]
+    "obtainMethods": [
+      "GATHER_MINER",
+      "GATHER_BOTANIST",
+      "MARKET"
+    ]
   },
-
   {
     "id": 1371,
-    "name": "兽骨",
+    "name": {
+      "en": "兽骨",
+      "zh-CN": "兽骨",
+      "ja": "兽骨"
+    },
     "isCrystal": false,
-    "obtainMethods": ["NPC", "MARKET"]
+    "obtainMethods": [
+      "NPC",
+      "MARKET"
+    ]
   },
   {
     "id": 3241,
-    "name": "砂砾",
+    "name": {
+      "en": "砂砾",
+      "zh-CN": "砂砾",
+      "ja": "砂砾"
+    },
     "isCrystal": false,
-    "obtainMethods": ["GATHER_MINER", "MARKET", "NPC"]
+    "obtainMethods": [
+      "GATHER_MINER",
+      "MARKET",
+      "NPC"
+    ]
   }
 ]
