@@ -1,193 +1,200 @@
-# convert_recipe_cn.py
-# Usage (run from anywhere):
-# python convert_recipe_cn.py --src "C:\Users\Coccyx\ffxiv-datamining-cn" --out "D:\...\recipes.ndjson" --patch "7.4"
+#!/usr/bin/env python3
+"""Convert FFXIV CN Recipe.csv into recipes.json and needed_item_ids.json."""
+
+from __future__ import annotations
 
 import argparse
 import csv
 import json
-import re
 from pathlib import Path
+from typing import Dict, Iterable, List, Tuple
+from urllib.request import urlopen
 
+BASE_URL = "https://raw.githubusercontent.com/thewakingsands/ffxiv-datamining-cn/master"
 
-CRAFTTYPE_TO_JOB = {
-    0: "CARPENTER",     # CRP
-    1: "BLACKSMITH",    # BSM
-    2: "ARMORER",       # ARM
-    3: "GOLDSMITH",     # GSM
-    4: "LEATHERWORKER", # LTW
-    5: "WEAVER",        # WVR
-    6: "ALCHEMIST",     # ALC
-    7: "CULINARIAN",    # CUL
+CRAFT_TYPE_TO_JOB = {
+    0: "CARPENTER",
+    1: "BLACKSMITH",
+    2: "ARMORER",
+    3: "GOLDSMITH",
+    4: "LEATHERWORKER",
+    5: "WEAVER",
+    6: "ALCHEMIST",
+    7: "CULINARIAN",
 }
 
 
-def to_int(v, default=0) -> int:
-    try:
-        if v is None:
-            return default
-        s = str(v).strip()
-        if s == "" or s.lower() == "null":
-            return default
-        return int(float(s))
-    except Exception:
-        return default
+def fetch_text(path: Path | None, filename: str) -> str:
+    if path:
+        file_path = path / filename
+        return file_path.read_text(encoding="utf-8-sig")
+    url = f"{BASE_URL}/{filename}"
+    with urlopen(url) as response:
+        return response.read().decode("utf-8-sig")
 
 
-def read_dumpcsv_rows(path: Path):
-    """
-    FFCAFE dumpcsv format:
-      line1: key,0,1,2...
-      line2: real field names
-      line3: types
-      line4: defaults
-      line5+: data rows
-    Returns: (fields, list[dict])
-    """
-    with path.open("r", encoding="utf-8-sig", newline="") as f:
-        r = csv.reader(f)
-        _header_idx = next(r, None)
-        fields = next(r, None)
-        _types = next(r, None)
-        _defaults = next(r, None)
-
-        if not fields:
-            raise ValueError(f"{path} header missing")
-
-        fields = [h.strip().replace("\ufeff", "") for h in fields]
-
-        rows = []
-        for row in r:
-            if not row:
-                continue
-            if len(row) < len(fields):
-                row = row + [""] * (len(fields) - len(row))
-            rows.append(dict(zip(fields, row)))
-    return fields, rows
+def parse_recipe_level_table(text: str) -> Dict[int, int]:
+    lines = text.splitlines()
+    rows = list(csv.reader(lines))
+    header = rows[1]
+    idx_key = header.index("#")
+    idx_level = header.index("ClassJobLevel")
+    levels: Dict[int, int] = {}
+    for row in rows[4:]:
+        if len(row) <= max(idx_key, idx_level):
+            continue
+        try:
+            key = int(row[idx_key])
+        except ValueError:
+            continue
+        try:
+            level = int(row[idx_level])
+        except ValueError:
+            level = 0
+        levels[key] = level
+    return levels
 
 
-def pick_first(fields, candidates):
-    for c in candidates:
-        if c in fields:
-            return c
-    return None
+def parse_recipe_csv(text: str) -> Tuple[List[Dict], List[int]]:
+    lines = text.splitlines()
+    rows = list(csv.reader(lines))
+    header = rows[1]
 
+    def get_index(name: str) -> int:
+        return header.index(name)
 
-def main():
-    parser = argparse.ArgumentParser(description="Convert ffxiv-datamining-cn Recipe.csv -> NDJSON")
-    parser.add_argument("--src", default=".", help="Path to ffxiv-datamining-cn repo (contains Recipe.csv, Item.csv)")
-    parser.add_argument("--out", required=True, help="Output NDJSON path, e.g. D:\\...\\recipes.ndjson")
-    parser.add_argument("--patch", default="", help='Patch string to write for all recipes, e.g. "7.4" or "1.23"')
-    parser.add_argument("--encoding", default="utf-8", help="Output encoding (default utf-8)")
-    args = parser.parse_args()
+    idx_number = get_index("Number")
+    idx_craft = get_index("CraftType")
+    idx_level_table = get_index("RecipeLevelTable")
+    idx_result_item = get_index("Item{Result}")
+    idx_result_amount = get_index("Amount{Result}")
+    idx_patch = get_index("PatchNumber")
 
-    src = Path(args.src)
-    recipe_csv = src / "Recipe.csv"
-    item_csv = src / "Item.csv"
+    ingredient_pairs = []
+    for i in range(8):
+        item_idx = get_index(f"Item{{Ingredient}}[{i}]")
+        amount_idx = get_index(f"Amount{{Ingredient}}[{i}]")
+        ingredient_pairs.append((item_idx, amount_idx))
 
-    if not recipe_csv.exists():
-        raise SystemExit(f"Recipe.csv not found: {recipe_csv}")
-    if not item_csv.exists():
-        raise SystemExit(f"Item.csv not found: {item_csv}")
+    recipes: List[Dict] = []
+    item_ids: set[int] = set()
 
-    # --- Read recipes ---
-    recipe_fields, recipe_rows = read_dumpcsv_rows(recipe_csv)
+    for row in rows[4:]:
+        if len(row) <= idx_patch:
+            continue
+        try:
+            recipe_id = int(row[idx_number])
+        except ValueError:
+            continue
+        if recipe_id <= 0:
+            continue
 
-    recipe_id_col = pick_first(recipe_fields, ["#", "Number", "key"])
-    craft_type_col = pick_first(recipe_fields, ["CraftType"])
-    rlt_col = pick_first(recipe_fields, ["RecipeLevelTable"])  # not used now, kept for future
-    result_item_col = pick_first(recipe_fields, ["Item{Result}"])
-    result_amount_col = pick_first(recipe_fields, ["Amount{Result}"])
-
-    if not result_item_col:
-        raise SystemExit("Cannot find Item{Result} column in Recipe.csv")
-    if not result_amount_col:
-        raise SystemExit("Cannot find Amount{Result} column in Recipe.csv")
-
-    # Ingredient slots: Item{Ingredient}[0..] / Amount{Ingredient}[0..]
-    item_slots = []
-    amt_slots = {}
-
-    for name in recipe_fields:
-        m = re.fullmatch(r"Item\{Ingredient\}\[(\d+)\]", name)
-        if m:
-            item_slots.append((int(m.group(1)), name))
-        m = re.fullmatch(r"Amount\{Ingredient\}\[(\d+)\]", name)
-        if m:
-            amt_slots[int(m.group(1))] = name
-
-    item_slots.sort()
-
-    base_recipes = []
-    result_item_ids = set()
-
-    for d in recipe_rows:
-        rid = to_int(d.get(recipe_id_col)) if recipe_id_col else None
-        result_item_id = to_int(d.get(result_item_col))
+        try:
+            result_item_id = int(row[idx_result_item])
+        except ValueError:
+            result_item_id = 0
         if result_item_id <= 0:
             continue
 
-        result_amount = to_int(d.get(result_amount_col), 1)
+        try:
+            result_amount = int(row[idx_result_amount])
+        except ValueError:
+            result_amount = 0
 
-        craft_type = to_int(d.get(craft_type_col), -1) if craft_type_col else -1
-        job = CRAFTTYPE_TO_JOB.get(craft_type, "UNKNOWN")
+        craft_type = int(row[idx_craft]) if row[idx_craft] else 0
+        job = CRAFT_TYPE_TO_JOB.get(craft_type)
 
-        mats = []
-        for idx, item_col in item_slots:
-            item_id = to_int(d.get(item_col))
-            if item_id <= 0:
-                continue
-            amt_col = amt_slots.get(idx)
-            amt = to_int(d.get(amt_col), 1) if amt_col else 1
-            mats.append({"itemId": item_id, "amount": max(1, amt)})
+        try:
+            level_table_id = int(row[idx_level_table])
+        except ValueError:
+            level_table_id = 0
 
-        base_recipes.append(
-            {
-                "id": rid,
-                "resultItemId": result_item_id,
-                "resultAmount": result_amount,
-                "job": job,
-                "materials": mats,
-            }
-        )
-        result_item_ids.add(result_item_id)
+        patch_raw = row[idx_patch]
+        patch = parse_patch_number(patch_raw)
 
-    # --- Read item levels for result items ---
-    item_fields, item_rows = read_dumpcsv_rows(item_csv)
+        materials = []
+        for item_idx, amount_idx in ingredient_pairs:
+            try:
+                item_id = int(row[item_idx])
+            except ValueError:
+                item_id = 0
+            try:
+                amount = int(row[amount_idx])
+            except ValueError:
+                amount = 0
+            if item_id > 0 and amount > 0:
+                materials.append({"itemId": item_id, "amount": amount})
+                item_ids.add(item_id)
 
-    item_id_col = pick_first(item_fields, ["#", "key", "ID", "Id"])
-    # Common item level columns in dumps (try a few)
-    item_level_col = pick_first(item_fields, ["Level{Item}", "LevelItem", "ItemLevel", "Level"])
+        recipe = {
+            "id": recipe_id,
+            "resultItemId": result_item_id,
+            "resultAmount": result_amount,
+            "job": job,
+            "itemLevel": level_table_id,
+            "patch": patch,
+            "materials": materials,
+        }
+        recipes.append(recipe)
+        item_ids.add(result_item_id)
 
-    if not item_id_col:
-        raise SystemExit("Cannot find item id column in Item.csv (expected '#', 'key', 'ID'...)")
+    return recipes, sorted(item_ids)
 
-    item_level_map = {}
-    if item_level_col:
-        for d in item_rows:
-            iid = to_int(d.get(item_id_col))
-            if iid in result_item_ids:
-                item_level_map[iid] = to_int(d.get(item_level_col), 0)
-    else:
-        # fallback: no column found
-        for iid in result_item_ids:
-            item_level_map[iid] = 0
 
-    # --- Write NDJSON ---
-    out_path = Path(args.out)
-    out_path.parent.mkdir(parents=True, exist_ok=True)
+def parse_patch_number(value: str) -> str:
+    try:
+        number = int(value)
+    except ValueError:
+        return "0.0"
+    if number in (0, 65535):
+        return "0.0"
+    major = number // 100
+    minor = number % 100
+    return f"{major}.{minor}"
 
-    patch_str = args.patch
 
-    written = 0
-    with out_path.open("w", encoding=args.encoding, newline="\n") as f:
-        for r in base_recipes:
-            r["itemLevel"] = item_level_map.get(r["resultItemId"], 0)
-            r["patch"] = patch_str
-            f.write(json.dumps(r, ensure_ascii=False) + "\n")
-            written += 1
+def update_item_levels(recipes: Iterable[Dict], level_table: Dict[int, int]) -> None:
+    for recipe in recipes:
+        level_table_id = recipe.get("itemLevel", 0)
+        if level_table_id in level_table:
+            recipe["itemLevel"] = level_table[level_table_id]
+        else:
+            recipe["itemLevel"] = 0
 
-    print(f"recipes written: {written}")
-    print(f"output: {out_path}")
+
+def write_json(path: Path, payload: object) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--input-dir",
+        type=Path,
+        default=None,
+        help="Directory containing Recipe.csv/CraftType.csv/RecipeLevelTable.csv. Defaults to remote repo.",
+    )
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=Path("src/data"),
+        help="Output directory for recipes.json and needed_item_ids.json.",
+    )
+    args = parser.parse_args()
+
+    recipe_text = fetch_text(args.input_dir, "Recipe.csv")
+    level_text = fetch_text(args.input_dir, "RecipeLevelTable.csv")
+
+    level_table = parse_recipe_level_table(level_text)
+    recipes, item_ids = parse_recipe_csv(recipe_text)
+    update_item_levels(recipes, level_table)
+
+    write_json(args.output_dir / "recipes.json", recipes)
+    write_json(args.output_dir / "needed_item_ids.json", item_ids)
+
+    print(f"Wrote {len(recipes)} recipes to {args.output_dir / 'recipes.json'}")
+    print(f"Wrote {len(item_ids)} item ids to {args.output_dir / 'needed_item_ids.json'}")
 
 
 if __name__ == "__main__":
