@@ -13,6 +13,12 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+scripts/logs/*
+!scripts/logs/.gitkeep
+
+# script outputs
+scripts/xivapi/data/*
+!scripts/xivapi/data/.gitkeep
 
 # editor
 .vscode/
