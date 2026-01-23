@@ -18,8 +18,47 @@ https://v2.xivapi.com
 https://v2.xivapi.com/api/…
 比如（V2 文档里的示例）查 Item 表某个 row：
 https://v2.xivapi.com/api/sheet/Item/37362?fields=Name,Description
-使用方法：调api用脚本请求data/里从国服仓库扒的needed_item_ids.json需求列表对应的多语言名字
 
+使用方法：调 API 用脚本请求 `src/data/needed_item_ids.json` 需求列表对应的多语言名字。
+
+#### XIVAPI 拉取流程（脚本化）
+脚本路径：`scripts/xivapi/`
+
+1. **抓取 raw 数据**：
+   ```bash
+   node scripts/xivapi/fetchNames.js
+   ```
+   - 默认读取 `src/data/needed_item_ids.json`。
+   - 结果写到 `scripts/xivapi/data/xivapi-names-raw.json`。
+   - 请求日志写到 `scripts/logs/`。
+
+2. **清洗为 `{id,en,ja}`**：
+   ```bash
+   node scripts/xivapi/normalizeXivapiResponse.js
+   ```
+   - 输出 `scripts/xivapi/data/xivapi-names-normalized.json`。
+
+3. **合并进本地 items.json**：
+   ```bash
+   node scripts/xivapi/mergeIntoLocalJson.js
+   ```
+   - 默认更新 `src/data/items.json`。
+   - 写入日志到 `scripts/logs/`，包含新增/缺失统计。
+
+#### 服务器友好策略
+XIVAPI 是公共服务，尽量减少压力：
+- **请求节流**：默认并发 3、每次请求间隔 250ms（可用参数调整）。
+- **字段最小化**：只请求 `Name` 字段，避免多余数据。
+- **失败重试**：脚本会记录失败、缺失列表，方便后续补抓。
+- **分阶段处理**：先抓 raw，再清洗、合并，避免重复请求。
+
+可选参数示例：
+```bash
+node scripts/xivapi/fetchNames.js \
+  --ids src/data/needed_item_ids.json \
+  --concurrency 2 \
+  --delay-ms 400
+```
 
 ## 静态数据结构
 
@@ -67,12 +106,20 @@ https://v2.xivapi.com/api/sheet/Item/37362?fields=Name,Description
 ```
 
 ## 数据更新CI自动化
-部署Github Actions
- 
+目前数据更新以手动为主，脚本化流程主要是：
+1. 从 `ffxiv-datamining-cn` 更新中文 CSV。
+2. 用 `scripts/ffxiv-datamining-cn/` 清洗出符合本项目结构的 JSON。
+3. 如需补全英/日名称，执行 `scripts/xivapi/` 的抓取-清洗-合并流程。
+4. 更新 `src/data/version.json`（标记数据源与更新时间）。
 
-
-## Version文件留档
-CI的log和快照格式写在这里
+## Version 文件留档
+`src/data/version.json` 用于记录当前数据来源、版本与时间戳。任何数据更新都应同步更新该文件，方便回溯。建议字段包括：
+- `data_version`：数据版本号（手动递增）
+- `updated_at`：更新日期
+- `i18n_source`：国际化名称来源
 
 ## 部署
-CloudFlare全家桶，绑到GitHub main上了
+目前使用 Cloudflare Pages 部署：
+1. `main` 分支有更新时自动触发构建。
+2. 构建产物来自 `vite build`。
+3. 生产站点：`https://msjcalc.pages.dev`
