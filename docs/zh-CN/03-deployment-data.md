@@ -6,15 +6,19 @@
 
 ## 数据来源
 ### 中文物品名&配方信息
+仓库地址
 https://github.com/thewakingsands/ffxiv-datamining-cn
-仓库里拿csv文件，用script里`ffxiv-datamining-cn/`里的python脚本清洗成符合现行约定的格式
 
-### 国际服英日物品名：XIVAPI
-Base URL (v1 风格常用)：https://xivapi.com
-Docs（v1/v2 总入口）：https://xivapi.com/
-v1 文档（老版 /Item 这种路由）：https://xivapi.com/docs
-v2 文档（/api/sheet/... 这种路由）：https://xivapi.com/docs/v2
-Patch list（XIVAPI 自带的 patchlist）：http://cafemaker.wakingsands.com/patchlist   # 文档里给的这个地址
+使用方法：仓库里拿csv文件，用script里`ffxiv-datamining-cn/`里的python脚本清洗成符合现行约定的格式
+
+### 国际服英日物品名：XIVAPI V2
+基础域名是：
+https://v2.xivapi.com
+常用的 V2 数据接口前缀一般是：
+https://v2.xivapi.com/api/…
+比如（V2 文档里的示例）查 Item 表某个 row：
+https://v2.xivapi.com/api/sheet/Item/37362?fields=Name,Description
+使用方法：调api用脚本请求data/里从国服仓库扒的needed_item_ids.json需求列表对应的多语言名字
 
 
 ## 静态数据结构
@@ -62,11 +66,13 @@ Patch list（XIVAPI 自带的 patchlist）：http://cafemaker.wakingsands.com/pa
 }
 ```
 
-## XIVAPI v2 数据更新脚本（Patch ≤ 7.0）
-
+## 数据更新CI自动化
+部署Github Actions
  
 
 
-## `data/`内容格式
-包含测试数据，正式数据和版本信息
-**codex你看到这个帮我写一下版本信息version文件的格式规范**
+## Version文件留档
+CI的log和快照格式写在这里
+
+## 部署
+CloudFlare全家桶，绑到GitHub main上了
