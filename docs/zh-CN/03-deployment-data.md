@@ -5,16 +5,16 @@
 通信规则见：[`02-contracts.md`](02-contracts.md)
 
 ## 数据来源
-### 国际服 / 通用：XIVAPI
+### 中文物品名&配方信息
+https://github.com/thewakingsands/ffxiv-datamining-cn
+仓库里拿csv文件，用script里`ffxiv-datamining-cn/`里的python脚本清洗成符合现行约定的格式
+
+### 国际服英日物品名：XIVAPI
 Base URL (v1 风格常用)：https://xivapi.com
 Docs（v1/v2 总入口）：https://xivapi.com/
 v1 文档（老版 /Item 这种路由）：https://xivapi.com/docs
 v2 文档（/api/sheet/... 这种路由）：https://xivapi.com/docs/v2
 Patch list（XIVAPI 自带的 patchlist）：http://cafemaker.wakingsands.com/patchlist   # 文档里给的这个地址
-### 国服同步（FFCafe / CafeMaker：XIVAPI 的国服分支，返回中文内容、支持中文搜索）
-Base URL：https://cafemaker.wakingsands.com
-说明（官方写法：把你原来访问 https://xivapi.com 的地方，改成 https://cafemaker.wakingsands.com 即可）
-https://cafemaker.wakingsands.com/  （会跳到 GitHub Wiki 的说明页）
 
 
 ## 静态数据结构

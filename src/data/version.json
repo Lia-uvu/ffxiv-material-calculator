@@ -1,7 +1,7 @@
 {
-  "version": "7.0",
-  "updatedAt": "2025-01-20",
+  "version": "7.4",
+  "updatedAt": "2025-01-23",
   "source": "XIVAPI v2",
-  "scope": "items+recipes, patch<=7.0",
+  "scope": "items+recipes",
   "schemaVersion": 1
 }
