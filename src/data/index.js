@@ -1,6 +1,5 @@
 import items from "./items.json";
 import recipes from "./recipes.json";
-import version from "./version.json";
 
 const itemsById = new Map(items.map((item) => [item.id, item]));
 const recipesById = new Map(recipes.map((recipe) => [recipe.id, recipe]));
@@ -23,4 +22,4 @@ export function resolveItemName(item, locale = "zh-CN") {
   return null;
 }
 
-export { items, recipes, version };
+export { items, recipes };
