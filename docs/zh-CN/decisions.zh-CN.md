@@ -248,3 +248,6 @@ dfs写进了materiallist的composable，因为这个是ui展示逻辑。calcResu
 给原来的CraftOptionsControls.vue改名了，因为本来打算按钮单独拎出来写，后来发现不方便，直接写到大块里面了。现在这个文件决定改作页面ui小部件，遂改名CalculatorLayout.vue
 
 t 永远只留给 i18n 翻译函数，循环变量统一用 target / item / entry 等完整名字
+
+现在这层 src/data/index.js 的主要价值是“集中封装读取逻辑”（按 id 索引、名字解析），而不是懒加载本身。它把 items.json/recipes.json 的加载与索引构建封装起来，方便业务侧只通过 getItemById/getRecipeById/resolveItemName 来访问数据，避免到处重复建索引与名字解析逻辑。
+index.js 可以作为一个**“统一入口”**，未来你可以把它改成通过动态 import 按需加载（例如把 items.json / recipes.json 拆分、分区或按页面加载）。这时调用方仍然只用 getItemById / getRecipeById，无需改业务代码，只改 index.js 内部实现即可——它就成了懒加载的抽象层。当前版本只是“封装入口”，但确实给未来的懒加载预留了可重构的位置。
