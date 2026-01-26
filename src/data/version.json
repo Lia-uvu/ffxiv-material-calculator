@@ -1,0 +1,8 @@
+{
+  "version": "7.4",
+  "updatedAt": "2025-01-23",
+  "recipes_source": "ffxiv-datamining-cn",
+  "i18n_sourse": "XIVAPI v2",
+  "scope": "items+recipes",
+  "schemaVersion": 1
+}
