@@ -6,7 +6,10 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DEFAULT_INPUT = path.resolve(__dirname, 'data/xivapi-names-normalized.json');
+const DEFAULT_INCREMENTAL_PATH = path.resolve(
+  __dirname,
+  '../../src/data/nameMap.incremental.ndjson'
+);
 const DEFAULT_ITEMS_PATH = path.resolve(__dirname, '../../src/data/items.json');
 const DEFAULT_LOG_DIR = path.resolve(__dirname, '../logs');
 
@@ -28,6 +31,20 @@ const parseArgs = (argv) => {
   return args;
 };
 
+const ensureDir = async (dirPath) => {
+  await fs.mkdir(dirPath, { recursive: true });
+};
+
+const getLogPath = (logDir) => {
+  const date = new Date().toISOString().slice(0, 10);
+  return path.join(logDir, `${date}.log`);
+};
+
+const appendLogLine = async ({ logPath, payload }) => {
+  const line = `${JSON.stringify(payload)}\n`;
+  await fs.appendFile(logPath, line, 'utf-8');
+};
+
 const shouldUpdateName = ({ existing, zhName }) => {
   if (!existing) return true;
   if (!existing.trim()) return true;
@@ -35,89 +52,128 @@ const shouldUpdateName = ({ existing, zhName }) => {
   return false;
 };
 
+const readNdjson = async (filePath) => {
+  try {
+    const raw = await fs.readFile(filePath, 'utf-8');
+    return raw
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .filter(Boolean)
+      .map((line) => {
+        try {
+          return JSON.parse(line);
+        } catch (error) {
+          return null;
+        }
+      })
+      .filter(Boolean);
+  } catch (error) {
+    return [];
+  }
+};
+
 const run = async () => {
   const args = parseArgs(process.argv.slice(2));
-  const inputPath = path.resolve(args.get('input') ?? DEFAULT_INPUT);
+  const incrementalPath = path.resolve(args.get('incremental') ?? DEFAULT_INCREMENTAL_PATH);
   const itemsPath = path.resolve(args.get('items') ?? DEFAULT_ITEMS_PATH);
   const logDir = path.resolve(args.get('log-dir') ?? DEFAULT_LOG_DIR);
+  const clearIncremental = Boolean(args.get('clear-incremental'));
 
-  await fs.mkdir(logDir, { recursive: true });
+  await ensureDir(logDir);
+  await ensureDir(path.dirname(incrementalPath));
 
+  const logPath = getLogPath(logDir);
   const startedAt = Date.now();
-  const normalizedRaw = await fs.readFile(inputPath, 'utf-8');
-  const normalizedPayload = JSON.parse(normalizedRaw);
-  const normalizedItems = Array.isArray(normalizedPayload)
-    ? normalizedPayload
-    : normalizedPayload.items ?? [];
+
+  const incrementalEntries = await readNdjson(incrementalPath);
+  const nameMap = new Map();
+  for (const entry of incrementalEntries) {
+    if (!entry || !Number.isFinite(Number(entry.id))) {
+      continue;
+    }
+    nameMap.set(Number(entry.id), {
+      en: entry.en ?? null,
+      ja: entry.ja ?? null
+    });
+  }
 
   const itemsRaw = await fs.readFile(itemsPath, 'utf-8');
   const items = JSON.parse(itemsRaw);
-
   const itemsById = new Map(items.map((item) => [item.id, item]));
 
-  const missingItemIds = [];
-  const missingNormalized = [];
   let updatedEn = 0;
   let updatedJa = 0;
   let skippedEn = 0;
   let skippedJa = 0;
+  const missingItems = [];
+  const missingNames = [];
 
-  for (const entry of normalizedItems) {
-    const item = itemsById.get(entry.id);
+  for (const [id, names] of nameMap.entries()) {
+    const item = itemsById.get(id);
     if (!item) {
-      missingItemIds.push(entry.id);
+      missingItems.push(id);
       continue;
     }
     item.name = item.name ?? {};
     const zhName = item.name['zh-CN'];
 
-    if (entry.en) {
+    if (names.en) {
       if (shouldUpdateName({ existing: item.name.en, zhName })) {
-        item.name.en = entry.en;
+        item.name.en = names.en;
         updatedEn += 1;
       } else {
         skippedEn += 1;
       }
     } else {
-      missingNormalized.push({ id: entry.id, language: 'en' });
+      missingNames.push({ id, language: 'en' });
     }
 
-    if (entry.ja) {
+    if (names.ja) {
       if (shouldUpdateName({ existing: item.name.ja, zhName })) {
-        item.name.ja = entry.ja;
+        item.name.ja = names.ja;
         updatedJa += 1;
       } else {
         skippedJa += 1;
       }
     } else {
-      missingNormalized.push({ id: entry.id, language: 'ja' });
+      missingNames.push({ id, language: 'ja' });
     }
   }
 
   await fs.writeFile(itemsPath, `${JSON.stringify(items, null, 2)}\n`, 'utf-8');
 
+  if (clearIncremental) {
+    await fs.writeFile(incrementalPath, '', 'utf-8');
+  }
+
   const finishedAt = Date.now();
-  const log = {
-    startedAt: new Date(startedAt).toISOString(),
-    finishedAt: new Date(finishedAt).toISOString(),
+  const logPayload = {
+    type: 'merge-complete',
+    at: new Date(finishedAt).toISOString(),
     durationMs: finishedAt - startedAt,
-    totalEntries: normalizedItems.length,
+    totalEntries: nameMap.size,
     updatedEn,
     updatedJa,
     skippedEn,
     skippedJa,
-    missingItemIds,
-    missingNormalized
+    missingItems,
+    missingNames,
+    incrementalPath,
+    itemsPath,
+    clearedIncremental: clearIncremental
   };
 
-  const logPath = path.join(
-    logDir,
-    `xivapi-merge-${new Date(finishedAt).toISOString().replace(/[:.]/g, '-')}.json`
-  );
-  await fs.writeFile(logPath, `${JSON.stringify(log, null, 2)}\n`, 'utf-8');
+  await appendLogLine({ logPath, payload: logPayload });
 
   console.log(`Merged names into ${itemsPath}`);
-  console.log(`Log written to ${logPath}`);
+  console.log(
+    `Updated en: ${updatedEn}, updated ja: ${updatedJa}, skipped en: ${skippedEn}, skipped ja: ${skippedJa}`
+  );
+  console.log(`Missing item ids: ${missingItems.length}`);
+  console.log(`Log file: ${logPath}`);
+  if (clearIncremental) {
+    console.log(`Cleared incremental file: ${incrementalPath}`);
+  }
 };
 
 run();

@@ -24,40 +24,48 @@ Usage: call the API with the ID list in `src/data/needed_item_ids.json` and fetc
 #### XIVAPI fetching workflow (scripts)
 Scripts live in `scripts/xivapi/`.
 
-1. **Fetch raw data**:
+1. **Fetch incremental NDJSON (resume supported)**:
    ```bash
    node scripts/xivapi/fetchNames.js
    ```
    - Reads `src/data/needed_item_ids.json` by default.
-   - Writes `scripts/xivapi/data/xivapi-names-raw.json`.
-   - Request logs are written to `scripts/logs/`.
+   - Appends successful results to `src/data/nameMap.incremental.ndjson` (intermediate).
+   - Writes checkpoints to `scripts/xivapi/cache/nameFetch.checkpoint.ndjson`.
+   - Failed ids are stored in `scripts/xivapi/cache/failed-ids.ndjson`.
+   - Logs are written to `scripts/logs/YYYY-MM-DD.log`.
 
-2. **Normalize into `{id,en,ja}`**:
-   ```bash
-   node scripts/xivapi/normalizeXivapiResponse.js
-   ```
-   - Outputs `scripts/xivapi/data/xivapi-names-normalized.json`.
-
-3. **Merge into local items.json**:
+2. **Merge into local items.json**:
    ```bash
    node scripts/xivapi/mergeIntoLocalJson.js
    ```
-   - Updates `src/data/items.json` by default.
-   - Writes merge statistics to `scripts/logs/`.
+   - Reads `src/data/nameMap.incremental.ndjson` and merges into `src/data/items.json`.
+   - Only fills `item.name.en/ja` when empty or equal to the zh-CN placeholder.
+   - Writes merge statistics to `scripts/logs/YYYY-MM-DD.log`.
 
 #### Server-friendly strategy
 XIVAPI is a public service, so keep the load light:
-- **Throttling**: default concurrency is 3 with a 250ms delay between requests (configurable).
+- **Throttling**: default rps=3 and concurrency=6 for a gentle QPS (configurable).
 - **Minimal fields**: only request `Name` to keep payloads small.
-- **Retry-friendly**: failures and missing IDs are logged so you can re-run selectively.
-- **Two-stage processing**: fetch raw data first, then normalize + merge locally to avoid duplicate API calls.
+- **Retry-friendly**: 429 uses exponential backoff + jitter; failures are logged for selective retries.
+- **Two-stage processing**: fetch NDJSON first, then merge into items.json to avoid duplicate API calls.
 
 Optional parameters example:
 ```bash
 node scripts/xivapi/fetchNames.js \
   --ids src/data/needed_item_ids.json \
-  --concurrency 2 \
-  --delay-ms 400
+  --rps 2 \
+  --concurrency 4
+```
+
+Retry failed IDs:
+```bash
+node scripts/xivapi/fetchNames.js \
+  --retry-failed scripts/xivapi/cache/failed-ids.ndjson
+```
+
+Clear incremental file after merging (optional):
+```bash
+node scripts/xivapi/mergeIntoLocalJson.js --clear-incremental
 ```
 
 ## Static Data Structures
@@ -109,14 +117,8 @@ The internal data model is split into two entities:
 Data updates are currently mostly manual, using a scripted workflow:
 1. Update CN CSVs from `ffxiv-datamining-cn`.
 2. Run `scripts/ffxiv-datamining-cn/` to normalize into project JSON.
-3. If EN/JA names are missing, run the fetch → normalize → merge steps in `scripts/xivapi/`.
-4. Update `src/data/version.json` to record the data source and timestamp.
-
-## Version record
-`src/data/version.json` captures the data source and update metadata for traceability. Recommended fields:
-- `data_version`: manual version number
-- `updated_at`: update date
-- `i18n_source`: source of EN/JA names
+3. If EN/JA names are missing, run the fetch (incremental NDJSON) → merge steps in `scripts/xivapi/`.
+4. Logs are written to `scripts/logs/YYYY-MM-DD.log`.
 
 ## Deployment
 Deployment uses Cloudflare Pages:
