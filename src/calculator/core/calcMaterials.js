@@ -1,40 +1,39 @@
 // calcMaterials.js
+import { buildRecipesByResultId, pickRecipe } from "./recipeUtils";
 
 /**
  * options:
  * - targets: Array<{ id: number, amount: number }>
- * - recipes: Array<{
- *     id: number,
- *     resultItemId: number,
- *     resultAmount: number,
- *     materials: Array<{ itemId: number, amount: number }>
- *   }>
- * - overrides?: Map<resultItemId, recipeId>   // optional, internal-use
+ * - recipes: Array<{ id, resultItemId, resultAmount, materials: Array<{ itemId, amount }> }>
+ * - overrides?: Map<resultItemId, recipeId>
+ * - expandedIds?: Set<resultItemId>
  *
  * returns:
- * - materials: Map<itemId, amount>                       // leaf materials only
- * - crafts: Map<resultItemId, { recipeId: number, times: number }>
- * - picks: Map<resultItemId, recipeId>
- * - warnings: Array<{ kind: string, ... }>
+ * - materials: Map<itemId, amount>   // 当前边界叶子（不可制作 + 未展开可制作）
+ * - crafts: Map<resultItemId, { recipeId, times }> // 在当前 needs 下，
+ * 按选定配方的产出量，理论上要做多少次（times 是基于总需求 nextNeed 算出来的）
+ * - needs: Map<itemId, amount>       // 总需求（含 targets + 中间需求）
+ * - rootNeeds: Map<itemId, amount>   // 来自 targets 的那份需求
+ * - picks: Map<resultItemId, recipeId> // 这个 item 最终选中的 recipeId 是哪个（方便 UI 或后续逻辑直接用）
+ * - warnings: Array
  */
 export function calcMaterials(options) {
-  const { targets = [], recipes = [], overrides = new Map() } = options ?? {};
+  const {
+    targets = [],
+    recipes = [],
+    overrides = new Map(),
+    expandedIds = new Set(),
+  } = options ?? {};
 
   // resultItemId -> Recipe[]
-  const recipesByResultId = new Map();
-  for (const r of recipes) {
-    const list = recipesByResultId.get(r.resultItemId) ?? [];
-    list.push(r);
-    recipesByResultId.set(r.resultItemId, list);
-  }
+  const recipesByResultId = buildRecipesByResultId(recipes);
 
-  const materials = new Map(); // itemId -> amount (leaf materials)
-  const crafts = new Map();    // resultItemId -> { recipeId, times }
-  const picks = new Map();     // resultItemId -> recipeId
+  const materials = new Map(); // itemId -> amount（边界叶子：不可制作 + 未展开可制作）
+  const crafts = new Map(); // resultItemId -> { recipeId, times }
+  const picks = new Map(); // resultItemId -> recipeId
   const warnings = [];
-
-  // Track total demanded qty per craftable itemId, so we expand only delta crafts.
-  const needs = new Map();     // itemId -> total required amount so far
+  const needs = new Map(); // itemId -> total required amount
+  const rootNeeds = new Map(); // itemId -> amount required by top-level targets only
 
   const path = [];
   const inPath = new Set();
@@ -44,23 +43,11 @@ export function calcMaterials(options) {
     materials.set(itemId, (materials.get(itemId) ?? 0) + qty);
   }
 
-  function pickRecipe(resultItemId, candidates) {
-    if (!candidates || candidates.length === 0) return null;
-
-    const overrideId = overrides.get(resultItemId);
-    if (overrideId != null) {
-      const hit = candidates.find((r) => r.id === overrideId);
-      if (hit) return hit;
-      warnings.push({ kind: "override-miss", resultItemId, recipeId: overrideId });
-    }
-
-    return candidates[0];
-  }
-
-  function need(itemId, qty) {
+  // forceExpand: 只用于“顶层 target 默认展开一层”
+  function need(itemId, qty, forceExpand = false) {
     if (qty <= 0) return;
 
-    // cycle guard (safety belt)
+    // cycle guard
     if (inPath.has(itemId)) {
       warnings.push({ kind: "cycle", path: [...path, itemId] });
       addMaterial(itemId, qty);
@@ -68,7 +55,7 @@ export function calcMaterials(options) {
     }
 
     const candidates = recipesByResultId.get(itemId);
-    const recipe = pickRecipe(itemId, candidates);
+    const recipe = pickRecipe(itemId, candidates, overrides, warnings);
 
     // leaf material (not craftable)
     if (!recipe) {
@@ -101,6 +88,12 @@ export function calcMaterials(options) {
     picks.set(itemId, recipe.id);
     crafts.set(itemId, { recipeId: recipe.id, times: nextTimes });
 
+    // ✅ 关键：不强制展开 && 用户没点锁链 => 当作边界叶子（锁住）
+    if (!forceExpand && !expandedIds.has(itemId)) {
+      addMaterial(itemId, qty);
+      return;
+    }
+
     // no extra crafts needed -> no expansion
     if (deltaTimes <= 0) return;
 
@@ -109,16 +102,23 @@ export function calcMaterials(options) {
     inPath.add(itemId);
 
     for (const m of recipe.materials || []) {
-      need(m.itemId, m.amount * deltaTimes);
+      // ✅ 递归永远不 forceExpand：保证“默认只展开一层”
+      need(m.itemId, m.amount * deltaTimes, false);
     }
 
     inPath.delete(itemId);
     path.pop();
   }
 
+  // ✅ 顶层 targets：记录 rootNeeds，并 forceExpand=true（默认展开一层）
   for (const t of targets) {
-    need(t.id, t.amount);
+    const id = t?.id;
+    const amt = t?.amount ?? 0;
+    if (id == null || amt <= 0) continue;
+
+    rootNeeds.set(id, (rootNeeds.get(id) ?? 0) + amt);
+    need(id, amt, true);
   }
 
-  return { materials, crafts, picks, warnings };
+  return { materials, crafts, needs, rootNeeds, picks, warnings };
 }
