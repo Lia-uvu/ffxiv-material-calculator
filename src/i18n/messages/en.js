@@ -60,8 +60,12 @@ export default {
   obtainMethods: {
     CRAFT: "Crafted",
     MARKET: "Market",
-    NPC: "NPC",
     GATHER_MINER: "Mining",
     GATHER_BOTANIST: "Botany",
+    FISHING: "Fishing",
+    SHOP_GIL: "Gil shop",
+    SHOP_SPECIAL: "Special exchange",
+    SHOP_COLLECTABLES: "Collectables exchange",
+    SHOP_GC: "Grand Company shop",
   },
 };

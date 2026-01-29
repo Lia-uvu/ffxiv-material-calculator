@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Convert FFXIV CN Item.csv into items.json."""
+"""Overwrite items.obtainMethods using CN datamining CSVs.
+
+默认行为：读取 src/data/items.json，输出到同目录的 items.patched.json。
+如需直接覆写原文件，请加 --in-place。
+"""
 
 from __future__ import annotations
 
@@ -7,10 +11,11 @@ import argparse
 import csv
 import json
 from pathlib import Path
-from typing import Dict, Iterable, List, Set
+from typing import Dict, Iterable, List, Set, Tuple
 from urllib.request import urlopen
 
 BASE_URL = "https://raw.githubusercontent.com/thewakingsands/ffxiv-datamining-cn/master"
+DEFAULT_CN_REPO = Path("/workspace/ffxiv-datamining-cn")
 
 MINER_GATHER_TYPES = {"采掘", "碎石"}
 BOTANIST_GATHER_TYPES = {"采伐", "割草"}
@@ -27,33 +32,19 @@ OBTAIN_METHOD_ORDER = [
     "MARKET",
 ]
 
-IGNORED_SOURCES = [
-    "DisposalShopItem.csv",
-    "QuestClassJobReward.csv",
-    "LeveRewardItemGroup.csv",
-    "Achievement.csv",
-    "WeeklyBingoRewardData.csv",
-]
 
-
-def fetch_text(path: Path | None, filename: str) -> str:
-    if path:
-        file_path = path / filename
-        return file_path.read_text(encoding="utf-8-sig")
+def fetch_text(input_dir: Path | None, filename: str) -> str:
+    if input_dir:
+        file_path = input_dir / filename
+        if file_path.exists():
+            return file_path.read_text(encoding="utf-8-sig")
+    if DEFAULT_CN_REPO.exists():
+        file_path = DEFAULT_CN_REPO / filename
+        if file_path.exists():
+            return file_path.read_text(encoding="utf-8-sig")
     url = f"{BASE_URL}/{filename}"
     with urlopen(url) as response:
         return response.read().decode("utf-8-sig")
-
-
-def load_needed_ids(path: Path) -> List[int]:
-    return json.loads(path.read_text(encoding="utf-8"))
-
-
-def load_recipe_result_ids(path: Path) -> Set[int]:
-    if not path.exists():
-        return set()
-    recipes = json.loads(path.read_text(encoding="utf-8"))
-    return {recipe.get("resultItemId") for recipe in recipes if recipe.get("resultItemId")}
 
 
 def parse_gathering_types(text: str) -> Dict[int, str]:
@@ -121,6 +112,30 @@ def parse_gathering_point_base(text: str) -> List[tuple[int, List[int]]]:
     return result
 
 
+def collect_gather_methods(
+    types_text: str, items_text: str, points_text: str
+) -> Dict[int, Set[str]]:
+    type_map = parse_gathering_types(types_text)
+    gathering_item_map = parse_gathering_item_map(items_text)
+    point_rows = parse_gathering_point_base(points_text)
+
+    methods_by_item: Dict[int, Set[str]] = {}
+    for gather_type, gathering_items in point_rows:
+        type_name = type_map.get(gather_type)
+        if type_name in MINER_GATHER_TYPES:
+            method = "GATHER_MINER"
+        elif type_name in BOTANIST_GATHER_TYPES:
+            method = "GATHER_BOTANIST"
+        else:
+            continue
+        for gathering_item_id in gathering_items:
+            item_id = gathering_item_map.get(gathering_item_id)
+            if not item_id:
+                continue
+            methods_by_item.setdefault(item_id, set()).add(method)
+    return methods_by_item
+
+
 def parse_item_ids_by_columns(text: str, columns: Iterable[str]) -> Set[int]:
     rows = list(csv.reader(text.splitlines()))
     header = rows[1]
@@ -161,28 +176,43 @@ def parse_item_ids_by_prefix(text: str, prefix: str) -> Set[int]:
     return result
 
 
-def collect_gather_methods(
-    types_text: str, items_text: str, points_text: str
-) -> Dict[int, Set[str]]:
-    type_map = parse_gathering_types(types_text)
-    gathering_item_map = parse_gathering_item_map(items_text)
-    point_rows = parse_gathering_point_base(points_text)
+def parse_item_info(text: str, needed_ids: Set[int]) -> Dict[int, Tuple[bool, int, bool]]:
+    rows = list(csv.reader(text.splitlines()))
+    header = rows[1]
 
-    methods_by_item: Dict[int, Set[str]] = {}
-    for gather_type, gathering_items in point_rows:
-        type_name = type_map.get(gather_type)
-        if type_name in MINER_GATHER_TYPES:
-            method = "GATHER_MINER"
-        elif type_name in BOTANIST_GATHER_TYPES:
-            method = "GATHER_BOTANIST"
-        else:
+    def get_index(name: str) -> int:
+        return header.index(name)
+
+    idx_key = get_index("#")
+    idx_ui_category = get_index("ItemUICategory")
+    idx_untradable = get_index("IsUntradable")
+    idx_price_low = get_index("Price{Low}")
+
+    info: Dict[int, Tuple[bool, int, bool]] = {}
+    for row in rows[4:]:
+        if len(row) <= idx_key:
             continue
-        for gathering_item_id in gathering_items:
-            item_id = gathering_item_map.get(gathering_item_id)
-            if not item_id:
-                continue
-            methods_by_item.setdefault(item_id, set()).add(method)
-    return methods_by_item
+        try:
+            item_id = int(row[idx_key])
+        except ValueError:
+            continue
+        if item_id not in needed_ids:
+            continue
+        is_crystal = row[idx_ui_category] == "59"
+        is_untradable = row[idx_untradable].strip().lower() == "true"
+        try:
+            price_low = int(row[idx_price_low])
+        except ValueError:
+            price_low = 0
+        info[item_id] = (is_untradable, price_low, is_crystal)
+    return info
+
+
+def load_recipe_result_ids(path: Path) -> Set[int]:
+    if not path.exists():
+        return set()
+    recipes = json.loads(path.read_text(encoding="utf-8"))
+    return {recipe.get("resultItemId") for recipe in recipes if recipe.get("resultItemId")}
 
 
 def build_obtain_methods(
@@ -218,115 +248,44 @@ def build_obtain_methods(
     return [method for method in OBTAIN_METHOD_ORDER if method in methods]
 
 
-def parse_items(
-    text: str,
-    needed_ids: Iterable[int],
-    craftable_ids: Set[int],
-    gather_methods: Dict[int, Set[str]],
-    fishing_ids: Set[int],
-    gil_shop_ids: Set[int],
-    special_shop_ids: Set[int],
-    collectables_ids: Set[int],
-    gc_scrip_ids: Set[int],
-) -> tuple[List[Dict], Dict[str, int]]:
-    needed_set = set(needed_ids)
-    rows = list(csv.reader(text.splitlines()))
-    header = rows[1]
-
-    def get_index(name: str) -> int:
-        return header.index(name)
-
-    idx_key = get_index("#")
-    idx_name = get_index("Name")
-    idx_ui_category = get_index("ItemUICategory")
-    idx_untradable = get_index("IsUntradable")
-    idx_price_low = get_index("Price{Low}")
-
-    items_by_id: Dict[int, Dict] = {}
-    stats = {
-        "rows_total": 0,
-        "rows_with_id": 0,
-        "rows_needed": 0,
-        "rows_with_name": 0,
-    }
-    for row in rows[4:]:
-        stats["rows_total"] += 1
-        if len(row) <= idx_key:
-            continue
-        try:
-            item_id = int(row[idx_key])
-        except ValueError:
-            continue
-        stats["rows_with_id"] += 1
-        if item_id not in needed_set:
-            continue
-        stats["rows_needed"] += 1
-        name = row[idx_name].strip()
-        if not name:
-            continue
-        stats["rows_with_name"] += 1
-        is_crystal = row[idx_ui_category] == "59"
-        is_untradable = row[idx_untradable].strip().lower() == "true"
-        try:
-            price_low = int(row[idx_price_low])
-        except ValueError:
-            price_low = 0
-        obtain_methods = build_obtain_methods(
-            item_id,
-            is_crystal,
-            is_untradable,
-            craftable_ids,
-            gather_methods,
-            fishing_ids,
-            gil_shop_ids,
-            special_shop_ids,
-            collectables_ids,
-            gc_scrip_ids,
-        )
-        item_payload = {
-            "id": item_id,
-            "name": {"en": name, "zh-CN": name, "ja": name},
-            "isCrystal": is_crystal,
-            "obtainMethods": obtain_methods,
-        }
-        if item_id in gil_shop_ids and price_low > 0:
-            item_payload["obtainMethodDetails"] = {"SHOP_GIL": {"priceLow": price_low}}
-        items_by_id[item_id] = item_payload
-
-    items = [items_by_id[item_id] for item_id in needed_ids if item_id in items_by_id]
-    stats["items_written"] = len(items)
-    return items, stats
-
-
-def write_json(path: Path, payload: object) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-
-
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--input-dir",
         type=Path,
         default=None,
-        help="Directory containing Item.csv and gathering CSVs. Defaults to remote repo.",
+        help="Directory containing CN CSVs. Defaults to /workspace/ffxiv-datamining-cn or remote repo.",
     )
     parser.add_argument(
-        "--data-dir",
+        "--items",
         type=Path,
-        default=Path("src/data"),
-        help="Directory containing needed_item_ids.json and recipes.json.",
+        default=Path("src/data/items.json"),
+        help="Path to items.json.",
     )
     parser.add_argument(
-        "--output-dir",
+        "--recipes",
         type=Path,
-        default=Path("src/data"),
-        help="Output directory for items.json.",
+        default=Path("src/data/recipes.json"),
+        help="Path to recipes.json.",
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=None,
+        help="Output file path. Defaults to items.patched.json next to items.json.",
+    )
+    parser.add_argument(
+        "--in-place",
+        action="store_true",
+        help="Overwrite items.json in place.",
     )
     args = parser.parse_args()
 
-    needed_ids = load_needed_ids(args.data_dir / "needed_item_ids.json")
-    craftable_ids = load_recipe_result_ids(args.data_dir / "recipes.json")
+    items_path = args.items
+    items = json.loads(items_path.read_text(encoding="utf-8"))
+    item_ids = {item.get("id") for item in items if isinstance(item.get("id"), int)}
+
+    craftable_ids = load_recipe_result_ids(args.recipes)
 
     item_text = fetch_text(args.input_dir, "Item.csv")
     gathering_type_text = fetch_text(args.input_dir, "GatheringType.csv")
@@ -336,9 +295,7 @@ def main() -> None:
     gil_shop_text = fetch_text(args.input_dir, "GilShopItem.csv")
     special_shop_text = fetch_text(args.input_dir, "SpecialShop.csv")
     collectables_shop_item_text = fetch_text(args.input_dir, "CollectablesShopItem.csv")
-    collectables_shop_reward_text = fetch_text(
-        args.input_dir, "CollectablesShopRewardItem.csv"
-    )
+    collectables_shop_reward_text = fetch_text(args.input_dir, "CollectablesShopRewardItem.csv")
     gc_scrip_shop_text = fetch_text(args.input_dir, "GCScripShopItem.csv")
 
     gather_methods = collect_gather_methods(
@@ -354,25 +311,60 @@ def main() -> None:
     collectables_ids = collectables_item_ids | collectables_reward_ids
     gc_scrip_ids = parse_item_ids_by_columns(gc_scrip_shop_text, ["Item"])
 
-    items, stats = parse_items(
-        item_text,
-        needed_ids,
-        craftable_ids,
-        gather_methods,
-        fishing_ids,
-        gil_shop_ids,
-        special_shop_ids,
-        collectables_ids,
-        gc_scrip_ids,
+    item_info = parse_item_info(item_text, item_ids)
+
+    updated = 0
+    unchanged = 0
+    missing_info = 0
+
+    for item in items:
+        item_id = item.get("id")
+        if not isinstance(item_id, int):
+            missing_info += 1
+            continue
+        info = item_info.get(item_id)
+        if not info:
+            missing_info += 1
+            continue
+        is_untradable, price_low, csv_is_crystal = info
+        is_crystal = bool(item.get("isCrystal")) or csv_is_crystal
+        new_methods = build_obtain_methods(
+            item_id,
+            is_crystal,
+            is_untradable,
+            craftable_ids,
+            gather_methods,
+            fishing_ids,
+            gil_shop_ids,
+            special_shop_ids,
+            collectables_ids,
+            gc_scrip_ids,
+        )
+        if item_id in gil_shop_ids and price_low > 0:
+            item["obtainMethodDetails"] = {"SHOP_GIL": {"priceLow": price_low}}
+        else:
+            item.pop("obtainMethodDetails", None)
+        if item.get("obtainMethods") != new_methods:
+            item["obtainMethods"] = new_methods
+            updated += 1
+        else:
+            unchanged += 1
+
+    output_path = items_path if args.in_place else args.output
+    if output_path is None:
+        output_path = items_path.with_name("items.patched.json")
+
+    output_path.write_text(
+        json.dumps(items, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
 
-    write_json(args.output_dir / "items.json", items)
-    print(f"Item rows total: {stats['rows_total']}")
-    print(f"Item rows with valid id: {stats['rows_with_id']}")
-    print(f"Item rows matched needed ids: {stats['rows_needed']}")
-    print(f"Item rows with name: {stats['rows_with_name']}")
-    print(f"Wrote {stats['items_written']} items to {args.output_dir / 'items.json'}")
-    print("Obtain method sources (unique item ids):")
+    print("=== Overwrite obtainMethods summary ===")
+    print(f"Items total: {len(items)}")
+    print(f"Items updated: {updated}")
+    print(f"Items unchanged: {unchanged}")
+    print(f"Items missing CN Item.csv info: {missing_info}")
+    print(f"Output: {output_path}")
+    print("Source item counts (unique ids):")
     print(f"- CRAFT (Recipe.csv): {len(craftable_ids)}")
     print(f"- GATHER (Gathering*.csv): {len(gather_methods)}")
     print(f"- FISHING (FishingSpot.csv): {len(fishing_ids)}")
@@ -380,9 +372,9 @@ def main() -> None:
     print(f"- SHOP_SPECIAL (SpecialShop.csv): {len(special_shop_ids)}")
     print(f"- SHOP_COLLECTABLES (CollectablesShop*.csv): {len(collectables_ids)}")
     print(f"- SHOP_GC (GCScripShopItem.csv): {len(gc_scrip_ids)}")
-    print("Ignored sources:")
-    for source in IGNORED_SOURCES:
-        print(f"- {source}")
+    print("Basic validation:")
+    print(f"- Item count unchanged: {len(items)}")
+    print(f"- Updated + unchanged + missing = {updated + unchanged + missing_info}")
 
 
 if __name__ == "__main__":

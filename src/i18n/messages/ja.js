@@ -60,8 +60,12 @@ export default {
   obtainMethods: {
     CRAFT: "製作",
     MARKET: "マーケット",
-    NPC: "NPC",
     GATHER_MINER: "採掘",
     GATHER_BOTANIST: "園芸",
+    FISHING: "漁師",
+    SHOP_GIL: "ギルショップ",
+    SHOP_SPECIAL: "特殊交換",
+    SHOP_COLLECTABLES: "収集品交換",
+    SHOP_GC: "軍票交換",
   },
 };

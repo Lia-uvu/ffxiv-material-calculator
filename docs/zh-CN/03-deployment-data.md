@@ -88,12 +88,43 @@ node scripts/xivapi/mergeIntoLocalJson.js --clear-incremental
   "obtainMethods": [      // 该物品所有获取方式，用于标记
     "CRAFT",              // 玩家制作
     "MARKET",             // 市场交易
-    "NPC",                // 商人NPC购买
     "GATHER_MINER",       // 矿工采集
-    "GATHER_BOTANIST"     // 园艺工采集
-    ]
+    "GATHER_BOTANIST",    // 园艺工采集
+    "FISHING",            // 钓鱼
+    "SHOP_GIL",           // 金币商店（GilShop）
+    "SHOP_SPECIAL",       // 特殊兑换（SpecialShop）
+    "SHOP_COLLECTABLES",  // 收藏品兑换（CollectablesShop）
+    "SHOP_GC"             // 军票商店（GCScripShop）
+    ],
+  "obtainMethodDetails": { // 可选：获取途径补充信息
+    "SHOP_GIL": {          // 金币商店的价格信息（如果可用）
+      "priceLow": 9        // 来自 Item.csv 的 Price{Low}
+    }
+  }
 }
 ```
+
+#### `items.obtainMethods` 字段说明
+`obtainMethods` 仍然是**字符串数组**，仅在现有结构上做扩展。每个值均可被独立组合，便于后续 UI 标注/筛选。
+
+| 值 | 含义 | CSV 来源与字段 |
+| --- | --- | --- |
+| `CRAFT` | 玩家制作 | `Recipe.csv`：`Item{Result}` |
+| `GATHER_MINER` | 矿工采集 | `GatheringType.csv` + `GatheringItem.csv` + `GatheringPointBase.csv`：`GatheringType`、`Item[0..7]` |
+| `GATHER_BOTANIST` | 园艺采集 | 同上（采集类型名为“采伐/割草”） |
+| `FISHING` | 钓鱼 | `FishingSpot.csv`：`Item[0..9]` |
+| `SHOP_GIL` | 金币商店 | `GilShopItem.csv`：`Item` |
+| `SHOP_SPECIAL` | 特殊兑换 | `SpecialShop.csv`：`Item{Receive}[i][j]` |
+| `SHOP_COLLECTABLES` | 收藏品兑换 | `CollectablesShopItem.csv`：`Item`；`CollectablesShopRewardItem.csv`：`Item` |
+| `SHOP_GC` | 军票商店 | `GCScripShopItem.csv`：`Item` |
+| `MARKET` | 市场交易 | `Item.csv`：`IsUntradable`（可交易即加入） |
+
+#### `items.obtainMethodDetails` 字段说明
+当某些获取方式存在额外数据时，用该对象补充说明。当前仅定义金币商店价格：
+- `SHOP_GIL.priceLow`：来自 `Item.csv` 的 `Price{Low}`，仅当该物品出现在 `GilShopItem.csv` 且价格>0 时写入。
+
+**明确忽略项（不进入结构与清洗输出）**：
+`DisposalShopItem.csv`，以及任务/令行/成就/周常奖励类：`QuestClassJobReward.csv`、`LeveRewardItemGroup.csv`、`Achievement.csv`、`WeeklyBingoRewardData.csv`。
 
 ### Recipe 结构示例
 ```jsonc

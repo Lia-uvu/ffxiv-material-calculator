@@ -78,9 +78,13 @@ export function useMaterialsList(params) {
     const obtainMethodLabels = {
       CRAFT: t("obtainMethods.CRAFT"),
       MARKET: t("obtainMethods.MARKET"),
-      NPC: t("obtainMethods.NPC"),
       GATHER_MINER: t("obtainMethods.GATHER_MINER"),
       GATHER_BOTANIST: t("obtainMethods.GATHER_BOTANIST"),
+      FISHING: t("obtainMethods.FISHING"),
+      SHOP_GIL: t("obtainMethods.SHOP_GIL"),
+      SHOP_SPECIAL: t("obtainMethods.SHOP_SPECIAL"),
+      SHOP_COLLECTABLES: t("obtainMethods.SHOP_COLLECTABLES"),
+      SHOP_GC: t("obtainMethods.SHOP_GC"),
     };
 
     function formatObtainMethods(item) {
