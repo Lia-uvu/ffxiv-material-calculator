@@ -60,8 +60,12 @@ export default {
   obtainMethods: {
     CRAFT: "制作",
     MARKET: "市场",
-    NPC: "NPC",
     GATHER_MINER: "采矿",
     GATHER_BOTANIST: "园艺",
+    FISHING: "钓鱼",
+    SHOP_GIL: "金币商店",
+    SHOP_SPECIAL: "特殊兑换",
+    SHOP_COLLECTABLES: "收藏品兑换",
+    SHOP_GC: "军票商店",
   },
 };
