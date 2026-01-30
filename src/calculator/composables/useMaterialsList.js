@@ -6,7 +6,7 @@ import { calcMaterials } from "../core/calcMaterials";
 import { buildRecipesByResultId, pickRecipe } from "../core/recipeUtils";
 
 export function useMaterialsList(params) {
-  const { locale, t } = useI18n();
+  const { locale, t, te } = useI18n();
   const itemsArr = computed(() => unref(params.items) || []);
   const recipesArr = computed(() => unref(params.recipes) || []);
   const targetsArr = computed(() => unref(params.targets) || []);
@@ -81,7 +81,13 @@ export function useMaterialsList(params) {
         return item?.source ?? null;
       }
 
-      return methods.filter(Boolean).join(" / ");
+      return methods
+        .filter(Boolean)
+        .map((method) => {
+          const i18nKey = `obtainMethods.${method}`;
+          return te(i18nKey) ? t(i18nKey) : method;
+        })
+        .join(" / ");
     }
 
     function resolveJob(itemId, fallbackRecipeId) {
