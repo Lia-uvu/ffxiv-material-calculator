@@ -16,17 +16,17 @@ MINER_GATHER_TYPES = {"采掘", "碎石"}
 BOTANIST_GATHER_TYPES = {"采伐", "割草"}
 
 OBTAIN_METHOD_ORDER = [
-    "制作",
-    "采矿工",
-    "园艺工",
-    "捕鱼人",
-    "NPC 购买",
-    "军票兑换",
-    "工匠票据兑换",
-    "采集票据兑换",
-    "双色宝石兑换",
-    "神典石兑换",
-    "市场购买",
+    "CRAFT",
+    "GATHER_MINER",
+    "GATHER_BOTANIST",
+    "GATHER_FISHER",
+    "SHOP_NPC",
+    "EXCHANGE_GC_SEALS",
+    "EXCHANGE_SCRIP_CRAFTER",
+    "EXCHANGE_SCRIP_GATHERER",
+    "EXCHANGE_GEMSTONE",
+    "EXCHANGE_TOME",
+    "SHOP_MARKET",
 ]
 
 IGNORED_SOURCES = [
@@ -246,9 +246,9 @@ def collect_gather_methods(
     for gather_type, gathering_items in point_rows:
         type_name = type_map.get(gather_type)
         if type_name in MINER_GATHER_TYPES:
-            method = "采矿工"
+            method = "GATHER_MINER"
         elif type_name in BOTANIST_GATHER_TYPES:
-            method = "园艺工"
+            method = "GATHER_BOTANIST"
         else:
             continue
         for gathering_item_id in gathering_items:
@@ -276,28 +276,28 @@ def build_obtain_methods(
 ) -> List[str]:
     methods: Set[str] = set()
     if item_id in craftable_ids:
-        methods.add("制作")
+        methods.add("CRAFT")
     if not is_untradable:
-        methods.add("市场购买")
+        methods.add("SHOP_MARKET")
     methods.update(gather_methods.get(item_id, set()))
     if item_id in fishing_ids:
-        methods.add("捕鱼人")
+        methods.add("GATHER_FISHER")
     if item_id in gil_shop_ids:
-        methods.add("NPC 购买")
+        methods.add("SHOP_NPC")
     if item_id in gc_scrip_ids:
-        methods.add("军票兑换")
+        methods.add("EXCHANGE_GC_SEALS")
     if item_id in special_shop_costs:
         cost_ids = special_shop_costs.get(item_id, set())
         if cost_ids & crafting_scrip_ids:
-            methods.add("工匠票据兑换")
+            methods.add("EXCHANGE_SCRIP_CRAFTER")
         if cost_ids & gathering_scrip_ids:
-            methods.add("采集票据兑换")
+            methods.add("EXCHANGE_SCRIP_GATHERER")
         if bicolor_gem_id and bicolor_gem_id in cost_ids:
-            methods.add("双色宝石兑换")
+            methods.add("EXCHANGE_GEMSTONE")
         if cost_ids & tomestone_ids:
-            methods.add("神典石兑换")
+            methods.add("EXCHANGE_TOME")
     if is_crystal:
-        methods.update({"采矿工", "园艺工"})
+        methods.update({"GATHER_MINER", "GATHER_BOTANIST"})
     return [method for method in OBTAIN_METHOD_ORDER if method in methods]
 
 
@@ -379,7 +379,7 @@ def parse_items(
             "obtainMethods": obtain_methods,
         }
         if item_id in gil_shop_ids and price_low > 0:
-            item_payload["obtainMethodDetails"] = {"NPC 购买": {"priceLow": price_low}}
+            item_payload["obtainMethodDetails"] = {"SHOP_NPC": {"priceLow": price_low}}
         items_by_id[item_id] = item_payload
 
     items = [items_by_id[item_id] for item_id in needed_ids if item_id in items_by_id]
