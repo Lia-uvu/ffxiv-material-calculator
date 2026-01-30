@@ -2,7 +2,7 @@
 
 以下是从 `thewakingsands/ffxiv-datamining-cn` 数据集中**和物品获取途径相关**的常见 CSV 类型，便于后续补充 `items.obtainMethods`。
 
-> 该清单来自对上游仓库根目录 CSV 文件名的核对（例如可用 `ls <repo> | rg -n "^(Item|Recipe|GatheringItem|GatheringPointBase|GatheringType|FishingSpot|GilShopItem|SpecialShop|CollectablesShopItem|CollectablesShopRewardItem|GCScripShopItem|DisposalShopItem|QuestClassJobReward|LeveRewardItemGroup|Achievement|WeeklyBingoRewardData)\\.csv$"` 进行验证）。
+> 该清单来自对上游仓库根目录 CSV 文件名的核对（例如可用 `ls <repo> | rg -n "^(Item|Recipe|GatheringItem|GatheringPointBase|GatheringType|FishingSpot|GilShopItem|SpecialShop|TomestonesItem|GCScripShopItem|DisposalShopItem|QuestClassJobReward|LeveRewardItemGroup|Achievement|WeeklyBingoRewardData)\\.csv$"` 进行验证）。
 
 ## 1. 基础物品信息（可用于推断市场/NPC等）
 - `Item.csv`：物品基础属性（如 `IsUntradable`、`Price{Low}`、`ItemUICategory`）。
@@ -20,8 +20,8 @@
 
 ## 5. 商店 / 兑换 / 点数
 - `GilShopItem.csv`：金币商店物品。
-- `SpecialShop.csv`：特殊商店/兑换（`Item{Receive}[i][j]`）。
-- `CollectablesShopItem.csv` + `CollectablesShopRewardItem.csv`：收藏品相关兑换/奖励。
+- `SpecialShop.csv`：兑换商店（`Item{Receive}[i][j]`、`Item{Cost}[i][j]`），用于识别工匠票据/采集票据/双色宝石/神典石兑换。
+- `TomestonesItem.csv`：神典石物品列表（`Item`）。
 - `GCScripShopItem.csv`：军票/军票商店兑换（`Cost{GCSeals}` + `Item`）。
 - `DisposalShopItem.csv`：物品回收/交换（`Item{Disposed}` / `Item{Received}`）。
 
