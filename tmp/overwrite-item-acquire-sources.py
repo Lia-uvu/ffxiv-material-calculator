@@ -125,9 +125,9 @@ def collect_gather_methods(
     for gather_type, gathering_items in point_rows:
         type_name = type_map.get(gather_type)
         if type_name in MINER_GATHER_TYPES:
-            method = "GATHER_MINER"
+            method = "采矿工"
         elif type_name in BOTANIST_GATHER_TYPES:
-            method = "GATHER_BOTANIST"
+            method = "园艺工"
         else:
             continue
         for gathering_item_id in gathering_items:
@@ -306,12 +306,12 @@ def build_obtain_methods(
 ) -> List[str]:
     methods: Set[str] = set()
     if item_id in craftable_ids:
-        methods.add("CRAFT")
+        methods.add("制作")
     if not is_untradable:
-        methods.add("MARKET")
+        methods.add("市场购买")
     methods.update(gather_methods.get(item_id, set()))
     if item_id in fishing_ids:
-        methods.add("FISHING")
+        methods.add("捕鱼人")
     if item_id in gil_shop_ids:
         methods.add("SHOP_GIL")
     if item_id in gc_scrip_ids:
@@ -327,7 +327,7 @@ def build_obtain_methods(
         if cost_ids & tomestone_ids:
             methods.add("SHOP_TOMESTONE")
     if is_crystal:
-        methods.update({"GATHER_MINER", "GATHER_BOTANIST"})
+        methods.update({"采矿工", "园艺工"})
     return [method for method in OBTAIN_METHOD_ORDER if method in methods]
 
 
@@ -434,7 +434,7 @@ def main() -> None:
             tomestone_ids,
         )
         if item_id in gil_shop_ids and price_low > 0:
-            item["obtainMethodDetails"] = {"SHOP_GIL": {"priceLow": price_low}}
+            item["obtainMethodDetails"] = {"NPC 购买": {"priceLow": price_low}}
         else:
             item.pop("obtainMethodDetails", None)
         if item.get("obtainMethods") != new_methods:
