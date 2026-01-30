@@ -86,14 +86,40 @@ The internal data model is split into two entities:
   },
   "isCrystal": false,
   "obtainMethods": [
-    "CRAFT",
-    "MARKET",
-    "NPC",
-    "GATHER_MINER",
-    "GATHER_BOTANIST"
-  ]
+    "制作",
+    "市场购买",
+    "采矿工",
+    "园艺工",
+    "NPC 购买"
+  ],
+  "obtainMethodDetails": {
+    "NPC 购买": {
+      "priceLow": 9
+    }
+  }
 }
 ```
+
+### `items.obtainMethods` values
+`obtainMethods` is a **string array**. Each entry is a display label and can be combined freely.
+
+| Value | Meaning | CSV source |
+| --- | --- | --- |
+| `制作` | Crafted by players | `Recipe.csv`: `Item{Result}` |
+| `采矿工` | Miner gathering | `GatheringType.csv` + `GatheringItem.csv` + `GatheringPointBase.csv` |
+| `园艺工` | Botanist gathering | Same as above (gather type name is 采伐/割草) |
+| `捕鱼人` | Fishing | `FishingSpot.csv`: `Item[0..9]` |
+| `NPC 购买` | Gil shop | `GilShopItem.csv`: `Item` |
+| `军票兑换` | GC seals exchange | `GCScripShopItem.csv`: `Item` |
+| `工匠票据兑换` | Crafting scrip exchange | `SpecialShop.csv`: `Item{Receive}` + `Item{Cost}`, using the **cost item (currency) name** that contains “巧手” + “票” |
+| `采集票据兑换` | Gathering scrip exchange | `SpecialShop.csv`: `Item{Receive}` + `Item{Cost}`, using the **cost item (currency) name** that contains “大地” + “票” |
+| `双色宝石兑换` | Bicolor gemstone exchange | `SpecialShop.csv`: `Item{Cost}` is “双色宝石” |
+| `神典石兑换` | Tomestone exchange | `SpecialShop.csv` + `TomestonesItem.csv`: cost item id appears in `TomestonesItem.csv` |
+| `市场购买` | Market board | `Item.csv`: `IsUntradable` (tradable ⇒ added) |
+
+### `items.obtainMethodDetails`
+Additional metadata for specific sources:
+- `NPC 购买.priceLow`: from `Item.csv` `Price{Low}` when the item appears in `GilShopItem.csv` and `priceLow > 0`.
 
 ### Recipe example
 ```jsonc
