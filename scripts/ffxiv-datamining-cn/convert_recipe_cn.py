@@ -55,7 +55,32 @@ def parse_recipe_level_table(text: str) -> Dict[int, int]:
     return levels
 
 
-def parse_recipe_csv(text: str) -> Tuple[List[Dict], List[int]]:
+def parse_item_search_categories(text: str) -> Dict[int, int]:
+    """Build a map of item_id -> ItemSearchCategory from Item.csv.
+
+    ItemSearchCategory == 0 means the item cannot be searched on the market board,
+    i.e. it is untradable / content-specific (e.g. Cosmic Exploration deliverables).
+    Only items with ItemSearchCategory != 0 should be included as recipe results.
+    """
+    lines = text.splitlines()
+    rows = list(csv.reader(lines))
+    header = rows[1]
+    idx_key = header.index("#")
+    idx_cat = header.index("ItemSearchCategory")
+    result: Dict[int, int] = {}
+    for row in rows[4:]:
+        if len(row) <= max(idx_key, idx_cat):
+            continue
+        try:
+            item_id = int(row[idx_key])
+            cat = int(row[idx_cat])
+        except ValueError:
+            continue
+        result[item_id] = cat
+    return result
+
+
+def parse_recipe_csv(text: str, item_search_categories: Dict[int, int]) -> Tuple[List[Dict], List[int]]:
     lines = text.splitlines()
     rows = list(csv.reader(lines))
     header = rows[1]
@@ -63,7 +88,7 @@ def parse_recipe_csv(text: str) -> Tuple[List[Dict], List[int]]:
     def get_index(name: str) -> int:
         return header.index(name)
 
-    idx_number = get_index("Number")
+    idx_number = get_index("#")
     idx_craft = get_index("CraftType")
     idx_level_table = get_index("RecipeLevelTable")
     idx_result_item = get_index("Item{Result}")
@@ -94,6 +119,12 @@ def parse_recipe_csv(text: str) -> Tuple[List[Dict], List[int]]:
         except ValueError:
             result_item_id = 0
         if result_item_id <= 0:
+            continue
+
+        # Filter: skip recipes whose result item is not market-searchable.
+        # ItemSearchCategory == 0 means untradable / content-specific
+        # (e.g. Cosmic Exploration deliverables stored in Cosmopouch).
+        if item_search_categories.get(result_item_id, 0) == 0:
             continue
 
         try:
@@ -185,9 +216,11 @@ def main() -> None:
 
     recipe_text = fetch_text(args.input_dir, "Recipe.csv")
     level_text = fetch_text(args.input_dir, "RecipeLevelTable.csv")
+    item_text = fetch_text(args.input_dir, "Item.csv")
 
     level_table = parse_recipe_level_table(level_text)
-    recipes, item_ids = parse_recipe_csv(recipe_text)
+    item_search_categories = parse_item_search_categories(item_text)
+    recipes, item_ids = parse_recipe_csv(recipe_text, item_search_categories)
     update_item_levels(recipes, level_table)
 
     write_json(args.output_dir / "recipes.json", recipes)
