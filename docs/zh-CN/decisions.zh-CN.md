@@ -218,44 +218,6 @@ type TargetItemList = TargetItem[];
 
 ---
 
-## 数据来源与CSV清洗过滤条件
-
-**类型**：数据管线 / CI自动化
-**结论**：
-
-**数据来源仓库**：`thewakingsands/ffxiv-datamining-cn`
-- 根目录直接存放约1207个CSV文件（无子目录）
-- 主要参考文件：`Item.csv`、`Recipe.csv`、`ItemSearchCategory.csv`、`ItemUICategory.csv`
-
-**CSV清洗脚本过滤条件**：
-
-只收录满足以下条件的配方及其结果物品：
-
-```
-resultItem.ItemSearchCategory != 0
-```
-
-中间素材无条件收录（凡出现在已收录配方的 `materials[]` 里就保留，不额外过滤）。
-
-**原因**：
-- `ItemSearchCategory = 0` 代表物品不可在市场板被搜索，即不可寄售/不可交易。
-- 宇宙探索（Patch 7.21）等内容专属制作物品均属此类：存于专属 Cosmopouch、任务结束消失、不可交易也不可寄售。
-- SE 对此字段的使用高度一致：内容专属不可交易物品 = 0，玩家面向可交易物品 > 0，历史上未见例外。
-- 未来版本若加入新的内容专属不可交易物品，会自动被过滤；新版本普通装备/消耗品/家具会自动被收录，无需手动维护。
-
-**中间素材不过滤的原因**：
-- 某些中间素材本身可能不可在市场板单独搜索，但会作为合法配方的材料出现。
-- 过滤逻辑只作用于"配方的最终产出物"这一层，不向下传导，避免断链。
-
-**调研说明**：
-- `ItemUICategory.csv` 目前只到 ID 112，不含宇宙探索专属分类（7.21内容，仓库暂未更新）。
-  故暂不依赖 ItemUICategory 白名单作为主过滤条件；待仓库更新后可作为辅助验证手段。
-- 宇宙探索物品特征由 consolegameswiki 确认（"cannot be traded with other players and cannot be sold at vendors"）。
-
-**状态**：有效
-
----
-
 ## 2025-12-16：composable 入参同时支持 ref 与普通值（内部统一 unref）
 
 **类型**：代码架构 / Composables 约定  
@@ -272,3 +234,51 @@ resultItem.ItemSearchCategory != 0
 - 约定：模板内不写 `.value`（自动解包）；脚本内如需兼容 ref/普通值，使用 `unref()`。
 
 **状态**：有效
+
+---
+
+## 配方清洗脚本过滤条件：resultItem.ItemSearchCategory != 0
+
+**类型**：数据管线 / CI自动化
+
+**结论**：`convert_recipe_cn.py` 只收录满足以下条件的配方：
+
+```
+resultItem.ItemSearchCategory != 0
+```
+
+中间素材无条件收录（凡出现在已收录配方的 `materials[]` 里的物品，`convert_item_cn.py` 均保留）。
+
+**原因**：
+- `ItemSearchCategory = 0` 代表物品不可在市场板被搜索，即不可寄售/不可交易。
+- 宇宙探索（Patch 7.21）等内容专属制作物品均属此类：存于专属 Cosmopouch、任务结束消失、不可交易也不可寄售。结合 consolegameswiki 确认：”cannot be traded with other players and cannot be sold at vendors”。
+- SE 对此字段的使用高度一致：内容专属不可交易物品 = 0，玩家面向可交易物品 > 0。
+- 未来版本若加入新的内容专属不可交易物品，会自动被过滤；新版本普通装备/消耗品/家具会自动被收录，无需手动维护。
+
+**中间素材不过滤的原因**：
+- 过滤逻辑只作用于”配方的最终产出物”层，不向下传导。
+- 某些中间素材本身可能不可单独搜索，但仍是合法配方的材料——断掉会破坏材料树计算。
+
+**调研说明**：
+- `ItemUICategory.csv` 目前只到 ID 112，暂无宇宙探索专属分类（7.21 内容，仓库未更新）。故不依赖 ItemUICategory 白名单，待仓库更新后可作为辅助验证手段。
+- 数据来源仓库：`thewakingsands/ffxiv-datamining-cn`（详见 `03-deployment-data.md`）。
+
+**状态**：有效
+
+---
+
+不是”calc 把状态也处理好（内部记着）”，而是“calc 接收状态作为输入，输出当前结果”。这样 core 仍然是纯函数，结果可预期、好测、好 debug。
+
+子组件检测到单个拆开的行为会emit item id，如果是全部拆开的那个快捷键，直接emit事件，交由page自己计算好展开的所有嵌套id传给calc
+
+修数量计算bug的时候出现了一个新bug，remove成品再加回来lock//unlock的状态不会刷新，纠结是保留这个bug作为特性还是修了……感觉好像从用户角度出发都解锁了肯定是不想搓了，是不是保留比较好。那原来清除状态相关的代码删干净了吗   哈哈gpt根本没写
+
+dfs写进了materiallist的composable，因为这个是ui展示逻辑。calcResult在calcMaterials内部作为逻辑有被用到，return出来只为了给监控debug留个接口
+改了，我有代码洁癖 接口删了，调试再自己加回来
+
+给原来的CraftOptionsControls.vue改名了，因为本来打算按钮单独拎出来写，后来发现不方便，直接写到大块里面了。现在这个文件决定改作页面ui小部件，遂改名CalculatorLayout.vue
+
+t 永远只留给 i18n 翻译函数，循环变量统一用 target / item / entry 等完整名字
+
+现在这层 src/data/index.js 的主要价值是“集中封装读取逻辑”（按 id 索引、名字解析），而不是懒加载本身。它把 items.json/recipes.json 的加载与索引构建封装起来，方便业务侧只通过 getItemById/getRecipeById/resolveItemName 来访问数据，避免到处重复建索引与名字解析逻辑。
+index.js 可以作为一个**“统一入口”**，未来你可以把它改成通过动态 import 按需加载（例如把 items.json / recipes.json 拆分、分区或按页面加载）。这时调用方仍然只用 getItemById / getRecipeById，无需改业务代码，只改 index.js 内部实现即可——它就成了懒加载的抽象层。当前版本只是“封装入口”，但确实给未来的懒加载预留了可重构的位置。
