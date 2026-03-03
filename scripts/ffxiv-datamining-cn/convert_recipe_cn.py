@@ -88,7 +88,7 @@ def parse_recipe_csv(text: str, item_search_categories: Dict[int, int]) -> Tuple
     def get_index(name: str) -> int:
         return header.index(name)
 
-    idx_number = get_index("Number")
+    idx_number = get_index("#")
     idx_craft = get_index("CraftType")
     idx_level_table = get_index("RecipeLevelTable")
     idx_result_item = get_index("Item{Result}")
