@@ -218,6 +218,44 @@ type TargetItemList = TargetItem[];
 
 ---
 
+## 数据来源与CSV清洗过滤条件
+
+**类型**：数据管线 / CI自动化
+**结论**：
+
+**数据来源仓库**：`thewakingsands/ffxiv-datamining-cn`
+- 根目录直接存放约1207个CSV文件（无子目录）
+- 主要参考文件：`Item.csv`、`Recipe.csv`、`ItemSearchCategory.csv`、`ItemUICategory.csv`
+
+**CSV清洗脚本过滤条件**：
+
+只收录满足以下条件的配方及其结果物品：
+
+```
+resultItem.ItemSearchCategory != 0
+```
+
+中间素材无条件收录（凡出现在已收录配方的 `materials[]` 里就保留，不额外过滤）。
+
+**原因**：
+- `ItemSearchCategory = 0` 代表物品不可在市场板被搜索，即不可寄售/不可交易。
+- 宇宙探索（Patch 7.21）等内容专属制作物品均属此类：存于专属 Cosmopouch、任务结束消失、不可交易也不可寄售。
+- SE 对此字段的使用高度一致：内容专属不可交易物品 = 0，玩家面向可交易物品 > 0，历史上未见例外。
+- 未来版本若加入新的内容专属不可交易物品，会自动被过滤；新版本普通装备/消耗品/家具会自动被收录，无需手动维护。
+
+**中间素材不过滤的原因**：
+- 某些中间素材本身可能不可在市场板单独搜索，但会作为合法配方的材料出现。
+- 过滤逻辑只作用于"配方的最终产出物"这一层，不向下传导，避免断链。
+
+**调研说明**：
+- `ItemUICategory.csv` 目前只到 ID 112，不含宇宙探索专属分类（7.21内容，仓库暂未更新）。
+  故暂不依赖 ItemUICategory 白名单作为主过滤条件；待仓库更新后可作为辅助验证手段。
+- 宇宙探索物品特征由 consolegameswiki 确认（"cannot be traded with other players and cannot be sold at vendors"）。
+
+**状态**：有效
+
+---
+
 ## 2025-12-16：composable 入参同时支持 ref 与普通值（内部统一 unref）
 
 **类型**：代码架构 / Composables 约定  
