@@ -2,39 +2,52 @@
   <div>
     <!-- 搜索框 -->
     <div class="mb-4 rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm relative">
-      <ItemSearchBar 
-				:query="settings.searchQuery" 
-				@update:query="setSearchQuery" 
-			/>
-    <!-- 搜索结果 -->
+      <ItemSearchBar
+        :query="settings.searchQuery"
+        @update:query="setSearchQuery"
+      />
+
+      <!-- 搜索结果 -->
       <ItemSearchResults
         :results="results"
         @select="selectResultById"
       />
     </div>
+
     <!-- 成品列表 -->
     <div>
       <TargetItemPanel
-        :targets="targetEntries"
-        @remove="removeTarget"
-        @update-amount="updateTargetAmount"
+      :targets="targetEntries"
+      @remove="targetsCtrl.remove"
+      @update-amount="targetsCtrl.updateAmount"
+      @clear="targetsCtrl.clear"
       />
     </div>
+
     <!-- 材料列表 -->
     <div>
       <MaterialsList
-        :entries="materialEntries"
-        :get-breakdown-rows="getMaterialBreakdownRows"
+        :ui="ui"
+        :checked-ids="materialsCtrl.checkedIds"
+        :expand-order="materialsCtrl.expandedOrder"
+        :copy-success="copySuccess"
+        @toggle-expand="materialsCtrl.toggle"
+        @collapse-all="materialsCtrl.collapseAll"
+        @expand-all="handleExpandAll"
+        @toggle-check="materialsCtrl.toggleCheck"
+        @clear-checked="materialsCtrl.clearChecked"
+        @reset-materials="materialsCtrl.resetMaterials"
+        @copy-materials="handleCopyMaterials"
       />
     </div>
   </div>
 </template>
 
 <script setup>
-import { toRef, computed, watchEffect } from "vue";
+import { toRef, computed, ref } from "vue";
+import { useI18n } from "vue-i18n";
 
-import itemsRaw from "../../data/items.json";
-import recipesRaw from "../../data/recipes.json";
+import { items as itemsRaw, recipes as recipesRaw, resolveItemName } from "../../data";
 
 import ItemSearchBar from "../components/ItemSearchBar.vue";
 import ItemSearchResults from "../components/ItemSearchResults.vue";
@@ -44,17 +57,16 @@ import MaterialsList from "../components/MaterialsList.vue";
 import { useSettingStore } from "../composables/settingStore.js";
 import { useItemSearch } from "../composables/useItemSearch.js";
 import { useMaterialsList } from "../composables/useMaterialsList.js";
-
+import { useMaterialsExport } from "../composables/useMaterialsExport.js";
 
 const {
   settings,
-  targets,
   setSearchQuery,
-  addTarget,
-  removeTarget,
-  updateTargetAmount,
+  targetsCtrl,
+  materialsCtrl, // 锁链要用
 } = useSettingStore();
 
+const { locale, t } = useI18n();
 
 const queryRef = toRef(settings, "searchQuery");
 const { results } = useItemSearch(itemsRaw, queryRef, 20);
@@ -66,49 +78,86 @@ const itemById = computed(() => {
   return map;
 });
 
-// page 负责把 targets(id[]) 映射成“可展示的数据”
+// page 负责把 targets 映射成“可展示的数据”
 const targetEntries = computed(() => {
-  return targets.map((t) => {
-    const item = itemById.value.get(t.id);
+  return targetsCtrl.targets.map((target) => {
+    const item = itemById.value.get(target.id);
     return {
-      id: t.id,
-      amount: t.amount,
-      name: item?.name ?? "Unknown",
+      id: target.id,
+      amount: target.amount,
+      name: resolveItemName(item, locale.value) ?? t("common.unknown"),
     };
   });
 });
 
 // page 负责响应子组件事件，然后调用 store 接口
 function selectResultById(id) {
-  addTarget(id);
+  targetsCtrl.add(id);
   setSearchQuery(""); // 选中后清空输入（保留你的行为）
 }
 
-const {
-  materialEntries,
-  calcResult,
-
-  // 列表小 i 用
-  sourcesBreakdowns,
-  getMaterialBreakdownRows,
-
-  // 未来树模式用
-  childrenByParentId,
-  getChildrenRows,
-} = useMaterialsList({
-  // ✅ 不要 computed(() => targets)，直接传；composable 里会 unref
-  targets,
-
-  overrides: computed(() => settings.recipeOverrides),
-
+const { ui, reachableCraftableIds } = useMaterialsList({
+  // calcResult是调试接口，要用自己加，记得这个文件👆 return里也加
+  targets: targetsCtrl.targets,
   items: itemsRaw,
   recipes: recipesRaw,
+  expandedIds: materialsCtrl.expandedIds,
 });
+const { exportText } = useMaterialsExport(ui);
 
+const copySuccess = ref(false);
+let copyTimer = null;
 
-watchEffect(() => {
-  console.log("targets =", settings.targets);
-  console.log("materials size =", calcResult.value.materials?.size);
-  console.log("materials entries =", [...(calcResult.value.materials?.entries?.() ?? [])]);
-});
+function handleExpandAll() {
+  materialsCtrl.expandMany([...reachableCraftableIds.value]);
+}
+
+function fallbackCopy(text) {
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.setAttribute("readonly", "readonly");
+  textarea.style.position = "absolute";
+  textarea.style.left = "-9999px";
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand("copy");
+  document.body.removeChild(textarea);
+}
+
+async function handleCopyMaterials() {
+  const text = exportText.value?.trim();
+  if (!text) return;
+  let copied = false;
+
+  if (navigator?.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(text);
+      copied = true;
+    } catch (error) {
+      fallbackCopy(text);
+      copied = true;
+    }
+  } else {
+    fallbackCopy(text);
+    copied = true;
+  }
+
+  if (copied) showCopySuccess();
+}
+
+function showCopySuccess() {
+  copySuccess.value = true;
+  if (copyTimer) window.clearTimeout(copyTimer);
+  copyTimer = window.setTimeout(() => {
+    copySuccess.value = false;
+  }, 2000);
+}
+
+// 需要调试时再打开：
+// import { watchEffect } from "vue";
+// watchEffect(() => {
+//   console.log("targets =", targetsCtrl.targets);
+//   console.log("materials size =", calcResult.value.materials?.size);
+//   console.log("materials entries =", [...(calcResult.value.materials?.entries?.() ?? [])]);
+// });
 </script>

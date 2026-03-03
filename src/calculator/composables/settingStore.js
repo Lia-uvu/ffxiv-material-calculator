@@ -1,5 +1,102 @@
-// 存储状态（单向数据流根文件）
+// settingStore.js 存储动态数据（单向数据流根文件）
 import { reactive, readonly } from "vue";
+
+// ---- persistence (localStorage) ----
+// 只存“用户交互产生的状态”：targets / 展开锁链 / 勾选 / 输入框内容等
+const STORAGE_KEY = "msjcalc.settingStore.v1";
+
+function safeParse(raw) {
+  try {
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
+}
+
+function toFiniteNumber(n) {
+  const x = Number(n);
+  return Number.isFinite(x) ? x : null;
+}
+
+function loadFromStorage(state) {
+  if (typeof window === "undefined") return;
+  const raw = window.localStorage.getItem(STORAGE_KEY);
+  if (!raw) return;
+
+  const data = safeParse(raw);
+  if (!data || typeof data !== "object") return;
+
+  // settings
+  if (data.settings && typeof data.settings === "object") {
+    if (typeof data.settings.searchQuery === "string") {
+      state.settings.searchQuery = data.settings.searchQuery;
+    }
+  }
+
+  // targets
+  state.targets.splice(0, state.targets.length);
+  for (const t of data.targets || []) {
+    const id = toFiniteNumber(t?.id);
+    const amount = toFiniteNumber(t?.amount);
+    if (id == null || amount == null) continue;
+    state.targets.push({ id, amount: Math.max(1, Math.floor(amount)) });
+  }
+
+  // expanded ids
+  state.expandedResultItemIds.clear();
+  for (const rawId of data.expandedIds || []) {
+    const id = toFiniteNumber(rawId);
+    if (id == null) continue;
+    state.expandedResultItemIds.add(id);
+  }
+
+  // expand order
+  state.expandedOrderById.clear();
+  for (const pair of data.expandOrder || []) {
+    const id = toFiniteNumber(pair?.[0]);
+    const order = toFiniteNumber(pair?.[1]);
+    if (id == null || order == null) continue;
+    state.expandedOrderById.set(id, order);
+  }
+  const seq = toFiniteNumber(data.expandSeq);
+  state.expandSeq = seq != null ? seq : state.expandedOrderById.size;
+
+  // checked ids
+  state.checkedItemIds.clear();
+  for (const rawId of data.checkedIds || []) {
+    const id = toFiniteNumber(rawId);
+    if (id == null) continue;
+    state.checkedItemIds.add(id);
+  }
+
+  // keybinds（预留：未来做快捷键设置时直接复用；现在不影响功能）
+  if (data.keybinds && typeof data.keybinds === "object") {
+    state.keybinds = {
+      ...state.keybinds,
+      ...data.keybinds,
+    };
+  }
+}
+
+function saveToStorage(state) {
+  if (typeof window === "undefined") return;
+  try {
+    const payload = {
+      settings: {
+        searchQuery: state.settings.searchQuery,
+      },
+      targets: state.targets.map((t) => ({ id: t.id, amount: t.amount })),
+      expandedIds: [...state.expandedResultItemIds],
+      expandOrder: [...state.expandedOrderById.entries()],
+      expandSeq: state.expandSeq,
+      checkedIds: [...state.checkedItemIds],
+      keybinds: state.keybinds,
+    };
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+  } catch {
+    // localStorage 可能满/被禁用：忽略即可
+  }
+}
 
 // 模块级单例：全 app 共用一份
 const state = reactive({
@@ -7,13 +104,100 @@ const state = reactive({
     searchQuery: "",
   },
   // targets: Array<{ id: number; amount: number }>
-  targets: [], // [{ id, amount }]
+  targets: [],
+  // 用 Set：只记录“已拆开”的 resultItemId
+  expandedResultItemIds: new Set(),
+
+  // ✅ 新增：展开顺序（先拆的序号更小）
+  expandedOrderById: new Map(),
+  expandSeq: 0,
+
+  // ✅ 新增：材料勾选（可制作/不可制作共用）
+  checkedItemIds: new Set(),
+
+  // ✅ 预留：快捷键配置（未来做 UI 时会用到）
+  keybinds: {
+    // e.g. collapseAll: "Escape", expandAll: "Shift+E"
+  },
 });
 
+// 初始化：从 localStorage 恢复
+loadFromStorage(state);
 
+// -------- 锁链状态：读写接口（都写到 state 上） --------
+function toId(n) {
+  const x = Number(n);
+  return Number.isFinite(x) ? x : null;
+}
+
+// 查询：某个物品是否处于“已拆开”
+function isExpanded(resultItemId) {
+  const id = toId(resultItemId);
+  if (id == null) return false;
+  return state.expandedResultItemIds.has(id);
+}
+
+// 操作：拆开
+function expand(resultItemId) {
+  const id = toId(resultItemId);
+  if (id == null) return;
+  state.expandedResultItemIds.add(id);
+
+  if (!state.expandedOrderById.has(id)) {
+    state.expandedOrderById.set(id, state.expandSeq++);
+  }
+
+  saveToStorage(state);
+}
+
+// 操作：收起（锁回去）
+function collapse(resultItemId) {
+  const id = toId(resultItemId);
+  if (id == null) return;
+  state.expandedResultItemIds.delete(id);
+  saveToStorage(state);
+}
+
+// 操作：切换锁链
+function toggleExpand(resultItemId) {
+  const id = toId(resultItemId);
+  if (id == null) return;
+
+  if (state.expandedResultItemIds.has(id)) {
+    state.expandedResultItemIds.delete(id);
+  } else {
+    state.expandedResultItemIds.add(id);
+    if (!state.expandedOrderById.has(id)) {
+      state.expandedOrderById.set(id, state.expandSeq++);
+    }
+  }
+
+  saveToStorage(state);
+}
+
+// 快捷键：全部锁回去（折叠到“全不拆”）
+function collapseAll() {
+  state.expandedResultItemIds.clear();
+  saveToStorage(state);
+}
+
+// 快捷键：批量拆开（以后“拆到底”会用到）
+function expandMany(ids) {
+  for (const raw of ids || []) {
+    const id = toId(raw);
+    if (id == null) continue;
+    state.expandedResultItemIds.add(id);
+    if (!state.expandedOrderById.has(id)) {
+      state.expandedOrderById.set(id, state.expandSeq++);
+    }
+  }
+  saveToStorage(state);
+}
+
+// -------- 你已有的 targets / search 逻辑（原样保留） --------
 function setSearchQuery(next) {
-  // 先不做清洗优化，你要先跑起来：保证是字符串就行
   state.settings.searchQuery = String(next ?? "");
+  saveToStorage(state);
 }
 
 function clampAmount(n) {
@@ -30,13 +214,13 @@ function addTarget(itemId, amount = 1) {
 
   const hit = state.targets.find((t) => t.id === id);
   if (hit) {
-    // 已存在：默认策略 = 数量累加
     hit.amount += amt;
+    saveToStorage(state);
     return;
   }
 
-  // 新增：默认数量 1
   state.targets.push({ id, amount: amt });
+  saveToStorage(state);
 }
 
 function removeTarget(itemId) {
@@ -45,30 +229,97 @@ function removeTarget(itemId) {
 
   const idx = state.targets.findIndex((t) => t.id === id);
   if (idx !== -1) state.targets.splice(idx, 1);
+  saveToStorage(state);
 }
 
-// 给 TargetPanel 用的更新数量接口
 function updateTargetAmount({ id, amount }) {
   const n = Number(id);
   if (!Number.isFinite(n)) return;
 
-  const t = state.targets.find(x => x.id === n);
+  const t = state.targets.find((x) => x.id === n);
   if (!t) return;
 
   t.amount = clampAmount(amount);
+  saveToStorage(state);
 }
 
+function clearTargets() {
+  state.targets.splice(0, state.targets.length);
+  saveToStorage(state);
+}
 
+// -------- 勾选：读写接口（用于 MaterialsList） --------
+function isChecked(itemId) {
+  const id = toId(itemId);
+  if (id == null) return false;
+  return state.checkedItemIds.has(id);
+}
+
+function toggleChecked(itemId) {
+  const id = toId(itemId);
+  if (id == null) return;
+  if (state.checkedItemIds.has(id)) state.checkedItemIds.delete(id);
+  else state.checkedItemIds.add(id);
+  saveToStorage(state);
+}
+
+function clearChecked() {
+  state.checkedItemIds.clear();
+  saveToStorage(state);
+}
+
+// -------- 材料列表：一键重置（只清材料相关，不影响 targets / search） --------
+function resetMaterials() {
+  // 展开状态 + 展开顺序
+  state.expandedResultItemIds.clear();
+  state.expandedOrderById.clear();
+  state.expandSeq = 0;
+
+  // 勾选
+  state.checkedItemIds.clear();
+
+  saveToStorage(state);
+}
 
 export function useSettingStore() {
-  return {
-    settings: readonly(state.settings),
+  const targetsCtrl = {
     targets: readonly(state.targets),
 
+    add: addTarget,
+    remove: removeTarget,
+    updateAmount: updateTargetAmount,
+    clear: clearTargets
+  };
+
+  const materialsCtrl = {
+    // （可选）给 composable 用
+    expandedIds: readonly(state.expandedResultItemIds),
+
+    // ✅ 给 UI 排序用（已拆按先后）
+    expandedOrder: readonly(state.expandedOrderById),
+
+    isExpanded,
+    expand,
+    collapse,
+    toggle: toggleExpand,
+    collapseAll,
+    expandMany,
+
+    // ✅ 勾选（持久化）
+    checkedIds: readonly(state.checkedItemIds),
+    isChecked,
+    toggleCheck: toggleChecked,
+    clearChecked,
+
+    // ✅ 重置材料列表状态（不影响 targets/search）
+    resetMaterials,
+  };
+
+  return {
+    settings: readonly(state.settings),
     setSearchQuery,
-    addTarget,
-    removeTarget,
-    updateTargetAmount
+
+    targetsCtrl,
+    materialsCtrl,
   };
 }
-

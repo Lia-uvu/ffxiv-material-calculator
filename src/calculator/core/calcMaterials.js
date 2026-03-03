@@ -1,40 +1,39 @@
 // calcMaterials.js
+import { buildRecipesByResultId, pickRecipe } from "./recipeUtils";
 
 /**
  * options:
  * - targets: Array<{ id: number, amount: number }>
- * - recipes: Array<{
- *     id: number,
- *     resultItemId: number,
- *     resultAmount: number,
- *     job: string,
- *     itemLevel?: number,
- *     patch?: string,
- *     materials: Array<{ itemId: number, amount: number }>
- *   }>
+ * - recipes: Array<{ id, resultItemId, resultAmount, materials: Array<{ itemId, amount }> }>
  * - overrides?: Map<resultItemId, recipeId>
+ * - expandedIds?: Set<resultItemId>
+ *
+ * returns:
+ * - materials: Map<itemId, amount>   // 当前边界叶子（不可制作 + 未展开可制作）
+ * - crafts: Map<resultItemId, { recipeId, times }> // 在当前 needs 下，
+ * 按选定配方的产出量，理论上要做多少次（times 是基于总需求 nextNeed 算出来的）
+ * - needs: Map<itemId, amount>       // 总需求（含 targets + 中间需求）
+ * - rootNeeds: Map<itemId, amount>   // 来自 targets 的那份需求
+ * - picks: Map<resultItemId, recipeId> // 这个 item 最终选中的 recipeId 是哪个（方便 UI 或后续逻辑直接用）
+ * - warnings: Array
  */
 export function calcMaterials(options) {
-  const { targets, recipes, overrides = new Map() } = options;
+  const {
+    targets = [],
+    recipes = [],
+    overrides = new Map(),
+    expandedIds = new Set(),
+  } = options ?? {};
 
   // resultItemId -> Recipe[]
-  const recipesByResultId = new Map();
-  for (const r of recipes || []) {
-    const list = recipesByResultId.get(r.resultItemId) ?? [];
-    list.push(r);
-    recipesByResultId.set(r.resultItemId, list);
-  }
+  const recipesByResultId = buildRecipesByResultId(recipes);
 
-  const materials = new Map(); // itemId -> amount (leaf materials)
-  const crafts = new Map();    // resultItemId -> { recipeId, times }
-  const picks = new Map();     // resultItemId -> recipeId
+  const materials = new Map(); // itemId -> amount（边界叶子：不可制作 + 未展开可制作）
+  const crafts = new Map(); // resultItemId -> { recipeId, times }
+  const picks = new Map(); // resultItemId -> recipeId
   const warnings = [];
-
-  // NEW: childItemId -> Map<parentItemId, amount>
-  const sources = new Map();
-
-  // NEW: track total demanded qty per itemId (for correct ceil + delta expansion)
-  const needs = new Map();
+  const needs = new Map(); // itemId -> total required amount
+  const rootNeeds = new Map(); // itemId -> amount required by top-level targets only
 
   const path = [];
   const inPath = new Set();
@@ -44,39 +43,11 @@ export function calcMaterials(options) {
     materials.set(itemId, (materials.get(itemId) ?? 0) + qty);
   }
 
-  function addSource(childItemId, parentItemId, qty) {
-    if (qty <= 0) return;
-    let byParent = sources.get(childItemId);
-    if (!byParent) {
-      byParent = new Map();
-      sources.set(childItemId, byParent);
-    }
-    byParent.set(parentItemId, (byParent.get(parentItemId) ?? 0) + qty);
-  }
-
-  function pickRecipe(resultItemId, candidates) {
-    if (!candidates || candidates.length === 0) return null;
-
-    const overrideId = overrides.get(resultItemId);
-    if (overrideId != null) {
-      const hit = candidates.find((r) => r.id === overrideId);
-      if (hit) return hit;
-      warnings.push({ kind: "override-miss", resultItemId, recipeId: overrideId });
-    }
-
-    return candidates[0];
-  }
-
-  // NOTE: parentItemId is used only for sources tracking (direct parent)
-  function need(itemId, qty, parentItemId = null) {
+  // forceExpand: 只用于“顶层 target 默认展开一层”
+  function need(itemId, qty, forceExpand = false) {
     if (qty <= 0) return;
 
-    // record direct parent contribution (optional for roots)
-    if (parentItemId != null) {
-      addSource(itemId, parentItemId, qty);
-    }
-
-    // cycle guard (still needed as safety belt)
+    // cycle guard
     if (inPath.has(itemId)) {
       warnings.push({ kind: "cycle", path: [...path, itemId] });
       addMaterial(itemId, qty);
@@ -84,7 +55,7 @@ export function calcMaterials(options) {
     }
 
     const candidates = recipesByResultId.get(itemId);
-    const recipe = pickRecipe(itemId, candidates);
+    const recipe = pickRecipe(itemId, candidates, overrides, warnings);
 
     // leaf material (not craftable)
     if (!recipe) {
@@ -104,39 +75,50 @@ export function calcMaterials(options) {
       return;
     }
 
-    // accumulate total demand first
+    // accumulate total demand
     const prevNeed = needs.get(itemId) ?? 0;
     const nextNeed = prevNeed + qty;
     needs.set(itemId, nextNeed);
 
-    const prevCraft = crafts.get(itemId);
-    const prevTimes = prevCraft?.times ?? 0;
-
+    const prevTimes = crafts.get(itemId)?.times ?? 0;
     const nextTimes = Math.ceil(nextNeed / yieldAmt);
     const deltaTimes = nextTimes - prevTimes;
 
-    // record pick + crafts using the TOTAL times
+    // record chosen recipe + total craft times
     picks.set(itemId, recipe.id);
     crafts.set(itemId, { recipeId: recipe.id, times: nextTimes });
 
-    // If this call doesn't increase required craft times, do NOT expand materials again.
+    // ✅ 关键：不强制展开 && 用户没点锁链 => 当作边界叶子（锁住）
+    if (!forceExpand && !expandedIds.has(itemId)) {
+      addMaterial(itemId, qty);
+      return;
+    }
+
+    // no extra crafts needed -> no expansion
     if (deltaTimes <= 0) return;
 
-    // Only expand newly required crafts (deltaTimes) to avoid repeated ceil explosion
+    // expand only newly required crafts
     path.push(itemId);
     inPath.add(itemId);
 
     for (const m of recipe.materials || []) {
-      need(m.itemId, m.amount * deltaTimes, itemId);
+      // ✅ 递归永远不 forceExpand：保证“默认只展开一层”
+      need(m.itemId, m.amount * deltaTimes, false);
     }
 
     inPath.delete(itemId);
     path.pop();
   }
 
-  for (const t of targets || []) {
-    need(t.id, t.amount, null);
+  // ✅ 顶层 targets：记录 rootNeeds，并 forceExpand=true（默认展开一层）
+  for (const t of targets) {
+    const id = t?.id;
+    const amt = t?.amount ?? 0;
+    if (id == null || amt <= 0) continue;
+
+    rootNeeds.set(id, (rootNeeds.get(id) ?? 0) + amt);
+    need(id, amt, true);
   }
 
-  return { materials, crafts, picks, warnings, sources };
+  return { materials, crafts, needs, rootNeeds, picks, warnings };
 }
