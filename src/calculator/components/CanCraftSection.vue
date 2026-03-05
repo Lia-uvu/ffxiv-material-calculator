@@ -18,8 +18,8 @@
         :key="'c-' + r.item.id"
         class="rounded-2xl border p-3 transition-opacity"
         :class="[
-          r.item.isExpanded ? 'bg-[#332F44] border-[#4A4858]' : 'bg-[#3B3A47] border-[#4A4858]',
-          checkedIds.has(r.item.id) ? 'opacity-50' : ''
+          r.item.isExpanded ? 'bg-[#2A2933] border-[#38364A]' : 'bg-[#4A4858] border-[#5C5470]',
+          checkedIds.has(r.item.id) ? 'opacity-70' : ''
         ]"
       >
         <div class="flex items-center gap-3">
@@ -48,8 +48,8 @@
               <span
                 class="text-[10px] px-1.5 py-0.5 rounded-full shrink-0"
                 :class="r.item.isExpanded
-                  ? 'bg-[#3A2F52] text-[#B4A5C8]'
-                  : 'bg-[#3A3847] text-[#9B96AD]'"
+                  ? 'bg-[#2E2D3A] text-[#6B677A]'
+                  : 'bg-[#4A4560] text-[#C8BFDA]'"
               >
                 {{ r.item.isExpanded ? t("materials.craftable.expanded") : t("materials.craftable.collapsed") }}
               </span>
@@ -104,23 +104,6 @@ const items = computed(() => (props.craftable ?? []).filter((e) => !e?.isCrystal
 
 const rows = computed(() => {
   const arr = items.value ?? [];
-  const withIdx = arr.map((item, idx) => ({ item, idx }));
-  const orderMap = props.expandOrder;
-
-  withIdx.sort((a, b) => {
-    const ea = a.item?.isExpanded ? 1 : 0;
-    const eb = b.item?.isExpanded ? 1 : 0;
-    if (ea !== eb) return eb - ea;
-
-    if (ea === 1) {
-      const oa = orderMap?.get?.(a.item.id) ?? Number.POSITIVE_INFINITY;
-      const ob = orderMap?.get?.(b.item.id) ?? Number.POSITIVE_INFINITY;
-      if (oa !== ob) return oa - ob;
-    }
-
-    return a.idx - b.idx;
-  });
-
-  return withIdx;
+  return arr.map((item, idx) => ({ item, idx }));
 });
 </script>

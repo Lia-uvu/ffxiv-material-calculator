@@ -63,6 +63,8 @@
 
     <NotCraftSection
       :non-craftable="ui.nonCraftable"
+      :checked-ids="checkedIds"
+      @toggle-check="toggleCheck"
     />
 
     <!-- 水晶 -->
