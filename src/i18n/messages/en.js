@@ -1,4 +1,7 @@
 export default {
+  app: {
+    title: "FFXIV Material Calculator",
+  },
   common: {
     unknown: "Unknown",
     placeholder: "—",

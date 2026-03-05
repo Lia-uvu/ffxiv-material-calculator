@@ -1,4 +1,7 @@
 export default {
+  app: {
+    title: "FF14 素材計算機",
+  },
   common: {
     unknown: "不明",
     placeholder: "—",

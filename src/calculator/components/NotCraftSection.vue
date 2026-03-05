@@ -18,19 +18,39 @@
       <div
         v-for="e in displayList"
         :key="'n-' + e.id"
-        class="rounded-2xl border border-[#3C3A4A] p-3 bg-[#302F3B] cursor-default"
+        class="rounded-2xl border border-[#5C5470] p-3 bg-[#4A4858] transition-opacity cursor-default"
+        :class="checkedIds.has(e.id) ? 'opacity-70' : ''"
       >
         <div class="flex items-center gap-3">
+          <!-- Checkbox (circle) -->
+          <button
+            type="button"
+            class="shrink-0 h-5 w-5 rounded-full border-2 flex items-center justify-center transition-colors"
+            :class="checkedIds.has(e.id)
+              ? 'bg-[#B4A5C8] border-[#B4A5C8]'
+              : 'border-[#4A4858] bg-transparent hover:border-[#B4A5C8]'"
+            @click="$emit('toggle-check', e.id)"
+            :title="t('common.completed')"
+          >
+            <Check v-if="checkedIds.has(e.id)" :size="11" color="#2D2C34" :stroke-width="3" />
+          </button>
+
           <div class="flex-1 min-w-0">
-            <div class="text-sm font-medium text-[#9B96AD] truncate">
+            <div
+              class="text-sm font-medium truncate"
+              :class="checkedIds.has(e.id) ? 'line-through text-[#6B677A]' : 'text-[#EDE9F7]'"
+            >
               {{ e.name }}
             </div>
-            <div class="text-xs text-[#6B677A] mt-0.5">
+            <div class="text-xs text-[#9B96AD] mt-0.5">
               {{ e.source ?? t("common.placeholder") }}
             </div>
           </div>
 
-          <div class="text-sm font-semibold tabular-nums text-[#6B677A] shrink-0">
+          <div
+            class="text-sm font-semibold tabular-nums shrink-0"
+            :class="checkedIds.has(e.id) ? 'text-[#6B677A]' : 'text-[#EDE9F7]'"
+          >
             {{ e.needAmount }}
           </div>
         </div>
@@ -42,10 +62,14 @@
 <script setup>
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
+import { Check } from "lucide-vue-next";
 
 const props = defineProps({
   nonCraftable: { type: Array, default: () => [] },
+  checkedIds: { type: Object, required: true }, // Set
 });
+
+defineEmits(["toggle-check"]);
 
 const { t } = useI18n();
 
