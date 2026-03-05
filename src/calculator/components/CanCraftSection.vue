@@ -2,13 +2,13 @@
 <template>
   <div>
     <div class="flex items-baseline justify-between mt-2 mb-2">
-      <div class="text-sm font-semibold text-zinc-800">{{ t("materials.craftable.title") }}</div>
-      <div class="text-xs text-zinc-500">
+      <div class="text-sm font-semibold text-[#EDE9F7]">{{ t("materials.craftable.title") }}</div>
+      <div class="text-xs text-[#9B96AD]">
         {{ t("common.itemCount", { count: rows.length }) }}
       </div>
     </div>
 
-    <div v-if="rows.length === 0" class="text-sm text-zinc-500 mb-4">
+    <div v-if="rows.length === 0" class="text-sm text-[#9B96AD] mb-4">
       {{ t("materials.craftable.empty") }}
     </div>
 
@@ -16,75 +16,69 @@
       <div
         v-for="r in rows"
         :key="'c-' + r.item.id"
-        class="relative rounded-2xl border border-zinc-200 p-3 overflow-hidden"
+        class="rounded-2xl border p-3 transition-opacity"
         :class="[
-          r.item.isExpanded ? 'bg-zinc-50' : 'bg-white',
-          checkedIds.has(r.item.id) ? 'opacity-80' : ''
+          r.item.isExpanded ? 'bg-[#332F44] border-[#4A4858]' : 'bg-[#3B3A47] border-[#4A4858]',
+          checkedIds.has(r.item.id) ? 'opacity-50' : ''
         ]"
       >
-        <div
-          v-if="checkedIds.has(r.item.id)"
-          class="absolute inset-0 rounded-2xl bg-violet-200/40 pointer-events-none flex items-center justify-center"
-        >
-          <div class="text-violet-900 font-semibold text-sm">
-            ✓ {{ t("common.completed") }}
-          </div>
-        </div>
-
-        <div class="flex items-start gap-3">
+        <div class="flex items-center gap-3">
+          <!-- Checkbox (circle) -->
           <button
             type="button"
-            class="mt-0.5 h-5 w-5 rounded border border-zinc-300 flex items-center justify-center shrink-0 bg-white"
+            class="shrink-0 h-5 w-5 rounded-full border-2 flex items-center justify-center transition-colors"
+            :class="checkedIds.has(r.item.id)
+              ? 'bg-[#B4A5C8] border-[#B4A5C8]'
+              : 'border-[#4A4858] bg-transparent hover:border-[#B4A5C8]'"
             @click="$emit('toggle-check', r.item.id)"
+            :title="t('common.completed')"
           >
-            <span v-if="checkedIds.has(r.item.id)" class="text-sm">✓</span>
+            <Check v-if="checkedIds.has(r.item.id)" :size="11" color="#2D2C34" :stroke-width="3" />
           </button>
 
+          <!-- Name + info -->
           <div class="flex-1 min-w-0">
             <div class="flex items-center gap-2">
-              <div class="text-sm font-medium text-zinc-900 truncate">
+              <div
+                class="text-sm font-medium truncate"
+                :class="checkedIds.has(r.item.id) ? 'line-through text-[#6B677A]' : 'text-[#EDE9F7]'"
+              >
                 {{ r.item.name }}
               </div>
-
               <span
-                class="text-[11px] px-2 py-0.5 rounded-full"
-                :class="r.item.isExpanded ? 'bg-violet-100 text-violet-700' : 'bg-zinc-100 text-zinc-700'"
+                class="text-[10px] px-1.5 py-0.5 rounded-full shrink-0"
+                :class="r.item.isExpanded
+                  ? 'bg-[#3A2F52] text-[#B4A5C8]'
+                  : 'bg-[#3A3847] text-[#9B96AD]'"
               >
-                {{
-                  r.item.isExpanded
-                    ? t("materials.craftable.expanded")
-                    : t("materials.craftable.collapsed")
-                }}
+                {{ r.item.isExpanded ? t("materials.craftable.expanded") : t("materials.craftable.collapsed") }}
               </span>
             </div>
-
-            <div class="text-xs text-zinc-500 mt-1">
-              {{ t("materials.jobLabel") }}：{{ r.item.job ?? t("common.placeholder") }}
-              <template v-if="r.item.isExpanded">
-                · {{ t("materials.craftable.needsLabel") }}：{{ r.item.needAmount }}
-              </template>
+            <div class="text-xs text-[#9B96AD] mt-0.5">
+              {{ r.item.job ?? t("common.placeholder") }}
             </div>
           </div>
 
-          <div class="flex items-center gap-2 shrink-0">
-            <div class="text-sm font-semibold tabular-nums text-zinc-900 w-16 text-right">
-              {{ r.item.displayAmount }}{{ r.item.displaySuffix }}
+          <!-- Amount (dual line) -->
+          <div class="text-right shrink-0 tabular-nums leading-tight">
+            <div class="text-sm font-semibold text-[#EDE9F7]">
+              {{ t("materials.needLabel", { n: r.item.needAmount }) }}
             </div>
-
-            <button
-              type="button"
-              class="h-8 w-8 rounded-xl border border-zinc-200 flex items-center justify-center hover:bg-zinc-50"
-              @click="$emit('toggle-expand', r.item.id)"
-              :title="
-                r.item.isExpanded
-                  ? t('materials.craftable.toggleCollapse')
-                  : t('materials.craftable.toggleExpand')
-              "
-            >
-              <span v-if="r.item.isExpanded">🔓</span>
-              <span v-else>🔗</span>
-            </button>
+            <div class="text-xs text-[#9B96AD]">
+              {{ t("materials.craftLabel", { n: r.item.craftTimes }) }}
+            </div>
           </div>
+
+          <!-- Chain icon button -->
+          <button
+            type="button"
+            class="shrink-0 h-9 w-9 flex items-center justify-center rounded-xl transition-opacity hover:opacity-70"
+            @click="$emit('toggle-expand', r.item.id)"
+            :title="r.item.isExpanded ? t('materials.craftable.toggleCollapse') : t('materials.craftable.toggleExpand')"
+          >
+            <Link2Off v-if="r.item.isExpanded" :size="20" color="#E8D07A" />
+            <Link2 v-else :size="20" color="#B4A5C8" />
+          </button>
         </div>
       </div>
     </div>
@@ -94,11 +88,11 @@
 <script setup>
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
+import { Check, Link2, Link2Off } from "lucide-vue-next";
 
 const props = defineProps({
   craftable: { type: Array, default: () => [] },
   checkedIds: { type: Object, required: true }, // Set
-  // Map<itemId, order>：先拆的 order 更小
   expandOrder: { type: Object, default: () => new Map() },
 });
 
@@ -116,15 +110,15 @@ const rows = computed(() => {
   withIdx.sort((a, b) => {
     const ea = a.item?.isExpanded ? 1 : 0;
     const eb = b.item?.isExpanded ? 1 : 0;
-    if (ea !== eb) return eb - ea; // expanded first
+    if (ea !== eb) return eb - ea;
 
     if (ea === 1) {
       const oa = orderMap?.get?.(a.item.id) ?? Number.POSITIVE_INFINITY;
       const ob = orderMap?.get?.(b.item.id) ?? Number.POSITIVE_INFINITY;
-      if (oa !== ob) return oa - ob; // 先拆在最上面
+      if (oa !== ob) return oa - ob;
     }
 
-    return a.idx - b.idx; // 其他保持上游顺序稳定
+    return a.idx - b.idx;
   });
 
   return withIdx;

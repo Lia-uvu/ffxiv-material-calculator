@@ -1,15 +1,15 @@
 <template>
-  <section class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
+  <section class="rounded-2xl border border-[#4A4858] bg-[#3B3A47] p-5">
     <div class="flex items-baseline justify-between gap-3">
-      <h2 class="text-lg font-semibold tracking-tight">{{ t("targets.title") }}</h2>
+      <h2 class="text-lg font-semibold tracking-tight text-[#EDE9F7]">{{ t("targets.title") }}</h2>
 
       <div class="flex items-center gap-2">
-        <p class="text-xs text-zinc-500">{{ t("targets.total", { count: targets.length }) }}</p>
+        <p class="text-xs text-[#9B96AD]">{{ t("targets.total", { count: targets.length }) }}</p>
 
         <button
           v-if="targets.length"
           type="button"
-          class="inline-flex h-8 items-center justify-center rounded-xl border border-zinc-200 bg-white px-3 text-xs text-zinc-700 hover:bg-zinc-100 active:bg-zinc-200"
+          class="inline-flex h-8 items-center justify-center rounded-xl border border-[#4A4858] bg-[#302F3B] px-3 text-xs text-[#9B96AD] hover:bg-[#4A4858] transition-colors"
           @click="onClear"
           :aria-label="t('targets.clearAria')"
           :title="t('targets.clearTitle')"
@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <p v-if="!targets.length" class="mt-2 text-sm text-zinc-600">
+    <p v-if="!targets.length" class="mt-2 text-sm text-[#9B96AD]">
       {{ t("targets.empty") }}
     </p>
 
@@ -27,19 +27,17 @@
       <li
         v-for="target in targets"
         :key="target.id"
-        class="flex items-center gap-3 rounded-xl bg-zinc-50 px-3 py-2"
+        class="flex items-center gap-3 rounded-xl bg-[#302F3B] px-3 py-2"
       >
-        <!-- name -->
         <div class="min-w-0 flex-1">
-          <div class="truncate text-sm font-medium text-zinc-900">
+          <div class="truncate text-sm font-medium text-[#EDE9F7]">
             {{ target.name }}
           </div>
-          <div class="text-xs text-zinc-500">#{{ target.id }}</div>
+          <div class="text-xs text-[#9B96AD]">#{{ target.id }}</div>
         </div>
 
-        <!-- qty -->
         <input
-          class="h-9 w-20 rounded-xl border border-zinc-200 bg-white px-2 text-sm text-zinc-900 outline-none focus:ring-4 focus:ring-zinc-200"
+          class="h-9 w-20 rounded-xl border border-[#4A4858] bg-[#2D2C34] px-2 text-sm text-[#EDE9F7] outline-none focus:ring-2 focus:ring-[#B4A5C8]/30"
           type="number"
           min="1"
           step="1"
@@ -48,10 +46,9 @@
           @blur="onAmountBlur(target.id, $event)"
         />
 
-        <!-- remove -->
         <button
           type="button"
-          class="inline-flex h-9 items-center justify-center rounded-xl border border-zinc-200 bg-white px-3 text-sm text-zinc-700 hover:bg-zinc-100 active:bg-zinc-200"
+          class="inline-flex h-9 items-center justify-center rounded-xl border border-[#4A4858] bg-[#302F3B] px-3 text-sm text-[#9B96AD] hover:bg-[#4A4858] transition-colors"
           @click="onRemove(target.id)"
           :aria-label="t('targets.removeAria')"
           :title="t('targets.removeTitle')"
@@ -77,7 +74,6 @@ const props = defineProps({
 const { targets } = toRefs(props);
 const { t } = useI18n();
 
-// ✅ 新增 clear
 const emit = defineEmits(["remove", "update-amount", "clear"]);
 
 function clampAmount(raw) {

@@ -33,8 +33,15 @@ export default {
     jobLabel: "Crafting job",
     sourceLabel: "Source",
     craftTimesSuffix: "x",
+    needLabel: "Need {n}",
+    craftLabel: "{n} crafts",
     resetConfirm:
       "Reset material progress?\n(Clears expansion state, expansion order, and checks. Targets stay.)",
+    crystalTiers: {
+      shard: "Shard",
+      crystal: "Crystal",
+      cluster: "Cluster",
+    },
     export: {
       craftableTitle: "Craftable materials",
       nonCraftableTitle: "Non-craftable materials",

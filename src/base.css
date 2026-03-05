@@ -11,6 +11,6 @@ body {
   margin: 0;
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   line-height: 1.5;
-  background: rgb(250 250 250); /* zinc-50 */
-  color: rgb(24 24 27);         /* zinc-900 */
+  background: #2D2C34;
+  color: #EDE9F7;
 }
