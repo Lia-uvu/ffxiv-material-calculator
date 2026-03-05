@@ -33,8 +33,15 @@ export default {
     jobLabel: "制作职业",
     sourceLabel: "获取来源",
     craftTimesSuffix: "次",
+    needLabel: "需要 {n} 个",
+    craftLabel: "制作 {n} 次",
     resetConfirm:
       "确定要重置材料列表进度吗？\n（会清空：已拆/拆的先后顺序/勾选，不影响目标列表）",
+    crystalTiers: {
+      shard: "碎晶",
+      crystal: "水晶",
+      cluster: "晶簇",
+    },
     export: {
       craftableTitle: "可制作材料",
       nonCraftableTitle: "不可制作材料",

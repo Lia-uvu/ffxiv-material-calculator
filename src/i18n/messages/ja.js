@@ -33,8 +33,15 @@ export default {
     jobLabel: "製作クラス",
     sourceLabel: "入手元",
     craftTimesSuffix: "回",
+    needLabel: "必要 {n}個",
+    craftLabel: "{n}回製作",
     resetConfirm:
       "素材リストの進捗をリセットしますか？\n（展開状態/展開順/チェックをクリアします。目標リストには影響しません）",
+    crystalTiers: {
+      shard: "シャード",
+      crystal: "クリスタル",
+      cluster: "クラスター",
+    },
     export: {
       craftableTitle: "製作可能素材",
       nonCraftableTitle: "製作不可素材",
