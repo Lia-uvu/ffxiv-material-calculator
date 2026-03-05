@@ -29,7 +29,7 @@
             class="shrink-0 h-5 w-5 rounded-full border-2 flex items-center justify-center transition-colors"
             :class="checkedIds.has(r.item.id)
               ? 'bg-[#B4A5C8] border-[#B4A5C8]'
-              : 'border-[#4A4858] bg-transparent hover:border-[#B4A5C8]'"
+              : 'border-[#7A7589] bg-transparent hover:border-[#B4A5C8]'"
             @click="$emit('toggle-check', r.item.id)"
             :title="t('common.completed')"
           >
