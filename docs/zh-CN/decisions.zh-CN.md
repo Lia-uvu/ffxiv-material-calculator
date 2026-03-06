@@ -235,8 +235,39 @@ type TargetItemList = TargetItem[];
 
 **状态**：有效
 
+---
 
-不是“calc 把状态也处理好（内部记着）”，而是“calc 接收状态作为输入，输出当前结果”。这样 core 仍然是纯函数，结果可预期、好测、好 debug。
+## 配方清洗脚本过滤条件：resultItem.ItemSearchCategory != 0
+
+**类型**：数据管线 / CI自动化
+
+**结论**：`convert_recipe_cn.py` 只收录满足以下条件的配方：
+
+```
+resultItem.ItemSearchCategory != 0
+```
+
+中间素材无条件收录（凡出现在已收录配方的 `materials[]` 里的物品，`convert_item_cn.py` 均保留）。
+
+**原因**：
+- `ItemSearchCategory = 0` 代表物品不可在市场板被搜索，即不可寄售/不可交易。
+- 宇宙探索（Patch 7.21）等内容专属制作物品均属此类：存于专属 Cosmopouch、任务结束消失、不可交易也不可寄售。结合 consolegameswiki 确认：”cannot be traded with other players and cannot be sold at vendors”。
+- SE 对此字段的使用高度一致：内容专属不可交易物品 = 0，玩家面向可交易物品 > 0。
+- 未来版本若加入新的内容专属不可交易物品，会自动被过滤；新版本普通装备/消耗品/家具会自动被收录，无需手动维护。
+
+**中间素材不过滤的原因**：
+- 过滤逻辑只作用于”配方的最终产出物”层，不向下传导。
+- 某些中间素材本身可能不可单独搜索，但仍是合法配方的材料——断掉会破坏材料树计算。
+
+**调研说明**：
+- `ItemUICategory.csv` 目前只到 ID 112，暂无宇宙探索专属分类（7.21 内容，仓库未更新）。故不依赖 ItemUICategory 白名单，待仓库更新后可作为辅助验证手段。
+- 数据来源仓库：`thewakingsands/ffxiv-datamining-cn`（详见 `03-deployment-data.md`）。
+
+**状态**：有效
+
+---
+
+不是”calc 把状态也处理好（内部记着）”，而是“calc 接收状态作为输入，输出当前结果”。这样 core 仍然是纯函数，结果可预期、好测、好 debug。
 
 子组件检测到单个拆开的行为会emit item id，如果是全部拆开的那个快捷键，直接emit事件，交由page自己计算好展开的所有嵌套id传给calc
 

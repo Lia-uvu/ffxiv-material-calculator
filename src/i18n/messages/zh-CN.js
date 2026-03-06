@@ -1,4 +1,7 @@
 export default {
+  app: {
+    title: "FFXIV 材料计算器",
+  },
   common: {
     unknown: "未知",
     placeholder: "—",
@@ -33,8 +36,15 @@ export default {
     jobLabel: "制作职业",
     sourceLabel: "获取来源",
     craftTimesSuffix: "次",
+    needLabel: "需要 {n} 个",
+    craftLabel: "制作 {n} 次",
     resetConfirm:
       "确定要重置材料列表进度吗？\n（会清空：已拆/拆的先后顺序/勾选，不影响目标列表）",
+    crystalTiers: {
+      shard: "碎晶",
+      crystal: "水晶",
+      cluster: "晶簇",
+    },
     export: {
       craftableTitle: "可制作材料",
       nonCraftableTitle: "不可制作材料",
@@ -59,9 +69,15 @@ export default {
   },
   obtainMethods: {
     CRAFT: "制作",
-    MARKET: "市场",
-    NPC: "NPC",
-    GATHER_MINER: "采矿",
-    GATHER_BOTANIST: "园艺",
+    GATHER_MINER: "采矿工",
+    GATHER_BOTANIST: "园艺工",
+    GATHER_FISHER: "捕鱼人",
+    SHOP_MARKET: "市场购买",
+    SHOP_NPC: "NPC 购买",
+    EXCHANGE_GC_SEALS: "军票兑换",
+    EXCHANGE_SCRIP_CRAFTER: "工匠票据兑换",
+    EXCHANGE_SCRIP_GATHERER: "采集票据兑换",
+    EXCHANGE_GEMSTONE: "双色宝石兑换",
+    EXCHANGE_TOME: "神典石兑换",
   },
 };

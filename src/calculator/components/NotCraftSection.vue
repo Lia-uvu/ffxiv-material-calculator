@@ -2,15 +2,15 @@
 <template>
   <div>
     <div class="flex items-baseline justify-between mt-2 mb-2">
-      <div class="text-sm font-semibold text-zinc-800">
+      <div class="text-sm font-semibold text-[#EDE9F7]">
         {{ t("materials.nonCraftable.title") }}
       </div>
-      <div class="text-xs text-zinc-500">
+      <div class="text-xs text-[#9B96AD]">
         {{ t("common.itemCount", { count: displayList.length }) }}
       </div>
     </div>
 
-    <div v-if="displayList.length === 0" class="text-sm text-zinc-500">
+    <div v-if="displayList.length === 0" class="text-sm text-[#9B96AD]">
       {{ t("materials.nonCraftable.empty") }}
     </div>
 
@@ -18,41 +18,40 @@
       <div
         v-for="e in displayList"
         :key="'n-' + e.id"
-        class="relative rounded-2xl border border-zinc-200 p-3 bg-white transition"
-        :class="checkedIds.has(e.id) ? 'opacity-80' : ''"
+        class="rounded-2xl border border-[#5C5470] p-3 bg-[#4A4858] transition-opacity cursor-default"
+        :class="checkedIds.has(e.id) ? 'opacity-70' : ''"
       >
-        <div
-          v-if="checkedIds.has(e.id)"
-          class="absolute inset-0 rounded-2xl bg-violet-200/40 pointer-events-none flex items-center justify-center"
-        >
-          <div class="text-violet-900 font-semibold text-sm">
-            ✓ {{ t("common.completed") }}
-          </div>
-        </div>
-
-        <div class="flex items-start gap-3">
+        <div class="flex items-center gap-3">
+          <!-- Checkbox (circle) -->
           <button
             type="button"
-            class="mt-0.5 h-5 w-5 rounded border border-zinc-300 flex items-center justify-center shrink-0 bg-white"
+            class="shrink-0 h-5 w-5 rounded-full border-2 flex items-center justify-center transition-colors"
+            :class="checkedIds.has(e.id)
+              ? 'bg-[#B4A5C8] border-[#B4A5C8]'
+              : 'border-[#7A7589] bg-transparent hover:border-[#B4A5C8]'"
             @click="$emit('toggle-check', e.id)"
+            :title="t('common.completed')"
           >
-            <span v-if="checkedIds.has(e.id)" class="text-sm">✓</span>
+            <Check v-if="checkedIds.has(e.id)" :size="11" color="#2D2C34" :stroke-width="3" />
           </button>
 
           <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2">
-              <div class="text-sm font-medium text-zinc-900 truncate">
-                {{ e.name }}
-              </div>
+            <div
+              class="text-sm font-medium truncate"
+              :class="checkedIds.has(e.id) ? 'line-through text-[#6B677A]' : 'text-[#EDE9F7]'"
+            >
+              {{ e.name }}
             </div>
-
-            <div class="text-xs text-zinc-500 mt-1">
-              {{ t("materials.sourceLabel") }}：{{ e.source ?? t("common.placeholder") }}
+            <div class="text-xs text-[#9B96AD] mt-0.5">
+              {{ e.source ?? t("common.placeholder") }}
             </div>
           </div>
 
-          <div class="text-sm font-semibold tabular-nums text-zinc-900 w-16 text-right shrink-0">
-            {{ e.displayAmount }}{{ e.displaySuffix }}
+          <div
+            class="text-sm font-semibold tabular-nums shrink-0"
+            :class="checkedIds.has(e.id) ? 'text-[#6B677A]' : 'text-[#EDE9F7]'"
+          >
+            {{ e.needAmount }}
           </div>
         </div>
       </div>
@@ -63,6 +62,7 @@
 <script setup>
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
+import { Check } from "lucide-vue-next";
 
 const props = defineProps({
   nonCraftable: { type: Array, default: () => [] },
@@ -73,7 +73,5 @@ defineEmits(["toggle-check"]);
 
 const { t } = useI18n();
 
-const nonCraftableNonCrystal = computed(() => props.nonCraftable.filter((e) => !e?.isCrystal));
-
-const displayList = computed(() => nonCraftableNonCrystal.value);
+const displayList = computed(() => props.nonCraftable.filter((e) => !e?.isCrystal));
 </script>

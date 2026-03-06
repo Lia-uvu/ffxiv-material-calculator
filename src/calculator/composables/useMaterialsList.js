@@ -6,7 +6,7 @@ import { calcMaterials } from "../core/calcMaterials";
 import { buildRecipesByResultId, pickRecipe } from "../core/recipeUtils";
 
 export function useMaterialsList(params) {
-  const { locale, t } = useI18n();
+  const { locale, t, te } = useI18n();
   const itemsArr = computed(() => unref(params.items) || []);
   const recipesArr = computed(() => unref(params.recipes) || []);
   const targetsArr = computed(() => unref(params.targets) || []);
@@ -75,23 +75,19 @@ export function useMaterialsList(params) {
 
     const entryById = new Map();
 
-    const obtainMethodLabels = {
-      CRAFT: t("obtainMethods.CRAFT"),
-      MARKET: t("obtainMethods.MARKET"),
-      NPC: t("obtainMethods.NPC"),
-      GATHER_MINER: t("obtainMethods.GATHER_MINER"),
-      GATHER_BOTANIST: t("obtainMethods.GATHER_BOTANIST"),
-    };
-
     function formatObtainMethods(item) {
       const methods = item?.obtainMethods;
       if (!Array.isArray(methods) || methods.length === 0) {
         return item?.source ?? null;
       }
 
-      const labels = methods.map((m) => obtainMethodLabels[m] ?? m).filter(Boolean);
-      if (labels.length === 0) return item?.source ?? null;
-      return labels.join(" / ");
+      return methods
+        .filter(Boolean)
+        .map((method) => {
+          const i18nKey = `obtainMethods.${method}`;
+          return te(i18nKey) ? t(i18nKey) : method;
+        })
+        .join(" / ");
     }
 
     function resolveJob(itemId, fallbackRecipeId) {

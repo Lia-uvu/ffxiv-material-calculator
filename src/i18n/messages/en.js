@@ -1,4 +1,7 @@
 export default {
+  app: {
+    title: "FFXIV Material Calculator",
+  },
   common: {
     unknown: "Unknown",
     placeholder: "—",
@@ -33,8 +36,15 @@ export default {
     jobLabel: "Crafting job",
     sourceLabel: "Source",
     craftTimesSuffix: "x",
+    needLabel: "Need {n}",
+    craftLabel: "{n} crafts",
     resetConfirm:
       "Reset material progress?\n(Clears expansion state, expansion order, and checks. Targets stay.)",
+    crystalTiers: {
+      shard: "Shard",
+      crystal: "Crystal",
+      cluster: "Cluster",
+    },
     export: {
       craftableTitle: "Craftable materials",
       nonCraftableTitle: "Non-craftable materials",
@@ -59,9 +69,15 @@ export default {
   },
   obtainMethods: {
     CRAFT: "Crafted",
-    MARKET: "Market",
-    NPC: "NPC",
     GATHER_MINER: "Mining",
     GATHER_BOTANIST: "Botany",
+    GATHER_FISHER: "Fishing",
+    SHOP_MARKET: "Market purchase",
+    SHOP_NPC: "NPC purchase",
+    EXCHANGE_GC_SEALS: "Grand Company seals exchange",
+    EXCHANGE_SCRIP_CRAFTER: "Crafter scrip exchange",
+    EXCHANGE_SCRIP_GATHERER: "Gatherer scrip exchange",
+    EXCHANGE_GEMSTONE: "Bicolor gemstone exchange",
+    EXCHANGE_TOME: "Tomestone exchange",
   },
 };

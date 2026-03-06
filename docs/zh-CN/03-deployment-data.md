@@ -87,13 +87,48 @@ node scripts/xivapi/mergeIntoLocalJson.js --clear-incremental
   "isCrystal": false,     // 是否为“水晶类素材”（碎晶/水晶/晶簇），用于在计算时决定要不要单独统计/排除
   "obtainMethods": [      // 该物品所有获取方式，用于标记
     "CRAFT",              // 玩家制作
-    "MARKET",             // 市场交易
-    "NPC",                // 商人NPC购买
-    "GATHER_MINER",       // 矿工采集
-    "GATHER_BOTANIST"     // 园艺工采集
-    ]
+    "SHOP_MARKET",        // 市场交易
+    "GATHER_MINER",        // 采矿工采集
+    "GATHER_BOTANIST",     // 园艺工采集
+    "GATHER_FISHER",       // 捕鱼人采集
+    "SHOP_NPC",            // 金币商店（GilShop）
+    "EXCHANGE_GC_SEALS",   // 军票商店（GCScripShop）
+    "EXCHANGE_SCRIP_CRAFTER",  // 工匠票据兑换
+    "EXCHANGE_SCRIP_GATHERER", // 采集票据兑换
+    "EXCHANGE_GEMSTONE",   // 双色宝石兑换
+    "EXCHANGE_TOME"        // 神典石兑换
+    ],
+  "obtainMethodDetails": { // 可选：获取途径补充信息
+    "SHOP_NPC": {          // 金币商店的价格信息（如果可用）
+      "priceLow": 9        // 来自 Item.csv 的 Price{Low}
+    }
+  }
 }
 ```
+
+#### `items.obtainMethods` 字段说明
+`obtainMethods` 仍然是**字符串数组**，仅在现有结构上做扩展。每个值均可被独立组合，便于后续 UI 标注/筛选。
+
+| 值 | 含义 | CSV 来源与字段 |
+| --- | --- | --- |
+| `CRAFT` | 玩家制作 | `Recipe.csv`：`Item{Result}` |
+| `GATHER_MINER` | 采矿工采集 | `GatheringType.csv` + `GatheringItem.csv` + `GatheringPointBase.csv`：`GatheringType`、`Item[0..7]` |
+| `GATHER_BOTANIST` | 园艺工采集 | 同上（采集类型名为“采伐/割草”） |
+| `GATHER_FISHER` | 捕鱼人采集 | `FishingSpot.csv`：`Item[0..9]` |
+| `SHOP_NPC` | 金币商店 | `GilShopItem.csv`：`Item` |
+| `EXCHANGE_GC_SEALS` | 军票商店 | `GCScripShopItem.csv`：`Item` |
+| `EXCHANGE_SCRIP_CRAFTER` | 工匠票据兑换 | `SpecialShop.csv`：`Item{Receive}[i][j]` + `Item{Cost}[i][j]`，**以成本物品（票据货币）的名称**包含“巧手”与“票”为准 |
+| `EXCHANGE_SCRIP_GATHERER` | 采集票据兑换 | `SpecialShop.csv`：`Item{Receive}[i][j]` + `Item{Cost}[i][j]`，**以成本物品（票据货币）的名称**包含“大地”与“票”为准 |
+| `EXCHANGE_GEMSTONE` | 双色宝石兑换 | `SpecialShop.csv`：`Item{Receive}[i][j]` + `Item{Cost}[i][j]`，成本物品为“双色宝石” |
+| `EXCHANGE_TOME` | 神典石兑换 | `SpecialShop.csv` + `TomestonesItem.csv`：成本物品在 `TomestonesItem.csv` 的 `Item` 列 |
+| `SHOP_MARKET` | 市场交易 | `Item.csv`：`IsUntradable`（可交易即加入） |
+
+#### `items.obtainMethodDetails` 字段说明
+当某些获取方式存在额外数据时，用该对象补充说明。当前仅定义金币商店价格：
+- `SHOP_NPC.priceLow`：来自 `Item.csv` 的 `Price{Low}`，仅当该物品出现在 `GilShopItem.csv` 且价格>0 时写入。
+
+**明确忽略项（不进入结构与清洗输出）**：
+`DisposalShopItem.csv`，以及任务/令行/成就/周常奖励类：`QuestClassJobReward.csv`、`LeveRewardItemGroup.csv`、`Achievement.csv`、`WeeklyBingoRewardData.csv`。
 
 ### Recipe 结构示例
 ```jsonc

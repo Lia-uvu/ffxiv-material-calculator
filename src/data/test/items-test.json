@@ -8,8 +8,8 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
-      "MARKET"
+      "制作",
+      "市场购买"
     ]
   },
   {
@@ -21,10 +21,10 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
-      "GATHER_MINER",
-      "MARKET",
-      "NPC"
+      "制作",
+      "采矿工",
+      "市场购买",
+      "NPC 购买"
     ]
   },
   {
@@ -36,9 +36,9 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
-      "MARKET",
-      "NPC"
+      "制作",
+      "市场购买",
+      "NPC 购买"
     ]
   },
   {
@@ -50,10 +50,10 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
-      "GATHER_MINER",
-      "MARKET",
-      "NPC"
+      "制作",
+      "采矿工",
+      "市场购买",
+      "NPC 购买"
     ]
   },
   {
@@ -65,9 +65,9 @@
     },
     "isCrystal": true,
     "obtainMethods": [
-      "GATHER_MINER",
-      "GATHER_BOTANIST",
-      "MARKET"
+      "采矿工",
+      "园艺工",
+      "市场购买"
     ]
   },
   {
@@ -79,9 +79,9 @@
     },
     "isCrystal": true,
     "obtainMethods": [
-      "GATHER_MINER",
-      "GATHER_BOTANIST",
-      "MARKET"
+      "采矿工",
+      "园艺工",
+      "市场购买"
     ]
   },
   {
@@ -93,8 +93,8 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "NPC",
-      "MARKET"
+      "NPC 购买",
+      "市场购买"
     ]
   },
   {
@@ -106,9 +106,9 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "GATHER_MINER",
-      "MARKET",
-      "NPC"
+      "采矿工",
+      "市场购买",
+      "NPC 购买"
     ]
   }
 ]

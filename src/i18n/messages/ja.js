@@ -1,4 +1,7 @@
 export default {
+  app: {
+    title: "FF14 素材計算機",
+  },
   common: {
     unknown: "不明",
     placeholder: "—",
@@ -33,8 +36,15 @@ export default {
     jobLabel: "製作クラス",
     sourceLabel: "入手元",
     craftTimesSuffix: "回",
+    needLabel: "必要 {n}個",
+    craftLabel: "{n}回製作",
     resetConfirm:
       "素材リストの進捗をリセットしますか？\n（展開状態/展開順/チェックをクリアします。目標リストには影響しません）",
+    crystalTiers: {
+      shard: "シャード",
+      crystal: "クリスタル",
+      cluster: "クラスター",
+    },
     export: {
       craftableTitle: "製作可能素材",
       nonCraftableTitle: "製作不可素材",
@@ -59,9 +69,15 @@ export default {
   },
   obtainMethods: {
     CRAFT: "製作",
-    MARKET: "マーケット",
-    NPC: "NPC",
     GATHER_MINER: "採掘",
     GATHER_BOTANIST: "園芸",
+    GATHER_FISHER: "漁師",
+    SHOP_MARKET: "マーケット購入",
+    SHOP_NPC: "NPC購入",
+    EXCHANGE_GC_SEALS: "軍票交換",
+    EXCHANGE_SCRIP_CRAFTER: "クラフタースクリップ交換",
+    EXCHANGE_SCRIP_GATHERER: "ギャザラースクリップ交換",
+    EXCHANGE_GEMSTONE: "バイカラージェム交換",
+    EXCHANGE_TOME: "トームストーン交換",
   },
 };
