@@ -197,22 +197,6 @@ def parse_item_name_map(text: str) -> Dict[int, str]:
     return mapping
 
 
-def parse_tomestone_item_ids(text: str) -> Set[int]:
-    rows = list(csv.reader(text.splitlines()))
-    header = rows[1]
-    idx_item = header.index("Item")
-    result: Set[int] = set()
-    for row in rows[4:]:
-        if len(row) <= idx_item:
-            continue
-        try:
-            item_id = int(row[idx_item])
-        except ValueError:
-            continue
-        if item_id > 0:
-            result.add(item_id)
-    return result
-
 
 def parse_special_shop_costs(text: str) -> Dict[int, Set[int]]:
     rows = list(csv.reader(text.splitlines()))
@@ -378,7 +362,6 @@ def main() -> None:
     gil_shop_text = fetch_text(args.input_dir, "GilShopItem.csv")
     special_shop_text = fetch_text(args.input_dir, "SpecialShop.csv")
     gc_scrip_shop_text = fetch_text(args.input_dir, "GCScripShopItem.csv")
-    tomestone_item_text = fetch_text(args.input_dir, "TomestonesItem.csv")
 
     gather_methods = collect_gather_methods(
         gathering_type_text, gathering_item_text, gathering_point_text
@@ -388,18 +371,23 @@ def main() -> None:
     special_shop_costs = parse_special_shop_costs(special_shop_text)
     gc_scrip_ids = parse_item_ids_by_columns(gc_scrip_shop_text, ["Item"])
     item_name_map = parse_item_name_map(item_text)
-    # 识别“票据”货币本体（成本物品），而不是成品名字。
+    # 识别”票据”货币本体（成本物品），而不是成品名字。
+    # CN 制作职业全称为”能工巧匠”，其票据名称含”巧匠”而非”巧手”。
     crafting_scrip_ids = {
-        item_id for item_id, name in item_name_map.items() if "巧手" in name and "票" in name
+        item_id for item_id, name in item_name_map.items() if “巧匠” in name and “票” in name
     }
     gathering_scrip_ids = {
-        item_id for item_id, name in item_name_map.items() if "大地" in name and "票" in name
+        item_id for item_id, name in item_name_map.items() if “大地” in name and “票” in name
     }
     bicolor_gem_id = next(
-        (item_id for item_id, name in item_name_map.items() if name == "双色宝石"),
+        (item_id for item_id, name in item_name_map.items() if name == “双色宝石”),
         None,
     )
-    tomestone_ids = parse_tomestone_item_ids(tomestone_item_text)
+    # TomestonesItem.csv 的 Item 列在 CN datamining 中为 0（神典石未关联），
+    # 改为从 Item.csv 名称中识别含”神典石”的货币物品，与 bicolor_gem_id 的检测方式保持一致。
+    tomestone_ids = {
+        item_id for item_id, name in item_name_map.items() if “神典石” in name
+    }
 
     item_info = parse_item_info(item_text, item_ids)
 
@@ -467,7 +455,7 @@ def main() -> None:
     print(f"- 工匠票据 (Item.csv): {len(crafting_scrip_ids)}")
     print(f"- 采集票据 (Item.csv): {len(gathering_scrip_ids)}")
     print(f"- 双色宝石 (Item.csv): {1 if bicolor_gem_id else 0}")
-    print(f"- 神典石 (TomestonesItem.csv): {len(tomestone_ids)}")
+    print(f"- 神典石 (Item.csv, 名称含"神典石"): {len(tomestone_ids)}")
     print("Basic validation:")
     print(f"- Item count unchanged: {len(items)}")
     print(f"- Updated + unchanged + missing = {updated + unchanged + missing_info}")
