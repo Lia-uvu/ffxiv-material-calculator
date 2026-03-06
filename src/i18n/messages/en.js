@@ -25,7 +25,7 @@ export default {
   },
   materials: {
     title: "Materials",
-    collapseAll: "Collapse to top",
+    collapseAll: "Collapse all",
     expandAll: "Expand all",
     clearChecked: "Clear checks",
     resetProgress: "Reset materials",
@@ -58,8 +58,8 @@ export default {
       empty: "No craftable materials.",
       expanded: "Expanded",
       collapsed: "Collapsed",
-      toggleCollapse: "Collapse (do not expand)",
-      toggleExpand: "Expand",
+      collapse: "Collapse (do not expand)",
+      expand: "Expand",
       needsLabel: "Needed",
     },
     nonCraftable: {

@@ -25,8 +25,8 @@ export default {
   },
   materials: {
     title: "素材一覧",
-    collapseAll: "最上位に折りたたむ",
-    expandAll: "最下層まで展開",
+    collapseAll: "すべて折りたたむ",
+    expandAll: "すべて展開",
     clearChecked: "チェックをクリア",
     resetProgress: "素材進捗をリセット",
     copyList: "素材リストをコピー",
@@ -58,8 +58,8 @@ export default {
       empty: "製作可能素材はありません。",
       expanded: "展開済み",
       collapsed: "未展開",
-      toggleCollapse: "折りたたむ（展開しない）",
-      toggleExpand: "展開する",
+      collapse: "折りたたむ（展開しない）",
+      expand: "展開する",
       needsLabel: "必要数",
     },
     nonCraftable: {

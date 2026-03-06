@@ -58,8 +58,8 @@ export default {
       empty: "当前没有可制作材料。",
       expanded: "已拆",
       collapsed: "未拆",
-      toggleCollapse: "锁回去（不拆）",
-      toggleExpand: "拆开（展开）",
+      collapse: "锁回去（不拆）",
+      expand: "拆开（展开）",
       needsLabel: "需求",
     },
     nonCraftable: {

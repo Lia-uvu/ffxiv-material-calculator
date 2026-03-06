@@ -78,7 +78,7 @@
             type="button"
             class="shrink-0 h-9 w-9 flex items-center justify-center rounded-xl transition-opacity hover:opacity-70"
             @click="$emit('toggle-expand', r.item.id)"
-            :title="r.item.isExpanded ? t('materials.craftable.toggleCollapse') : t('materials.craftable.toggleExpand')"
+            :title="r.item.isExpanded ? t('materials.craftable.collapse') : t('materials.craftable.expand')"
           >
             <Link2Off v-if="r.item.isExpanded" :size="20" color="#E8D07A" />
             <Link2 v-else :size="20" color="#B4A5C8" />
