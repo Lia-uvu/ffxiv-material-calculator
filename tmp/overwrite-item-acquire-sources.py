@@ -55,7 +55,7 @@ def parse_gathering_types(text: str) -> Dict[int, str]:
     idx_key = header.index("#")
     idx_name = header.index("Name")
     mapping: Dict[int, str] = {}
-    for row in rows[4:]:
+    for row in rows[3:]:
         if len(row) <= max(idx_key, idx_name):
             continue
         try:
