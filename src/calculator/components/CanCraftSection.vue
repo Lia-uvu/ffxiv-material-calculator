@@ -62,10 +62,14 @@
           <!-- Amount (dual line) -->
           <div class="text-right shrink-0 tabular-nums leading-tight">
             <div class="text-sm font-semibold text-[#EDE9F7]">
-              {{ t("materials.needLabel", { n: r.item.needAmount }) }}
+              {{ r.item.isExpanded
+                ? t("materials.craftLabel", { n: r.item.craftTimes })
+                : t("materials.needLabel", { n: r.item.needAmount }) }}
             </div>
             <div class="text-xs text-[#9B96AD]">
-              {{ t("materials.craftLabel", { n: r.item.craftTimes }) }}
+              {{ r.item.isExpanded
+                ? t("materials.needLabel", { n: r.item.needAmount })
+                : t("materials.craftLabel", { n: r.item.craftTimes }) }}
             </div>
           </div>
 
