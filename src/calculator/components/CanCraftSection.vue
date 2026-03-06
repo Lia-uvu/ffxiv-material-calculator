@@ -55,7 +55,7 @@
               </span>
             </div>
             <div class="text-xs text-[#9B96AD] mt-0.5">
-              {{ r.item.job ?? t("common.placeholder") }}
+              {{ r.item.job ? (te(`jobs.${r.item.job}`) ? t(`jobs.${r.item.job}`) : r.item.job) : t("common.placeholder") }}
             </div>
           </div>
 
@@ -78,7 +78,7 @@
             type="button"
             class="shrink-0 h-9 w-9 flex items-center justify-center rounded-xl transition-opacity hover:opacity-70"
             @click="$emit('toggle-expand', r.item.id)"
-            :title="r.item.isExpanded ? t('materials.craftable.toggleCollapse') : t('materials.craftable.toggleExpand')"
+            :title="r.item.isExpanded ? t('materials.craftable.collapse') : t('materials.craftable.expand')"
           >
             <Link2Off v-if="r.item.isExpanded" :size="20" color="#E8D07A" />
             <Link2 v-else :size="20" color="#B4A5C8" />
@@ -102,7 +102,7 @@ const props = defineProps({
 
 defineEmits(["toggle-check", "toggle-expand"]);
 
-const { t } = useI18n();
+const { t, te } = useI18n();
 
 const items = computed(() => (props.craftable ?? []).filter((e) => !e?.isCrystal));
 
