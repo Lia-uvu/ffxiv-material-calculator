@@ -70,9 +70,9 @@ export default {
   jobs: {
     ALCHEMIST: "炼金术士",
     ARMORER: "铸甲匠",
-    BLACKSMITH: "锻冶匠",
+    BLACKSMITH: "锻铁匠",
     CARPENTER: "刻木匠",
-    CULINARIAN: "厨师",
+    CULINARIAN: "烹调师",
     GOLDSMITH: "雕金匠",
     LEATHERWORKER: "制革匠",
     WEAVER: "裁衣匠",
