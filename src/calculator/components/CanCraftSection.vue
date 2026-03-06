@@ -55,7 +55,7 @@
               </span>
             </div>
             <div class="text-xs text-[#9B96AD] mt-0.5">
-              {{ r.item.job ?? t("common.placeholder") }}
+              {{ r.item.job ? (te(`jobs.${r.item.job}`) ? t(`jobs.${r.item.job}`) : r.item.job) : t("common.placeholder") }}
             </div>
           </div>
 
@@ -102,7 +102,7 @@ const props = defineProps({
 
 defineEmits(["toggle-check", "toggle-expand"]);
 
-const { t } = useI18n();
+const { t, te } = useI18n();
 
 const items = computed(() => (props.craftable ?? []).filter((e) => !e?.isCrystal));
 

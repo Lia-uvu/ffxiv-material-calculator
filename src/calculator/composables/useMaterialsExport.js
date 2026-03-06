@@ -2,7 +2,7 @@ import { computed, unref } from "vue";
 import { useI18n } from "vue-i18n";
 
 export function useMaterialsExport(uiRef) {
-  const { t } = useI18n();
+  const { t, te } = useI18n();
 
   const exportText = computed(() => {
     const ui = unref(uiRef) ?? {};
@@ -16,7 +16,8 @@ export function useMaterialsExport(uiRef) {
 
     lines.push(t("materials.export.craftableTitle"));
     for (const e of craftable) {
-      const job = e.job ?? t("common.placeholder");
+      const jobKey = e.job ? `jobs.${e.job}` : null;
+      const job = jobKey && te(jobKey) ? t(jobKey) : (e.job ?? t("common.placeholder"));
       const suffix = e.displaySuffix ?? "";
       lines.push(
         t("materials.export.craftableLine", {

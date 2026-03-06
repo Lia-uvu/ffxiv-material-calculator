@@ -67,6 +67,16 @@ export default {
       empty: "製作不可素材はありません。",
     },
   },
+  jobs: {
+    ALCHEMIST: "錬金術師",
+    ARMORER: "甲冑師",
+    BLACKSMITH: "鍛冶師",
+    CARPENTER: "木工師",
+    CULINARIAN: "調理師",
+    GOLDSMITH: "彫金師",
+    LEATHERWORKER: "革細工師",
+    WEAVER: "裁縫師",
+  },
   obtainMethods: {
     CRAFT: "製作",
     GATHER_MINER: "採掘",

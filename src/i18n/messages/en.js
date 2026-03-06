@@ -67,6 +67,16 @@ export default {
       empty: "No non-craftable materials.",
     },
   },
+  jobs: {
+    ALCHEMIST: "Alchemist",
+    ARMORER: "Armorer",
+    BLACKSMITH: "Blacksmith",
+    CARPENTER: "Carpenter",
+    CULINARIAN: "Culinarian",
+    GOLDSMITH: "Goldsmith",
+    LEATHERWORKER: "Leatherworker",
+    WEAVER: "Weaver",
+  },
   obtainMethods: {
     CRAFT: "Crafted",
     GATHER_MINER: "Mining",
