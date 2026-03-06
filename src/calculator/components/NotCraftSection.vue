@@ -38,7 +38,7 @@
           <div class="flex-1 min-w-0">
             <div
               class="text-sm font-medium truncate"
-              :class="checkedIds.has(e.id) ? 'line-through text-[#6B677A]' : 'text-[#EDE9F7]'"
+              :class="checkedIds.has(e.id) ? 'line-through text-[#9B96AD]' : 'text-[#EDE9F7]'"
             >
               {{ e.name }}
             </div>
@@ -49,7 +49,7 @@
 
           <div
             class="text-sm font-semibold tabular-nums shrink-0"
-            :class="checkedIds.has(e.id) ? 'text-[#6B677A]' : 'text-[#EDE9F7]'"
+            :class="checkedIds.has(e.id) ? 'text-[#9B96AD]' : 'text-[#EDE9F7]'"
           >
             {{ e.needAmount }}
           </div>
