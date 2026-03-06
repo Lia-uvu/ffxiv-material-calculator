@@ -25,8 +25,8 @@ export default {
   },
   materials: {
     title: "材料列表",
-    collapseAll: "折叠到顶层",
-    expandAll: "拆到底",
+    collapseAll: "全部折叠",
+    expandAll: "全部展开",
     clearChecked: "清空勾选",
     resetProgress: "重置材料进度",
     copyList: "复制材料清单",
