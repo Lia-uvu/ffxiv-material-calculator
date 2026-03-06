@@ -16,11 +16,7 @@
       <div
         v-for="r in rows"
         :key="'c-' + r.item.id"
-        class="rounded-2xl border p-3 transition-opacity"
-        :class="[
-          r.item.isExpanded ? 'bg-[#2A2933] border-[#38364A]' : 'bg-[#4A4858] border-[#5C5470]',
-          checkedIds.has(r.item.id) ? 'opacity-70' : ''
-        ]"
+        :class="['rounded-2xl border p-3', r.item.isExpanded ? 'bg-[#2A2933] border-[#38364A]' : 'bg-[#4A4858] border-[#5C5470]']"
       >
         <div class="flex items-center gap-3">
           <!-- Checkbox (circle) -->

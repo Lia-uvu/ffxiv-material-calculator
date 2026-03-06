@@ -18,8 +18,7 @@
       <div
         v-for="e in displayList"
         :key="'n-' + e.id"
-        class="rounded-2xl border border-[#5C5470] p-3 bg-[#4A4858] transition-opacity cursor-default"
-        :class="checkedIds.has(e.id) ? 'opacity-70' : ''"
+        class="rounded-2xl border border-[#5C5470] p-3 bg-[#4A4858] cursor-default"
       >
         <div class="flex items-center gap-3">
           <!-- Checkbox (circle) -->
