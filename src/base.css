@@ -14,3 +14,13 @@ body {
   background: #2D2C34;
   color: #EDE9F7;
 }
+
+/* 数字输入框 spinner 箭头适配深色主题 */
+input[type="number"] {
+  color-scheme: dark;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 0.6;
+}
