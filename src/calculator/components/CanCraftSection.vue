@@ -41,7 +41,7 @@
             <div class="flex items-center gap-2">
               <div
                 class="text-sm font-medium truncate"
-                :class="checkedIds.has(r.item.id) ? 'line-through text-[#6B677A]' : 'text-[#EDE9F7]'"
+                :class="checkedIds.has(r.item.id) ? 'line-through text-[#9B96AD]' : 'text-[#EDE9F7]'"
               >
                 {{ r.item.name }}
               </div>
