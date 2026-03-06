@@ -26518,6 +26518,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_NPC",
       "SHOP_MARKET"
     ],
@@ -26536,6 +26537,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_NPC",
       "SHOP_MARKET"
     ],
@@ -26554,6 +26556,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_NPC",
       "SHOP_MARKET"
     ],
@@ -26572,6 +26575,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_NPC",
       "SHOP_MARKET"
     ],
@@ -26590,6 +26594,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -26602,6 +26607,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -26614,6 +26620,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -26626,6 +26633,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -26638,6 +26646,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -26663,6 +26672,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -26675,6 +26685,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -26687,6 +26698,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_NPC",
       "SHOP_MARKET"
     ],
@@ -26705,6 +26717,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -26717,6 +26730,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -26729,6 +26743,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -26741,6 +26756,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_NPC",
       "SHOP_MARKET"
     ],
@@ -26759,6 +26775,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_NPC",
       "SHOP_MARKET"
     ],
@@ -26777,6 +26794,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_NPC",
       "SHOP_MARKET"
     ],
@@ -26795,6 +26813,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_NPC",
       "SHOP_MARKET"
     ],
@@ -26813,6 +26832,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_NPC",
       "SHOP_MARKET"
     ],
@@ -26831,6 +26851,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_NPC",
       "SHOP_MARKET"
     ],
@@ -26849,6 +26870,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -26861,6 +26883,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -26873,6 +26896,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -26885,6 +26909,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -26897,6 +26922,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -26909,6 +26935,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -26921,6 +26948,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -26933,6 +26961,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -26945,6 +26974,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -26957,6 +26987,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -26969,6 +27000,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -26981,6 +27013,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -26993,6 +27026,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -27005,6 +27039,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -27017,6 +27052,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -27029,6 +27065,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -27041,6 +27078,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -27053,6 +27091,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -27195,6 +27234,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -27853,6 +27893,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -29377,6 +29418,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_NPC",
       "SHOP_MARKET"
     ],
@@ -29395,6 +29437,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_NPC",
       "SHOP_MARKET"
     ],
@@ -29473,6 +29516,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -29611,6 +29655,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -29662,6 +29707,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -29963,6 +30009,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_NPC",
       "SHOP_MARKET"
     ],
@@ -30018,6 +30065,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -30342,6 +30390,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_NPC",
       "SHOP_MARKET"
     ],
@@ -30462,6 +30511,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -30500,6 +30550,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -30512,6 +30563,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -37139,6 +37191,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -39425,6 +39478,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -39437,6 +39491,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -39708,9 +39763,7 @@
       "ja": "スプルース合板"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 7613,
@@ -39720,9 +39773,7 @@
       "ja": "ダークスチールフック"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 7614,
@@ -39732,9 +39783,7 @@
       "ja": "ダークスチールワイヤー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 7615,
@@ -39744,9 +39793,7 @@
       "ja": "ローズゴールドギア"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 7616,
@@ -39756,9 +39803,7 @@
       "ja": "ヒッポグリフストラップ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 7617,
@@ -39768,9 +39813,7 @@
       "ja": "シルバーブロケード"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 7618,
@@ -39780,9 +39823,7 @@
       "ja": "塩酸"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 7619,
@@ -39792,9 +39833,7 @@
       "ja": "トマトケチャップ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 7620,
@@ -41013,9 +41052,7 @@
       "ja": "強化スプルース合板"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8033,
@@ -41025,9 +41062,7 @@
       "ja": "高精度ダークスチールフック"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8034,
@@ -41037,9 +41072,7 @@
       "ja": "強化ダークスチールワイヤー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8035,
@@ -41049,9 +41082,7 @@
       "ja": "高精度ローズゴールドギア"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8036,
@@ -41061,9 +41092,7 @@
       "ja": "強化ヒッポグリフストラップ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8037,
@@ -41073,9 +41102,7 @@
       "ja": "高級シルバーブロケード"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8038,
@@ -41085,9 +41112,7 @@
       "ja": "濃塩酸"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8039,
@@ -41097,9 +41122,7 @@
       "ja": "濃厚トマトケチャップ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8043,
@@ -41616,9 +41639,7 @@
       "ja": "気嚢部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8092,
@@ -41628,9 +41649,7 @@
       "ja": "気嚢補強材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8093,
@@ -41640,9 +41659,7 @@
       "ja": "右舷船体部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8094,
@@ -41652,9 +41669,7 @@
       "ja": "左舷船体部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8095,
@@ -41664,9 +41679,7 @@
       "ja": "動力輪部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8096,
@@ -41676,9 +41689,7 @@
       "ja": "索具部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8097,
@@ -41688,9 +41699,7 @@
       "ja": "甲板部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8098,
@@ -41700,9 +41709,7 @@
       "ja": "機関外装部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8099,
@@ -41712,9 +41719,7 @@
       "ja": "加工道具"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8100,
@@ -41724,9 +41729,7 @@
       "ja": "操縦席外装材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8101,
@@ -41736,9 +41739,7 @@
       "ja": "操縦席内装材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8102,
@@ -41748,9 +41749,7 @@
       "ja": "バラスト部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8103,
@@ -41760,9 +41759,7 @@
       "ja": "計器部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8104,
@@ -41772,9 +41769,7 @@
       "ja": "空力部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8105,
@@ -41784,9 +41779,7 @@
       "ja": "右翼部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8106,
@@ -41796,9 +41789,7 @@
       "ja": "左翼部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8107,
@@ -41808,9 +41799,7 @@
       "ja": "右翼可動部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8108,
@@ -41820,9 +41809,7 @@
       "ja": "左翼可動部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8109,
@@ -41832,9 +41819,7 @@
       "ja": "伝達系部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8110,
@@ -41844,9 +41829,7 @@
       "ja": "排熱部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8112,
@@ -41856,9 +41839,7 @@
       "ja": "伝声系部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8113,
@@ -41868,9 +41849,7 @@
       "ja": "ランプ部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8114,
@@ -41880,9 +41859,7 @@
       "ja": "排気系部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8115,
@@ -41892,9 +41869,7 @@
       "ja": "緊急廃棄部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8117,
@@ -41904,9 +41879,7 @@
       "ja": "青燐タンク部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8118,
@@ -41916,9 +41889,7 @@
       "ja": "操縦機具部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8120,
@@ -41928,9 +41899,7 @@
       "ja": "緊急脱出用具"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8121,
@@ -41940,9 +41909,7 @@
       "ja": "予備タンク部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8122,
@@ -41952,9 +41919,7 @@
       "ja": "軽量化部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8123,
@@ -41964,9 +41929,7 @@
       "ja": "免震部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8125,
@@ -41976,9 +41939,7 @@
       "ja": "高伝導率部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8126,
@@ -41988,9 +41949,7 @@
       "ja": "補助空力部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8127,
@@ -42000,9 +41959,7 @@
       "ja": "装飾部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8129,
@@ -42012,9 +41969,7 @@
       "ja": "エカトルの船体部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8130,
@@ -42024,9 +41979,7 @@
       "ja": "エカトルの機関部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8131,
@@ -42036,9 +41989,7 @@
       "ja": "エカトルの機関部接合材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8132,
@@ -42048,9 +41999,7 @@
       "ja": "エカトルの操舵装置部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8133,
@@ -42060,9 +42009,7 @@
       "ja": "エカトルの重要部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8134,
@@ -42072,9 +42019,7 @@
       "ja": "エカトルの羽根飾り"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 8145,
@@ -47278,6 +47223,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -47302,6 +47248,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -47363,9 +47310,7 @@
       "ja": "珪化木丸玉"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 10101,
@@ -47375,9 +47320,7 @@
       "ja": "アクロバットダガー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 10102,
@@ -47387,9 +47330,7 @@
       "ja": "カラーベル"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 10103,
@@ -47399,9 +47340,7 @@
       "ja": "フローライトレンズ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 10104,
@@ -47411,9 +47350,7 @@
       "ja": "パテントレザー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 10105,
@@ -47423,9 +47360,7 @@
       "ja": "キャムレット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 10106,
@@ -47435,9 +47370,7 @@
       "ja": "魔化水銀"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 10107,
@@ -47447,9 +47380,7 @@
       "ja": "フォン・ド・カナール"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 10112,
@@ -59842,6 +59773,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_NPC",
       "SHOP_MARKET"
     ],
@@ -59860,6 +59792,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -59872,6 +59805,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -59884,6 +59818,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -59896,6 +59831,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -59908,6 +59844,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -60142,6 +60079,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -60154,6 +60092,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -60166,6 +60105,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -60178,6 +60118,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -60190,6 +60131,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -60202,6 +60144,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -60214,6 +60157,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -60226,6 +60170,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -60238,6 +60183,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -60250,6 +60196,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -61347,6 +61294,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -61359,6 +61307,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -63127,6 +63076,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -65547,6 +65497,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -67922,6 +67873,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -67959,6 +67911,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -68351,6 +68304,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -72091,6 +72045,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -72190,9 +72145,7 @@
       "ja": "ニセの実"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15721,
@@ -72202,9 +72155,7 @@
       "ja": "すんごいラッパ部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15722,
@@ -72214,9 +72165,7 @@
       "ja": "モーグリ用道具部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15723,
@@ -72226,9 +72175,7 @@
       "ja": "石像修復用部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15724,
@@ -72238,9 +72185,7 @@
       "ja": "銘板仕上げ部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15725,
@@ -72250,9 +72195,7 @@
       "ja": "訓練用部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15726,
@@ -72262,9 +72205,7 @@
       "ja": "再生済み建築資材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15727,
@@ -72274,9 +72215,7 @@
       "ja": "基礎工事資材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15728,
@@ -72286,9 +72225,7 @@
       "ja": "編みカゴ部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15729,
@@ -72298,9 +72235,7 @@
       "ja": "壁の補修部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15730,
@@ -72310,9 +72245,7 @@
       "ja": "採集道具補材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15731,
@@ -72322,9 +72255,7 @@
       "ja": "床材加工用品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15732,
@@ -72334,9 +72265,7 @@
       "ja": "絶霊体容器"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15733,
@@ -72346,9 +72275,7 @@
       "ja": "調整された石材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15734,
@@ -72358,9 +72285,7 @@
       "ja": "煙幕の実"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15735,
@@ -72370,9 +72295,7 @@
       "ja": "竜族報酬品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15736,
@@ -72382,9 +72305,7 @@
       "ja": "裁断機部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15737,
@@ -72394,9 +72315,7 @@
       "ja": "泉水補修材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15738,
@@ -72406,9 +72325,7 @@
       "ja": "調理不足品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15739,
@@ -72418,9 +72335,7 @@
       "ja": "彫像見本品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15740,
@@ -72430,9 +72345,7 @@
       "ja": "飛空艇模型"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15741,
@@ -72442,9 +72355,7 @@
       "ja": "竜鱗ヤスリ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15742,
@@ -72454,9 +72365,7 @@
       "ja": "雲海釣餌"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15743,
@@ -72466,9 +72375,7 @@
       "ja": "晩餐不足品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15744,
@@ -72478,9 +72385,7 @@
       "ja": "巻き上げ機部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15745,
@@ -72490,9 +72395,7 @@
       "ja": "特製ご褒美"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 15746,
@@ -75063,6 +74966,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -75075,6 +74979,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -76482,7 +76387,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -76495,7 +76399,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -76508,7 +76411,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -76521,7 +76423,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -76534,7 +76435,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -76547,7 +76447,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_NPC"
     ],
     "obtainMethodDetails": {
@@ -76565,7 +76464,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_NPC"
     ],
     "obtainMethodDetails": {
@@ -76583,7 +76481,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_NPC"
     ],
     "obtainMethodDetails": {
@@ -76640,6 +76537,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -77073,7 +76971,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_NPC"
     ],
     "obtainMethodDetails": {
@@ -77091,7 +76988,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_NPC"
     ],
     "obtainMethodDetails": {
@@ -77230,9 +77126,7 @@
       "ja": "高級化粧箱"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17879,
@@ -77252,9 +77146,7 @@
       "ja": "高級キセル箱"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17881,
@@ -77274,9 +77166,7 @@
       "ja": "高級衝立"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17883,
@@ -77296,9 +77186,7 @@
       "ja": "茶屋床机"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17885,
@@ -77318,9 +77206,7 @@
       "ja": "軽量なショートソード"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17887,
@@ -77340,9 +77226,7 @@
       "ja": "太身の打刀"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17889,
@@ -77362,9 +77246,7 @@
       "ja": "小ぶりなハンマー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17891,
@@ -77384,9 +77266,7 @@
       "ja": "検分用の打刀"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17893,
@@ -77406,9 +77286,7 @@
       "ja": "騎士向けの板金鎧"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17895,
@@ -77428,9 +77306,7 @@
       "ja": "チタン製の手甲"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17897,
@@ -77450,9 +77326,7 @@
       "ja": "御前試合用の総面"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17899,
@@ -77472,9 +77346,7 @@
       "ja": "リムサ・ロミンサ式腹当"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17901,
@@ -77494,9 +77366,7 @@
       "ja": "手本用シルバーリング"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17903,
@@ -77516,9 +77386,7 @@
       "ja": "高精度の眼鏡"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17905,
@@ -77538,9 +77406,7 @@
       "ja": "手本用クロノメーター"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17907,
@@ -77560,9 +77426,7 @@
       "ja": "クラウンジェムの献上品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17909,
@@ -77582,9 +77446,7 @@
       "ja": "剥製用ダルメルの毛皮"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17911,
@@ -77604,9 +77466,7 @@
       "ja": "グリズリーベアーグローブ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17913,
@@ -77626,9 +77486,7 @@
       "ja": "高級ダルメルジャケット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17915,
@@ -77648,9 +77506,7 @@
       "ja": "剥製用ガガナの毛皮"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17917,
@@ -77670,9 +77526,7 @@
       "ja": "高級バッスルドレス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17919,
@@ -77692,9 +77546,7 @@
       "ja": "高級スプリングドレス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17921,
@@ -77714,9 +77566,7 @@
       "ja": "高級サベネアンビスチェ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17923,
@@ -77736,9 +77586,7 @@
       "ja": "天女の羽衣"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17925,
@@ -77758,9 +77606,7 @@
       "ja": "知力の甘口秘薬"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17927,
@@ -77780,9 +77626,7 @@
       "ja": "特製ムントゥイジュース"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17929,
@@ -77802,9 +77646,7 @@
       "ja": "血液反応薬"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17931,
@@ -77824,9 +77666,7 @@
       "ja": "特製溶解液"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17933,
@@ -77846,9 +77686,7 @@
       "ja": "ドマ風おにぎり"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17935,
@@ -77868,9 +77706,7 @@
       "ja": "ドマ風うどんつゆ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17937,
@@ -77890,9 +77726,7 @@
       "ja": "握り寿司"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17939,
@@ -77912,9 +77746,7 @@
       "ja": "ドマ風すき焼き"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 17953,
@@ -90400,6 +90232,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -90412,6 +90245,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -90971,6 +90805,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -91554,6 +91389,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -91579,6 +91415,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -91591,6 +91428,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -91629,6 +91467,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -91641,6 +91480,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -91653,6 +91493,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -91803,6 +91644,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -91815,6 +91657,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -91827,6 +91670,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -91839,6 +91683,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -91851,6 +91696,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -91863,6 +91709,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -92429,6 +92276,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -94273,7 +94121,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -94286,7 +94133,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -94299,7 +94145,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -94312,7 +94157,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -94325,7 +94169,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -94677,6 +94520,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -94752,7 +94596,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_NPC"
     ],
     "obtainMethodDetails": {
@@ -94770,7 +94613,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_NPC"
     ],
     "obtainMethodDetails": {
@@ -94788,7 +94630,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_NPC"
     ],
     "obtainMethodDetails": {
@@ -94806,7 +94647,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_NPC"
     ],
     "obtainMethodDetails": {
@@ -94824,7 +94664,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_NPC"
     ],
     "obtainMethodDetails": {
@@ -96724,6 +96563,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -96736,6 +96576,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -97976,9 +97817,7 @@
       "ja": "ハッピ部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22721,
@@ -97988,9 +97827,7 @@
       "ja": "供物台部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22722,
@@ -98000,9 +97837,7 @@
       "ja": "御輿部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22723,
@@ -98012,9 +97847,7 @@
       "ja": "祭弓部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22724,
@@ -98024,9 +97857,7 @@
       "ja": "ナマズオ人形部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22725,
@@ -98036,9 +97867,7 @@
       "ja": "交易品部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22726,
@@ -98048,9 +97877,7 @@
       "ja": "清めの祭具"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22727,
@@ -98060,9 +97887,7 @@
       "ja": "篝火台部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22728,
@@ -98072,9 +97897,7 @@
       "ja": "うちわ部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22729,
@@ -98084,9 +97907,7 @@
       "ja": "粗品部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22730,
@@ -98096,9 +97917,7 @@
       "ja": "ナマズ釣り具"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22731,
@@ -98108,9 +97927,7 @@
       "ja": "遊牧民風の商材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22732,
@@ -98120,9 +97937,7 @@
       "ja": "先祖の接待用品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22733,
@@ -98132,9 +97947,7 @@
       "ja": "毛刈りハサミ部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22734,
@@ -98144,9 +97957,7 @@
       "ja": "ボーズ調理用品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22735,
@@ -98156,9 +97967,7 @@
       "ja": "茶会必需品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22736,
@@ -98168,9 +97977,7 @@
       "ja": "馬番必需品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22737,
@@ -98180,9 +97987,7 @@
       "ja": "太鼓部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22738,
@@ -98192,9 +97997,7 @@
       "ja": "紙吹雪生産道具"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22739,
@@ -98204,9 +98007,7 @@
       "ja": "供物用品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22740,
@@ -98216,9 +98017,7 @@
       "ja": "ナマズオ焼き用品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22741,
@@ -98228,9 +98027,7 @@
       "ja": "投擲用特産品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22742,
@@ -98240,9 +98037,7 @@
       "ja": "ナゴール用品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22743,
@@ -98252,9 +98047,7 @@
       "ja": "愛用の包丁部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22744,
@@ -98264,9 +98057,7 @@
       "ja": "感謝の贈答品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22745,
@@ -98276,9 +98067,7 @@
       "ja": "魅惑の魔物人形"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 22884,
@@ -99030,7 +98819,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -99043,7 +98831,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -99056,7 +98843,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -99069,7 +98855,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -99082,7 +98867,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -99095,7 +98879,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_NPC"
     ],
     "obtainMethodDetails": {
@@ -99113,7 +98896,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_NPC"
     ],
     "obtainMethodDetails": {
@@ -99131,7 +98913,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_NPC"
     ],
     "obtainMethodDetails": {
@@ -99149,7 +98930,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_NPC"
     ],
     "obtainMethodDetails": {
@@ -99167,7 +98947,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_NPC"
     ],
     "obtainMethodDetails": {
@@ -99310,9 +99089,7 @@
       "ja": "素敵な調合用品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 23178,
@@ -99335,6 +99112,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -101248,6 +101026,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -101260,6 +101039,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -101435,6 +101215,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -102355,7 +102136,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -102368,7 +102148,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -102381,7 +102160,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -102394,7 +102172,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -102407,7 +102184,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -102420,7 +102196,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_NPC"
     ],
     "obtainMethodDetails": {
@@ -102438,7 +102213,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_NPC"
     ],
     "obtainMethodDetails": {
@@ -102456,7 +102230,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_NPC"
     ],
     "obtainMethodDetails": {
@@ -102474,7 +102247,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_NPC"
     ],
     "obtainMethodDetails": {
@@ -102492,7 +102264,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_NPC"
     ],
     "obtainMethodDetails": {
@@ -114003,9 +113774,7 @@
       "ja": "金属製の手甲"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 27233,
@@ -114015,9 +113784,7 @@
       "ja": "金属製の食材容器"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 27234,
@@ -114027,9 +113794,7 @@
       "ja": "金属製の三叉鉾"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 27235,
@@ -114039,9 +113804,7 @@
       "ja": "耐魔法用首飾り"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 27236,
@@ -114061,9 +113824,7 @@
       "ja": "金属製の香炉"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 27238,
@@ -114083,9 +113844,7 @@
       "ja": "精巧な指輪"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 27240,
@@ -114095,9 +113854,7 @@
       "ja": "キャンバス修復材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 27241,
@@ -114107,9 +113864,7 @@
       "ja": "内張りの修復材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 27242,
@@ -114119,9 +113874,7 @@
       "ja": "アマロ装身具の修復材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 27243,
@@ -114131,9 +113884,7 @@
       "ja": "リュートの修復材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 27244,
@@ -114153,9 +113904,7 @@
       "ja": "工房の看板"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 27246,
@@ -114175,9 +113924,7 @@
       "ja": "リュートの調整部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 27248,
@@ -114187,9 +113934,7 @@
       "ja": "解毒の薬餌"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 27249,
@@ -114199,9 +113944,7 @@
       "ja": "低刺激の薬餌"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 27250,
@@ -114211,9 +113954,7 @@
       "ja": "回復期の薬餌"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 27251,
@@ -114223,9 +113964,7 @@
       "ja": "ベルベ風の餌"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 27252,
@@ -114245,9 +113984,7 @@
       "ja": "妖精への贈り物"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 27254,
@@ -114267,9 +114004,7 @@
       "ja": "ズン族の草団子"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 27268,
@@ -115781,6 +115516,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -115793,6 +115529,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -115831,6 +115568,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -115856,6 +115594,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -115868,6 +115607,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -115880,6 +115620,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -116150,6 +115891,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -116162,6 +115904,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -116174,6 +115917,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -116186,6 +115930,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -116198,6 +115943,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -116210,6 +115956,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -116791,6 +116538,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -116868,6 +116616,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -118661,6 +118410,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -119289,7 +119039,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -119302,7 +119051,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -119315,7 +119063,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -119328,7 +119075,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -119341,7 +119087,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120010,6 +119755,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -120073,7 +119819,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120086,7 +119831,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120099,7 +119843,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120112,7 +119855,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120125,7 +119867,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120138,7 +119879,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120151,7 +119891,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120164,7 +119903,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120177,7 +119915,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120190,7 +119927,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120203,7 +119939,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120216,7 +119951,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120229,7 +119963,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120242,7 +119975,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120255,7 +119987,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120268,7 +119999,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120281,7 +120011,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120294,7 +120023,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120307,7 +120035,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120320,7 +120047,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120333,7 +120059,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120346,7 +120071,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120359,7 +120083,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120372,7 +120095,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120385,7 +120107,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120398,7 +120119,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120411,7 +120131,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120424,7 +120143,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120437,7 +120155,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120450,7 +120167,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120463,7 +120179,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120476,7 +120191,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120489,7 +120203,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120502,7 +120215,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120515,7 +120227,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120528,7 +120239,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120541,7 +120251,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120554,7 +120263,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120567,7 +120275,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120580,7 +120287,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -120606,6 +120312,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -120657,6 +120364,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -120669,6 +120377,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -120707,6 +120416,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -120745,6 +120455,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -120783,6 +120494,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -120808,6 +120520,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -120833,6 +120546,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -120858,6 +120572,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -120909,6 +120624,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -120921,6 +120637,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -120985,6 +120702,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -122123,6 +121841,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -123722,9 +123441,7 @@
       "ja": "改良用の珪化木丸玉"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 29646,
@@ -123734,9 +123451,7 @@
       "ja": "改良用のリベット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 29647,
@@ -123746,9 +123461,7 @@
       "ja": "改良用のワイヤー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 29648,
@@ -123758,9 +123471,7 @@
       "ja": "改良用の砥石"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 29649,
@@ -123770,9 +123481,7 @@
       "ja": "改良用のなめし革"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 29650,
@@ -123782,9 +123491,7 @@
       "ja": "改良用の閃糸"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 29651,
@@ -123794,9 +123501,7 @@
       "ja": "改良用の合成樹脂"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 29652,
@@ -123806,9 +123511,7 @@
       "ja": "改良用の種子抽出液"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 29653,
@@ -123818,9 +123521,7 @@
       "ja": "改良用のシャフト"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 29654,
@@ -123830,9 +123531,7 @@
       "ja": "改良用のフィッティング"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 29655,
@@ -123842,9 +123541,7 @@
       "ja": "改良用のチェーンプレート"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 29656,
@@ -123854,9 +123551,7 @@
       "ja": "改良用の宝玉"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 29657,
@@ -123866,9 +123561,7 @@
       "ja": "改良用の羊皮紙"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 29658,
@@ -123878,9 +123571,7 @@
       "ja": "改良用のビロード"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 29659,
@@ -123890,9 +123581,7 @@
       "ja": "改良用のガラス板"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 29660,
@@ -123902,9 +123591,7 @@
       "ja": "改良用の種子粉"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 29661,
@@ -124102,7 +123789,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124115,7 +123801,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124128,7 +123813,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124141,7 +123825,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124154,7 +123837,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124167,7 +123849,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124180,7 +123861,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124193,7 +123873,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124206,7 +123885,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124219,7 +123897,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124232,7 +123909,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124245,7 +123921,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124258,7 +123933,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124271,7 +123945,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124284,7 +123957,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124297,7 +123969,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124310,7 +123981,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124323,7 +123993,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124336,7 +124005,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124349,7 +124017,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124362,7 +124029,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124375,7 +124041,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124388,7 +124053,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124401,7 +124065,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124414,7 +124077,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124427,7 +124089,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124440,7 +124101,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124453,7 +124113,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124466,7 +124125,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124479,7 +124137,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124492,7 +124149,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124505,7 +124161,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124518,7 +124173,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124531,7 +124185,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124544,7 +124197,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124557,7 +124209,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124570,7 +124221,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124583,7 +124233,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124596,7 +124245,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124609,7 +124257,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124622,7 +124269,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124635,7 +124281,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124648,7 +124293,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124661,7 +124305,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124674,7 +124317,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124687,7 +124329,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124700,7 +124341,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -124713,7 +124353,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -125504,6 +125143,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -127095,6 +126735,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -127120,7 +126761,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -127133,7 +126773,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -127146,7 +126785,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -127159,7 +126797,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -127172,7 +126809,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -127916,9 +127552,7 @@
       "ja": "収集用のシーダーロングボウ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30971,
@@ -127928,9 +127562,7 @@
       "ja": "収集用のシーダーフィッシングロッド"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30972,
@@ -127940,9 +127572,7 @@
       "ja": "収集用のホーリーシーダー・スピニングホイール"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30973,
@@ -127952,9 +127582,7 @@
       "ja": "収集用のダークチェスナットロッド"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30974,
@@ -127964,9 +127592,7 @@
       "ja": "収集用のハロードチェスナットリング"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30975,
@@ -127976,9 +127602,7 @@
       "ja": "収集用のバーチシグナム"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30976,
@@ -127988,9 +127612,7 @@
       "ja": "収集用のビーチコンポジットボウ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30977,
@@ -128000,9 +127622,7 @@
       "ja": "収集用のラーチネックレス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30978,
@@ -128012,9 +127632,7 @@
       "ja": "収集用のパインケーン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30979,
@@ -128024,9 +127642,7 @@
       "ja": "収集用のパーシモンブレスレット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30980,
@@ -128036,9 +127652,7 @@
       "ja": "収集用のゼルコバスピニングホイール"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30981,
@@ -128048,9 +127662,7 @@
       "ja": "収集用のホワイトオークパルチザン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30982,
@@ -128060,9 +127672,7 @@
       "ja": "収集用のミラクルアップルスタッフ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30983,
@@ -128072,9 +127682,7 @@
       "ja": "収集用のホワイトアッシュイヤリング"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30984,
@@ -128084,9 +127692,7 @@
       "ja": "収集用のサンドチークフォチャード"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30985,
@@ -128096,9 +127702,7 @@
       "ja": "収集用のミスライトカッツバルゲル"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30986,
@@ -128108,9 +127712,7 @@
       "ja": "収集用のミスライトプジオ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30987,
@@ -128120,9 +127722,7 @@
       "ja": "収集用のミスライトラウンドソー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30988,
@@ -128132,9 +127732,7 @@
       "ja": "収集用のチタン・レザーワーカーナイフ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30989,
@@ -128144,9 +127742,7 @@
       "ja": "収集用のチタンモーター"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30990,
@@ -128156,9 +127752,7 @@
       "ja": "収集用のアダマンビル"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30991,
@@ -128168,9 +127762,7 @@
       "ja": "収集用のハイスチールディバイダー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30992,
@@ -128180,9 +127772,7 @@
       "ja": "収集用のハイスチール・クローハンマー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30993,
@@ -128192,9 +127782,7 @@
       "ja": "収集用の卸金打刀"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30994,
@@ -128204,9 +127792,7 @@
       "ja": "収集用のドマスチールパタ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30995,
@@ -128216,9 +127802,7 @@
       "ja": "収集用のモリブデンプライヤー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30996,
@@ -128228,9 +127812,7 @@
       "ja": "収集用のディープゴールドアネラス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30997,
@@ -128240,9 +127822,7 @@
       "ja": "収集用のディープゴールド・クリナリーナイフ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30998,
@@ -128252,9 +127832,7 @@
       "ja": "収集用のブルースピリット・ガンブレード"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 30999,
@@ -128264,9 +127842,7 @@
       "ja": "収集用のチタンブロンズピック"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31000,
@@ -128276,9 +127852,7 @@
       "ja": "収集用のミスライトサレット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31001,
@@ -128288,9 +127862,7 @@
       "ja": "収集用のミスライトホーバーク"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31002,
@@ -128300,9 +127872,7 @@
       "ja": "収集用のミスライトブレードシールド"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31003,
@@ -128312,9 +127882,7 @@
       "ja": "収集用のチタンフライパン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31004,
@@ -128324,9 +127892,7 @@
       "ja": "収集用のチタンヴァンブレイス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31005,
@@ -128336,9 +127902,7 @@
       "ja": "収集用のアダマンスクトゥム"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31006,
@@ -128348,9 +127912,7 @@
       "ja": "収集用のハイスチール・サーマルアレンビック"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31007,
@@ -128360,9 +127922,7 @@
       "ja": "収集用のハイスチールプレートベルト"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31008,
@@ -128372,9 +127932,7 @@
       "ja": "収集用のドマアイアングリーヴ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31009,
@@ -128384,9 +127942,7 @@
       "ja": "収集用のドマスチールタバード"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31010,
@@ -128396,9 +127952,7 @@
       "ja": "収集用のモリブデンヘッドギア"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31011,
@@ -128408,9 +127962,7 @@
       "ja": "収集用のディープゴールドキュイラス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31012,
@@ -128420,9 +127972,7 @@
       "ja": "収集用のディープゴールドウィングス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31013,
@@ -128432,9 +127982,7 @@
       "ja": "収集用のブルースピリットガントレット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31014,
@@ -128444,9 +127992,7 @@
       "ja": "収集用のチタンブロンズ・タワーシールド"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31015,
@@ -128456,9 +128002,7 @@
       "ja": "収集用のミスライトゴーグル"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31016,
@@ -128468,9 +128012,7 @@
       "ja": "収集用のミスライトバングル"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31017,
@@ -128480,9 +128022,7 @@
       "ja": "収集用のミスライトニードル"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31018,
@@ -128492,9 +128032,7 @@
       "ja": "収集用のハードシルバーモノクル"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31019,
@@ -128504,9 +128042,7 @@
       "ja": "収集用のハードシルバーポール"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31020,
@@ -128516,9 +128052,7 @@
       "ja": "収集用のオーラムレギスピアス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31021,
@@ -128528,9 +128062,7 @@
       "ja": "収集用のキュプロプラニスフィア"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31022,
@@ -128540,9 +128072,7 @@
       "ja": "収集用のキュプロネックレス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31023,
@@ -128552,9 +128082,7 @@
       "ja": "収集用のダリウムチャプレット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31024,
@@ -128564,9 +128092,7 @@
       "ja": "収集用のダリウムロッド"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31025,
@@ -128576,9 +128102,7 @@
       "ja": "収集用のパラースニードル"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31026,
@@ -128588,9 +128112,7 @@
       "ja": "収集用のストーンゴールドデーゲン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31027,
@@ -128600,9 +128122,7 @@
       "ja": "収集用のストーンゴールドオーラリー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31028,
@@ -128612,9 +128132,7 @@
       "ja": "収集用のマナシルバーイヤーカフ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31029,
@@ -128624,9 +128142,7 @@
       "ja": "収集用のチタンブロンズヘッドギア"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31030,
@@ -128636,9 +128152,7 @@
       "ja": "収集用のアルケオーニスベルト"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31031,
@@ -128648,9 +128162,7 @@
       "ja": "収集用のアルケオーニスクローシュ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31032,
@@ -128660,9 +128172,7 @@
       "ja": "収集用のワイバーンマスク"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31033,
@@ -128672,9 +128182,7 @@
       "ja": "収集用のダルメルコート"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31034,
@@ -128684,9 +128192,7 @@
       "ja": "収集用のドラゴンレザーリング"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31035,
@@ -128696,9 +128202,7 @@
       "ja": "収集用のアンフィプテレハット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31036,
@@ -128708,9 +128212,7 @@
       "ja": "収集用のガガナシューズ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31037,
@@ -128720,9 +128222,7 @@
       "ja": "収集用のギュウキジャケット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31038,
@@ -128732,9 +128232,7 @@
       "ja": "収集用のタイガートライコーン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31039,
@@ -128744,9 +128242,7 @@
       "ja": "収集用のマーリドコルセット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31040,
@@ -128756,9 +128252,7 @@
       "ja": "収集用のガゼルアームガード"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31041,
@@ -128768,9 +128262,7 @@
       "ja": "収集用のスミロドントラウザー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31042,
@@ -128780,9 +128272,7 @@
       "ja": "収集用のグリーングライダーサイブーツ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31043,
@@ -128792,9 +128282,7 @@
       "ja": "収集用のアトロシラプトルキャップ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31044,
@@ -128804,9 +128292,7 @@
       "ja": "収集用のゾヌールフィンガレスグローブ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31045,
@@ -128816,9 +128302,7 @@
       "ja": "収集用のレインボークロスボレロ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31046,
@@ -128828,9 +128312,7 @@
       "ja": "収集用のレインボークロスリボン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31047,
@@ -128840,9 +128322,7 @@
       "ja": "収集用のホーリーレインボー・ストローハット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31048,
@@ -128852,9 +128332,7 @@
       "ja": "収集用のラミーターバン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31049,
@@ -128864,9 +128342,7 @@
       "ja": "収集用のハロードラミーダブレット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31050,
@@ -128876,9 +128352,7 @@
       "ja": "収集用のキマイラフェルトシクラス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31051,
@@ -128888,9 +128362,7 @@
       "ja": "収集用のレッドヘンプスカート"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31052,
@@ -128900,9 +128372,7 @@
       "ja": "収集用のルビーコットンジレ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31053,
@@ -128912,9 +128382,7 @@
       "ja": "収集用のクズクロスハット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31054,
@@ -128924,9 +128392,7 @@
       "ja": "収集用のサージホーズ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31055,
@@ -128936,9 +128402,7 @@
       "ja": "収集用のツインシルクエプロン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31056,
@@ -128948,9 +128412,7 @@
       "ja": "収集用のホワイトヘンプヒマティオン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31057,
@@ -128960,9 +128422,7 @@
       "ja": "収集用のイリディセントトップス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31058,
@@ -128972,9 +128432,7 @@
       "ja": "収集用のピクシーコットンフード"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31059,
@@ -128984,9 +128442,7 @@
       "ja": "収集用のオヴィムチュニック"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31060,
@@ -128996,9 +128452,7 @@
       "ja": "収集用のアルケオーニスグリモア"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31061,
@@ -129008,9 +128462,7 @@
       "ja": "収集用のアルケオーニスコーデックス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31062,
@@ -129020,9 +128472,7 @@
       "ja": "収集用の錬金溶剤"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31063,
@@ -129032,9 +128482,7 @@
       "ja": "収集用のダルメルコーデックス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31064,
@@ -129044,9 +128492,7 @@
       "ja": "収集用のマキシポーション"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31065,
@@ -129056,9 +128502,7 @@
       "ja": "収集用のブック・オブ・オーラムレギス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31066,
@@ -129068,9 +128512,7 @@
       "ja": "収集用のインデックス・オブ・キュプロ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31067,
@@ -129080,9 +128522,7 @@
       "ja": "収集用の霊水"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31068,
@@ -129092,9 +128532,7 @@
       "ja": "収集用のタイガーグリモア"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31069,
@@ -129104,9 +128542,7 @@
       "ja": "収集用のグロースフォーミュラ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31070,
@@ -129116,9 +128552,7 @@
       "ja": "収集用のガゼルコーデックス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31071,
@@ -129128,9 +128562,7 @@
       "ja": "収集用の幻水"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31072,
@@ -129140,9 +128572,7 @@
       "ja": "収集用のグリーングライダーグリモア"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31073,
@@ -129152,9 +128582,7 @@
       "ja": "収集用のブルースピリットコーデックス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31074,
@@ -129164,9 +128592,7 @@
       "ja": "収集用の水薬"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31075,
@@ -129176,9 +128602,7 @@
       "ja": "収集用のアウフラウフ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31076,
@@ -129188,9 +128612,7 @@
       "ja": "収集用のソーム・アル・オ・マロン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31077,
@@ -129200,9 +128622,7 @@
       "ja": "収集用のポルチーニソテー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31078,
@@ -129212,9 +128632,7 @@
       "ja": "収集用のエッグロワイヤル"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31079,
@@ -129224,9 +128642,7 @@
       "ja": "収集用のペペロンチーノ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31080,
@@ -129236,9 +128652,7 @@
       "ja": "収集用のマロングラッセ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31081,
@@ -129248,9 +128662,7 @@
       "ja": "収集用のバクラヴァ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31082,
@@ -129260,9 +128672,7 @@
       "ja": "収集用のショルログ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31083,
@@ -129272,9 +128682,7 @@
       "ja": "収集用の天ぷら盛り合わせ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31084,
@@ -129284,9 +128692,7 @@
       "ja": "収集用のパーシモンプディング"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31085,
@@ -129296,9 +128702,7 @@
       "ja": "収集用のちらし寿司"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31086,
@@ -129308,9 +128712,7 @@
       "ja": "収集用のレイルのグリル"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31087,
@@ -129320,9 +128722,7 @@
       "ja": "収集用のスパゲッティ・ネーロ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31088,
@@ -129332,9 +128732,7 @@
       "ja": "収集用のラセットポポトグラタン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31089,
@@ -129344,9 +128742,7 @@
       "ja": "収集用のエスプレッソ・コン・パンナ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31090,
@@ -129503,9 +128899,7 @@
       "ja": "改良用のシーダー材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31102,
@@ -129515,9 +128909,7 @@
       "ja": "改良用のアイアンネイル"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31103,
@@ -129527,9 +128919,7 @@
       "ja": "改良用のミスリルリングズ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31104,
@@ -129539,9 +128929,7 @@
       "ja": "改良用のシルバーナゲット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31105,
@@ -129551,9 +128939,7 @@
       "ja": "改良用のガガナストラップ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31106,
@@ -129563,9 +128949,7 @@
       "ja": "改良用の生地"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31107,
@@ -129575,9 +128959,7 @@
       "ja": "改良用のにかわ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31108,
@@ -129587,9 +128969,7 @@
       "ja": "改良用のオイル"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31109,
@@ -129599,9 +128979,7 @@
       "ja": "改良用のシーダー板"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31110,
@@ -129611,9 +128989,7 @@
       "ja": "改良用のアイアンインゴット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31111,
@@ -129623,9 +128999,7 @@
       "ja": "改良用のミスリルプレート"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31112,
@@ -129635,9 +129009,7 @@
       "ja": "改良用のシルバーインゴット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31113,
@@ -129647,9 +129019,7 @@
       "ja": "改良用のガガナレザー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31114,
@@ -129659,9 +129029,7 @@
       "ja": "改良用の羅紗"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31115,
@@ -129671,9 +129039,7 @@
       "ja": "改良用のラバー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31116,
@@ -129683,9 +129049,7 @@
       "ja": "改良用のペースト"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31117,
@@ -129801,9 +129165,7 @@
       "ja": "作業場の必需品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31138,
@@ -129823,9 +129185,7 @@
       "ja": "醸造設備の必需品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31140,
@@ -129845,9 +129205,7 @@
       "ja": "主砲の重要部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31142,
@@ -129867,9 +129225,7 @@
       "ja": "ガレージ拡張用の部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31144,
@@ -129889,9 +129245,7 @@
       "ja": "オートメーション必要部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31146,
@@ -129911,9 +129265,7 @@
       "ja": "武具補修材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31148,
@@ -129933,9 +129285,7 @@
       "ja": "ヒゲのお手入れ用具"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31150,
@@ -129955,9 +129305,7 @@
       "ja": "車体重要部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31152,
@@ -129977,9 +129325,7 @@
       "ja": "摩耗軽減部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31154,
@@ -129999,9 +129345,7 @@
       "ja": "ドワーフ製図用具"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31156,
@@ -130021,9 +129365,7 @@
       "ja": "鋼板増産部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31158,
@@ -130043,9 +129385,7 @@
       "ja": "酒樽部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31160,
@@ -130065,9 +129405,7 @@
       "ja": "エンジン保全部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31162,
@@ -130087,9 +129425,7 @@
       "ja": "精製実験用品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31164,
@@ -130109,9 +129445,7 @@
       "ja": "冷却機構部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31166,
@@ -130131,9 +129465,7 @@
       "ja": "酒場必需品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31168,
@@ -130153,9 +129485,7 @@
       "ja": "耐熱性部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31170,
@@ -130175,9 +129505,7 @@
       "ja": "代金代わりの商品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31172,
@@ -130197,9 +129525,7 @@
       "ja": "試射用標的"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31174,
@@ -130219,9 +129545,7 @@
       "ja": "試作装甲用部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31176,
@@ -130241,9 +129565,7 @@
       "ja": "目覚めの秘密道具"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31178,
@@ -130263,9 +129585,7 @@
       "ja": "ド派手な外装オプション"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31180,
@@ -130285,9 +129605,7 @@
       "ja": "オートマトン修理部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31182,
@@ -130307,9 +129625,7 @@
       "ja": "低視認性外装オプション"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31184,
@@ -130319,9 +129635,7 @@
       "ja": "第三次復興用の合板"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31185,
@@ -130331,9 +129645,7 @@
       "ja": "第三次復興用の合金"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31186,
@@ -130343,9 +129655,7 @@
       "ja": "第三次復興用の金属板"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31187,
@@ -130355,9 +129665,7 @@
       "ja": "第三次復興用の地金"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31188,
@@ -130367,9 +129675,7 @@
       "ja": "第三次復興用のなめし革"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31189,
@@ -130379,9 +129685,7 @@
       "ja": "第三次復興用の荒縄"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31190,
@@ -130391,9 +129695,7 @@
       "ja": "第三次復興用のインク"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31191,
@@ -130403,9 +129705,7 @@
       "ja": "第三次復興用のヘンプミルク"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31192,
@@ -130415,9 +129715,7 @@
       "ja": "第三次復興用の木箱"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31193,
@@ -130427,9 +129725,7 @@
       "ja": "第三次復興用の鉄釘"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31194,
@@ -130439,9 +129735,7 @@
       "ja": "第三次復興用のリベット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31195,
@@ -130451,9 +129745,7 @@
       "ja": "第三次復興用の鉄環"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31196,
@@ -130463,9 +129755,7 @@
       "ja": "第三次復興用の革紐"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31197,
@@ -130475,9 +129765,7 @@
       "ja": "第三次復興用の生地"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31198,
@@ -130487,9 +129775,7 @@
       "ja": "第三次復興用の植物油"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31199,
@@ -130499,9 +129785,7 @@
       "ja": "第三次復興用のセサミクッキー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31200,
@@ -130511,9 +129795,7 @@
       "ja": "第三次復興用のグラインディングホイール"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31201,
@@ -130523,9 +129805,7 @@
       "ja": "第三次復興用のピックアクス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31202,
@@ -130535,9 +129815,7 @@
       "ja": "第三次復興用のクッキングポット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31203,
@@ -130547,9 +129825,7 @@
       "ja": "第三次復興用の裁縫道具"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31204,
@@ -130559,9 +129835,7 @@
       "ja": "第三次復興用の革袋"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31205,
@@ -130571,9 +129845,7 @@
       "ja": "第三次復興用のホウキ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31206,
@@ -130583,9 +129855,7 @@
       "ja": "第三次復興用の聖水"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31207,
@@ -130595,9 +129865,7 @@
       "ja": "第三次復興用の紅茶"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31208,
@@ -130607,9 +129875,7 @@
       "ja": "第三次復興用の脚立"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31209,
@@ -130619,9 +129885,7 @@
       "ja": "第三次復興用の大鋸"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31210,
@@ -130631,9 +129895,7 @@
       "ja": "第三次復興用のメセイル"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31211,
@@ -130643,9 +129905,7 @@
       "ja": "第三次復興用の石材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31212,
@@ -130655,9 +129915,7 @@
       "ja": "第三次復興用の長靴"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31213,
@@ -130667,9 +129925,7 @@
       "ja": "第三次復興用の手袋"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31214,
@@ -130679,9 +129935,7 @@
       "ja": "第三次復興用の石鹸"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31215,
@@ -130691,9 +129945,7 @@
       "ja": "第三次復興用の薬湯"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31216,
@@ -130703,9 +129955,7 @@
       "ja": "第三次復興用の寝台"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31217,
@@ -130715,9 +129965,7 @@
       "ja": "第三次復興用の焜炉"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31218,
@@ -130727,9 +129975,7 @@
       "ja": "第三次復興用の街灯"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31219,
@@ -130739,9 +129985,7 @@
       "ja": "第三次復興用の篝火台"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31220,
@@ -130751,9 +129995,7 @@
       "ja": "第三次復興用の作業着"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31221,
@@ -130763,9 +130005,7 @@
       "ja": "第三次復興用のオーニング"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31222,
@@ -130775,9 +130015,7 @@
       "ja": "第三次復興用のグロースフォーミュラ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31223,
@@ -130787,9 +130025,7 @@
       "ja": "第三次復興用のシチュー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31224,
@@ -130799,9 +130035,7 @@
       "ja": "第三次復興用の特注ゴールドワークベンチ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31225,
@@ -130811,9 +130045,7 @@
       "ja": "第三次復興用の特注スミシングベンチ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31226,
@@ -130823,9 +130055,7 @@
       "ja": "第三次復興用の特注ドア"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31227,
@@ -130835,9 +130065,7 @@
       "ja": "第三次復興用の特注クロノメーター"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31228,
@@ -130847,9 +130075,7 @@
       "ja": "第三次復興用の特注レザーチェア"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31229,
@@ -130859,9 +130085,7 @@
       "ja": "第三次復興用の特注エプロン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31230,
@@ -130871,9 +130095,7 @@
       "ja": "第三次復興用の特注タイルフローリング"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31231,
@@ -130883,9 +130105,7 @@
       "ja": "第三次復興用の特注定食プレート"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31232,
@@ -131435,9 +130655,7 @@
       "ja": "収集用のリグナムバイタ・グラインディングホイール"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31653,
@@ -131447,9 +130665,7 @@
       "ja": "収集用のハイミスリルハチェット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31654,
@@ -131459,9 +130675,7 @@
       "ja": "収集用のハイミスリルアレンビック"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31655,
@@ -131471,9 +130685,7 @@
       "ja": "収集用のハイミスリルリング"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31656,
@@ -131483,9 +130695,7 @@
       "ja": "収集用のシースワローコート"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31657,
@@ -131495,9 +130705,7 @@
       "ja": "収集用のドワーフコットンベレー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31658,
@@ -131507,9 +130715,7 @@
       "ja": "収集用のハイミスリル・ドワーヴングリモア"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31659,
@@ -131519,9 +130725,7 @@
       "ja": "収集用のレモネード"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31662,
@@ -131569,9 +130773,7 @@
       "ja": "最終改良用のパイン材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31751,
@@ -131581,9 +130783,7 @@
       "ja": "最終改良用のシルバーギア"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31752,
@@ -131593,9 +130793,7 @@
       "ja": "最終改良用のウォルフラムプレートレット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31753,
@@ -131605,9 +130803,7 @@
       "ja": "最終改良用のセレスタイン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31754,
@@ -131617,9 +130813,7 @@
       "ja": "最終改良用のガゼルレザー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31755,
@@ -131629,9 +130823,7 @@
       "ja": "最終改良用の藍上布"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31756,
@@ -131641,9 +130833,7 @@
       "ja": "最終改良用の聖水"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31757,
@@ -131653,9 +130843,7 @@
       "ja": "最終改良用のシャークオイル"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31758,
@@ -132965,9 +132153,7 @@
       "ja": "第四次復興用の合板"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31914,
@@ -132977,9 +132163,7 @@
       "ja": "第四次復興用の合金"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31915,
@@ -132989,9 +132173,7 @@
       "ja": "第四次復興用の金属板"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31916,
@@ -133001,9 +132183,7 @@
       "ja": "第四次復興用の地金"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31917,
@@ -133013,9 +132193,7 @@
       "ja": "第四次復興用のなめし革"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31918,
@@ -133025,9 +132203,7 @@
       "ja": "第四次復興用の荒縄"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31919,
@@ -133037,9 +132213,7 @@
       "ja": "第四次復興用のインク"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31920,
@@ -133049,9 +132223,7 @@
       "ja": "第四次復興用のヘンプミルク"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31921,
@@ -133061,9 +132233,7 @@
       "ja": "第四次復興用の木箱"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31922,
@@ -133073,9 +132243,7 @@
       "ja": "第四次復興用の鉄釘"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31923,
@@ -133085,9 +132253,7 @@
       "ja": "第四次復興用のリベット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31924,
@@ -133097,9 +132263,7 @@
       "ja": "第四次復興用の鉄環"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31925,
@@ -133109,9 +132273,7 @@
       "ja": "第四次復興用の革紐"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31926,
@@ -133121,9 +132283,7 @@
       "ja": "第四次復興用の生地"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31927,
@@ -133133,9 +132293,7 @@
       "ja": "第四次復興用の植物油"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31928,
@@ -133145,9 +132303,7 @@
       "ja": "第四次復興用のセサミクッキー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31929,
@@ -133157,9 +132313,7 @@
       "ja": "第四次復興用のスピニングホイール"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31930,
@@ -133169,9 +132323,7 @@
       "ja": "第四次復興用のハチェット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31931,
@@ -133181,9 +132333,7 @@
       "ja": "第四次復興用のクッキングポット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31932,
@@ -133193,9 +132343,7 @@
       "ja": "第四次復興用の裁縫道具"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31933,
@@ -133205,9 +132353,7 @@
       "ja": "第四次復興用の革袋"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31934,
@@ -133217,9 +132363,7 @@
       "ja": "第四次復興用のホウキ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31935,
@@ -133229,9 +132373,7 @@
       "ja": "第四次復興用の聖水"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31936,
@@ -133241,9 +132383,7 @@
       "ja": "第四次復興用の紅茶"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31937,
@@ -133253,9 +132393,7 @@
       "ja": "第四次復興用の脚立"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31938,
@@ -133265,9 +132403,7 @@
       "ja": "第四次復興用の大鋸"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31939,
@@ -133277,9 +132413,7 @@
       "ja": "第四次復興用のメセイル"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31940,
@@ -133289,9 +132423,7 @@
       "ja": "第四次復興用の石材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31941,
@@ -133301,9 +132433,7 @@
       "ja": "第四次復興用の長靴"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31942,
@@ -133313,9 +132443,7 @@
       "ja": "第四次復興用の手袋"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31943,
@@ -133325,9 +132453,7 @@
       "ja": "第四次復興用の石鹸"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31944,
@@ -133337,9 +132463,7 @@
       "ja": "第四次復興用の薬湯"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31945,
@@ -133349,9 +132473,7 @@
       "ja": "第四次復興用の寝台"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31946,
@@ -133361,9 +132483,7 @@
       "ja": "第四次復興用の焜炉"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31947,
@@ -133373,9 +132493,7 @@
       "ja": "第四次復興用の街灯"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31948,
@@ -133385,9 +132503,7 @@
       "ja": "第四次復興用の篝火台"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31949,
@@ -133397,9 +132513,7 @@
       "ja": "第四次復興用の作業着"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31950,
@@ -133409,9 +132523,7 @@
       "ja": "第四次復興用のオーニング"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31951,
@@ -133421,9 +132533,7 @@
       "ja": "第四次復興用のグロースフォーミュラ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31952,
@@ -133433,9 +132543,7 @@
       "ja": "第四次復興用のシチュー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31953,
@@ -133445,9 +132553,7 @@
       "ja": "第四次復興用の特注アイスボックス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31954,
@@ -133457,9 +132563,7 @@
       "ja": "第四次復興用の特注ウェザーチョコボ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31955,
@@ -133469,9 +132573,7 @@
       "ja": "第四次復興用の特注カンパニーチェスト"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31956,
@@ -133481,9 +132583,7 @@
       "ja": "第四次復興用の特注アストロスコープ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31957,
@@ -133493,9 +132593,7 @@
       "ja": "第四次復興用の特注ツールベルト"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31958,
@@ -133505,9 +132603,7 @@
       "ja": "第四次復興用の特注ベスト"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31959,
@@ -133517,9 +132613,7 @@
       "ja": "第四次復興用の特注幻薬"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31960,
@@ -133529,9 +132623,7 @@
       "ja": "第四次復興用の特注ソルベ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 31961,
@@ -134839,6 +133931,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -134890,6 +133983,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -135312,7 +134406,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -135325,7 +134418,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -135338,7 +134430,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -135351,7 +134442,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -135364,7 +134454,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -147944,9 +147033,7 @@
       "ja": "黄金の外装部品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35589,
@@ -147956,9 +147043,7 @@
       "ja": "黄金の精密歯車"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35590,
@@ -147968,9 +147053,7 @@
       "ja": "黄金の動力部品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35591,
@@ -147980,9 +147063,7 @@
       "ja": "黄金の発声部品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35592,
@@ -147992,9 +147073,7 @@
       "ja": "星見鏡支柱"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35593,
@@ -148004,9 +147083,7 @@
       "ja": "エーテル観測部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35594,
@@ -148016,9 +147093,7 @@
       "ja": "エーテル増幅部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35595,
@@ -148028,9 +147103,7 @@
       "ja": "エーテル伝導部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35596,
@@ -148040,9 +147113,7 @@
       "ja": "特製の甘味料"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35597,
@@ -148052,9 +147123,7 @@
       "ja": "特製の酵母"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35598,
@@ -148064,9 +147133,7 @@
       "ja": "特製の油脂"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35599,
@@ -148076,9 +147143,7 @@
       "ja": "特製の添加物"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35626,
@@ -148088,9 +147153,7 @@
       "ja": "収集用の栃乃木笠"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35627,
@@ -148100,9 +147163,7 @@
       "ja": "収集用のパームブレスレット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35628,
@@ -148112,9 +147173,7 @@
       "ja": "収集用のレッドパイン・スピニングホイール"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35629,
@@ -148124,9 +147183,7 @@
       "ja": "収集用のアイアンウッド・グラインディングホイール"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35630,
@@ -148136,9 +147193,7 @@
       "ja": "収集用のインテグラルアルミラ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35631,
@@ -148148,9 +147203,7 @@
       "ja": "収集用のハイダリウムピストル"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35632,
@@ -148160,9 +147213,7 @@
       "ja": "収集用のハイダリウムグレートソード"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35633,
@@ -148172,9 +147223,7 @@
       "ja": "収集用のビスマスモール"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35634,
@@ -148184,9 +147233,7 @@
       "ja": "収集用のマンガン・クロスペインハンマー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35635,
@@ -148196,9 +147243,7 @@
       "ja": "収集用のコンドライト・クリナリーナイフ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35636,
@@ -148208,9 +147253,7 @@
       "ja": "収集用のハイダリウムナックル"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35637,
@@ -148220,9 +147263,7 @@
       "ja": "収集用のハイダリウムカイトシールド"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35638,
@@ -148232,9 +147273,7 @@
       "ja": "収集用のビスマス・ファットキャットフライパン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35639,
@@ -148244,9 +147283,7 @@
       "ja": "収集用のマンガン・キングベヒーモスアーマー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35640,
@@ -148256,9 +147293,7 @@
       "ja": "収集用のコンドライトソルレット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35641,
@@ -148268,9 +147303,7 @@
       "ja": "収集用のハイダリウムミルプレーヴェ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35642,
@@ -148280,9 +147313,7 @@
       "ja": "収集用のピューターチョーカー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35643,
@@ -148292,9 +147323,7 @@
       "ja": "収集用のフリギアンイヤリング"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35644,
@@ -148304,9 +147333,7 @@
       "ja": "収集用のマンガン・ラストユニコーンホーン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35645,
@@ -148316,9 +147343,7 @@
       "ja": "収集用のスタークォーツチョーカー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35646,
@@ -148328,9 +147353,7 @@
       "ja": "収集用のガジャシューズ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35647,
@@ -148340,9 +147363,7 @@
       "ja": "収集用のマウンテンチキンホーズ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35648,
@@ -148352,9 +147373,7 @@
       "ja": "収集用のサイガグローブ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35649,
@@ -148364,9 +147383,7 @@
       "ja": "収集用のクンビーラシューズ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35650,
@@ -148376,9 +147393,7 @@
       "ja": "収集用のオピオタウロストップス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35651,
@@ -148388,9 +147403,7 @@
       "ja": "収集用の黒麻帽"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35652,
@@ -148400,9 +147413,7 @@
       "ja": "収集用のアルマスティグローブ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35653,
@@ -148412,9 +147423,7 @@
       "ja": "収集用のスノーリネン・クラフターダブレット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35654,
@@ -148424,9 +147433,7 @@
       "ja": "収集用のスカーレットモコ・ウェッジキャップ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35655,
@@ -148436,9 +147443,7 @@
       "ja": "収集用のカエアンビロードボトム"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35656,
@@ -148448,9 +147453,7 @@
       "ja": "収集用のガジャコーデックス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35657,
@@ -148460,9 +147463,7 @@
       "ja": "収集用のマウンテンチキングリモア"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35658,
@@ -148472,9 +147473,7 @@
       "ja": "収集用のムーンゲル"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35659,
@@ -148484,9 +147483,7 @@
       "ja": "収集用のマンガン・エンチャントインク"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35660,
@@ -148496,9 +147493,7 @@
       "ja": "収集用の薬酒"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35661,
@@ -148508,9 +147503,7 @@
       "ja": "収集用の賢人パン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35662,
@@ -148520,9 +147513,7 @@
       "ja": "収集用のキングクラブケーキ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35663,
@@ -148532,9 +147523,7 @@
       "ja": "収集用のハピネスジュース"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35664,
@@ -148544,9 +147533,7 @@
       "ja": "収集用のジャイアントタラモサラータ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35665,
@@ -148556,9 +147543,7 @@
       "ja": "収集用のジャイアントポポトパンケーキ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35745,
@@ -148978,9 +147963,7 @@
       "ja": "黄金の心核"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35837,
@@ -149000,9 +147983,7 @@
       "ja": "黄金の接合部品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35839,
@@ -149022,9 +148003,7 @@
       "ja": "イケてる筆記具"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35841,
@@ -149044,9 +148023,7 @@
       "ja": "星見鏡の操作杖"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35843,
@@ -149066,9 +148043,7 @@
       "ja": "黄金のスパイス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35845,
@@ -149088,9 +148063,7 @@
       "ja": "フィッシュボール必需品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 35862,
@@ -149952,6 +148925,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -150557,6 +149531,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -150569,6 +149544,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -150581,6 +149557,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -150593,6 +149570,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -150696,6 +149674,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -151241,6 +150220,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -151867,9 +150847,7 @@
       "ja": "リスプレンデントツールの一次加工部材:木工"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36312,
@@ -151879,9 +150857,7 @@
       "ja": "リスプレンデントツールの一次加工部材:鍛冶"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36313,
@@ -151891,9 +150867,7 @@
       "ja": "リスプレンデントツールの一次加工部材:甲冑"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36314,
@@ -151903,9 +150877,7 @@
       "ja": "リスプレンデントツールの一次加工部材:彫金"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36315,
@@ -151915,9 +150887,7 @@
       "ja": "リスプレンデントツールの一次加工部材:革細工"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36316,
@@ -151927,9 +150897,7 @@
       "ja": "リスプレンデントツールの一次加工部材:裁縫"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36317,
@@ -151939,9 +150907,7 @@
       "ja": "リスプレンデントツールの一次加工部材:錬金"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36318,
@@ -151951,9 +150917,7 @@
       "ja": "リスプレンデントツールの一次加工部材:調理"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36319,
@@ -151963,9 +150927,7 @@
       "ja": "リスプレンデントツールの二次加工部材:木工"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36320,
@@ -151975,9 +150937,7 @@
       "ja": "リスプレンデントツールの二次加工部材:鍛冶"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36321,
@@ -151987,9 +150947,7 @@
       "ja": "リスプレンデントツールの二次加工部材:甲冑"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36322,
@@ -151999,9 +150957,7 @@
       "ja": "リスプレンデントツールの二次加工部材:彫金"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36323,
@@ -152011,9 +150967,7 @@
       "ja": "リスプレンデントツールの二次加工部材:革細工"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36324,
@@ -152023,9 +150977,7 @@
       "ja": "リスプレンデントツールの二次加工部材:裁縫"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36325,
@@ -152035,9 +150987,7 @@
       "ja": "リスプレンデントツールの二次加工部材:錬金"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36326,
@@ -152047,9 +150997,7 @@
       "ja": "リスプレンデントツールの二次加工部材:調理"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36327,
@@ -152059,9 +151007,7 @@
       "ja": "リスプレンデントツールの三次加工部材:木工"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36328,
@@ -152071,9 +151017,7 @@
       "ja": "リスプレンデントツールの三次加工部材:鍛冶"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36329,
@@ -152083,9 +151027,7 @@
       "ja": "リスプレンデントツールの三次加工部材:甲冑"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36330,
@@ -152095,9 +151037,7 @@
       "ja": "リスプレンデントツールの三次加工部材:彫金"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36331,
@@ -152107,9 +151047,7 @@
       "ja": "リスプレンデントツールの三次加工部材:革細工"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36332,
@@ -152119,9 +151057,7 @@
       "ja": "リスプレンデントツールの三次加工部材:裁縫"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36333,
@@ -152131,9 +151067,7 @@
       "ja": "リスプレンデントツールの三次加工部材:錬金"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36334,
@@ -152143,9 +151077,7 @@
       "ja": "リスプレンデントツールの三次加工部材:調理"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36354,
@@ -152280,9 +151212,7 @@
       "ja": "収集用のインテグラルフィッシングロッド"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36620,
@@ -152292,9 +151222,7 @@
       "ja": "収集用のコンドライト・ラピダリーハンマー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36621,
@@ -152304,9 +151232,7 @@
       "ja": "収集用のコンドライトアレンビック"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36622,
@@ -152316,9 +151242,7 @@
       "ja": "収集用のコンドライトニードル"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36623,
@@ -152328,9 +151252,7 @@
       "ja": "収集用のオピオタウロス・ハーフグローブ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36624,
@@ -152340,9 +151262,7 @@
       "ja": "収集用のカエアンビロード・ワークキャップ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36625,
@@ -152352,9 +151272,7 @@
       "ja": "収集用のオピオタウロス・マジテックコーデックス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36626,
@@ -152364,9 +151282,7 @@
       "ja": "収集用のババロア・オ・シューコン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 36627,
@@ -152432,7 +151348,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -152445,7 +151360,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -152458,7 +151372,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -152471,7 +151384,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -152484,7 +151396,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -153635,6 +152546,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -155748,6 +154660,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -157208,9 +156121,7 @@
       "ja": "好事家向けのウッドチェア"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38757,
@@ -157220,9 +156131,7 @@
       "ja": "好事家向けのウォールランタン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38758,
@@ -157232,9 +156141,7 @@
       "ja": "好事家向けのオーネイトドア"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38759,
@@ -157244,9 +156151,7 @@
       "ja": "好事家向けのメイクアップミラー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38760,
@@ -157256,9 +156161,7 @@
       "ja": "好事家向けのラグ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38761,
@@ -157268,9 +156171,7 @@
       "ja": "好事家向けのスワッグカーテン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38762,
@@ -157280,9 +156181,7 @@
       "ja": "好事家向けのメイクアップボックス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38763,
@@ -157292,9 +156191,7 @@
       "ja": "好事家向けのピクシーベリーティー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38764,
@@ -157304,9 +156201,7 @@
       "ja": "好事家向けのマリンバ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38765,
@@ -157316,9 +156211,7 @@
       "ja": "好事家向けのコーヒーサイフォン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38766,
@@ -157328,9 +156221,7 @@
       "ja": "好事家向けのベンチ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38767,
@@ -157340,9 +156231,7 @@
       "ja": "好事家向けのアストロスコープ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38768,
@@ -157352,9 +156241,7 @@
       "ja": "好事家向けのレザーソファ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38769,
@@ -157364,9 +156251,7 @@
       "ja": "好事家向けのレッドカーペット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38770,
@@ -157376,9 +156261,7 @@
       "ja": "好事家向けのエリクサーボトル"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38771,
@@ -157388,9 +156271,7 @@
       "ja": "好事家向けのピクシーベリータルト"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38815,
@@ -157401,7 +156282,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -157414,7 +156294,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -157427,7 +156306,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -157440,7 +156318,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -157453,7 +156330,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -157560,9 +156436,7 @@
       "ja": "舞台の重要部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38844,
@@ -157582,9 +156456,7 @@
       "ja": "マシン開発の必需品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38846,
@@ -157604,9 +156476,7 @@
       "ja": "料理提供の必需品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38848,
@@ -157626,9 +156496,7 @@
       "ja": "画材必需品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38850,
@@ -157648,9 +156516,7 @@
       "ja": "ステーションの必需機材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38852,
@@ -157670,9 +156536,7 @@
       "ja": "音響整備用品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38854,
@@ -157692,9 +156556,7 @@
       "ja": "管楽器部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38856,
@@ -157714,9 +156576,7 @@
       "ja": "コイン製造用品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38858,
@@ -157736,9 +156596,7 @@
       "ja": "銘入り記念品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38860,
@@ -157758,9 +156616,7 @@
       "ja": "電飾交換部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38862,
@@ -157780,9 +156636,7 @@
       "ja": "携帯ライト部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38864,
@@ -157802,9 +156656,7 @@
       "ja": "クリーナー改良部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38866,
@@ -157824,9 +156676,7 @@
       "ja": "録音サポーターの開発部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38868,
@@ -157846,9 +156696,7 @@
       "ja": "気密維持用の防護スーツ部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38870,
@@ -157868,9 +156716,7 @@
       "ja": "スリリング用具"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38872,
@@ -157890,9 +156736,7 @@
       "ja": "レシピ集印刷用具"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38874,
@@ -157912,9 +156756,7 @@
       "ja": "フリーザー修理部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38876,
@@ -157934,9 +156776,7 @@
       "ja": "採集道具修理部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38878,
@@ -157956,9 +156796,7 @@
       "ja": "不足調理用品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38880,
@@ -157978,9 +156816,7 @@
       "ja": "フィットネス用具"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38882,
@@ -158000,9 +156836,7 @@
       "ja": "塗料調合用具"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38884,
@@ -158022,9 +156856,7 @@
       "ja": "超強力洗剤"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38886,
@@ -158044,9 +156876,7 @@
       "ja": "対菌類兵器"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38888,
@@ -158066,9 +156896,7 @@
       "ja": "ファッション装飾品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 38890,
@@ -160697,6 +159525,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -160709,6 +159538,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -161122,9 +159952,7 @@
       "ja": "好事家向けのピクチャーフレーム"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 39774,
@@ -161134,9 +159962,7 @@
       "ja": "好事家向けのサムライブレード"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 39775,
@@ -161146,9 +159972,7 @@
       "ja": "好事家向けのアクアリウム"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 39776,
@@ -161158,9 +159982,7 @@
       "ja": "好事家向けのグレイヴ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 39777,
@@ -161170,9 +159992,7 @@
       "ja": "好事家向けのヴァーシティシューズ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 39778,
@@ -161182,9 +160002,7 @@
       "ja": "好事家向けのガーデンパラソル"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 39779,
@@ -161194,9 +160012,7 @@
       "ja": "好事家向けのモーグリトピアリー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 39780,
@@ -161206,9 +160022,7 @@
       "ja": "好事家向けのスクイッドバゲット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 39781,
@@ -161218,9 +160032,7 @@
       "ja": "好事家向けのブックシェルフ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 39782,
@@ -161230,9 +160042,7 @@
       "ja": "好事家向けのシャンデリア"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 39783,
@@ -161242,9 +160052,7 @@
       "ja": "好事家向けのエスカッシャン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 39784,
@@ -161254,9 +160062,7 @@
       "ja": "好事家向けのバグナウ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 39785,
@@ -161266,9 +160072,7 @@
       "ja": "好事家向けのドリンキングアプカル"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 39786,
@@ -161278,9 +160082,7 @@
       "ja": "好事家向けのジャケット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 39787,
@@ -161290,9 +160092,7 @@
       "ja": "好事家向けのプランターパーティション"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 39788,
@@ -161302,9 +160102,7 @@
       "ja": "好事家向けのスパゲッティ・ネーロ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 39864,
@@ -162626,7 +161424,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -162639,7 +161436,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -162652,7 +161448,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -162665,7 +161460,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -162678,7 +161472,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -163291,9 +162084,7 @@
       "ja": "好事家向けの竹垣"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 41255,
@@ -163303,9 +162094,7 @@
       "ja": "好事家向けの目覚まし時計"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 41256,
@@ -163315,9 +162104,7 @@
       "ja": "好事家向けのトランペット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 41257,
@@ -163327,9 +162114,7 @@
       "ja": "好事家向けのウォッシュスタンド"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 41258,
@@ -163339,9 +162124,7 @@
       "ja": "好事家向けのタージェ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 41259,
@@ -163351,9 +162134,7 @@
       "ja": "好事家向けの三角帽子"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 41260,
@@ -163363,9 +162144,7 @@
       "ja": "好事家向けの月のカーテン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 41261,
@@ -163375,9 +162154,7 @@
       "ja": "好事家向けのクラブケーキ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 41262,
@@ -163387,9 +162164,7 @@
       "ja": "好事家向けの鹿威し"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 41263,
@@ -163399,9 +162174,7 @@
       "ja": "好事家向けのリテイナーベル"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 41264,
@@ -163411,9 +162184,7 @@
       "ja": "好事家向けのホルン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 41265,
@@ -163423,9 +162194,7 @@
       "ja": "好事家向けのマーブルファウンテン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 41266,
@@ -163435,9 +162204,7 @@
       "ja": "好事家向けのレザージャケット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 41267,
@@ -163447,9 +162214,7 @@
       "ja": "好事家向けのファットキャットソファー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 41268,
@@ -163459,9 +162224,7 @@
       "ja": "好事家向けの活力の幻薬"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 41269,
@@ -163471,9 +162234,7 @@
       "ja": "好事家向けのチリクラブ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 41415,
@@ -175616,9 +174377,7 @@
       "ja": "葦刈鎌"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 43888,
@@ -175628,9 +174387,7 @@
       "ja": "トルティーヤプレス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 43889,
@@ -175640,9 +174397,7 @@
       "ja": "トラベルランタン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 43890,
@@ -175652,9 +174407,7 @@
       "ja": "瞑想用の香炉"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 43891,
@@ -175664,9 +174417,7 @@
       "ja": "真新しい装丁部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 43892,
@@ -175676,9 +174427,7 @@
       "ja": "ペルペル様式の装丁部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 43893,
@@ -175688,9 +174437,7 @@
       "ja": "モブリン様式の装丁部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 43894,
@@ -175700,9 +174447,7 @@
       "ja": "マムージャ様式の装丁部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 43895,
@@ -175712,9 +174457,7 @@
       "ja": "チェリモヤジュース"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 43896,
@@ -175724,9 +174467,7 @@
       "ja": "ロトンアロエジュース"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 43897,
@@ -175736,9 +174477,7 @@
       "ja": "ディープグリーンジュース"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 43898,
@@ -175748,9 +174487,7 @@
       "ja": "ドランカートゥナジュース"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 43907,
@@ -175760,9 +174497,7 @@
       "ja": "交換用の天秤軸"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 43908,
@@ -175772,9 +174507,7 @@
       "ja": "金煌の採火器"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 43909,
@@ -175784,9 +174517,7 @@
       "ja": "ヨカフイ様式の装丁"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 43910,
@@ -175796,9 +174527,7 @@
       "ja": "トナワータ様式の装丁部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 43911,
@@ -175808,9 +174537,7 @@
       "ja": "ククルパルプジュース"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 43912,
@@ -175820,9 +174547,7 @@
       "ja": "ブネワ・ソーダ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 43935,
@@ -176261,6 +174986,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -176273,6 +174999,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -176285,6 +175012,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -176297,6 +175025,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -176309,6 +175038,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -176386,6 +175116,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -176398,6 +175129,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -176410,6 +175142,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -176422,6 +175155,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -176434,6 +175168,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -176797,6 +175532,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -177796,6 +176532,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -177808,6 +176545,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -178432,9 +177170,7 @@
       "ja": "収集用のウコギイヤリング"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44186,
@@ -178444,9 +177180,7 @@
       "ja": "収集用のセイバ・スピア"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44187,
@@ -178456,9 +177190,7 @@
       "ja": "収集用のダークマホガニー・ネックレス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44188,
@@ -178468,9 +177200,7 @@
       "ja": "収集用のアカシア・ロッド"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44189,
@@ -178480,9 +177210,7 @@
       "ja": "収集用のクラロウォルナット・グラインディングホイール"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44190,
@@ -178492,9 +177220,7 @@
       "ja": "収集用のクラロウォルナット・フィッシングロッド"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44191,
@@ -178504,9 +177230,7 @@
       "ja": "収集用のオルコクロマイト・フィスト"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44192,
@@ -178516,9 +177240,7 @@
       "ja": "収集用のルテニウム・ウォーアクス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44193,
@@ -178528,9 +177250,7 @@
       "ja": "収集用のコバルトタングステン・シミター"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44194,
@@ -178540,9 +177260,7 @@
       "ja": "収集用のゴールドチタン・モーター"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44195,
@@ -178552,9 +177270,7 @@
       "ja": "収集用のカザナル・ウォーサイズ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44196,
@@ -178564,9 +177280,7 @@
       "ja": "収集用のカザナル・ラウンドナイフ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44197,
@@ -178576,9 +177290,7 @@
       "ja": "収集用のオルコクロマイト・アレンビック"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44198,
@@ -178588,9 +177300,7 @@
       "ja": "収集用のルテニウム・サバトン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44199,
@@ -178600,9 +177310,7 @@
       "ja": "収集用のコバルトタングステン・チョコボフライパン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44200,
@@ -178612,9 +177320,7 @@
       "ja": "収集用のゴールドチタン・スパイクコースリット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44201,
@@ -178624,9 +177330,7 @@
       "ja": "収集用のカザナル・グリーヴ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44202,
@@ -178636,9 +177340,7 @@
       "ja": "収集用のカザナル・リング"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44203,
@@ -178648,9 +177350,7 @@
       "ja": "収集用のラァー・ロングボウ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44204,
@@ -178660,9 +177360,7 @@
       "ja": "収集用のイフイカナイト・サークレット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44205,
@@ -178672,9 +177370,7 @@
       "ja": "収集用のコバルトタングステン・タック"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44206,
@@ -178684,9 +177380,7 @@
       "ja": "収集用のホワイトゴールド・チョーカー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44207,
@@ -178696,9 +177390,7 @@
       "ja": "収集用のカザナル・オーラリー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44208,
@@ -178708,9 +177400,7 @@
       "ja": "収集用のブラックスター・イヤリング"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44209,
@@ -178720,9 +177410,7 @@
       "ja": "収集用のシルバリオ・フィンガレスグローブ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44210,
@@ -178732,9 +177420,7 @@
       "ja": "収集用のハンマーヘッドダイル・レギンス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44211,
@@ -178744,9 +177430,7 @@
       "ja": "収集用のブラーシャ・アームレット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44212,
@@ -178756,9 +177440,7 @@
       "ja": "収集用のゴンフォテリウム・ブレー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44213,
@@ -178768,9 +177450,7 @@
       "ja": "収集用のガルガンチュア・トラウザー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44214,
@@ -178780,9 +177460,7 @@
       "ja": "収集用のガルガンチュア・ハット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44215,
@@ -178792,9 +177470,7 @@
       "ja": "収集用のスノーコットン・ベレー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44216,
@@ -178804,9 +177480,7 @@
       "ja": "収集用のマウンテンリネン・トップス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44217,
@@ -178816,9 +177490,7 @@
       "ja": "収集用のサーセネット・ケクス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44218,
@@ -178828,9 +177500,7 @@
       "ja": "収集用のロネークサージ・ハット"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44219,
@@ -178840,9 +177510,7 @@
       "ja": "収集用のサンダーヤードシルク・グローブ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44220,
@@ -178852,9 +177520,7 @@
       "ja": "収集用のサンダーヤードシルク・ワイドパンツ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44221,
@@ -178864,9 +177530,7 @@
       "ja": "収集用のシルバリオ・グリモア"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44222,
@@ -178876,9 +177540,7 @@
       "ja": "収集用の眼力の宝水"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44223,
@@ -178888,9 +177550,7 @@
       "ja": "収集用のブラーシャ・コーデックス"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44224,
@@ -178900,9 +177560,7 @@
       "ja": "収集用の魔匠の薬液"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44225,
@@ -178912,9 +177570,7 @@
       "ja": "収集用の活力の宝薬"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44226,
@@ -178924,9 +177580,7 @@
       "ja": "収集用のクラロウォルナット・フラットブラシ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44227,
@@ -178936,9 +177590,7 @@
       "ja": "収集用のボイルド・アルパカステーキ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44228,
@@ -178948,9 +177600,7 @@
       "ja": "収集用のバナナパンズケーキ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44229,
@@ -178960,9 +177610,7 @@
       "ja": "収集用のトラルパイナップルケーキ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44230,
@@ -178972,9 +177620,7 @@
       "ja": "収集用のサーモンジャーキー"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44231,
@@ -178984,9 +177630,7 @@
       "ja": "収集用のスタッフドピーマン"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44232,
@@ -178996,9 +177640,7 @@
       "ja": "収集用のタコス・カルネ・アサーダ"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 44246,
@@ -179947,6 +178589,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -180009,7 +178652,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -180022,7 +178664,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -180035,7 +178676,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -180048,7 +178688,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -180061,7 +178700,6 @@
     },
     "isCrystal": false,
     "obtainMethods": [
-      "CRAFT",
       "SHOP_MARKET"
     ]
   },
@@ -180688,6 +179326,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -182440,9 +181079,7 @@
       "ja": "屯所復旧部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 46199,
@@ -182462,9 +181099,7 @@
       "ja": "石材加工道具"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 46201,
@@ -182484,9 +181119,7 @@
       "ja": "生前墓の掘出道具"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 46203,
@@ -182506,9 +181139,7 @@
       "ja": "岩兵起動用部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 46205,
@@ -182528,9 +181159,7 @@
       "ja": "精霊生前墓部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 46207,
@@ -182550,9 +181179,7 @@
       "ja": "拝壇除雪用具"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 46209,
@@ -182572,9 +181199,7 @@
       "ja": "高地用荷車部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 46211,
@@ -182594,9 +181219,7 @@
       "ja": "外つ国風外装部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 46213,
@@ -182616,9 +181239,7 @@
       "ja": "ヨカフイ族携帯カイロ部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 46215,
@@ -182638,9 +181259,7 @@
       "ja": "屯所生活必需品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 46217,
@@ -182660,9 +181279,7 @@
       "ja": "訪問者用防寒具"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 46219,
@@ -182682,9 +181299,7 @@
       "ja": "ヨカフイ伝統雑貨"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 46221,
@@ -182704,9 +181319,7 @@
       "ja": "高山石材加工用具"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 46223,
@@ -182726,9 +181339,7 @@
       "ja": "廃石再生建材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 46225,
@@ -182748,9 +181359,7 @@
       "ja": "山道舗装部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 46227,
@@ -182770,9 +181379,7 @@
       "ja": "トナワータ伝統保存食の必需品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 46229,
@@ -182792,9 +181399,7 @@
       "ja": "食料長期保管用品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 46231,
@@ -182814,9 +181419,7 @@
       "ja": "拝壇の配膳用具"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 46233,
@@ -182836,9 +181439,7 @@
       "ja": "貯蔵庫備品部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 46235,
@@ -182858,9 +181459,7 @@
       "ja": "畑拡張必需品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 46237,
@@ -182880,9 +181479,7 @@
       "ja": "ペルペル登山道具"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 46239,
@@ -182902,9 +181499,7 @@
       "ja": "岩兵管理部材"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 46241,
@@ -182924,9 +181519,7 @@
       "ja": "キーカーリャー醸造必需品"
     },
     "isCrystal": false,
-    "obtainMethods": [
-      "CRAFT"
-    ]
+    "obtainMethods": []
   },
   {
     "id": 46243,
@@ -184820,6 +183413,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
@@ -184871,6 +183465,7 @@
     },
     "isCrystal": false,
     "obtainMethods": [
+      "GATHER_MINER",
       "SHOP_MARKET"
     ]
   },
