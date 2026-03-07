@@ -182,21 +182,27 @@ def parse_item_name_map(text: str) -> Dict[int, str]:
     return mapping
 
 
-def parse_tomestone_item_ids(text: str) -> Set[int]:
-    rows = list(csv.reader(text.splitlines()))
-    header = rows[1]
-    idx_item = header.index("Item")
-    result: Set[int] = set()
-    for row in rows[4:]:
-        if len(row) <= idx_item:
-            continue
-        try:
-            item_id = int(row[idx_item])
-        except ValueError:
-            continue
-        if item_id > 0:
-            result.add(item_id)
-    return result
+def classify_special_shop_sources(
+    special_shop_costs: Dict[int, Set[int]],
+    item_name_map: Dict[int, str],
+) -> tuple[Set[int], Set[int], Set[int]]:
+    """Classify items by exchange source using cost-item name keywords.
+
+    Returns (scrip_crafter_item_ids, scrip_gatherer_item_ids, tome_item_ids).
+    """
+    scrip_crafter: Set[int] = set()
+    scrip_gatherer: Set[int] = set()
+    tome: Set[int] = set()
+    for receive_id, cost_ids in special_shop_costs.items():
+        for cost_id in cost_ids:
+            name = item_name_map.get(cost_id, "")
+            if "神典石" in name:
+                tome.add(receive_id)
+            if ("巧手" in name or "制作" in name) and "票" in name:
+                scrip_crafter.add(receive_id)
+            if ("大地" in name or "采集" in name) and "票" in name:
+                scrip_gatherer.add(receive_id)
+    return scrip_crafter, scrip_gatherer, tome
 
 
 def parse_special_shop_costs(text: str) -> Dict[int, Set[int]]:
@@ -269,10 +275,10 @@ def build_obtain_methods(
     gil_shop_ids: Set[int],
     gc_scrip_ids: Set[int],
     special_shop_costs: Dict[int, Set[int]],
-    crafting_scrip_ids: Set[int],
-    gathering_scrip_ids: Set[int],
     bicolor_gem_id: int | None,
-    tomestone_ids: Set[int],
+    scrip_crafter_item_ids: Set[int],
+    scrip_gatherer_item_ids: Set[int],
+    tome_item_ids: Set[int],
 ) -> List[str]:
     methods: Set[str] = set()
     if item_id in craftable_ids:
@@ -286,16 +292,16 @@ def build_obtain_methods(
         methods.add("SHOP_NPC")
     if item_id in gc_scrip_ids:
         methods.add("EXCHANGE_GC_SEALS")
+    if item_id in scrip_crafter_item_ids:
+        methods.add("EXCHANGE_SCRIP_CRAFTER")
+    if item_id in scrip_gatherer_item_ids:
+        methods.add("EXCHANGE_SCRIP_GATHERER")
     if item_id in special_shop_costs:
         cost_ids = special_shop_costs.get(item_id, set())
-        if cost_ids & crafting_scrip_ids:
-            methods.add("EXCHANGE_SCRIP_CRAFTER")
-        if cost_ids & gathering_scrip_ids:
-            methods.add("EXCHANGE_SCRIP_GATHERER")
         if bicolor_gem_id and bicolor_gem_id in cost_ids:
             methods.add("EXCHANGE_GEMSTONE")
-        if cost_ids & tomestone_ids:
-            methods.add("EXCHANGE_TOME")
+    if item_id in tome_item_ids:
+        methods.add("EXCHANGE_TOME")
     if is_crystal:
         methods.update({"GATHER_MINER", "GATHER_BOTANIST"})
     return [method for method in OBTAIN_METHOD_ORDER if method in methods]
@@ -310,10 +316,10 @@ def parse_items(
     gil_shop_ids: Set[int],
     gc_scrip_ids: Set[int],
     special_shop_costs: Dict[int, Set[int]],
-    crafting_scrip_ids: Set[int],
-    gathering_scrip_ids: Set[int],
     bicolor_gem_id: int | None,
-    tomestone_ids: Set[int],
+    scrip_crafter_item_ids: Set[int],
+    scrip_gatherer_item_ids: Set[int],
+    tome_item_ids: Set[int],
 ) -> tuple[List[Dict], Dict[str, int]]:
     needed_set = set(needed_ids)
     rows = list(csv.reader(text.splitlines()))
@@ -367,10 +373,10 @@ def parse_items(
             gil_shop_ids,
             gc_scrip_ids,
             special_shop_costs,
-            crafting_scrip_ids,
-            gathering_scrip_ids,
             bicolor_gem_id,
-            tomestone_ids,
+            scrip_crafter_item_ids,
+            scrip_gatherer_item_ids,
+            tome_item_ids,
         )
         item_payload = {
             "id": item_id,
@@ -425,7 +431,6 @@ def main() -> None:
     gil_shop_text = fetch_text(args.input_dir, "GilShopItem.csv")
     special_shop_text = fetch_text(args.input_dir, "SpecialShop.csv")
     gc_scrip_shop_text = fetch_text(args.input_dir, "GCScripShopItem.csv")
-    tomestone_item_text = fetch_text(args.input_dir, "TomestonesItem.csv")
 
     gather_methods = collect_gather_methods(
         gathering_type_text, gathering_item_text, gathering_point_text
@@ -435,18 +440,17 @@ def main() -> None:
     special_shop_costs = parse_special_shop_costs(special_shop_text)
     gc_scrip_ids = parse_item_ids_by_columns(gc_scrip_shop_text, ["Item"])
     item_name_map = parse_item_name_map(item_text)
-    # 识别“票据”货币本体（成本物品），而不是成品名字。
-    crafting_scrip_ids = {
-        item_id for item_id, name in item_name_map.items() if "巧手" in name and "票" in name
-    }
-    gathering_scrip_ids = {
-        item_id for item_id, name in item_name_map.items() if "大地" in name and "票" in name
-    }
+    # 通过 SpecialShop 成本物品的名称关键字识别兑换来源：
+    # - 神典石: 成本物品名含 "神典石"
+    # - 巧手票据: 成本物品名含 "巧手" 且 "票"
+    # - 大地票据: 成本物品名含 "大地" 且 "票"
+    scrip_crafter_item_ids, scrip_gatherer_item_ids, tome_item_ids = (
+        classify_special_shop_sources(special_shop_costs, item_name_map)
+    )
     bicolor_gem_id = next(
         (item_id for item_id, name in item_name_map.items() if name == "双色宝石"),
         None,
     )
-    tomestone_ids = parse_tomestone_item_ids(tomestone_item_text)
 
     items, stats = parse_items(
         item_text,
@@ -457,10 +461,10 @@ def main() -> None:
         gil_shop_ids,
         gc_scrip_ids,
         special_shop_costs,
-        crafting_scrip_ids,
-        gathering_scrip_ids,
         bicolor_gem_id,
-        tomestone_ids,
+        scrip_crafter_item_ids,
+        scrip_gatherer_item_ids,
+        tome_item_ids,
     )
 
     write_json(args.output_dir / "items.json", items)
@@ -476,10 +480,10 @@ def main() -> None:
     print(f"- NPC 购买 (GilShopItem.csv): {len(gil_shop_ids)}")
     print(f"- 军票兑换 (GCScripShopItem.csv): {len(gc_scrip_ids)}")
     print(f"- 票据/兑换 (SpecialShop.csv): {len(special_shop_costs)}")
-    print(f"- 工匠票据 (Item.csv): {len(crafting_scrip_ids)}")
-    print(f"- 采集票据 (Item.csv): {len(gathering_scrip_ids)}")
+    print(f"- 工匠票据 (SpecialShop cost name match): {len(scrip_crafter_item_ids)}")
+    print(f"- 采集票据 (SpecialShop cost name match): {len(scrip_gatherer_item_ids)}")
     print(f"- 双色宝石 (Item.csv): {1 if bicolor_gem_id else 0}")
-    print(f"- 神典石 (TomestonesItem.csv): {len(tomestone_ids)}")
+    print(f"- 神典石 (SpecialShop cost name match): {len(tome_item_ids)}")
     print("Ignored sources:")
     for source in IGNORED_SOURCES:
         print(f"- {source}")
