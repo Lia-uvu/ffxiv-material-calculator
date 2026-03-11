@@ -1,15 +1,21 @@
 <template>
   <div class="space-y-4">
     <!-- 搜索框 -->
-    <div class="rounded-2xl border border-[#4A4858] bg-[#3B3A47] p-4 relative">
+    <div class="relative">
       <ItemSearchBar
         :query="settings.searchQuery"
         @update:query="setSearchQuery"
       />
 
+      <!-- 空状态提示：未输入时可见 -->
+      <p v-if="!settings.searchQuery" class="mt-1.5 px-1 text-xs text-[#6B677A]">
+        {{ t('search.hintCtrl') }}
+      </p>
+
       <!-- 搜索结果 -->
       <ItemSearchResults
         :results="results"
+        :target-amounts="targetAmountsMap"
         @select="selectResultById"
       />
     </div>
@@ -84,9 +90,16 @@ const targetEntries = computed(() => {
   });
 });
 
-function selectResultById(id) {
+/** Map<itemId, amount> 用于在搜索结果中显示已添加数量角标 */
+const targetAmountsMap = computed(() => {
+  const map = new Map();
+  for (const tgt of targetsCtrl.targets) map.set(tgt.id, tgt.amount);
+  return map;
+});
+
+function selectResultById({ id, ctrlKey }) {
   targetsCtrl.add(id);
-  setSearchQuery("");
+  if (!ctrlKey) setSearchQuery("");
 }
 
 const { ui, reachableCraftableIds } = useMaterialsList({
