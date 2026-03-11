@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <div v-if="!targets.length" class="mt-3 rounded-xl bg-[#2A2933] px-3 py-2 text-sm text-[#6B677A]">
+    <div v-if="!targets.length" class="mt-4 flex items-center gap-3 rounded-xl bg-[#302F3B] px-3 py-2 text-sm text-[#9B96AD]">
       {{ t("targets.empty") }}
     </div>
 
