@@ -4,6 +4,19 @@ import { useI18n } from "vue-i18n";
 import { resolveItemName } from "../../data";
 import { calcMaterials } from "../core/calcMaterials";
 import { buildRecipesByResultId, pickRecipe } from "../core/recipeUtils";
+import { OBTAIN_PRIORITY_ORDER, getPrimaryMethod } from "../core/obtainMethodUtils";
+
+// 制作职业显示优先级（从高到低）
+const JOB_PRIORITY_ORDER = [
+  "CULINARIAN",
+  "ALCHEMIST",
+  "CARPENTER",
+  "BLACKSMITH",
+  "ARMORER",
+  "GOLDSMITH",
+  "LEATHERWORKER",
+  "WEAVER",
+];
 
 export function useMaterialsList(params) {
   const { locale, t, te } = useI18n();
@@ -114,6 +127,7 @@ export function useMaterialsList(params) {
 
         job: resolveJob(id, null),
         source: formatObtainMethods(item) ?? placeholder,
+        obtainMethods: item?.obtainMethods ?? [],
       });
     }
 
@@ -154,6 +168,7 @@ export function useMaterialsList(params) {
         needAmount: taskNeed,
         craftTimes: taskTimes,
         recipeId,
+        obtainMethods: item?.obtainMethods ?? base.obtainMethods ?? [],
       });
     }
 
@@ -166,12 +181,25 @@ export function useMaterialsList(params) {
 
     const craftable = allEntries
       .filter((e) => e.isCraftable)
-      .sort((a, b) => a.name.localeCompare(b.name, currentLocale));
+      .sort((a, b) => {
+        const ra = JOB_PRIORITY_ORDER.indexOf(a.job ?? "");
+        const rb = JOB_PRIORITY_ORDER.indexOf(b.job ?? "");
+        const ea = ra === -1 ? Infinity : ra;
+        const eb = rb === -1 ? Infinity : rb;
+        if (ea !== eb) return ea - eb;
+        return a.name.localeCompare(b.name, currentLocale);
+      });
 
     const nonCraftable = allEntries
       .filter((e) => !e.isCraftable)
       .sort((a, b) => {
         if (a.isCrystal !== b.isCrystal) return a.isCrystal ? -1 : 1;
+        if (a.isCrystal) return a.name.localeCompare(b.name, currentLocale);
+        const ra = OBTAIN_PRIORITY_ORDER.indexOf(getPrimaryMethod(a.obtainMethods) ?? "");
+        const rb = OBTAIN_PRIORITY_ORDER.indexOf(getPrimaryMethod(b.obtainMethods) ?? "");
+        const ea = ra === -1 ? Infinity : ra;
+        const eb = rb === -1 ? Infinity : rb;
+        if (ea !== eb) return ea - eb;
         return a.name.localeCompare(b.name, currentLocale);
       });
 
