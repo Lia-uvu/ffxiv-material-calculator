@@ -45,8 +45,8 @@
       </div>
     </div>
 
-    <!-- 内容卡片：z-10 在上层，-mt-4 压住标题卡片底部 -->
-    <div class="relative z-10 rounded-2xl border border-[#4A4858] bg-[#3B3A47] -mt-4 pt-8 px-4 pb-4 shadow-[0_0_16px_rgba(0,0,0,0.45)]">
+    <!-- 内容卡片：z-10 在上层，-mt-2 压住标题卡片底部 -->
+    <div class="relative z-10 rounded-2xl border border-[#4A4858] bg-[#3B3A47] -mt-2 pt-4 px-4 pb-4 shadow-[0_0_16px_rgba(0,0,0,0.45)]">
       <CanCraftSection
         :craftable="ui.craftable"
         :checked-ids="checkedIds"
