@@ -1,5 +1,5 @@
 <template>
-  <section class="rounded-2xl border border-[#4A4858] bg-[#3B3A47] p-5">
+  <section class="rounded-2xl border border-[#3D3B4A] bg-[#3B3A47] p-5 shadow-[0_4px_16px_rgba(0,0,0,0.3)]">
     <div class="flex items-baseline justify-between gap-3">
       <h2 class="text-lg font-semibold tracking-tight text-[#EDE9F7]">{{ t("targets.title") }}</h2>
 

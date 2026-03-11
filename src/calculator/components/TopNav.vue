@@ -1,6 +1,6 @@
 <!-- TopNav.vue -->
 <template>
-  <header class="sticky top-0 z-10 bg-[#252430] border-b border-[#38364A]">
+  <header class="sticky top-0 z-10 bg-[#252430] border-b border-[#38364A] shadow-[0_2px_10px_rgba(0,0,0,0.4)]">
     <div class="mx-auto max-w-3xl px-4 py-3 flex items-center justify-between">
       <span class="text-sm font-semibold text-[#EDE9F7]">{{ t("app.title") }}</span>
 

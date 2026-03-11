@@ -1,13 +1,14 @@
 <!-- MaterialsList.vue -->
 <template>
-  <div class="rounded-2xl border border-[#4A4858] bg-[#3B3A47] p-4">
-    <div class="flex items-center justify-between mb-3">
-      <div class="text-base font-semibold text-[#EDE9F7]">{{ t("materials.title") }}</div>
+  <div>
+    <!-- 标题栏：独立深色卡片，与顶部导航同色调 -->
+    <div class="rounded-t-2xl bg-[#252430] border border-[#38364A] px-4 py-3 flex items-center justify-between shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
+      <div class="text-sm font-semibold text-[#EDE9F7]">{{ t("materials.title") }}</div>
 
       <div class="flex items-center gap-1">
         <button
           type="button"
-          class="h-8 w-8 rounded-xl flex items-center justify-center hover:bg-[#4A4858]/50 transition-colors"
+          class="h-8 w-8 rounded-xl flex items-center justify-center hover:bg-[#38364A] transition-colors"
           :title="t('materials.collapseAll')"
           @click="$emit('collapse-all')"
         >
@@ -16,20 +17,11 @@
 
         <button
           type="button"
-          class="h-8 w-8 rounded-xl flex items-center justify-center hover:bg-[#4A4858]/50 transition-colors"
+          class="h-8 w-8 rounded-xl flex items-center justify-center hover:bg-[#38364A] transition-colors"
           :title="t('materials.expandAll')"
           @click="$emit('expand-all')"
         >
           <ChevronsDown :size="16" color="#9B96AD" />
-        </button>
-
-        <button
-          type="button"
-          class="h-8 w-8 rounded-xl flex items-center justify-center hover:bg-[#4A4858]/50 transition-colors"
-          :title="t('materials.clearChecked')"
-          @click="clearChecked"
-        >
-          <XCircle :size="16" color="#9B96AD" />
         </button>
 
         <button
@@ -43,7 +35,7 @@
 
         <button
           type="button"
-          class="h-8 w-8 rounded-xl flex items-center justify-center hover:bg-[#4A4858]/50 transition-colors"
+          class="h-8 w-8 rounded-xl flex items-center justify-center hover:bg-[#38364A] transition-colors"
           :title="copySuccess ? t('materials.copySuccess') : t('materials.copyList')"
           @click="$emit('copy-materials')"
         >
@@ -53,50 +45,53 @@
       </div>
     </div>
 
-    <CanCraftSection
-      :craftable="ui.craftable"
-      :checked-ids="checkedIds"
-      :expand-order="expandOrder"
-      @toggle-check="toggleCheck"
-      @toggle-expand="(id) => $emit('toggle-expand', id)"
-    />
+    <!-- 内容区域 -->
+    <div class="rounded-b-2xl border border-t-0 border-[#4A4858] bg-[#3B3A47] p-4 shadow-[0_6px_20px_rgba(0,0,0,0.35)]">
+      <CanCraftSection
+        :craftable="ui.craftable"
+        :checked-ids="checkedIds"
+        :expand-order="expandOrder"
+        @toggle-check="toggleCheck"
+        @toggle-expand="(id) => $emit('toggle-expand', id)"
+      />
 
-    <NotCraftSection
-      :non-craftable="ui.nonCraftable"
-      :checked-ids="checkedIds"
-      @toggle-check="toggleCheck"
-    />
+      <NotCraftSection
+        :non-craftable="ui.nonCraftable"
+        :checked-ids="checkedIds"
+        @toggle-check="toggleCheck"
+      />
 
-    <!-- 水晶 -->
-    <div class="flex items-baseline justify-between mt-6 mb-3">
-      <div class="text-sm font-semibold text-[#EDE9F7]">{{ t("materials.crystals") }}</div>
-      <div class="text-xs text-[#9B96AD]">
-        {{ t("common.itemCount", { count: crystals.length }) }}
+      <!-- 水晶 -->
+      <div class="flex items-baseline justify-between mt-6 mb-3">
+        <div class="text-sm font-semibold text-[#EDE9F7]">{{ t("materials.crystals") }}</div>
+        <div class="text-xs text-[#9B96AD]">
+          {{ t("common.itemCount", { count: crystals.length }) }}
+        </div>
       </div>
-    </div>
 
-    <div v-if="crystals.length === 0" class="text-sm text-[#9B96AD]">
-      {{ t("materials.noCrystals") }}
-    </div>
+      <div v-if="crystals.length === 0" class="text-sm text-[#9B96AD]">
+        {{ t("materials.noCrystals") }}
+      </div>
 
-    <div v-else class="space-y-2">
-      <div
-        v-for="group in crystalGroups"
-        :key="group.tier"
-        class="flex items-start gap-3"
-      >
-        <span class="text-xs text-[#9B96AD] w-10 shrink-0 pt-1.5">
-          {{ group.label }}
-        </span>
-        <div class="flex flex-wrap gap-1.5">
-          <span
-            v-for="c in group.items"
-            :key="c.id"
-            class="inline-flex items-center gap-1 bg-[#3A3547] text-[#B4A5C8] rounded-full px-3 py-1 text-xs"
-          >
-            <span>{{ c.elementName }}</span>
-            <span class="text-[#9B96AD]">×{{ c.needAmount }}</span>
+      <div v-else class="space-y-2">
+        <div
+          v-for="group in crystalGroups"
+          :key="group.tier"
+          class="flex items-start gap-3"
+        >
+          <span class="text-xs text-[#9B96AD] w-10 shrink-0 pt-1.5">
+            {{ group.label }}
           </span>
+          <div class="flex flex-wrap gap-1.5">
+            <span
+              v-for="c in group.items"
+              :key="c.id"
+              class="inline-flex items-center gap-1 bg-[#3A3547] text-[#B4A5C8] rounded-full px-3 py-1 text-xs"
+            >
+              <span>{{ c.elementName }}</span>
+              <span class="text-[#9B96AD]">×{{ c.needAmount }}</span>
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -106,7 +101,7 @@
 <script setup>
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
-import { ChevronsUp, ChevronsDown, XCircle, RotateCcw, Copy, Check } from "lucide-vue-next";
+import { ChevronsUp, ChevronsDown, RotateCcw, Copy, Check } from "lucide-vue-next";
 import CanCraftSection from "./CanCraftSection.vue";
 import NotCraftSection from "./NotCraftSection.vue";
 
@@ -129,10 +124,6 @@ const emit = defineEmits([
 
 function toggleCheck(id) {
   emit("toggle-check", id);
-}
-
-function clearChecked() {
-  emit("clear-checked");
 }
 
 function onResetMaterials() {
