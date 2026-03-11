@@ -227,12 +227,13 @@ CRAFTER_SCRIP_CRYSTAL_IDS = {2, 6}   # 火之碎晶, 雷之碎晶
 GATHERER_SCRIP_CRYSTAL_IDS = {4, 7}  # 风之碎晶, 水之碎晶
 
 
-def parse_special_shop_scrip_items(text: str) -> tuple[Set[int], Set[int]]:
-    """Parse SpecialShop.csv and return (crafter_scrip_items, gatherer_scrip_items).
+def parse_special_shop_currency_items(text: str) -> tuple[Set[int], Set[int], Set[int]]:
+    """Parse SpecialShop.csv and return (crafter_scrip_items, gatherer_scrip_items, tomestone_items).
 
-    Scrip exchange shops are identified by shop name keywords
-    (白票/紫票/橙票), and crafter vs gatherer is distinguished
-    by the crystal type used as placeholder cost item.
+    Currency-based exchange shops (scrips, tomestones) use placeholder crystal IDs
+    as Item{Cost} instead of actual currency items. We identify them by shop name:
+    - 白票/紫票/橙票 → scrip exchanges (crafter vs gatherer by cost crystal type)
+    - 神典石 → tomestone exchanges
     """
     rows = list(csv.reader(text.splitlines()))
     header = rows[1]
@@ -242,6 +243,7 @@ def parse_special_shop_scrip_items(text: str) -> tuple[Set[int], Set[int]]:
 
     crafter_items: Set[int] = set()
     gatherer_items: Set[int] = set()
+    tomestone_items: Set[int] = set()
 
     for row in rows[4:]:
         if len(row) <= name_idx:
@@ -255,8 +257,9 @@ def parse_special_shop_scrip_items(text: str) -> tuple[Set[int], Set[int]]:
             "\u7d2b\u7968\u4ea4\u6613" in shop_name  # 紫票交易
             or "\u6a59\u7968\u4ea4\u6613" in shop_name  # 橙票交易
         )
+        is_tomestone = "\u795e\u5178\u77f3" in shop_name  # 神典石
 
-        if not (is_crafter_white or is_gatherer_white or is_purple_or_orange):
+        if not (is_crafter_white or is_gatherer_white or is_purple_or_orange or is_tomestone):
             continue
 
         # Collect received item IDs
@@ -274,7 +277,9 @@ def parse_special_shop_scrip_items(text: str) -> tuple[Set[int], Set[int]]:
         if not received:
             continue
 
-        if is_crafter_white:
+        if is_tomestone:
+            tomestone_items.update(received)
+        elif is_crafter_white:
             crafter_items.update(received)
         elif is_gatherer_white:
             gatherer_items.update(received)
@@ -295,7 +300,7 @@ def parse_special_shop_scrip_items(text: str) -> tuple[Set[int], Set[int]]:
             elif cost_crystals & GATHERER_SCRIP_CRYSTAL_IDS:
                 gatherer_items.update(received)
 
-    return crafter_items, gatherer_items
+    return crafter_items, gatherer_items, tomestone_items
 
 
 def collect_gather_methods(
@@ -335,7 +340,7 @@ def build_obtain_methods(
     crafter_scrip_items: Set[int],
     gatherer_scrip_items: Set[int],
     bicolor_gem_id: int | None,
-    tomestone_ids: Set[int],
+    tomestone_items: Set[int],
 ) -> List[str]:
     methods: Set[str] = set()
     if item_id in craftable_ids:
@@ -349,18 +354,18 @@ def build_obtain_methods(
         methods.add("SHOP_NPC")
     if item_id in gc_scrip_ids:
         methods.add("EXCHANGE_GC_SEALS")
-    # 票据兑换：通过店铺名称识别，不依赖 cost item 匹配
+    # 票据/神典石兑换：通过店铺名称识别，不依赖 cost item 匹配
     if item_id in crafter_scrip_items:
         methods.add("EXCHANGE_SCRIP_CRAFTER")
     if item_id in gatherer_scrip_items:
         methods.add("EXCHANGE_SCRIP_GATHERER")
-    # 宝石/神典石兑换：通过 cost item 名称关键字匹配
+    if item_id in tomestone_items:
+        methods.add("EXCHANGE_TOME")
+    # 双色宝石兑换：通过 cost item 名称关键字匹配
     if item_id in special_shop_costs:
         cost_ids = special_shop_costs.get(item_id, set())
         if bicolor_gem_id and bicolor_gem_id in cost_ids:
             methods.add("EXCHANGE_GEMSTONE")
-        if cost_ids & tomestone_ids:
-            methods.add("EXCHANGE_TOME")
     if is_crystal:
         methods.update({"GATHER_MINER", "GATHER_BOTANIST"})
     return [method for method in OBTAIN_METHOD_ORDER if method in methods]
@@ -378,7 +383,7 @@ def parse_items(
     crafter_scrip_items: Set[int],
     gatherer_scrip_items: Set[int],
     bicolor_gem_id: int | None,
-    tomestone_ids: Set[int],
+    tomestone_items: Set[int],
 ) -> tuple[List[Dict], Dict[str, int]]:
     needed_set = set(needed_ids)
     rows = list(csv.reader(text.splitlines()))
@@ -435,7 +440,7 @@ def parse_items(
             crafter_scrip_items,
             gatherer_scrip_items,
             bicolor_gem_id,
-            tomestone_ids,
+            tomestone_items,
         )
         item_payload = {
             "id": item_id,
@@ -498,14 +503,13 @@ def main() -> None:
     special_shop_costs = parse_special_shop_costs(special_shop_text)
     gc_scrip_ids = parse_item_ids_by_columns(gc_scrip_shop_text, ["Item"])
     item_name_map = parse_item_name_map(item_text)
-    # 票据兑换：通过店铺名称（白票/紫票/橙票）识别，区分工匠/采集靠成本碎晶类型。
-    crafter_scrip_items, gatherer_scrip_items = parse_special_shop_scrip_items(
-        special_shop_text
+    # 票据/神典石兑换：通过店铺名称识别。
+    # SpecialShop.csv 中这些兑换行的 Item{Cost} 存储的是占位碎晶 ID，不是真正的货币，
+    # 因此必须通过店铺名称关键字来识别兑换类型。
+    crafter_scrip_items, gatherer_scrip_items, tomestone_items = (
+        parse_special_shop_currency_items(special_shop_text)
     )
-    # 神典石/双色宝石兑换：通过 cost item 名称关键字匹配。
-    # SpecialShop.csv 的 Item{Cost} 存储以物换物的物品 ID
-    # （如"稀少经典神典石"=49122），而不是货币本体（如"亚拉戈诗学神典石"=28），
-    # 因此必须对 cost item 的名称做关键字匹配，而不是用货币 ID 集合做交集。
+    # 双色宝石兑换：通过 cost item 名称关键字匹配（宝石兑换行的 cost 是真实物品 ID）。
     all_cost_ids: Set[int] = set()
     for cost_set in special_shop_costs.values():
         all_cost_ids.update(cost_set)
@@ -513,10 +517,6 @@ def main() -> None:
         (item_id for item_id in all_cost_ids if item_name_map.get(item_id) == "\u53cc\u8272\u5b9d\u77f3"),
         None,
     )
-    tomestone_ids = {
-        item_id for item_id in all_cost_ids
-        if "\u795e\u5178\u77f3" in item_name_map.get(item_id, "")
-    }
 
     items, stats = parse_items(
         item_text,
@@ -530,7 +530,7 @@ def main() -> None:
         crafter_scrip_items,
         gatherer_scrip_items,
         bicolor_gem_id,
-        tomestone_ids,
+        tomestone_items,
     )
 
     write_json(args.output_dir / "items.json", items)
@@ -549,7 +549,7 @@ def main() -> None:
     print(f"- 工匠票据 (SpecialShop shop name match): {len(crafter_scrip_items)}")
     print(f"- 采集票据 (SpecialShop shop name match): {len(gatherer_scrip_items)}")
     print(f"- 双色宝石 (SpecialShop cost name match): {1 if bicolor_gem_id else 0}")
-    print(f"- 神典石 (SpecialShop cost name match): {len(tomestone_ids)}")
+    print(f"- 神典石 (SpecialShop shop name match): {len(tomestone_items)}")
     print("Ignored sources:")
     for source in IGNORED_SOURCES:
         print(f"- {source}")
