@@ -4,7 +4,7 @@
       <h2 class="text-lg font-semibold tracking-tight text-[#EDE9F7]">{{ t("targets.title") }}</h2>
 
       <div class="flex items-center gap-2">
-        <p class="text-xs text-[#9B96AD]">{{ t("targets.total", { count: targets.length }) }}</p>
+        <p class="text-xs text-[#9B96AD]">{{ t("targets.total", { count: totalAmount }) }}</p>
 
         <button
           v-if="targets.length"
@@ -61,7 +61,7 @@
 </template>
 
 <script setup>
-import { toRefs } from "vue";
+import { computed, toRefs } from "vue";
 import { useI18n } from "vue-i18n";
 
 const props = defineProps({
@@ -73,6 +73,10 @@ const props = defineProps({
 
 const { targets } = toRefs(props);
 const { t } = useI18n();
+
+const totalAmount = computed(() =>
+  targets.value.reduce((sum, item) => sum + (item.amount ?? 1), 0)
+);
 
 const emit = defineEmits(["remove", "update-amount", "clear"]);
 

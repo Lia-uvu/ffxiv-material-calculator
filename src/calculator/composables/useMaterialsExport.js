@@ -1,35 +1,6 @@
 import { computed, unref } from "vue";
 import { useI18n } from "vue-i18n";
-
-// 获取途径优先级（从高到低）
-// 排在前面的优先级更高，用于多来源物品的归类，以及采集清单各组的显示顺序
-const OBTAIN_PRIORITY_ORDER = [
-  "EXCHANGE_TOME",
-  "EXCHANGE_GEMSTONE",
-  "SHOP_NPC",
-  "EXCHANGE_SCRIP_CRAFTER",
-  "EXCHANGE_SCRIP_GATHERER",
-  "EXCHANGE_GC_SEALS",
-  "GATHER_MINER",
-  "GATHER_BOTANIST",
-  "GATHER_FISHER",
-  "SHOP_MARKET",
-];
-
-function getPrimaryMethod(obtainMethods) {
-  if (!obtainMethods?.length) return null;
-  let best = null;
-  let bestRank = Infinity;
-  for (const m of obtainMethods) {
-    const rank = OBTAIN_PRIORITY_ORDER.indexOf(m);
-    const effectiveRank = rank === -1 ? Infinity : rank;
-    if (effectiveRank < bestRank) {
-      bestRank = effectiveRank;
-      best = m;
-    }
-  }
-  return best ?? obtainMethods[0];
-}
+import { OBTAIN_PRIORITY_ORDER, getPrimaryMethod } from "../core/obtainMethodUtils";
 
 function getTier(id) {
   if (id <= 7) return "shard";

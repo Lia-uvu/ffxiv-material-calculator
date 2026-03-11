@@ -41,7 +41,7 @@ export default {
     needLabel: "需要 {n} 个",
     craftLabel: "制作 {n} 次",
     resetConfirm:
-      "确定要重置材料列表进度吗？\n（会清空：已拆/拆的先后顺序/勾选，不影响目标列表）",
+      "重置材料状态？\n\n将清除以下内容：\n · 勾选记录\n · 已拆 / 未拆状态及顺序\n\n目标成品列表不受影响。",
     crystalTiers: {
       shard: "碎晶",
       crystal: "水晶",
