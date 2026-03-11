@@ -11,6 +11,8 @@ export default {
   search: {
     placeholder: "Search item...",
     hint: "Click an item to add it.",
+    hintCtrl: "Hold Ctrl to multi-select",
+    multiSelectActive: "Multi-select active (release Ctrl to exit)",
   },
   targets: {
     title: "Targets",

@@ -11,6 +11,8 @@ export default {
   search: {
     placeholder: "アイテムを検索...",
     hint: "項目をクリックして目標リストに追加します。",
+    hintCtrl: "Ctrl を押しながら複数選択できます",
+    multiSelectActive: "複数選択中（Ctrl を離すと終了）",
   },
   targets: {
     title: "目標完成品",

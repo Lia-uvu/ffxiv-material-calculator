@@ -11,6 +11,8 @@ export default {
   search: {
     placeholder: "搜索物品...",
     hint: "点击条目添加到目标列表。",
+    hintCtrl: "按住 Ctrl 可多选",
+    multiSelectActive: "当前可多选（松开 Ctrl 退出）",
   },
   targets: {
     title: "目标成品",
