@@ -8,7 +8,7 @@
       </div>
     </div>
 
-    <div v-if="rows.length === 0" class="text-sm text-[#9B96AD] mb-4">
+    <div v-if="rows.length === 0" class="rounded-xl bg-[#2A2933] px-3 py-2 text-sm text-[#6B677A] mb-4">
       {{ t("materials.craftable.empty") }}
     </div>
 

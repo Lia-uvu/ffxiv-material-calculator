@@ -19,9 +19,9 @@
       </div>
     </div>
 
-    <p v-if="!targets.length" class="mt-2 text-sm text-[#9B96AD]">
+    <div v-if="!targets.length" class="mt-3 rounded-xl bg-[#2A2933] px-3 py-2 text-sm text-[#6B677A]">
       {{ t("targets.empty") }}
-    </p>
+    </div>
 
     <ul v-else class="mt-4 space-y-2">
       <li

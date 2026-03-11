@@ -1,8 +1,8 @@
 <!-- MaterialsList.vue -->
 <template>
-  <div>
-    <!-- 标题栏：独立深色卡片，与顶部导航同色调 -->
-    <div class="rounded-t-2xl bg-[#252430] border border-[#38364A] px-4 py-3 flex items-center justify-between shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
+  <div class="relative">
+    <!-- 标题栏：独立完整圆角卡片，叠在内容卡片上方 -->
+    <div class="relative z-10 rounded-2xl bg-[#252430] border border-[#38364A] px-4 py-3 flex items-center justify-between shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
       <div class="text-sm font-semibold text-[#EDE9F7]">{{ t("materials.title") }}</div>
 
       <div class="flex items-center gap-1">
@@ -45,8 +45,8 @@
       </div>
     </div>
 
-    <!-- 内容区域 -->
-    <div class="rounded-b-2xl border border-t-0 border-[#4A4858] bg-[#3B3A47] p-4 shadow-[0_6px_20px_rgba(0,0,0,0.35)]">
+    <!-- 内容卡片：独立完整圆角，被标题卡片从上方压住 -->
+    <div class="rounded-2xl border border-[#4A4858] bg-[#3B3A47] -mt-4 pt-8 px-4 pb-4 shadow-[0_6px_20px_rgba(0,0,0,0.35)]">
       <CanCraftSection
         :craftable="ui.craftable"
         :checked-ids="checkedIds"
@@ -69,8 +69,8 @@
         </div>
       </div>
 
-      <div v-if="crystals.length === 0" class="text-sm text-[#9B96AD]">
-        {{ t("materials.noCrystals") }}
+      <div v-if="crystals.length === 0" class="rounded-xl bg-[#2A2933] px-3 py-2 text-sm text-[#6B677A]">
+        无
       </div>
 
       <div v-else class="space-y-2">
