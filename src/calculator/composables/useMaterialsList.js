@@ -114,6 +114,7 @@ export function useMaterialsList(params) {
 
         job: resolveJob(id, null),
         source: formatObtainMethods(item) ?? placeholder,
+        obtainMethods: item?.obtainMethods ?? [],
       });
     }
 
@@ -154,6 +155,7 @@ export function useMaterialsList(params) {
         needAmount: taskNeed,
         craftTimes: taskTimes,
         recipeId,
+        obtainMethods: item?.obtainMethods ?? base.obtainMethods ?? [],
       });
     }
 

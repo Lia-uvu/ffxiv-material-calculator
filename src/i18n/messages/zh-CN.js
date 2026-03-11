@@ -30,7 +30,7 @@ export default {
     collapseAll: "全部折叠",
     expandAll: "全部展开",
     clearChecked: "清空勾选",
-    resetProgress: "重置材料进度",
+    resetProgress: "重置材料状态",
     copyList: "复制材料清单",
     copySuccess: "已复制材料清单",
     crystals: "水晶",
