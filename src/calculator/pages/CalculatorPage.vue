@@ -1,14 +1,14 @@
 <template>
   <div class="space-y-4">
     <!-- 搜索框 -->
-    <div class="relative">
+    <div class="relative" ref="searchContainerRef">
       <ItemSearchBar
         :query="settings.searchQuery"
         @update:query="setSearchQuery"
       />
 
       <!-- 空状态提示：未输入时可见 -->
-      <p v-if="!settings.searchQuery" class="mt-1.5 px-1 text-xs text-[#6B677A]">
+      <p v-if="!settings.searchQuery" class="mt-1.5 px-1 text-xs text-[#9B96AD]">
         {{ t('search.hintCtrl') }}
       </p>
 
@@ -46,7 +46,7 @@
 </template>
 
 <script setup>
-import { toRef, computed, ref } from "vue";
+import { toRef, computed, ref, onMounted, onUnmounted } from "vue";
 import { useI18n } from "vue-i18n";
 
 import { items as itemsRaw, recipes as recipesRaw, resolveItemName } from "../../data";
@@ -96,6 +96,17 @@ const targetAmountsMap = computed(() => {
   for (const tgt of targetsCtrl.targets) map.set(tgt.id, tgt.amount);
   return map;
 });
+
+const searchContainerRef = ref(null);
+
+function onDocumentClick(e) {
+  if (!settings.searchQuery) return;
+  if (searchContainerRef.value?.contains(e.target)) return;
+  setSearchQuery("");
+}
+
+onMounted(() => document.addEventListener("click", onDocumentClick));
+onUnmounted(() => document.removeEventListener("click", onDocumentClick));
 
 function selectResultById({ id, ctrlKey }) {
   targetsCtrl.add(id);
