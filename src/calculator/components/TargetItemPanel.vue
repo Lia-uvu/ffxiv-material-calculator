@@ -1,5 +1,5 @@
 <template>
-  <section class="rounded-2xl border border-[#4A4858] bg-[#3B3A47] p-5">
+  <section class="rounded-2xl border border-[#3D3B4A] bg-[#3B3A47] p-5 shadow-[0_4px_16px_rgba(0,0,0,0.3)]">
     <div class="flex items-baseline justify-between gap-3">
       <h2 class="text-lg font-semibold tracking-tight text-[#EDE9F7]">{{ t("targets.title") }}</h2>
 
@@ -19,9 +19,9 @@
       </div>
     </div>
 
-    <p v-if="!targets.length" class="mt-2 text-sm text-[#9B96AD]">
+    <div v-if="!targets.length" class="mt-4 flex items-center gap-3 rounded-xl bg-[#302F3B] px-3 py-2 text-sm text-[#9B96AD]">
       {{ t("targets.empty") }}
-    </p>
+    </div>
 
     <ul v-else class="mt-4 space-y-2">
       <li

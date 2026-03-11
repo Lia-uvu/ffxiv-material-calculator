@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <div v-if="displayList.length === 0" class="text-sm text-[#9B96AD]">
+    <div v-if="displayList.length === 0" class="rounded-2xl border border-[#5C5470] p-3 bg-[#4A4858] text-sm text-[#9B96AD]">
       {{ t("materials.nonCraftable.empty") }}
     </div>
 
