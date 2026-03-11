@@ -269,10 +269,8 @@ def build_obtain_methods(
     gil_shop_ids: Set[int],
     gc_scrip_ids: Set[int],
     special_shop_costs: Dict[int, Set[int]],
-    crafting_scrip_ids: Set[int],
-    gathering_scrip_ids: Set[int],
+    item_name_map: Dict[int, str],
     bicolor_gem_id: int | None,
-    tomestone_ids: Set[int],
 ) -> List[str]:
     methods: Set[str] = set()
     if item_id in craftable_ids:
@@ -288,13 +286,16 @@ def build_obtain_methods(
         methods.add("EXCHANGE_GC_SEALS")
     if item_id in special_shop_costs:
         cost_ids = special_shop_costs.get(item_id, set())
-        if cost_ids & crafting_scrip_ids:
+        cost_names = [
+            item_name_map.get(cost_id, "").strip() for cost_id in cost_ids if cost_id > 0
+        ]
+        if any("巧手" in name and "票" in name for name in cost_names):
             methods.add("EXCHANGE_SCRIP_CRAFTER")
-        if cost_ids & gathering_scrip_ids:
+        if any("大地" in name and "票" in name for name in cost_names):
             methods.add("EXCHANGE_SCRIP_GATHERER")
         if bicolor_gem_id and bicolor_gem_id in cost_ids:
             methods.add("EXCHANGE_GEMSTONE")
-        if cost_ids & tomestone_ids:
+        if any("神典石" in name for name in cost_names):
             methods.add("EXCHANGE_TOME")
     if is_crystal:
         methods.update({"GATHER_MINER", "GATHER_BOTANIST"})
@@ -310,10 +311,8 @@ def parse_items(
     gil_shop_ids: Set[int],
     gc_scrip_ids: Set[int],
     special_shop_costs: Dict[int, Set[int]],
-    crafting_scrip_ids: Set[int],
-    gathering_scrip_ids: Set[int],
+    item_name_map: Dict[int, str],
     bicolor_gem_id: int | None,
-    tomestone_ids: Set[int],
 ) -> tuple[List[Dict], Dict[str, int]]:
     needed_set = set(needed_ids)
     rows = list(csv.reader(text.splitlines()))
@@ -367,10 +366,8 @@ def parse_items(
             gil_shop_ids,
             gc_scrip_ids,
             special_shop_costs,
-            crafting_scrip_ids,
-            gathering_scrip_ids,
+            item_name_map,
             bicolor_gem_id,
-            tomestone_ids,
         )
         item_payload = {
             "id": item_id,
@@ -457,10 +454,8 @@ def main() -> None:
         gil_shop_ids,
         gc_scrip_ids,
         special_shop_costs,
-        crafting_scrip_ids,
-        gathering_scrip_ids,
+        item_name_map,
         bicolor_gem_id,
-        tomestone_ids,
     )
 
     write_json(args.output_dir / "items.json", items)
