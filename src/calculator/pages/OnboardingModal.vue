@@ -66,7 +66,8 @@
                       </button>
                     </div>
                   </div>
-                  <div class="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#4A4858] to-transparent pointer-events-none" />
+                  <!-- 左侧虚焦遮罩：backdrop-blur 模糊 + 渐变淡出 -->
+                  <div class="absolute inset-y-0 left-0 w-28 backdrop-blur-sm bg-gradient-to-r from-[#4A4858] via-[#4A4858]/80 to-transparent pointer-events-none" />
                 </div>
 
                 <!-- 过渡提示 -->
@@ -102,37 +103,40 @@
                       </button>
                     </div>
                   </div>
-                  <div class="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#2A2933] to-transparent pointer-events-none" />
+                  <!-- 左侧虚焦遮罩：深色背景版本 -->
+                  <div class="absolute inset-y-0 left-0 w-28 backdrop-blur-sm bg-gradient-to-r from-[#2A2933] via-[#2A2933]/80 to-transparent pointer-events-none" />
                 </div>
 
-                <!-- 展开后的子材料 — 真实不可制作材料行样式，左侧（名称端）可见 -->
-                <div class="space-y-1.5 mb-4">
+                <!-- 展开后的子材料 — 真实不可制作材料行样式，左侧（名称端）可见，缩小表达从属层级 -->
+                <div class="space-y-1 mb-4 ml-3">
                   <div class="relative -mr-5">
-                    <div class="rounded-l-2xl border border-[#5C5470] border-r-0 p-3 pr-5 bg-[#4A4858]">
-                      <div class="flex items-center gap-3">
-                        <button class="shrink-0 h-5 w-5 rounded-full border-2 border-[#7A7589] bg-transparent" tabindex="-1" />
+                    <div class="rounded-l-2xl border border-[#5C5470] border-r-0 p-2 pr-5 bg-[#4A4858]">
+                      <div class="flex items-center gap-2">
+                        <button class="shrink-0 h-4 w-4 rounded-full border border-[#7A7589] bg-transparent" tabindex="-1" />
                         <div class="flex-1 min-w-0">
-                          <div class="text-sm font-medium text-[#EDE9F7] truncate">{{ t('onboarding.exampleSub1') }}</div>
-                          <div class="text-xs text-[#9B96AD] mt-0.5">{{ t('obtainMethods.GATHER_MINER') }}</div>
+                          <div class="text-xs font-medium text-[#EDE9F7] truncate">{{ t('onboarding.exampleSub1') }}</div>
+                          <div class="text-[10px] text-[#9B96AD] mt-0.5">{{ t('obtainMethods.GATHER_MINER') }}</div>
                         </div>
-                        <div class="text-sm font-semibold text-[#EDE9F7] shrink-0 tabular-nums">24</div>
+                        <div class="text-xs font-semibold text-[#EDE9F7] shrink-0 tabular-nums">24</div>
                       </div>
                     </div>
-                    <div class="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#4A4858] to-transparent pointer-events-none" />
+                    <!-- 右侧虚焦遮罩 -->
+                    <div class="absolute inset-y-0 right-0 w-20 backdrop-blur-sm bg-gradient-to-l from-[#4A4858] via-[#4A4858]/80 to-transparent pointer-events-none" />
                   </div>
 
                   <div class="relative -mr-5">
-                    <div class="rounded-l-2xl border border-[#5C5470] border-r-0 p-3 pr-5 bg-[#4A4858]">
-                      <div class="flex items-center gap-3">
-                        <button class="shrink-0 h-5 w-5 rounded-full border-2 border-[#7A7589] bg-transparent" tabindex="-1" />
+                    <div class="rounded-l-2xl border border-[#5C5470] border-r-0 p-2 pr-5 bg-[#4A4858]">
+                      <div class="flex items-center gap-2">
+                        <button class="shrink-0 h-4 w-4 rounded-full border border-[#7A7589] bg-transparent" tabindex="-1" />
                         <div class="flex-1 min-w-0">
-                          <div class="text-sm font-medium text-[#EDE9F7] truncate">{{ t('onboarding.exampleSub2') }}</div>
-                          <div class="text-xs text-[#9B96AD] mt-0.5">{{ t('obtainMethods.GATHER_MINER') }}</div>
+                          <div class="text-xs font-medium text-[#EDE9F7] truncate">{{ t('onboarding.exampleSub2') }}</div>
+                          <div class="text-[10px] text-[#9B96AD] mt-0.5">{{ t('obtainMethods.GATHER_MINER') }}</div>
                         </div>
-                        <div class="text-sm font-semibold text-[#EDE9F7] shrink-0 tabular-nums">8</div>
+                        <div class="text-xs font-semibold text-[#EDE9F7] shrink-0 tabular-nums">8</div>
                       </div>
                     </div>
-                    <div class="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#4A4858] to-transparent pointer-events-none" />
+                    <!-- 右侧虚焦遮罩 -->
+                    <div class="absolute inset-y-0 right-0 w-20 backdrop-blur-sm bg-gradient-to-l from-[#4A4858] via-[#4A4858]/80 to-transparent pointer-events-none" />
                   </div>
                 </div>
 
