@@ -7,6 +7,7 @@ export default {
     placeholder: "—",
     itemCount: "{count} items",
     completed: "Completed",
+    loading: "Loading data…",
   },
   search: {
     placeholder: "Search item...",

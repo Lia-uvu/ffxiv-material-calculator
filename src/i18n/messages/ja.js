@@ -7,6 +7,7 @@ export default {
     placeholder: "—",
     itemCount: "{count} 件",
     completed: "完了",
+    loading: "データ読み込み中…",
   },
   search: {
     placeholder: "アイテムを検索...",
