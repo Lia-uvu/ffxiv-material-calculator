@@ -5,6 +5,16 @@
       <span class="text-sm font-semibold text-[#EDE9F7]">{{ t("app.title") }}</span>
 
       <div class="flex items-center gap-1">
+        <!-- 使用说明按钮 -->
+        <button
+          type="button"
+          class="mr-1 h-7 w-7 rounded-full flex items-center justify-center text-[#9B96AD] hover:text-[#EDE9F7] hover:bg-[#38364A] transition-colors"
+          :title="t('onboarding.reopen')"
+          @click="open()"
+        >
+          <Info :size="14" />
+        </button>
+
         <button
           v-for="lang in langs"
           :key="lang.code"
@@ -24,8 +34,11 @@
 
 <script setup>
 import { useI18n } from "vue-i18n";
+import { Info } from "lucide-vue-next";
+import { useOnboarding } from "../composables/useOnboarding.js";
 
 const { t, locale } = useI18n();
+const { open } = useOnboarding();
 
 const langs = [
   { code: "zh-CN", label: "中文" },
