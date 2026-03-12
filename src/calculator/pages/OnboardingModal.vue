@@ -27,7 +27,6 @@
               <div class="text-sm font-semibold text-[#EDE9F7]">
                 {{ page === 0 ? t('onboarding.page1Title') : t('onboarding.page2Title') }}
               </div>
-              <!-- 页码点 -->
               <div class="flex items-center gap-1.5 mt-2">
                 <span
                   v-for="i in 2"
@@ -44,42 +43,96 @@
               <!-- ── Page 0：拆开说明 ── -->
               <template v-if="page === 0">
 
-                <!-- 图标特写对比 -->
-                <div class="flex flex-col items-center gap-3 mb-4">
-
-                  <!-- 状态一：未拆 -->
-                  <div class="flex flex-col items-center gap-1.5">
-                    <div class="text-[10px] text-[#6B677A] tracking-wide">{{ t('onboarding.stateBefore') }}</div>
-                    <div class="h-9 w-9 flex items-center justify-center rounded-xl bg-[#3B3A47] border border-[#4A4858]">
-                      <Link2 :size="20" color="#B4A5C8" />
+                <!-- 状态一：未拆 — 真实可制作材料行，右侧（链条图标端）可见 -->
+                <div class="relative -ml-5">
+                  <div class="rounded-r-2xl border border-[#5C5470] border-l-0 p-3 pl-5 bg-[#4A4858]">
+                    <div class="flex items-center gap-3">
+                      <button class="shrink-0 h-5 w-5 rounded-full border-2 border-[#7A7589] bg-transparent" tabindex="-1" />
+                      <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2">
+                          <div class="text-sm font-medium truncate text-[#EDE9F7]">{{ t('onboarding.exampleItem') }}</div>
+                          <span class="text-[10px] px-1.5 py-0.5 rounded-full shrink-0 bg-[#4A4560] text-[#C8BFDA]">
+                            {{ t('materials.craftable.collapsed') }}
+                          </span>
+                        </div>
+                        <div class="text-xs text-[#9B96AD] mt-0.5">{{ t('jobs.BLACKSMITH') }}</div>
+                      </div>
+                      <div class="text-right shrink-0 tabular-nums leading-tight">
+                        <div class="text-sm font-semibold text-[#EDE9F7]">{{ t('materials.needLabel', { n: 12 }) }}</div>
+                        <div class="text-xs text-[#9B96AD]">{{ t('materials.craftLabel', { n: 4 }) }}</div>
+                      </div>
+                      <button class="shrink-0 h-9 w-9 flex items-center justify-center rounded-xl" tabindex="-1">
+                        <Link2 :size="20" color="#B4A5C8" />
+                      </button>
                     </div>
                   </div>
+                  <div class="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#4A4858] to-transparent pointer-events-none" />
+                </div>
 
-                  <!-- 过渡提示 -->
-                  <div class="flex items-center gap-1.5 text-[11px] text-[#6B677A]">
+                <!-- 过渡提示 -->
+                <div class="flex items-center gap-2 py-2.5">
+                  <div class="h-px flex-1 bg-[#38364A]" />
+                  <div class="flex items-center gap-1 text-xs text-[#B4A5C8] font-medium">
                     <ChevronDown :size="13" />
                     <span>{{ t('onboarding.clickHint') }}</span>
                   </div>
-
-                  <!-- 状态二：已拆 -->
-                  <div class="flex flex-col items-center gap-1.5">
-                    <div class="h-9 w-9 flex items-center justify-center rounded-xl bg-[#3B3A47] border border-[#4A4858]">
-                      <Link2Off :size="20" color="#E8D07A" />
-                    </div>
-                    <div class="text-[10px] text-[#6B677A] tracking-wide">{{ t('onboarding.stateAfter') }}</div>
-                  </div>
-
+                  <div class="h-px flex-1 bg-[#38364A]" />
                 </div>
 
-                <!-- 展开后的子材料（真实材料行样式） -->
-                <div class="rounded-xl bg-[#3B3A47] border border-[#4A4858] px-3 py-2.5 space-y-2 mb-4">
-                  <div class="flex items-center gap-2 text-xs">
-                    <span class="flex-1 text-[#EDE9F7]">{{ t('onboarding.exampleSub1') }}</span>
-                    <span class="text-[#9B96AD]">×24</span>
+                <!-- 状态二：已拆 — 展开样式（深色背景）+ Link2Off -->
+                <div class="relative -ml-5 mb-3">
+                  <div class="rounded-r-2xl border border-[#38364A] border-l-0 p-3 pl-5 bg-[#2A2933]">
+                    <div class="flex items-center gap-3">
+                      <button class="shrink-0 h-5 w-5 rounded-full border-2 border-[#7A7589] bg-transparent" tabindex="-1" />
+                      <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2">
+                          <div class="text-sm font-medium truncate text-[#EDE9F7]">{{ t('onboarding.exampleItem') }}</div>
+                          <span class="text-[10px] px-1.5 py-0.5 rounded-full shrink-0 bg-[#2E2D3A] text-[#6B677A]">
+                            {{ t('materials.craftable.expanded') }}
+                          </span>
+                        </div>
+                        <div class="text-xs text-[#9B96AD] mt-0.5">{{ t('jobs.BLACKSMITH') }}</div>
+                      </div>
+                      <div class="text-right shrink-0 tabular-nums leading-tight">
+                        <div class="text-sm font-semibold text-[#EDE9F7]">{{ t('materials.craftLabel', { n: 4 }) }}</div>
+                        <div class="text-xs text-[#9B96AD]">{{ t('materials.needLabel', { n: 12 }) }}</div>
+                      </div>
+                      <button class="shrink-0 h-9 w-9 flex items-center justify-center rounded-xl" tabindex="-1">
+                        <Link2Off :size="20" color="#E8D07A" />
+                      </button>
+                    </div>
                   </div>
-                  <div class="flex items-center gap-2 text-xs">
-                    <span class="flex-1 text-[#EDE9F7]">{{ t('onboarding.exampleSub2') }}</span>
-                    <span class="text-[#9B96AD]">×8</span>
+                  <div class="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#2A2933] to-transparent pointer-events-none" />
+                </div>
+
+                <!-- 展开后的子材料 — 真实不可制作材料行样式，左侧（名称端）可见 -->
+                <div class="space-y-1.5 mb-4">
+                  <div class="relative -mr-5">
+                    <div class="rounded-l-2xl border border-[#5C5470] border-r-0 p-3 pr-5 bg-[#4A4858]">
+                      <div class="flex items-center gap-3">
+                        <button class="shrink-0 h-5 w-5 rounded-full border-2 border-[#7A7589] bg-transparent" tabindex="-1" />
+                        <div class="flex-1 min-w-0">
+                          <div class="text-sm font-medium text-[#EDE9F7] truncate">{{ t('onboarding.exampleSub1') }}</div>
+                          <div class="text-xs text-[#9B96AD] mt-0.5">{{ t('obtainMethods.GATHER_MINER') }}</div>
+                        </div>
+                        <div class="text-sm font-semibold text-[#EDE9F7] shrink-0 tabular-nums">24</div>
+                      </div>
+                    </div>
+                    <div class="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#4A4858] to-transparent pointer-events-none" />
+                  </div>
+
+                  <div class="relative -mr-5">
+                    <div class="rounded-l-2xl border border-[#5C5470] border-r-0 p-3 pr-5 bg-[#4A4858]">
+                      <div class="flex items-center gap-3">
+                        <button class="shrink-0 h-5 w-5 rounded-full border-2 border-[#7A7589] bg-transparent" tabindex="-1" />
+                        <div class="flex-1 min-w-0">
+                          <div class="text-sm font-medium text-[#EDE9F7] truncate">{{ t('onboarding.exampleSub2') }}</div>
+                          <div class="text-xs text-[#9B96AD] mt-0.5">{{ t('obtainMethods.GATHER_MINER') }}</div>
+                        </div>
+                        <div class="text-sm font-semibold text-[#EDE9F7] shrink-0 tabular-nums">8</div>
+                      </div>
+                    </div>
+                    <div class="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#4A4858] to-transparent pointer-events-none" />
                   </div>
                 </div>
 
@@ -96,14 +149,12 @@
                 <!-- Ctrl 多选 -->
                 <div class="rounded-xl bg-[#3B3A47] border border-[#4A4858] px-4 py-3 mb-3">
                   <div class="flex items-start gap-3">
-                    <!-- 仿真搜索条目 + Ctrl badge -->
                     <div class="shrink-0 flex flex-col gap-1 pt-0.5">
                       <div class="flex items-center gap-1">
                         <kbd class="px-1.5 py-0.5 rounded bg-[#252430] border border-[#4A4858] text-[10px] text-[#B4A5C8] font-mono leading-none">Ctrl</kbd>
                         <span class="text-[10px] text-[#6B677A]">+</span>
                         <kbd class="px-1.5 py-0.5 rounded bg-[#252430] border border-[#4A4858] text-[10px] text-[#B4A5C8] font-mono leading-none">Click</kbd>
                       </div>
-                      <!-- 仿真搜索结果小条 -->
                       <div class="mt-1 space-y-1">
                         <div class="rounded-lg bg-[#252430] border border-[#4A4858] px-2 py-1 flex items-center gap-1.5 w-28">
                           <span class="w-1.5 h-1.5 rounded-full bg-[#B4A5C8] shrink-0" />
@@ -115,7 +166,6 @@
                         </div>
                       </div>
                     </div>
-                    <!-- 说明文字 -->
                     <div>
                       <div class="text-xs font-medium text-[#EDE9F7] mb-1">{{ t('onboarding.shortcutCtrlTitle') }}</div>
                       <p class="text-[11px] text-[#9B96AD] leading-relaxed">{{ t('onboarding.shortcutCtrlDesc') }}</p>
@@ -126,13 +176,11 @@
                 <!-- 复制按钮 -->
                 <div class="rounded-xl bg-[#3B3A47] border border-[#4A4858] px-4 py-3">
                   <div class="flex items-start gap-3">
-                    <!-- 仿真按钮 -->
                     <div class="shrink-0 pt-0.5">
                       <div class="h-8 w-8 rounded-xl bg-[#252430] border border-[#4A4858] flex items-center justify-center">
                         <Copy :size="15" color="#9B96AD" />
                       </div>
                     </div>
-                    <!-- 说明文字 -->
                     <div>
                       <div class="text-xs font-medium text-[#EDE9F7] mb-1">{{ t('onboarding.copyTitle') }}</div>
                       <p class="text-[11px] text-[#9B96AD] leading-relaxed">{{ t('onboarding.copyDesc') }}</p>
@@ -157,7 +205,7 @@
 
         </div>
 
-        <!-- X 关闭按钮，独立在卡片正下方 -->
+        <!-- X 关闭按钮 -->
         <button
           type="button"
           class="mt-5 h-9 w-9 rounded-full border border-[#4A4858] flex items-center justify-center text-[#9B96AD] hover:text-[#EDE9F7] hover:border-[#9B96AD] transition-colors"
@@ -182,7 +230,6 @@ const { isOpen, close } = useOnboarding();
 
 const page = ref(0);
 
-// 每次打开时重置到第一页
 watch(isOpen, (val) => {
   if (val) page.value = 0;
 });
