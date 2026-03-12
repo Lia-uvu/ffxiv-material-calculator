@@ -6,7 +6,7 @@
     <!-- Ctrl 多选状态提示横幅 -->
     <div
       v-if="ctrlPressed"
-      class="flex items-center gap-1.5 border-b border-[#B4A5C8]/20 bg-[#B4A5C8]/10 px-3 py-1.5 text-xs text-[#B4A5C8]"
+      class="pointer-events-none absolute left-0 right-0 top-0 z-10 flex items-center gap-1.5 bg-[#B4A5C8]/15 px-3 py-1.5 text-xs text-[#B4A5C8]"
     >
       <span>⌃</span>
       <span>{{ t('search.multiSelectActive') }}</span>
