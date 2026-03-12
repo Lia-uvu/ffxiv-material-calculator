@@ -1,5 +1,7 @@
 import { createI18n } from "vue-i18n";
-import messages from "./messages";
+import en from "./messages/en";
+import ja from "./messages/ja";
+import zhCN from "./messages/zh-CN";
 
 function detectLocale() {
   const langs = [navigator.language, ...(navigator.languages ?? [])];
@@ -16,7 +18,7 @@ const i18n = createI18n({
   legacy: false,
   locale: detectLocale(),
   fallbackLocale: "zh-CN",
-  messages,
+  messages: { en, ja, "zh-CN": zhCN },
 });
 
 export default i18n;
