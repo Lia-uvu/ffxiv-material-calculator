@@ -2,7 +2,7 @@
 <template>
   <div class="relative">
     <!-- 标题栏：完整圆角卡片，在下层，被内容卡片从下方压住只露出顶部 -->
-    <div class="rounded-2xl bg-[#252430] border border-[#38364A] px-4 py-3 flex items-center justify-between">
+    <div class="rounded-t-2xl bg-[#252430] border border-[#38364A] px-4 pt-3 pb-6 flex items-center justify-between">
       <div class="text-sm font-semibold text-[#EDE9F7]">{{ t("materials.title") }}</div>
 
       <div class="flex items-center gap-1">
