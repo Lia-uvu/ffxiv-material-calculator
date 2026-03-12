@@ -2,7 +2,7 @@
 <template>
   <div class="relative">
     <!-- 标题栏：完整圆角卡片，在下层，被内容卡片从下方压住只露出顶部 -->
-    <div class="rounded-t-2xl bg-[#252430] border border-[#38364A] px-4 pt-3 pb-6 flex items-center justify-between">
+    <div class="rounded-t-2xl bg-[#252430] border border-[#38364A] px-4 pt-2.5 pb-4 flex items-center justify-between">
       <div class="text-sm font-semibold text-[#EDE9F7]">{{ t("materials.title") }}</div>
 
       <div class="flex items-center gap-1">
@@ -46,7 +46,7 @@
     </div>
 
     <!-- 内容卡片：z-10 在上层，-mt-2 压住标题卡片底部 -->
-    <div class="relative z-10 rounded-2xl border border-[#4A4858] bg-[#3B3A47] -mt-2 pt-4 px-4 pb-4 shadow-[0_0_16px_rgba(0,0,0,0.45)]">
+    <div class="relative z-10 rounded-2xl border border-[#4A4858] bg-[#3B3A47] -mt-2 pt-3 px-4 pb-5 shadow-[0_0_16px_rgba(0,0,0,0.45)]">
       <CanCraftSection
         :craftable="ui.craftable"
         :checked-ids="checkedIds"
