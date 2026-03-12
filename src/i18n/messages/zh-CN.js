@@ -1,6 +1,6 @@
 export default {
   app: {
-    title: "FFXIV 材料计算器",
+    title: "FFXIV 魔石精材料计算器",
   },
   common: {
     unknown: "未知",

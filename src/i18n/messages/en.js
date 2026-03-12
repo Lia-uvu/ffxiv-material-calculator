@@ -1,6 +1,6 @@
 export default {
   app: {
-    title: "FFXIV Material Calculator",
+    title: "FFXIV Spriggan Material Calculator",
   },
   common: {
     unknown: "Unknown",

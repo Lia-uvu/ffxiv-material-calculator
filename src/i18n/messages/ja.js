@@ -1,6 +1,6 @@
 export default {
   app: {
-    title: "FF14 素材計算機",
+    title: "FF14 スプリガン素材計算機",
   },
   common: {
     unknown: "不明",
