@@ -50,13 +50,13 @@
                 {{ r.item.isExpanded ? t("materials.craftable.expanded") : t("materials.craftable.collapsed") }}
               </span>
             </div>
-            <div class="text-xs text-[#9B96AD] mt-0.5">
+            <div class="text-xs mt-0.5" :class="checkedIds.has(r.item.id) ? 'text-[#9B96AD] opacity-40' : 'text-[#9B96AD]'">
               {{ r.item.job ? (te(`jobs.${r.item.job}`) ? t(`jobs.${r.item.job}`) : r.item.job) : t("common.placeholder") }}
             </div>
           </div>
 
           <!-- Amount (dual line) -->
-          <div class="text-right shrink-0 tabular-nums leading-tight">
+          <div class="text-right shrink-0 tabular-nums leading-tight" :class="checkedIds.has(r.item.id) ? 'opacity-40' : ''">
             <div class="text-sm font-semibold text-[#EDE9F7]">
               {{ r.item.isExpanded
                 ? t("materials.craftLabel", { n: r.item.craftTimes })

@@ -41,7 +41,7 @@
             >
               {{ e.name }}
             </div>
-            <div class="text-xs text-[#9B96AD] mt-0.5">
+            <div class="text-xs mt-0.5" :class="checkedIds.has(e.id) ? 'text-[#9B96AD] opacity-40' : 'text-[#9B96AD]'">
               {{ e.source ?? t("common.placeholder") }}
             </div>
           </div>
