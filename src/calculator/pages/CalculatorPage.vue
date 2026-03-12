@@ -1,5 +1,12 @@
 <template>
-  <div class="space-y-4">
+  <div v-if="!dataReady" class="flex items-center justify-center py-20 text-[#9B96AD]">
+    <svg class="mr-2 h-5 w-5 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+    </svg>
+    {{ t('common.loading') }}
+  </div>
+  <div v-else class="space-y-4">
     <!-- 搜索框 -->
     <div class="relative" ref="searchContainerRef">
       <ItemSearchBar
@@ -49,7 +56,7 @@
 import { toRef, computed, ref, onMounted, onUnmounted } from "vue";
 import { useI18n } from "vue-i18n";
 
-import { items as itemsRaw, recipes as recipesRaw, resolveItemName } from "../../data";
+import { items, recipes, resolveItemName, dataReady, loadData } from "../../data";
 
 import ItemSearchBar from "../components/ItemSearchBar.vue";
 import ItemSearchResults from "../components/ItemSearchResults.vue";
@@ -70,12 +77,14 @@ const {
 
 const { locale, t } = useI18n();
 
+loadData();
+
 const queryRef = toRef(settings, "searchQuery");
-const { results } = useItemSearch(itemsRaw, queryRef, 20);
+const { results } = useItemSearch(items, queryRef, 20);
 
 const itemById = computed(() => {
   const map = new Map();
-  for (const it of itemsRaw) map.set(it.id, it);
+  for (const it of items.value) map.set(it.id, it);
   return map;
 });
 
@@ -115,8 +124,8 @@ function selectResultById({ id, ctrlKey }) {
 
 const { ui, reachableCraftableIds } = useMaterialsList({
   targets: targetsCtrl.targets,
-  items: itemsRaw,
-  recipes: recipesRaw,
+  items,
+  recipes,
   expandedIds: materialsCtrl.expandedIds,
 });
 const { exportText } = useMaterialsExport(ui);

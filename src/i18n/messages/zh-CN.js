@@ -7,6 +7,7 @@ export default {
     placeholder: "—",
     itemCount: "{count} 项",
     completed: "已完成",
+    loading: "数据加载中…",
   },
   search: {
     placeholder: "搜索物品...",

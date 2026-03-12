@@ -1,15 +1,18 @@
-import items from "./items.json";
-import recipes from "./recipes.json";
+import { shallowRef } from "vue";
 
-const itemsById = new Map(items.map((item) => [item.id, item]));
-const recipesById = new Map(recipes.map((recipe) => [recipe.id, recipe]));
+export const items = shallowRef([]);
+export const recipes = shallowRef([]);
+export const dataReady = shallowRef(false);
 
-export function getItemById(id) {
-  return itemsById.get(id);
-}
-
-export function getRecipeById(id) {
-  return recipesById.get(id);
+export async function loadData() {
+  if (dataReady.value) return;
+  const [itemsMod, recipesMod] = await Promise.all([
+    import("./items.json"),
+    import("./recipes.json"),
+  ]);
+  items.value = itemsMod.default;
+  recipes.value = recipesMod.default;
+  dataReady.value = true;
 }
 
 export function resolveItemName(item, locale = "zh-CN") {
@@ -21,5 +24,3 @@ export function resolveItemName(item, locale = "zh-CN") {
   }
   return null;
 }
-
-export { items, recipes };
