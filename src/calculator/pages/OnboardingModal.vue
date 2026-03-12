@@ -66,8 +66,8 @@
                       </button>
                     </div>
                   </div>
-                  <!-- 左侧虚焦遮罩：backdrop-blur 模糊 + 渐变淡出 -->
-                  <div class="absolute inset-y-0 left-0 w-28 backdrop-blur-sm bg-gradient-to-r from-[#4A4858] via-[#4A4858]/80 to-transparent pointer-events-none" />
+                  <!-- 左侧遮罩：从 modal 背景色渐变到透明，自然融入 -->
+                  <div class="absolute inset-y-0 left-0 w-28 bg-gradient-to-r from-[#2D2C34] to-transparent pointer-events-none" />
                 </div>
 
                 <!-- 过渡提示 -->
@@ -81,7 +81,7 @@
                 </div>
 
                 <!-- 状态二：已拆 — 展开样式（深色背景）+ Link2Off -->
-                <div class="relative -ml-5 mb-3">
+                <div class="relative -ml-5 mb-2">
                   <div class="rounded-r-2xl border border-[#38364A] border-l-0 p-3 pl-5 bg-[#2A2933]">
                     <div class="flex items-center gap-3">
                       <button class="shrink-0 h-5 w-5 rounded-full border-2 border-[#7A7589] bg-transparent" tabindex="-1" />
@@ -103,12 +103,12 @@
                       </button>
                     </div>
                   </div>
-                  <!-- 左侧虚焦遮罩：深色背景版本 -->
-                  <div class="absolute inset-y-0 left-0 w-28 backdrop-blur-sm bg-gradient-to-r from-[#2A2933] via-[#2A2933]/80 to-transparent pointer-events-none" />
+                  <!-- 左侧遮罩：同样融入 modal 背景 -->
+                  <div class="absolute inset-y-0 left-0 w-28 bg-gradient-to-r from-[#2D2C34] to-transparent pointer-events-none" />
                 </div>
 
                 <!-- 展开后的子材料 — 真实不可制作材料行样式，左侧（名称端）可见，缩小表达从属层级 -->
-                <div class="space-y-1 mb-4 ml-3">
+                <div class="space-y-1 mb-3 ml-4">
                   <div class="relative -mr-5">
                     <div class="rounded-l-2xl border border-[#5C5470] border-r-0 p-2 pr-5 bg-[#4A4858]">
                       <div class="flex items-center gap-2">
@@ -120,8 +120,8 @@
                         <div class="text-xs font-semibold text-[#EDE9F7] shrink-0 tabular-nums">24</div>
                       </div>
                     </div>
-                    <!-- 右侧虚焦遮罩 -->
-                    <div class="absolute inset-y-0 right-0 w-20 backdrop-blur-sm bg-gradient-to-l from-[#4A4858] via-[#4A4858]/80 to-transparent pointer-events-none" />
+                    <!-- 右侧遮罩：融入 modal 背景 -->
+                    <div class="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#2D2C34] to-transparent pointer-events-none" />
                   </div>
 
                   <div class="relative -mr-5">
@@ -135,8 +135,8 @@
                         <div class="text-xs font-semibold text-[#EDE9F7] shrink-0 tabular-nums">8</div>
                       </div>
                     </div>
-                    <!-- 右侧虚焦遮罩 -->
-                    <div class="absolute inset-y-0 right-0 w-20 backdrop-blur-sm bg-gradient-to-l from-[#4A4858] via-[#4A4858]/80 to-transparent pointer-events-none" />
+                    <!-- 右侧遮罩：融入 modal 背景 -->
+                    <div class="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#2D2C34] to-transparent pointer-events-none" />
                   </div>
                 </div>
 
