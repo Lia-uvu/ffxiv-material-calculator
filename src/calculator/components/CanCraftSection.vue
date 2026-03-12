@@ -56,7 +56,7 @@
           </div>
 
           <!-- Amount (dual line) -->
-          <div class="text-right shrink-0 tabular-nums leading-tight">
+          <div class="text-right shrink-0 tabular-nums leading-tight" :class="checkedIds.has(r.item.id) ? 'opacity-40' : ''">
             <div class="text-sm font-semibold text-[#EDE9F7]">
               {{ r.item.isExpanded
                 ? t("materials.craftLabel", { n: r.item.craftTimes })
