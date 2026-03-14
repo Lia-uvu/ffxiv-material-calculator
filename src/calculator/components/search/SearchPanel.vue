@@ -2,7 +2,7 @@
   <div ref="searchContainerRef" class="relative">
     <ItemSearchBar
       :query="query"
-      :pinned="selectionPinned"
+      :pinned="Boolean(multiSelectMode)"
       @update:query="emit('update:query', $event)"
       @toggle-pinned="togglePinned"
     />
@@ -14,7 +14,6 @@
     <ItemSearchResults
       :results="results"
       :target-amounts="targetAmounts"
-      :multi-select-mode="multiSelectMode"
       @select="onSelect"
     />
   </div>
