@@ -8,7 +8,7 @@
     />
 
     <p v-if="!query" class="mt-1.5 px-1 text-xs text-[#9B96AD]">
-      {{ t("search.hintCtrl") }}
+      {{ multiSelectMode ? t("search.hintCtrlActive") : t("search.hintCtrl") }}
     </p>
 
     <ItemSearchResults

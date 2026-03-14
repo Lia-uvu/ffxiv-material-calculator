@@ -12,10 +12,11 @@ export default {
   search: {
     placeholder: "搜索物品...",
     hint: "点击条目添加到目标列表。",
-    hintCtrl: "按住 Ctrl 或点击图钉图标开启多选锁定",
+    hintCtrl: "按住 Ctrl 或点击图钉可开启多选锁定",
+    hintCtrlActive: "松开Ctrl或再次点击图钉可关闭多选锁定",
     multiSelectCtrl: "当前按住 Ctrl，可连续添加",
     multiSelectPinned: "已开启多选锁定，再点图钉退出",
-    pinToggle: "切换多选锁定（多选状态：{state}）",
+    pinToggle: "多选状态：{state}",
     multiSelectStateOn: "开启",
     multiSelectStateOff: "关闭",
   },
