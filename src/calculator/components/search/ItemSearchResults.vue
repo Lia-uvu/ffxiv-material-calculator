@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="results.length"
-    class="absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-2xl border border-[#4A4858] bg-[#3B3A47] shadow-lg"
+    class="search-results-popover absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-2xl border border-[#4A4858] bg-[#3B3A47] shadow-lg"
   >
     <div
       v-if="multiSelectMode"
@@ -73,6 +73,13 @@ function onSelect(id, event) {
 .results-list {
   scrollbar-width: thin;
   scrollbar-color: #4a4858 transparent;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
+.search-results-popover {
+  overscroll-behavior: contain;
 }
 .results-list::-webkit-scrollbar {
   width: 4px;
