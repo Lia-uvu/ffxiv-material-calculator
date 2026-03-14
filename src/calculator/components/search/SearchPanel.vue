@@ -7,7 +7,7 @@
       @toggle-pinned="togglePinned"
     />
 
-    <p v-if="!query" class="mt-1.5 px-1 text-xs text-[#9B96AD]">
+    <p class="mt-1.5 px-1 text-xs text-[#9B96AD]">
       {{ multiSelectMode ? t("search.hintCtrlActive") : t("search.hintCtrl") }}
     </p>
 
