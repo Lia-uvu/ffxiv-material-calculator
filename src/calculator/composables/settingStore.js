@@ -296,7 +296,7 @@ export function useSettingStore() {
     expandedIds: readonly(state.expandedResultItemIds),
 
     // ✅ 给 UI 排序用（已拆按先后）
-    expandedOrder: readonly(state.expandedOrderById),
+    expandOrder: readonly(state.expandedOrderById),
 
     isExpanded,
     expand,

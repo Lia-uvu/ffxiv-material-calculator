@@ -5,6 +5,28 @@
 
 ---
 
+## 2026-03-14：组件按业务区块分组，壳层 UI 去耦
+
+**类型**：架构 / 目录组织
+**结论**：
+- `components/` 按业务区块拆分为 `common/`、`search/`、`targets/`、`materials/`、`shell/`。
+- `CalculatorPage.vue` 只保留数据加载、composable/store 接线、page 级 UI model 组装与业务事件转发。
+- `TopNav.vue`、`OnboardingModal.vue` 这类壳层 UI 不直接依赖 `useOnboarding()`，由 `App.vue` 负责状态编排。
+- 搜索框外部点击关闭、材料复制反馈、重置确认等 UI 细节下沉到对应区块组件内部，不放在 page 层。
+
+**原因**：
+- 让 `pages/` 回到 orchestrator 职责，避免页面层逐步堆积浏览器事件、动画反馈、确认弹窗这类 UI 细节。
+- 目录按业务区块分组后，组件路径能直接表达所属上下文，后续拆小组件时不容易漂回“平铺杂糅”的状态。
+- 壳层 UI 改成纯 `props/emits` 后，更符合单向数据流，也避免组件直接触达全局状态。
+
+**影响**：
+- 页面入口组件改为 `SearchPanel` / `TargetItemPanel` / `MaterialsPanel`。
+- 文档中的组件契约与目录结构需要同步更新，避免代码与文档继续漂移。
+
+**状态**：有效
+
+---
+
 ## 2025-12-02：统一使用 number 类型 ID
 
 **类型**：数据模型 / 约定  

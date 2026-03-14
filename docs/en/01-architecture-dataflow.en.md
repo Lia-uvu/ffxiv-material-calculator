@@ -16,6 +16,13 @@ This project is layered by responsibility. Layers communicate via explicit input
 - `settingStore` (State*): stores runtime state and user-selected dynamic data.
 - `data/` (Static Data): static `items/recipes` data source (update flow, see 03).
 
+The current `components/` tree is grouped by feature area:
+- `components/common/`: shared UI shells such as `LoadingState`.
+- `components/search/`: search UI such as `SearchPanel` / `ItemSearchBar` / `ItemSearchResults`.
+- `components/targets/`: target-item UI such as `TargetItemPanel`.
+- `components/materials/`: materials UI such as `MaterialsPanel` / `MaterialsToolbar` / `CanCraftSection` / `NotCraftSection` / `CrystalsSection`.
+- `components/shell/`: app-shell UI such as `TopNav` / `OnboardingModal`.
+
 *Note: `settingStore.js` currently lives physically under `composables/`.
 
 ## Data Flow
