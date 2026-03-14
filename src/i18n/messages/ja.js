@@ -12,10 +12,11 @@ export default {
   search: {
     placeholder: "アイテムを検索...",
     hint: "項目をクリックして目標リストに追加します。",
-    hintCtrl: "Ctrl を押すか、ピンアイコンをクリックして複数選択ロックを有効化",
+    hintCtrl: "Ctrl キーを押すか、ピンをクリックすると複数選択ロックがオンになります",
+    hintCtrlActive: "Ctrl を離すか、もう一度ピンをクリックすると複数選択ロックをオフにできます",
     multiSelectCtrl: "Ctrl 押下中、連続追加が有効です",
     multiSelectPinned: "複数選択ロック中です。もう一度ピンを押すと終了します",
-    pinToggle: "複数選択ロックを切り替え（状態: {state}）",
+    pinToggle: "状態: {state}",
     multiSelectStateOn: "オン",
     multiSelectStateOff: "オフ",
   },
