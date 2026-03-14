@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-between rounded-t-2xl border border-[#38364A] bg-[#252430] px-4 pt-3 pb-6">
+  <div class="flex items-center justify-between rounded-t-2xl border border-[#38364A] bg-[#252430] px-4 pt-2.5 pb-4">
     <div class="text-sm font-semibold text-[#EDE9F7]">{{ t("materials.title") }}</div>
 
     <div class="flex items-center gap-1">

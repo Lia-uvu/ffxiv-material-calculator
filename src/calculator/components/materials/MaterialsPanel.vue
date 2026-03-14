@@ -8,7 +8,7 @@
       @copy-materials="handleCopyMaterials"
     />
 
-    <div class="relative z-10 -mt-2 rounded-2xl border border-[#4A4858] bg-[#3B3A47] px-4 pt-4 pb-4 shadow-[0_0_16px_rgba(0,0,0,0.45)]">
+    <div class="relative z-10 -mt-2 rounded-2xl border border-[#4A4858] bg-[#3B3A47] px-4 pt-3 pb-5 shadow-[0_0_16px_rgba(0,0,0,0.45)]">
       <CanCraftSection
         :craftable="ui.craftable"
         :checked-ids="checkedIds"
