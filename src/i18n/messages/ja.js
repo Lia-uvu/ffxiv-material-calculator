@@ -12,8 +12,10 @@ export default {
   search: {
     placeholder: "アイテムを検索...",
     hint: "項目をクリックして目標リストに追加します。",
-    hintCtrl: "Ctrl を押しながら複数選択できます",
-    multiSelectActive: "複数選択中（Ctrl を離すと終了）",
+    hintCtrl: "Ctrl を押すか、右側のピンアイコンをクリックして複数選択ロックを有効化",
+    multiSelectCtrl: "Ctrl 押下中、連続追加が有効です",
+    multiSelectPinned: "複数選択ロック中です。もう一度ピンを押すと終了します",
+    pinToggle: "複数選択ロックを切り替え",
   },
   targets: {
     title: "目標完成品",
@@ -91,8 +93,8 @@ export default {
     exampleSub1: "銀鉱",
     exampleSub2: "アイスシャード",
     page2Title: "使い方のヒント",
-    shortcutCtrlTitle: "Ctrl 複数選択",
-    shortcutCtrlDesc: "Ctrl を押しながら検索結果をクリックすると、検索欄を閉じずに複数のアイテムを追加できます。",
+    shortcutCtrlTitle: "複数選択ロック",
+    shortcutCtrlDesc: "Ctrl を押すか、検索欄右側のピンアイコンをクリックすると、複数選択ロックを有効にして連続追加できます。",
     copyTitle: "素材リストをコピー",
     copyDesc: "素材リスト右上のコピーボタンをクリックすると、リストをクリップボードにコピーできます。",
   },

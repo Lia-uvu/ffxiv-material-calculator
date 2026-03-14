@@ -12,8 +12,10 @@ export default {
   search: {
     placeholder: "Search item...",
     hint: "Click an item to add it.",
-    hintCtrl: "Hold Ctrl to multi-select",
-    multiSelectActive: "Multi-select active (release Ctrl to exit)",
+    hintCtrl: "Hold Ctrl or click the pin icon on the right to enable multi-select lock",
+    multiSelectCtrl: "Ctrl held, continuous add is active",
+    multiSelectPinned: "Multi-select lock is on. Tap the pin again to exit",
+    pinToggle: "Toggle multi-select lock",
   },
   targets: {
     title: "Targets",
@@ -91,8 +93,8 @@ export default {
     exampleSub1: "Silver Ore",
     exampleSub2: "Ice Shard",
     page2Title: "Tips",
-    shortcutCtrlTitle: "Ctrl Multi-select",
-    shortcutCtrlDesc: "Hold Ctrl while clicking search results to add multiple items without closing the search box.",
+    shortcutCtrlTitle: "Multi-select Lock",
+    shortcutCtrlDesc: "Hold Ctrl or click the pin icon on the right side of the search box to enable multi-select lock and keep adding items.",
     copyTitle: "Copy Materials List",
     copyDesc: "Click the copy button in the top-right of the materials list to copy it to the clipboard.",
   },
