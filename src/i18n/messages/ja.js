@@ -12,10 +12,12 @@ export default {
   search: {
     placeholder: "アイテムを検索...",
     hint: "項目をクリックして目標リストに追加します。",
-    hintCtrl: "Ctrl を押すか、右側のピンアイコンをクリックして複数選択ロックを有効化",
+    hintCtrl: "Ctrl を押すか、ピンアイコンをクリックして複数選択ロックを有効化",
     multiSelectCtrl: "Ctrl 押下中、連続追加が有効です",
     multiSelectPinned: "複数選択ロック中です。もう一度ピンを押すと終了します",
-    pinToggle: "複数選択ロックを切り替え",
+    pinToggle: "複数選択ロックを切り替え（状態: {state}）",
+    multiSelectStateOn: "オン",
+    multiSelectStateOff: "オフ",
   },
   targets: {
     title: "目標完成品",
@@ -94,7 +96,7 @@ export default {
     exampleSub2: "アイスシャード",
     page2Title: "使い方のヒント",
     shortcutCtrlTitle: "複数選択ロック",
-    shortcutCtrlDesc: "Ctrl を押すか、検索欄右側のピンアイコンをクリックすると、複数選択ロックを有効にして連続追加できます。",
+    shortcutCtrlDesc: "Ctrl を押すか、ピンアイコンをクリックすると、複数選択ロックを有効にして連続追加できます。",
     copyTitle: "素材リストをコピー",
     copyDesc: "素材リスト右上のコピーボタンをクリックすると、リストをクリップボードにコピーできます。",
   },
