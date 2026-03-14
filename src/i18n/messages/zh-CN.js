@@ -12,10 +12,12 @@ export default {
   search: {
     placeholder: "搜索物品...",
     hint: "点击条目添加到目标列表。",
-    hintCtrl: "按住 Ctrl 或点击右侧图钉图标开启多选锁定",
+    hintCtrl: "按住 Ctrl 或点击图钉图标开启多选锁定",
     multiSelectCtrl: "当前按住 Ctrl，可连续添加",
     multiSelectPinned: "已开启多选锁定，再点图钉退出",
-    pinToggle: "切换多选锁定",
+    pinToggle: "切换多选锁定（多选状态：{state}）",
+    multiSelectStateOn: "开启",
+    multiSelectStateOff: "关闭",
   },
   targets: {
     title: "目标成品",
@@ -94,7 +96,7 @@ export default {
     exampleSub2: "碎冰晶",
     page2Title: "使用技巧",
     shortcutCtrlTitle: "多选锁定",
-    shortcutCtrlDesc: "按住 Ctrl 或点击搜索框右侧图钉图标，可开启多选锁定并连续添加多个物品。",
+    shortcutCtrlDesc: "按住 Ctrl 或点击图钉图标，可开启多选锁定并连续添加多个物品。",
     copyTitle: "复制材料清单",
     copyDesc: "点击材料列表右上角的复制按钮，可将清单复制到剪贴板",
   },

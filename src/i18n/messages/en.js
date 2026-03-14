@@ -12,10 +12,12 @@ export default {
   search: {
     placeholder: "Search item...",
     hint: "Click an item to add it.",
-    hintCtrl: "Hold Ctrl or click the pin icon on the right to enable multi-select lock",
+    hintCtrl: "Hold Ctrl or click the pin icon to enable multi-select lock",
     multiSelectCtrl: "Ctrl held, continuous add is active",
     multiSelectPinned: "Multi-select lock is on. Tap the pin again to exit",
-    pinToggle: "Toggle multi-select lock",
+    pinToggle: "Toggle multi-select lock (status: {state})",
+    multiSelectStateOn: "on",
+    multiSelectStateOff: "off",
   },
   targets: {
     title: "Targets",
@@ -94,7 +96,7 @@ export default {
     exampleSub2: "Ice Shard",
     page2Title: "Tips",
     shortcutCtrlTitle: "Multi-select Lock",
-    shortcutCtrlDesc: "Hold Ctrl or click the pin icon on the right side of the search box to enable multi-select lock and keep adding items.",
+    shortcutCtrlDesc: "Hold Ctrl or click the pin icon to enable multi-select lock and keep adding items.",
     copyTitle: "Copy Materials List",
     copyDesc: "Click the copy button in the top-right of the materials list to copy it to the clipboard.",
   },
