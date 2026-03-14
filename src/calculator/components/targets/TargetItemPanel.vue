@@ -9,10 +9,10 @@
         <button
           v-if="targets.length"
           type="button"
-          class="inline-flex h-8 items-center justify-center rounded-xl border border-[#4A4858] bg-[#302F3B] px-3 text-xs text-[#9B96AD] hover:bg-[#4A4858] transition-colors"
-          @click="onClear"
+          class="inline-flex h-8 items-center justify-center rounded-xl border border-[#4A4858] bg-[#302F3B] px-3 text-xs text-[#9B96AD] transition-colors hover:bg-[#4A4858]"
           :aria-label="t('targets.clearAria')"
           :title="t('targets.clearTitle')"
+          @click="onClear"
         >
           {{ t("targets.clear") }}
         </button>
@@ -48,10 +48,10 @@
 
         <button
           type="button"
-          class="inline-flex h-9 items-center justify-center rounded-xl border border-[#4A4858] bg-[#302F3B] px-3 text-sm text-[#9B96AD] hover:bg-[#4A4858] transition-colors"
-          @click="onRemove(target.id)"
+          class="inline-flex h-9 items-center justify-center rounded-xl border border-[#4A4858] bg-[#302F3B] px-3 text-sm text-[#9B96AD] transition-colors hover:bg-[#4A4858]"
           :aria-label="t('targets.removeAria')"
           :title="t('targets.removeTitle')"
+          @click="onRemove(target.id)"
         >
           {{ t("targets.remove") }}
         </button>

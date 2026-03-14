@@ -16,6 +16,13 @@
 - `settingStore`（State*）：存储运行时状态与用户选择的动态数据。
 - `data/`（Static Data）：静态 `items/recipes` 数据源（更新流程见 03）。
 
+当前 `components/` 按业务区块细分：
+- `components/common/`：通用展示壳，如 `LoadingState`。
+- `components/search/`：搜索区块 UI，如 `SearchPanel` / `ItemSearchBar` / `ItemSearchResults`。
+- `components/targets/`：目标成品区块 UI，如 `TargetItemPanel`。
+- `components/materials/`：材料区块 UI，如 `MaterialsPanel` / `MaterialsToolbar` / `CanCraftSection` / `NotCraftSection` / `CrystalsSection`。
+- `components/shell/`：应用壳层 UI，如 `TopNav` / `OnboardingModal`。
+
 *注：`settingStore.js` 物理位置目前在 `composables/` 
 
 ### 逻辑分界：纯业务逻辑 vs UI 格式化逻辑

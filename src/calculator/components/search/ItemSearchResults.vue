@@ -3,35 +3,33 @@
     v-if="results.length"
     class="absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-2xl border border-[#4A4858] bg-[#3B3A47] shadow-lg"
   >
-    <!-- Ctrl 多选状态提示横幅 -->
     <div
       v-if="ctrlPressed"
       class="pointer-events-none absolute left-0 right-0 top-0 z-10 flex items-center gap-1.5 bg-[#3B3A47] px-3 py-1.5 text-xs text-[#B4A5C8]"
     >
       <span>⌃</span>
-      <span>{{ t('search.multiSelectActive') }}</span>
+      <span>{{ t("search.multiSelectActive") }}</span>
     </div>
 
     <ul class="results-list max-h-72 overflow-y-auto py-1">
-      <li v-for="it in results" :key="it.id">
+      <li v-for="item in results" :key="item.id">
         <button
           type="button"
           class="flex w-full items-center justify-between gap-3 px-3 py-2 text-left text-sm text-[#EDE9F7] hover:bg-[#4A4858]/60 focus:bg-[#4A4858]/60 focus:outline-none"
-          @click="onSelect(it.id, $event)"
+          @click="onSelect(item.id, $event)"
         >
-          <!-- 名称 + 数量角标（紧跟在名称后） -->
           <span class="flex min-w-0 flex-1 items-center gap-1.5 overflow-hidden">
-            <span class="truncate">{{ it.name }}</span>
+            <span class="truncate">{{ item.name }}</span>
             <span
-              v-if="targetAmounts.has(it.id)"
+              v-if="targetAmounts.has(item.id)"
               class="shrink-0 rounded-full border border-[#B4A5C8]/40 bg-[#B4A5C8]/15 px-1.5 py-0.5 text-xs font-medium text-[#B4A5C8]"
             >
-              ×{{ targetAmounts.get(it.id) }}
+              ×{{ targetAmounts.get(item.id) }}
             </span>
           </span>
 
           <span class="shrink-0 rounded-full border border-[#4A4858] bg-[#302F3B] px-2 py-0.5 text-xs text-[#9B96AD]">
-            #{{ it.id }}
+            #{{ item.id }}
           </span>
         </button>
       </li>
@@ -44,10 +42,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
 import { useI18n } from "vue-i18n";
 
-const props = defineProps({
+defineProps({
   results: {
     type: Array,
     default: () => [],
@@ -56,30 +53,14 @@ const props = defineProps({
     type: Map,
     default: () => new Map(),
   },
+  ctrlPressed: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const emit = defineEmits(["select"]);
 const { t } = useI18n();
-
-const ctrlPressed = ref(false);
-
-function onKeyDown(e) {
-  if (e.key === "Control") ctrlPressed.value = true;
-}
-
-function onKeyUp(e) {
-  if (e.key === "Control") ctrlPressed.value = false;
-}
-
-onMounted(() => {
-  window.addEventListener("keydown", onKeyDown);
-  window.addEventListener("keyup", onKeyUp);
-});
-
-onUnmounted(() => {
-  window.removeEventListener("keydown", onKeyDown);
-  window.removeEventListener("keyup", onKeyUp);
-});
 
 function onSelect(id, event) {
   emit("select", { id, ctrlKey: event.ctrlKey });

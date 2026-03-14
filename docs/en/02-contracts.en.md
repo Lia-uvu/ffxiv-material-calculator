@@ -7,37 +7,26 @@ This document records the interfaces and field contracts between modules in data
 
 ## 1. Page ↔ UI Components
 
-### 1.1 ItemSearchBar
-**Purpose**: Search input only; emits input events.
+### 1.1 SearchPanel
+**Purpose**: Search-area entry component. It composes `ItemSearchBar` / `ItemSearchResults` and owns outside-click close behavior plus the Ctrl multi-select hint.
 
 **Props**
 - `query: string` - Current search keyword.
-
-**Emits**
-- `update:query(value: string)` - Emits the latest keyword on input.
-
-**Source**
-- Page passes in `settings.searchQuery`.
-- Page receives `update:query` and calls `setSearchQuery`.
-
----
-
-### 1.2 ItemSearchResults
-**Purpose**: Shows the search results list.
-
-**Props**
 - `results: Array<{ id: number, name: string, ... }>` - Results from `useItemSearch`.
+- `targetAmounts: Map<number, number>` - Badge counts for already-added targets.
 
 **Emits**
-- `select(id: number)` - Emits the selected item id on click.
+- `update:query(value: string)` - Emits the latest keyword on input or when an outside click clears it.
+- `select(payload: { id: number, ctrlKey: boolean })` - Emits the selected item id together with the Ctrl-key state.
 
 **Source**
-- Page reads `results` from `useItemSearch`.
-- Page receives `select`, calls `targetsCtrl.add`, and clears the search query.
+- Page passes in `settings.searchQuery`, `results`, and `targetAmountsMap`.
+- Page receives `update:query` and calls `setSearchQuery`.
+- Page receives `select`, calls `targetsCtrl.add`, and decides whether to clear the query based on `ctrlKey`.
 
 ---
 
-### 1.3 TargetItemPanel
+### 1.2 TargetItemPanel
 **Purpose**: Shows target items, edits amount, and clears all.
 
 **Props**
@@ -53,30 +42,58 @@ This document records the interfaces and field contracts between modules in data
 
 ---
 
-### 1.4 MaterialsList
-**Purpose**: Materials list container, including craftable/non-craftable sections and actions.
+### 1.3 MaterialsPanel
+**Purpose**: Top-level materials container. It composes `MaterialsToolbar` / `CanCraftSection` / `NotCraftSection` / `CrystalsSection` and owns copy/reset confirmation UI behavior.
 
 **Props**
 - `ui: { craftable: Entry[], nonCraftable: Entry[] }`
 - `checkedIds: Set<number>` - Checked items.
 - `expandOrder: Map<number, number>` - Expansion order (earlier expanded comes first).
+- `exportText: string` - Materials export text from `useMaterialsExport`.
 
 **Emits**
 - `toggle-expand(id: number)` - Expand/collapse a craftable item.
 - `collapse-all()` - Collapse to top level (lock all).
 - `expand-all()` - Expand all (controlled by Page).
 - `toggle-check(id: number)` - Check/uncheck a material.
-- `clear-checked()` - Clear checked state.
 - `reset-materials()` - Reset materials progress (expand + checked).
-- `copy-materials()` - Copy the materials list text.
 
 **Source**
-- Page passes in `ui` from `useMaterialsList` and `checkedIds/expandOrder` from `materialsCtrl`.
-- Page receives events and calls the matching `materialsCtrl` methods.
+- Page passes in `ui` from `useMaterialsList`, `checkedIds/expandOrder` from `materialsCtrl`, and `exportText` from `useMaterialsExport`.
+- Page receives events and calls the matching `materialsCtrl` methods; copy success feedback stays inside `MaterialsPanel`.
 
 ---
 
-### 1.5 CanCraftSection
+### 1.4 TopNav
+**Purpose**: App-shell top bar for title, locale switching, and opening help.
+
+**Props**
+- None.
+
+**Emits**
+- `open-help()` - Opens the onboarding/help modal.
+
+**Source**
+- `App.vue` receives the event and calls `useOnboarding().open()`.
+
+---
+
+### 1.5 OnboardingModal
+**Purpose**: App-shell onboarding/help modal.
+
+**Props**
+- `isOpen: boolean` - Whether the modal is visible.
+
+**Emits**
+- `close()` - Closes the modal.
+
+**Source**
+- `App.vue` passes in `useOnboarding().isOpen`.
+- `App.vue` receives `close` and calls `useOnboarding().close()`.
+
+---
+
+### 1.6 CanCraftSection
 **Purpose**: Renders the craftable materials section.
 
 **Props**
@@ -99,16 +116,16 @@ type Entry = {
   needAmount: number
   craftTimes: number
   recipeId: number | null
-  job: string | null // From the recipe (may map to job icons later)
-  source: string | null // Derived from obtainMethods (localized later)
-  displayAmount: number // Displayed amount (craft times when expanded)
-  displaySuffix: string // "times" when expanded, otherwise empty
+  job: string | null
+  source: string | null
+  displayAmount: number
+  displaySuffix: string
 }
 ```
 
 ---
 
-### 1.6 NotCraftSection
+### 1.7 NotCraftSection
 **Purpose**: Renders the non-craftable materials section.
 
 **Props**
@@ -199,10 +216,22 @@ useMaterialsList({
 - `itemById: ComputedRef<Map<number, Item>>`
 - `ui: ComputedRef<{ craftable: Entry[], nonCraftable: Entry[] }>`
 - `reachableCraftableIds: ComputedRef<Set<number>>` (reachable craftable ids for "expand all")
-- `exportText: ComputedRef<string>` (materials export text)
 
 **Notes**
 - `overrides` is reserved for selecting a recipe; currently not passed from Page.
+
+---
+
+### 2.4 useMaterialsExport
+**Purpose**: Generates export text from the `ui` model returned by `useMaterialsList`.
+
+**Input**
+```ts
+useMaterialsExport(uiRef)
+```
+
+**Output**
+- `exportText: ComputedRef<string>` (materials export text)
 
 ---
 
@@ -269,7 +298,7 @@ Page maps store `targets` to display objects:
 - `displaySuffix`: shows `"times"` when expanded, otherwise empty.
 - `job`: from `recipe.job` (UI may replace with icons).
 - `source`: mapped from `items.obtainMethods` into readable text (localized later).
-- `exportText`: output format:
+- `useMaterialsExport().exportText`: output format:
 ```
 目标材料（可制作）
 - XXX × 3次 （职业）
