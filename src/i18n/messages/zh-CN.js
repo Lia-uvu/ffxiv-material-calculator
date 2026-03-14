@@ -12,8 +12,10 @@ export default {
   search: {
     placeholder: "搜索物品...",
     hint: "点击条目添加到目标列表。",
-    hintCtrl: "按住 Ctrl 可多选",
-    multiSelectActive: "当前可多选（松开 Ctrl 退出）",
+    hintCtrl: "按住 Ctrl 或点击右侧图钉图标开启多选锁定",
+    multiSelectCtrl: "当前按住 Ctrl，可连续添加",
+    multiSelectPinned: "已开启多选锁定，再点图钉退出",
+    pinToggle: "切换多选锁定",
   },
   targets: {
     title: "目标成品",
@@ -91,8 +93,8 @@ export default {
     exampleSub1: "白银矿石",
     exampleSub2: "碎冰晶",
     page2Title: "使用技巧",
-    shortcutCtrlTitle: "Ctrl 多选",
-    shortcutCtrlDesc: "搜索时按住 Ctrl 点击条目，可连续添加多个物品（不关闭搜索框）",
+    shortcutCtrlTitle: "多选锁定",
+    shortcutCtrlDesc: "按住 Ctrl 或点击搜索框右侧图钉图标，可开启多选锁定并连续添加多个物品。",
     copyTitle: "复制材料清单",
     copyDesc: "点击材料列表右上角的复制按钮，可将清单复制到剪贴板",
   },

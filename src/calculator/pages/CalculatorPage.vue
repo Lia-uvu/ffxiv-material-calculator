@@ -83,9 +83,9 @@ const targetAmountsMap = computed(() => {
   return map;
 });
 
-function selectResultById({ id, ctrlKey }) {
+function selectResultById({ id, keepOpen }) {
   targetsCtrl.add(id);
-  if (!ctrlKey) setSearchQuery("");
+  if (!keepOpen) setSearchQuery("");
 }
 
 const { ui, reachableCraftableIds } = useMaterialsList({

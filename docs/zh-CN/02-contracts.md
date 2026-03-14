@@ -8,7 +8,7 @@
 ## 1. 页面（Page）与 UI 组件通信
 
 ### 1.1 SearchPanel
-**用途**：搜索区块入口组件，组合 `ItemSearchBar` / `ItemSearchResults`，并内聚点击外部关闭与 Ctrl 多选提示。
+**用途**：搜索区块入口组件，组合 `ItemSearchBar` / `ItemSearchResults`，并内聚点击外部关闭、Ctrl 多选与图钉多选锁定提示。
 
 **Props**
 - `query: string` - 当前搜索关键词。
@@ -17,12 +17,12 @@
 
 **Emits**
 - `update:query(value: string)` - 输入变化或点击外部清空时回传最新关键词。
-- `select(payload: { id: number, ctrlKey: boolean })` - 点击条目时上报选中的 item id 与 Ctrl 状态。
+- `select(payload: { id: number, keepOpen: boolean })` - 点击条目时上报选中的 item id，以及是否保持搜索框开启。
 
 **来源**
 - Page 传入 `settings.searchQuery`、`results`、`targetAmountsMap`。
 - Page 收到 `update:query` 后调用 `setSearchQuery`。
-- Page 收到 `select` 后调用 `targetsCtrl.add`，并按 `ctrlKey` 决定是否清空搜索框。
+- Page 收到 `select` 后调用 `targetsCtrl.add`，并按 `keepOpen` 决定是否清空搜索框。
 
 ---
 

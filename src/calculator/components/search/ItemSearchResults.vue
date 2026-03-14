@@ -4,11 +4,12 @@
     class="absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-2xl border border-[#4A4858] bg-[#3B3A47] shadow-lg"
   >
     <div
-      v-if="ctrlPressed"
+      v-if="multiSelectMode"
       class="pointer-events-none absolute left-0 right-0 top-0 z-10 flex items-center gap-1.5 bg-[#3B3A47] px-3 py-1.5 text-xs text-[#B4A5C8]"
     >
-      <span>⌃</span>
-      <span>{{ t("search.multiSelectActive") }}</span>
+      <Pin v-if="multiSelectMode === 'pinned'" :size="12" />
+      <span v-else>⌃</span>
+      <span>{{ multiSelectMode === "pinned" ? t("search.multiSelectPinned") : t("search.multiSelectCtrl") }}</span>
     </div>
 
     <ul class="results-list max-h-72 overflow-y-auto py-1">
@@ -42,6 +43,7 @@
 </template>
 
 <script setup>
+import { Pin } from "lucide-vue-next";
 import { useI18n } from "vue-i18n";
 
 defineProps({
@@ -53,9 +55,9 @@ defineProps({
     type: Map,
     default: () => new Map(),
   },
-  ctrlPressed: {
-    type: Boolean,
-    default: false,
+  multiSelectMode: {
+    type: String,
+    default: null,
   },
 });
 

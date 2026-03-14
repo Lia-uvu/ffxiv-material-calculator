@@ -8,7 +8,7 @@ This document records the interfaces and field contracts between modules in data
 ## 1. Page ↔ UI Components
 
 ### 1.1 SearchPanel
-**Purpose**: Search-area entry component. It composes `ItemSearchBar` / `ItemSearchResults` and owns outside-click close behavior plus the Ctrl multi-select hint.
+**Purpose**: Search-area entry component. It composes `ItemSearchBar` / `ItemSearchResults` and owns outside-click close behavior plus Ctrl and pin-based multi-select lock hints.
 
 **Props**
 - `query: string` - Current search keyword.
@@ -17,12 +17,12 @@ This document records the interfaces and field contracts between modules in data
 
 **Emits**
 - `update:query(value: string)` - Emits the latest keyword on input or when an outside click clears it.
-- `select(payload: { id: number, ctrlKey: boolean })` - Emits the selected item id together with the Ctrl-key state.
+- `select(payload: { id: number, keepOpen: boolean })` - Emits the selected item id together with whether the search box should stay open.
 
 **Source**
 - Page passes in `settings.searchQuery`, `results`, and `targetAmountsMap`.
 - Page receives `update:query` and calls `setSearchQuery`.
-- Page receives `select`, calls `targetsCtrl.add`, and decides whether to clear the query based on `ctrlKey`.
+- Page receives `select`, calls `targetsCtrl.add`, and decides whether to clear the query based on `keepOpen`.
 
 ---
 
