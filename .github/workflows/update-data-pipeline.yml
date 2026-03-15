@@ -1,0 +1,180 @@
+name: Update Data Pipeline
+
+on:
+  schedule:
+    - cron: "0 1 * * *"
+  workflow_dispatch:
+    inputs:
+      force_run:
+        description: "Run the pipeline even when upstream SHAs are unchanged."
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    env:
+      CN_REPO: ${{ vars.FFXIV_DATAMINING_CN_REPO }}
+      EN_REPO: ${{ vars.FFXIV_DATAMINING_EN_REPO }}
+      JA_REPO: ${{ vars.FFXIV_DATAMINING_JA_REPO }}
+      WORK_DIR: ${{ github.workspace }}/tmp/pipeline
+      STATE_PATH: ${{ github.workspace }}/scripts/pipeline/state/last_successful_manifest.json
+      FORCE_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.force_run || 'false' }}
+    steps:
+      - name: Checkout current repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate upstream repository configuration
+        run: |
+          python - <<'PY'
+          import os
+          missing = [name for name in ("CN_REPO", "EN_REPO", "JA_REPO") if not os.environ.get(name)]
+          if missing:
+              raise SystemExit(
+                  "Missing required repository variables: "
+                  + ", ".join(missing)
+                  + ". Configure GitHub repository vars FFXIV_DATAMINING_CN_REPO / FFXIV_DATAMINING_EN_REPO / FFXIV_DATAMINING_JA_REPO."
+              )
+          PY
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install frontend dependencies
+        run: npm install --no-fund --no-audit
+
+      - name: Resolve upstream HEAD SHAs
+        id: upstream
+        env:
+          CN_REPO: ${{ env.CN_REPO }}
+          EN_REPO: ${{ env.EN_REPO }}
+          JA_REPO: ${{ env.JA_REPO }}
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import os
+          import subprocess
+
+          for key in ("CN_REPO", "EN_REPO", "JA_REPO"):
+              repo = os.environ[key]
+              sha = subprocess.check_output(
+                  ["git", "ls-remote", f"https://github.com/{repo}.git", "HEAD"],
+                  text=True,
+              ).split()[0]
+              print(f"{key.lower()}_sha={sha}")
+          PY
+
+      - name: Decide whether to run
+        id: decision
+        env:
+          CN_SHA: ${{ steps.upstream.outputs.cn_repo_sha }}
+          EN_SHA: ${{ steps.upstream.outputs.en_repo_sha }}
+          JA_SHA: ${{ steps.upstream.outputs.ja_repo_sha }}
+          FORCE_RUN: ${{ env.FORCE_RUN }}
+          STATE_PATH: ${{ env.STATE_PATH }}
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          import os
+          from pathlib import Path
+
+          state_path = Path(os.environ["STATE_PATH"])
+          if state_path.exists():
+              state = json.loads(state_path.read_text(encoding="utf-8"))
+          else:
+              state = {"upstream": {}}
+
+          previous = state.get("upstream", {})
+          current = {
+              "cn": os.environ["CN_SHA"],
+              "en": os.environ["EN_SHA"],
+              "ja": os.environ["JA_SHA"],
+          }
+          unchanged = all(previous.get(name, {}).get("sha") == sha for name, sha in current.items())
+          force_run = os.environ.get("FORCE_RUN", "false").lower() == "true"
+          should_run = force_run or not unchanged
+          print(f"should_run={'true' if should_run else 'false'}")
+          print(f"unchanged={'true' if unchanged else 'false'}")
+          print(f"force_run={'true' if force_run else 'false'}")
+          PY
+
+      - name: Exit early when upstream data is unchanged
+        if: steps.decision.outputs.should_run != 'true'
+        run: echo "No upstream changes detected; skipping pipeline run."
+
+      - name: Checkout CN upstream repository
+        if: steps.decision.outputs.should_run == 'true'
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.CN_REPO }}
+          path: upstream/cn
+          fetch-depth: 1
+
+      - name: Checkout EN upstream repository
+        if: steps.decision.outputs.should_run == 'true'
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.EN_REPO }}
+          path: upstream/mixed
+          fetch-depth: 1
+
+      - name: Checkout JA upstream repository
+        if: steps.decision.outputs.should_run == 'true'
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.JA_REPO }}
+          path: upstream/jp
+          fetch-depth: 1
+
+      - name: Run pipeline tests
+        if: steps.decision.outputs.should_run == 'true'
+        run: python -m unittest discover -s tests -p "test_*.py"
+
+      - name: Run local CSV pipeline
+        if: steps.decision.outputs.should_run == 'true'
+        run: >
+          python scripts/pipeline/run_pipeline.py
+          --cn-repo "${{ github.workspace }}/upstream/cn"
+          --en-repo "${{ github.workspace }}/upstream/mixed/en"
+          --ja-repo "${{ github.workspace }}/upstream/jp/csv"
+          --work-dir "${{ env.WORK_DIR }}"
+          --publish-dir "${{ github.workspace }}/src/data"
+          --state-path "${{ env.STATE_PATH }}"
+
+      - name: Build frontend
+        if: steps.decision.outputs.should_run == 'true'
+        run: npm run build
+
+      - name: Upload pipeline artifacts
+        if: always() && steps.decision.outputs.should_run == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: pipeline-artifacts
+          path: ${{ env.WORK_DIR }}
+          if-no-files-found: error
+
+      - name: Commit updated runtime data
+        if: steps.decision.outputs.should_run == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/items.json src/data/recipes.json scripts/pipeline/state/last_successful_manifest.json
+          if git diff --cached --quiet; then
+            echo "No published data changes detected."
+            exit 0
+          fi
+          git commit -m "chore(data): update published pipeline data"
+          git push

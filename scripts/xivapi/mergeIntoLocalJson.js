@@ -8,9 +8,8 @@ const __dirname = path.dirname(__filename);
 
 const DEFAULT_INCREMENTAL_PATH = path.resolve(
   __dirname,
-  '../../src/data/nameMap.incremental.ndjson'
+  './cache/nameMap.incremental.ndjson'
 );
-const DEFAULT_ITEMS_PATH = path.resolve(__dirname, '../../src/data/items.json');
 const DEFAULT_LOG_DIR = path.resolve(__dirname, '../logs');
 
 const parseArgs = (argv) => {
@@ -75,7 +74,11 @@ const readNdjson = async (filePath) => {
 const run = async () => {
   const args = parseArgs(process.argv.slice(2));
   const incrementalPath = path.resolve(args.get('incremental') ?? DEFAULT_INCREMENTAL_PATH);
-  const itemsPath = path.resolve(args.get('items') ?? DEFAULT_ITEMS_PATH);
+  const itemsArg = args.get('items');
+  if (!itemsArg) {
+    throw new Error('Missing required --items argument. Historical XIVAPI tooling no longer writes src/data by default.');
+  }
+  const itemsPath = path.resolve(itemsArg);
   const logDir = path.resolve(args.get('log-dir') ?? DEFAULT_LOG_DIR);
   const clearIncremental = Boolean(args.get('clear-incremental'));
 
