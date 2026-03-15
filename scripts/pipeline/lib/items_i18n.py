@@ -6,14 +6,22 @@ from pathlib import Path
 from .io_utils import read_text_from_dir
 
 
+def locate_header_row(rows: list[list[str]], required_columns: tuple[str, ...]) -> tuple[int, list[str]]:
+    for idx, row in enumerate(rows[:10]):
+        normalized = [cell.lstrip("\ufeff") for cell in row]
+        if all(column in normalized for column in required_columns):
+            return idx, normalized
+    raise ValueError(f"Could not find CSV header containing columns: {required_columns}")
+
+
 def extract_item_names(item_text: str, needed_ids: list[int]) -> dict[int, str]:
     needed_set = set(needed_ids)
     rows = list(csv.reader(item_text.splitlines()))
-    header = rows[1]
+    header_idx, header = locate_header_row(rows, ("#", "Name"))
     idx_key = header.index("#")
     idx_name = header.index("Name")
     result: dict[int, str] = {}
-    for row in rows[4:]:
+    for row in rows[header_idx + 1 :]:
         if len(row) <= max(idx_key, idx_name):
             continue
         try:
