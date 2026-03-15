@@ -6,10 +6,9 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DEFAULT_IDS_PATH = path.resolve(__dirname, '../../src/data/needed_item_ids.json');
 const DEFAULT_INCREMENTAL_PATH = path.resolve(
   __dirname,
-  '../../src/data/nameMap.incremental.ndjson'
+  './cache/nameMap.incremental.ndjson'
 );
 const DEFAULT_CHECKPOINT_PATH = path.resolve(__dirname, 'cache/nameFetch.checkpoint.ndjson');
 const DEFAULT_FAILED_PATH = path.resolve(__dirname, 'cache/failed-ids.ndjson');
@@ -221,7 +220,11 @@ const fetchWithRetry = async ({
 
 const run = async () => {
   const args = parseArgs(process.argv.slice(2));
-  const idsPath = path.resolve(args.get('ids') ?? DEFAULT_IDS_PATH);
+  const idsArg = args.get('ids');
+  if (!idsArg) {
+    throw new Error('Missing required --ids argument. Historical XIVAPI tooling no longer reads src/data by default.');
+  }
+  const idsPath = path.resolve(idsArg);
   const incrementalPath = path.resolve(args.get('incremental') ?? DEFAULT_INCREMENTAL_PATH);
   const checkpointPath = path.resolve(args.get('checkpoint') ?? DEFAULT_CHECKPOINT_PATH);
   const failedPath = path.resolve(args.get('failed') ?? DEFAULT_FAILED_PATH);

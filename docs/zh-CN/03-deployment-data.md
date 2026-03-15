@@ -1,162 +1,155 @@
-# 静态数据与部署（v1.0）
-本文档记录魔石精计算器所使用的静态数据结构、CI更新方式及部署相关信息。
+# 静态数据与部署（v2.0）
+本文档记录魔石精计算器当前使用的本地 CSV 数据流水线、运行时数据目录和自动发布流程。
 
 架构见：[`01-architecture-dataflow.md`](01-architecture-dataflow.md)  
 通信规则见：[`02-contracts.md`](02-contracts.md)
 
 ## 数据来源
-### 中文物品名&配方信息
-仓库地址
-https://github.com/thewakingsands/ffxiv-datamining-cn
+### CN 配方与物品基础信息
+- 上游仓库：在 GitHub Actions 仓库变量中配置
+- 读取文件：`Recipe.csv`、`RecipeLevelTable.csv`、`Item.csv` 以及获取途径相关 CSV
+- 用途：
+  - `Recipe.csv` 生成完整 `recipes`
+  - `Item.csv` 与获取来源 CSV 生成 CN base `items`
+- 当前接入约定：
+  - `FFXIV_DATAMINING_CN_REPO=thewakingsands/ffxiv-datamining-cn`
 
-使用方法：仓库里拿csv文件，用script里`ffxiv-datamining-cn/`里的python脚本清洗成符合现行约定的格式
+### EN / JA 物品名称
+- 上游仓库：在 GitHub Actions 仓库变量中配置
+- 读取文件：各自仓库的 `Item.csv`
+- 用途：仅按同一份 `needed_item_ids` 抽取物品名称
+- 当前接入约定：
+  - `FFXIV_DATAMINING_EN_REPO=InfSein/ffxiv-datamining-mixed`，读取子目录 `en/Item.csv`
+  - `FFXIV_DATAMINING_JA_REPO=a1hena/ffxiv-datamining-jp`，读取子目录 `csv/Item.csv`
 
-### 国际服英日物品名：XIVAPI V2
-基础域名是：
-https://v2.xivapi.com
-常用的 V2 数据接口前缀一般是：
-https://v2.xivapi.com/api/…
-比如（V2 文档里的示例）查 Item 表某个 row：
-https://v2.xivapi.com/api/sheet/Item/37362?fields=Name,Description
+### 历史遗留工具
+- `scripts/xivapi/` 仍保留，但不再进入主流程，也不被 CI 调用。
+- 这些脚本现在要求显式传入 `--ids` / `--items`，默认不再读写 `src/data/`。
 
-使用方法：调 API 用脚本请求 `src/data/needed_item_ids.json` 需求列表对应的多语言名字。
+## Pipeline 步骤
+唯一主入口：`scripts/pipeline/run_pipeline.py`
 
-#### XIVAPI 拉取流程（脚本化）
-脚本路径：`scripts/xivapi/`
+分步脚本：
+1. `01_build_recipes.py`：读取 CN CSV，生成 `01_recipes.full.json`
+2. `02_extract_needed_item_ids.py`：从 recipes 提取并排序 `needed_item_ids`
+3. `03_build_items_cn.py`：按 `needed_item_ids` 过滤 CN `Item.csv` 与获取来源 CSV，生成 `03_items.base.cn.json`
+4. `04_build_items_i18n_name.py`：从 EN / JA `Item.csv` 抽取名称，生成 `04_items.i18n_name.json`
+5. `05_merge_items.py`：合并 CN base items 与 i18n 名称，缺失时回退 `zh-CN`
+6. `06_validate_publish.py`：校验 recipes / items 交叉完整性，并统计缺失翻译
+7. `07_publish.py`：在校验通过时发布到 `src/data/`
 
-1. **抓取增量 NDJSON（支持断点续跑）**：
-   ```bash
-   node scripts/xivapi/fetchNames.js
-   ```
-   - 默认读取 `src/data/needed_item_ids.json`。
-   - 成功结果按行追加到 `src/data/nameMap.incremental.ndjson`（中间态）。
-   - 每条成功记录会写入 `scripts/xivapi/cache/nameFetch.checkpoint.ndjson` 用于断点续跑。
-   - 失败记录输出到 `scripts/xivapi/cache/failed-ids.ndjson`，支持后续重跑。
-   - 日志统一写到 `scripts/logs/YYYY-MM-DD.log`。
+## 中间产物契约
+Pipeline 工作目录默认是 `tmp/pipeline/`，中间产物不进入 Git，仅作为 CI artifact 留档：
 
-2. **合并进本地 items.json**：
-   ```bash
-   node scripts/xivapi/mergeIntoLocalJson.js
-   ```
-   - 读取 `src/data/nameMap.incremental.ndjson`，合并到 `src/data/items.json`。
-   - 只在 `item.name.en/ja` 为空或等于中文占位时写入，避免覆盖已有数据。
-   - 合并统计写入 `scripts/logs/YYYY-MM-DD.log`。
+- `00_manifest.json`
+- `01_recipes.full.json`
+- `02_needed_item_ids.json`
+- `03_items.base.cn.json`
+- `04_items.i18n_name.json`
+- `05_items.merged.json`
+- `06_validation_report.json`
+- `07_publish_diff.json`
 
-#### 服务器友好策略
-XIVAPI 是公共服务，尽量减少压力：
-- **请求节流**：默认 rps=3、并发=6，保证整体 QPS 温和（可用参数调整）。
-- **字段最小化**：只请求 `Name` 字段，避免多余数据。
-- **失败重试**：429 指数退避 + jitter，失败会落盘到 failed-ids 方便重跑。
-- **分阶段处理**：先拉取 NDJSON，再合并入 items.json，避免重复请求。
+另有一个轻量状态文件会提交回仓库：
+- `scripts/pipeline/state/last_successful_manifest.json`
+- 用途：记录最近一次成功发布时对应的上游 SHA，供 CI 判断是否需要重跑
 
-可选参数示例：
-```bash
-node scripts/xivapi/fetchNames.js \
-  --ids src/data/needed_item_ids.json \
-  --rps 2 \
-  --concurrency 4
-```
+## 运行时数据目录
+前端运行时目录 `src/data/` 只保留三类文件：
 
-重跑失败列表：
-```bash
-node scripts/xivapi/fetchNames.js \
-  --retry-failed scripts/xivapi/cache/failed-ids.ndjson
-```
+- `items.json`
+- `recipes.json`
+- `index.js`
 
-合并后清空增量文件（可选）：
-```bash
-node scripts/xivapi/mergeIntoLocalJson.js --clear-incremental
-```
+最小测试样例已迁出到 `tests/fixtures/pipeline/`，不再放在运行时目录下。
 
-## 静态数据结构
-
-内部数据拆分为两类实体：
-
-- `Item`：记录物品本身的信息
-- `Recipe`：记录一次制作行为（配方）的信息
-
+## 运行时数据结构
 ### Item 结构示例
 ```jsonc
 {
   "id": 4421,
-  "name": {              // 多语言物品名
+  "name": {
     "zh-CN": "兽骨戒指",
-    "ja": "ボーンリング",
-    "en": "Bone Ring"
+    "en": "Bone Ring",
+    "ja": "ボーンリング"
   },
-  "isCrystal": false,     // 是否为“水晶类素材”（碎晶/水晶/晶簇），用于在计算时决定要不要单独统计/排除
-  "obtainMethods": [      // 该物品所有获取方式，用于标记
-    "CRAFT",              // 玩家制作
-    "SHOP_MARKET",        // 市场交易
-    "GATHER_MINER",        // 采矿工采集
-    "GATHER_BOTANIST",     // 园艺工采集
-    "GATHER_FISHER",       // 捕鱼人采集
-    "SHOP_NPC",            // 金币商店（GilShop）
-    "EXCHANGE_GC_SEALS",   // 军票商店（GCScripShop）
-    "EXCHANGE_SCRIP_CRAFTER",  // 工匠票据兑换
-    "EXCHANGE_SCRIP_GATHERER", // 采集票据兑换
-    "EXCHANGE_GEMSTONE",   // 双色宝石兑换
-    "EXCHANGE_TOME"        // 神典石兑换
-    ],
-  "obtainMethodDetails": { // 可选：获取途径补充信息
-    "SHOP_NPC": {          // 金币商店的价格信息（如果可用）
-      "priceLow": 9        // 来自 Item.csv 的 Price{Low}
+  "isCrystal": false,
+  "obtainMethods": [
+    "CRAFT",
+    "SHOP_MARKET"
+  ],
+  "obtainMethodDetails": {
+    "SHOP_NPC": {
+      "priceLow": 9
     }
   }
 }
 ```
 
-#### `items.obtainMethods` 字段说明
-`obtainMethods` 仍然是**字符串数组**，仅在现有结构上做扩展。每个值均可被独立组合，便于后续 UI 标注/筛选。
-
-| 值 | 含义 | CSV 来源与字段 |
+### `items.obtainMethods` 枚举
+| 值 | 含义 | 来源 |
 | --- | --- | --- |
-| `CRAFT` | 玩家制作 | `Recipe.csv`：`Item{Result}` |
-| `GATHER_MINER` | 采矿工采集 | `GatheringType.csv` + `GatheringItem.csv` + `GatheringPointBase.csv`：`GatheringType`、`Item[0..7]` |
-| `GATHER_BOTANIST` | 园艺工采集 | 同上（采集类型名为“采伐/割草”） |
-| `GATHER_FISHER` | 捕鱼人采集 | `FishingSpot.csv`：`Item[0..9]` |
-| `SHOP_NPC` | 金币商店 | `GilShopItem.csv`：`Item` |
-| `EXCHANGE_GC_SEALS` | 军票商店 | `GCScripShopItem.csv`：`Item` |
-| `EXCHANGE_SCRIP_CRAFTER` | 工匠票据兑换 | `SpecialShop.csv`：`Item{Receive}[i][j]` + `Item{Cost}[i][j]`，**以成本物品（票据货币）的名称**包含“巧手”与“票”为准 |
-| `EXCHANGE_SCRIP_GATHERER` | 采集票据兑换 | `SpecialShop.csv`：`Item{Receive}[i][j]` + `Item{Cost}[i][j]`，**以成本物品（票据货币）的名称**包含“大地”与“票”为准 |
-| `EXCHANGE_GEMSTONE` | 双色宝石兑换 | `SpecialShop.csv`：`Item{Receive}[i][j]` + `Item{Cost}[i][j]`，成本物品为“双色宝石” |
-| `EXCHANGE_TOME` | 神典石兑换 | `SpecialShop.csv` + `TomestonesItem.csv`：成本物品在 `TomestonesItem.csv` 的 `Item` 列 |
-| `SHOP_MARKET` | 市场交易 | `Item.csv`：`IsUntradable`（可交易即加入） |
-
-#### `items.obtainMethodDetails` 字段说明
-当某些获取方式存在额外数据时，用该对象补充说明。当前仅定义金币商店价格：
-- `SHOP_NPC.priceLow`：来自 `Item.csv` 的 `Price{Low}`，仅当该物品出现在 `GilShopItem.csv` 且价格>0 时写入。
-
-**明确忽略项（不进入结构与清洗输出）**：
-`DisposalShopItem.csv`，以及任务/令行/成就/周常奖励类：`QuestClassJobReward.csv`、`LeveRewardItemGroup.csv`、`Achievement.csv`、`WeeklyBingoRewardData.csv`。
+| `CRAFT` | 玩家制作 | `Recipe.csv` |
+| `GATHER_MINER` | 采矿工采集 | `GatheringType.csv` + `GatheringItem.csv` + `GatheringPointBase.csv` |
+| `GATHER_BOTANIST` | 园艺工采集 | 同上 |
+| `GATHER_FISHER` | 捕鱼人采集 | `FishingSpot.csv` |
+| `SHOP_NPC` | 金币商店 | `GilShopItem.csv` |
+| `EXCHANGE_GC_SEALS` | 军票兑换 | `GCScripShopItem.csv` |
+| `EXCHANGE_SCRIP_CRAFTER` | 工匠票据兑换 | `SpecialShop.csv` 店铺名识别 |
+| `EXCHANGE_SCRIP_GATHERER` | 采集票据兑换 | `SpecialShop.csv` 店铺名识别 |
+| `EXCHANGE_GEMSTONE` | 双色宝石兑换 | `SpecialShop.csv` + `Item.csv` 成本物品名识别 |
+| `EXCHANGE_TOME` | 神典石兑换 | `SpecialShop.csv` 店铺名识别 |
+| `SHOP_MARKET` | 市场交易 | `Item.csv:IsUntradable` |
 
 ### Recipe 结构示例
 ```jsonc
 {
-  "id": 2000,             // 配方id
-  "resultItemId": 4421,   // 产物的物品id
-  "resultAmount": 1,      // 制作一次配方生成几个成品
-  "job": "GOLDSMITH",     // 该配方对应的职业（可选）
-  "itemLevel": 9,         // 成品品级（可选）
-  "patch": "1.23",        // 配方实装版本
-  "materials": [          // 材料清单
+  "id": 2000,
+  "resultItemId": 4421,
+  "resultAmount": 1,
+  "job": "GOLDSMITH",
+  "itemLevel": 9,
+  "patch": "1.23",
+  "materials": [
     { "itemId": 1370, "amount": 1 },
-    { "itemId": 2210, "amount": 1 },
-    { "itemId": 1000, "amount": 1 },
-    { "itemId": 1001, "amount": 1 }
+    { "itemId": 2210, "amount": 1 }
   ]
 }
 ```
 
-## 数据更新CI自动化
-目前数据更新以手动为主，脚本化流程主要是：
-1. 从 `ffxiv-datamining-cn` 更新中文 CSV。
-2. 用 `scripts/ffxiv-datamining-cn/` 清洗出符合本项目结构的 JSON。
-3. 如需补全英/日名称，执行 `scripts/xivapi/` 的抓取（增量 NDJSON）→ 合并流程。
-4. 运行日志统一写入 `scripts/logs/YYYY-MM-DD.log`。
+## CI / 发布
+工作流：`.github/workflows/update-data-pipeline.yml`
 
-## 部署
-目前使用 Cloudflare Pages 部署：
-1. `main` 分支有更新时自动触发构建。
-2. 构建产物来自 `vite build`。
-3. 生产站点：`https://msjcalc.pages.dev`
+触发方式：
+- `schedule`：每天轮询一次
+- `workflow_dispatch`：手动触发，可选 `force_run`
+- “检测到上游更新”：在工作流内部比对上次成功发布记录的上游 SHA 与当前远端 HEAD SHA
+
+执行流程：
+1. checkout 当前仓库
+2. 获取 CN / EN / JA 三个上游仓库当前 HEAD SHA
+3. 若 SHA 未变化且不是 `force_run`，提前成功退出
+4. checkout 三个上游仓库到工作目录
+5. 跑 Python pipeline 测试
+6. 执行 `scripts/pipeline/run_pipeline.py`
+7. 上传 `tmp/pipeline/` 全部中间产物为 artifact
+8. 执行 `npm run build`
+9. 若有 diff，则原子提交 `src/data/items.json`、`src/data/recipes.json` 和状态文件
+
+失败阻断规则：
+- recipes 生成失败：阻断
+- `needed_item_ids` 为空：阻断
+- CN items 生成失败：阻断
+- EN / JA `Item.csv` 缺失或解析失败：阻断
+- recipes 引用的 item 不存在于 merged items：阻断
+- EN / JA 名称缺失：不阻断，仅写入 `06_validation_report.json`
+
+## 当前验证策略
+- `tests/test_pipeline.py` 使用 `tests/fixtures/pipeline/` 的本地 CSV fixture
+- 覆盖：
+  - `ItemSearchCategory == 0` 的 result item 被排除
+  - `needed_item_ids` 同时包含产物与材料
+  - 票据、双色宝石、神典石、军票、钓鱼等 `obtainMethods` 规则不回归
+  - EN / JA 缺失名称时回退 `zh-CN`
+  - validation 对缺失 item 引用阻断，对缺失翻译只告警
+  - 全流程 smoke test 能从本地 CSV 全量重建最终 `items.json` / `recipes.json`

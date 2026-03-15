@@ -1,0 +1,225 @@
+[
+  {
+    "id": 1000,
+    "name": {
+      "zh-CN": "风之碎晶",
+      "en": "Wind Shard",
+      "ja": "ウィンドシャード"
+    },
+    "isCrystal": true,
+    "obtainMethods": [
+      "GATHER_MINER",
+      "GATHER_BOTANIST",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 1001,
+    "name": {
+      "zh-CN": "火之碎晶",
+      "en": "Fire Shard",
+      "ja": "ファイアシャード"
+    },
+    "isCrystal": true,
+    "obtainMethods": [
+      "GATHER_MINER",
+      "GATHER_BOTANIST",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 1370,
+    "name": {
+      "zh-CN": "骨片",
+      "en": "Bone Chip",
+      "ja": "ボーンチップ"
+    },
+    "isCrystal": false,
+    "obtainMethods": [
+      "CRAFT",
+      "GATHER_MINER",
+      "SHOP_NPC",
+      "SHOP_MARKET"
+    ],
+    "obtainMethodDetails": {
+      "SHOP_NPC": {
+        "priceLow": 9
+      }
+    }
+  },
+  {
+    "id": 1371,
+    "name": {
+      "zh-CN": "兽骨",
+      "en": "Beast Bone",
+      "ja": "獣骨"
+    },
+    "isCrystal": false,
+    "obtainMethods": [
+      "SHOP_NPC",
+      "SHOP_MARKET"
+    ],
+    "obtainMethodDetails": {
+      "SHOP_NPC": {
+        "priceLow": 5
+      }
+    }
+  },
+  {
+    "id": 2210,
+    "name": {
+      "zh-CN": "砂岩磨刀石",
+      "en": "Sandstone Whetstone",
+      "ja": "砂岩砥石"
+    },
+    "isCrystal": false,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_NPC",
+      "SHOP_MARKET"
+    ],
+    "obtainMethodDetails": {
+      "SHOP_NPC": {
+        "priceLow": 12
+      }
+    }
+  },
+  {
+    "id": 3240,
+    "name": {
+      "zh-CN": "砂岩",
+      "en": "Sandstone",
+      "ja": "砂岩"
+    },
+    "isCrystal": false,
+    "obtainMethods": [
+      "CRAFT",
+      "GATHER_MINER",
+      "SHOP_NPC",
+      "SHOP_MARKET"
+    ],
+    "obtainMethodDetails": {
+      "SHOP_NPC": {
+        "priceLow": 18
+      }
+    }
+  },
+  {
+    "id": 3241,
+    "name": {
+      "zh-CN": "砂砾",
+      "en": "Pebble",
+      "ja": "砂利"
+    },
+    "isCrystal": false,
+    "obtainMethods": [
+      "GATHER_MINER",
+      "SHOP_NPC",
+      "SHOP_MARKET"
+    ],
+    "obtainMethodDetails": {
+      "SHOP_NPC": {
+        "priceLow": 4
+      }
+    }
+  },
+  {
+    "id": 4421,
+    "name": {
+      "zh-CN": "兽骨戒指",
+      "en": "Bone Ring",
+      "ja": "ボーンリング"
+    },
+    "isCrystal": false,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 9001,
+    "name": {
+      "zh-CN": "工匠票据奖励素材",
+      "en": "Crafter Scrip Reward",
+      "ja": "クラフタースクリップ報酬素材"
+    },
+    "isCrystal": false,
+    "obtainMethods": [
+      "EXCHANGE_SCRIP_CRAFTER"
+    ]
+  },
+  {
+    "id": 9002,
+    "name": {
+      "zh-CN": "采集票据奖励素材",
+      "en": "Gatherer Scrip Reward",
+      "ja": "ギャザラースクリップ報酬素材"
+    },
+    "isCrystal": false,
+    "obtainMethods": [
+      "EXCHANGE_SCRIP_GATHERER"
+    ]
+  },
+  {
+    "id": 9003,
+    "name": {
+      "zh-CN": "双色宝石奖励素材",
+      "en": "Gemstone Reward",
+      "ja": "バイカラージェム報酬素材"
+    },
+    "isCrystal": false,
+    "obtainMethods": [
+      "EXCHANGE_GEMSTONE"
+    ]
+  },
+  {
+    "id": 9004,
+    "name": {
+      "zh-CN": "神典石奖励素材",
+      "en": "神典石奖励素材",
+      "ja": "トームストーン報酬素材"
+    },
+    "isCrystal": false,
+    "obtainMethods": [
+      "EXCHANGE_TOME"
+    ]
+  },
+  {
+    "id": 9005,
+    "name": {
+      "zh-CN": "军票奖励素材",
+      "en": "Company Seal Reward",
+      "ja": "グランドカンパニー交換素材"
+    },
+    "isCrystal": false,
+    "obtainMethods": [
+      "EXCHANGE_GC_SEALS"
+    ]
+  },
+  {
+    "id": 9006,
+    "name": {
+      "zh-CN": "渔获素材",
+      "en": "Fishing Catch",
+      "ja": "渔获素材"
+    },
+    "isCrystal": false,
+    "obtainMethods": [
+      "GATHER_FISHER",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 9100,
+    "name": {
+      "zh-CN": "特制礼包",
+      "en": "Special Bundle",
+      "ja": "特製パック"
+    },
+    "isCrystal": false,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  }
+]

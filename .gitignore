@@ -15,10 +15,13 @@ yarn-error.log*
 pnpm-debug.log*
 scripts/logs/*
 !scripts/logs/.gitkeep
+tmp/pipeline/
 
 # script outputs
 scripts/xivapi/data/*
 !scripts/xivapi/data/.gitkeep
+scripts/xivapi/cache/*.ndjson
+!scripts/xivapi/cache/.gitkeep
 
 # editor
 .vscode/
