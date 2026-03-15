@@ -1,16 +1,19 @@
 {
-  "publishedAt": null,
-  "currentRepoSha": null,
+  "publishedAt": "2026-03-15T12:04:50Z",
+  "currentRepoSha": "356e05d71e52386c2a3ec091060807b9a1a1be79",
   "upstream": {
     "cn": {
-      "sha": null
+      "path": "/home/runner/work/ffxiv-material-calculator/ffxiv-material-calculator/upstream/cn",
+      "sha": "1dd970d23b0fa5f609b9bbc9b90c26013ceabc4c"
     },
     "en": {
-      "sha": null
+      "path": "/home/runner/work/ffxiv-material-calculator/ffxiv-material-calculator/upstream/mixed/en",
+      "sha": "5267a7f65ffef748e6620f9f508839a68b808adc"
     },
     "ja": {
-      "sha": null
+      "path": "/home/runner/work/ffxiv-material-calculator/ffxiv-material-calculator/upstream/jp/csv",
+      "sha": "85fc735c4a17ec39d3b0d17b7f1eb9ffc76704d3"
     }
   },
-  "scriptVersion": null
+  "scriptVersion": "1.0"
 }
