@@ -9,6 +9,11 @@ export default {
     completed: "Completed",
     loading: "Loading data…",
   },
+  outfitSets: {
+    title: "Master Recipe Sets",
+    pieces: "pcs",
+    addAll: "Add all",
+  },
   search: {
     placeholder: "Search item...",
     hint: "Click an item to add it.",

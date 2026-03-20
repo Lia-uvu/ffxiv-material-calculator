@@ -1,6 +1,13 @@
 <template>
   <LoadingState v-if="!dataReady" />
   <div v-else class="space-y-4">
+    <OutfitSetPanel
+      :sets="outfitSets"
+      :item-by-id="itemById"
+      :target-amounts="targetAmountsMap"
+      @add-set="addSetToTargets"
+    />
+
     <SearchPanel
       :query="settings.searchQuery"
       :results="results"
@@ -34,9 +41,10 @@
 import { toRef, computed } from "vue";
 import { useI18n } from "vue-i18n";
 
-import { items, recipes, resolveItemName, dataReady, loadData } from "../../data";
+import { items, recipes, outfitSets, resolveItemName, dataReady, loadData } from "../../data";
 
 import LoadingState from "../components/common/LoadingState.vue";
+import OutfitSetPanel from "../components/search/OutfitSetPanel.vue";
 import SearchPanel from "../components/search/SearchPanel.vue";
 import TargetItemPanel from "../components/targets/TargetItemPanel.vue";
 import MaterialsPanel from "../components/materials/MaterialsPanel.vue";
@@ -86,6 +94,12 @@ const targetAmountsMap = computed(() => {
 function selectResultById({ id, keepOpen }) {
   targetsCtrl.add(id);
   if (!keepOpen) setSearchQuery("");
+}
+
+function addSetToTargets(itemIds) {
+  for (const id of itemIds) {
+    targetsCtrl.add(id);
+  }
 }
 
 const { ui, reachableCraftableIds } = useMaterialsList({

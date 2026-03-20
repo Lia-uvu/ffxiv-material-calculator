@@ -85,6 +85,7 @@ def parse_recipe_csv(text: str, item_search_categories: Dict[int, int]) -> Tuple
     idx_result_item = get_index("Item{Result}")
     idx_result_amount = get_index("Amount{Result}")
     idx_patch = get_index("PatchNumber")
+    idx_secret = get_index("SecretRecipeBook")
 
     ingredient_pairs = []
     for i in range(8):
@@ -130,6 +131,11 @@ def parse_recipe_csv(text: str, item_search_categories: Dict[int, int]) -> Tuple
 
         patch = parse_patch_number(row[idx_patch])
 
+        try:
+            secret_recipe_book = int(row[idx_secret])
+        except (ValueError, IndexError):
+            secret_recipe_book = 0
+
         materials = []
         for item_idx, amount_idx in ingredient_pairs:
             try:
@@ -151,6 +157,7 @@ def parse_recipe_csv(text: str, item_search_categories: Dict[int, int]) -> Tuple
             "job": job,
             "itemLevel": level_table_id,
             "patch": patch,
+            "secretRecipeBook": secret_recipe_book,
             "materials": materials,
         }
         recipes.append(recipe)

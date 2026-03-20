@@ -9,6 +9,11 @@ export default {
     completed: "已完成",
     loading: "数据加载中…",
   },
+  outfitSets: {
+    title: "秘籍套装速选",
+    pieces: "件",
+    addAll: "全部添加",
+  },
   search: {
     placeholder: "搜索物品...",
     hint: "点击条目添加到目标列表。",

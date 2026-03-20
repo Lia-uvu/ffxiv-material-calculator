@@ -9,6 +9,11 @@ export default {
     completed: "完了",
     loading: "データ読み込み中…",
   },
+  outfitSets: {
+    title: "秘伝書セット速選",
+    pieces: "点",
+    addAll: "すべて追加",
+  },
   search: {
     placeholder: "アイテムを検索...",
     hint: "項目をクリックして目標リストに追加します。",
