@@ -9,7 +9,6 @@ from __future__ import annotations
 
 import csv
 import json
-import sys
 import urllib.request
 from collections import defaultdict
 from pathlib import Path
@@ -19,8 +18,21 @@ BASE_URL_EN = "https://raw.githubusercontent.com/InfSein/ffxiv-datamining-mixed/
 BASE_URL_JA = "https://raw.githubusercontent.com/a1hena/ffxiv-datamining-jp/master/csv"
 
 MIN_CRAFTER_LEVEL = 70
-MIN_SET_SIZE = 5
-MAX_PREFIX_LEN = 8
+
+# Known role suffixes in Chinese item names.
+# Combat: 制敌(Tank)/咏咒(Caster)/强袭(Striker)/御敌(Defender)/治愈(Healer)/游击(Scouter)/精准(Ranger)/强攻(Maiming)
+# DoH/DoL: 巧匠(Crafter)/大地(Gatherer)
+ROLE_SUFFIXES = ["制敌", "咏咒", "强袭", "御敌", "治愈", "游击", "精准", "强攻", "巧匠", "大地"]
+
+# Equipment slot categories that count as "armor" (left-side gear + accessories).
+# Weapons (1=main hand, 2=off-hand/shield, 13=two-hand) are excluded.
+ARMOR_SLOTS = {3, 4, 5, 7, 8}        # head, body, hands, legs, feet
+ACCESSORY_SLOTS = {9, 10, 11, 12}     # earring, necklace, bracelet, ring
+GEAR_SLOTS = ARMOR_SLOTS | ACCESSORY_SLOTS
+
+# Minimum number of distinct armor slots (from ARMOR_SLOTS) a set must cover
+# to be considered a real equipment set (not just a weapon collection).
+MIN_ARMOR_SLOT_COVERAGE = 3
 
 
 def fetch_csv(url: str) -> str:
@@ -161,22 +173,43 @@ def build_enriched_data(cn_text_recipe: str, cn_text_level: str, cn_text_item: s
     return recipes
 
 
-def detect_prefix(names: list[str], min_len: int = 2) -> str | None:
-    """Find the longest shared prefix among names that groups at least MIN_SET_SIZE items."""
-    if len(names) < MIN_SET_SIZE:
-        return None
+def _strip_role_suffix(cn_name: str) -> tuple[str, str]:
+    """Strip a known role suffix from a Chinese item name.
 
-    best = None
-    for length in range(min_len, MAX_PREFIX_LEN + 1):
-        groups: dict[str, int] = defaultdict(int)
-        for name in names:
-            if len(name) >= length:
-                groups[name[:length]] += 1
-        for prefix, count in groups.items():
-            if count >= MIN_SET_SIZE:
-                if best is None or len(prefix) > len(best):
-                    best = prefix
-    return best
+    Returns (base_name_without_suffix, role_suffix).
+    If no known suffix matches, returns (cn_name, "").
+    """
+    for suffix in ROLE_SUFFIXES:
+        if cn_name.startswith(suffix):
+            # Edge case: the suffix IS the prefix (e.g., item just called "制敌xxx").
+            # Only strip if there's at least 2 chars before the suffix.
+            continue
+        # Check if removing this suffix from some position leaves a reasonable base.
+        # Role suffixes appear after the set name prefix in FFXIV Chinese naming.
+        # e.g., "旧日王国制敌头盔" → base="旧日王国", role="制敌", rest="头盔"
+        idx = cn_name.find(suffix)
+        if idx >= 2:
+            return cn_name[:idx], suffix
+    return cn_name, ""
+
+
+def _find_common_prefix(names: list[str]) -> str:
+    """Find the longest common prefix among a list of strings, trimmed to word boundary."""
+    names = [n for n in names if n]
+    if not names:
+        return ""
+    prefix = names[0]
+    for name in names[1:]:
+        while not name.startswith(prefix) and prefix:
+            prefix = prefix[:-1]
+        if not prefix:
+            return ""
+    # Trim to word boundary for Latin scripts
+    if prefix and prefix[-1] != " " and any(c.isascii() and c.isalpha() for c in prefix):
+        last_space = prefix.rfind(" ")
+        if last_space > 0:
+            prefix = prefix[:last_space + 1]
+    return prefix.rstrip()
 
 
 def build_outfit_sets(
@@ -197,95 +230,64 @@ def build_outfit_sets(
         cn_name = name_maps.get(r["resultItemId"], {}).get("zh-CN", "")
         if not cn_name:
             continue
-        candidates.append({**r, "cn_name": cn_name})
+        base_name, role = _strip_role_suffix(cn_name)
+        candidates.append({**r, "cn_name": cn_name, "base_name": base_name, "role": role})
 
     print(f"  {len(candidates)} candidate items after filtering")
 
-    # Group by ilvl, then detect prefix within each ilvl group
-    by_ilvl: dict[int, list[dict]] = defaultdict(list)
+    # Group by (base_name, ilvl) — this merges all role variants into one set.
+    groups: dict[tuple[str, int], list[dict]] = defaultdict(list)
     for c in candidates:
-        by_ilvl[c["ilvl"]].append(c)
+        # Use the first 2+ chars of base_name as a grouping key.
+        # Items within the same ilvl sharing the same base_name belong together.
+        groups[(c["base_name"], c["ilvl"])].append(c)
 
+    # Now find the longest common prefix within each group to get the true set name.
     raw_sets: list[dict] = []
-    for ilvl, items in sorted(by_ilvl.items(), reverse=True):
-        if len(items) < MIN_SET_SIZE:
+    for (base_name, ilvl), items in groups.items():
+        # Check armor slot coverage: must have items in >= MIN_ARMOR_SLOT_COVERAGE armor slots
+        armor_slots_covered = {item["equipSlotCategory"] for item in items} & ARMOR_SLOTS
+        if len(armor_slots_covered) < MIN_ARMOR_SLOT_COVERAGE:
             continue
 
-        # Try to find prefix groups within this ilvl
-        names = [item["cn_name"] for item in items]
+        # Find the true prefix (longest common prefix of all base_names in the group)
+        base_names = [item["base_name"] for item in items]
+        cn_prefix = _find_common_prefix(base_names)
+        if len(cn_prefix) < 2:
+            continue
 
-        # Group by prefix: try lengths from MAX_PREFIX_LEN down to 2
-        assigned = set()
-        prefix_groups: list[tuple[str, list[dict]]] = []
+        crafter_level = items[0]["crafterLevel"]
 
-        for plen in range(MAX_PREFIX_LEN, 1, -1):
-            groups: dict[str, list[dict]] = defaultdict(list)
-            for item in items:
-                if id(item) in assigned:
-                    continue
-                if len(item["cn_name"]) >= plen:
-                    groups[item["cn_name"][:plen]].append(item)
+        # Build roles dict: role_name -> sorted list of item IDs
+        roles: dict[str, list[int]] = defaultdict(list)
+        for item in items:
+            role_key = item["role"] if item["role"] else "_weapons"
+            roles[role_key].append(item["resultItemId"])
+        # Sort item IDs within each role
+        roles = {k: sorted(v) for k, v in roles.items()}
 
-            for prefix, group in sorted(groups.items(), key=lambda x: -len(x[1])):
-                if len(group) >= MIN_SET_SIZE:
-                    # Check if this prefix is just a substring of an already-found prefix
-                    already_covered = any(
-                        existing_prefix.startswith(prefix) and existing_prefix != prefix
-                        for existing_prefix, _ in prefix_groups
-                    )
-                    if already_covered:
-                        continue
-                    prefix_groups.append((prefix, group))
-                    for item in group:
-                        assigned.add(id(item))
+        # Get EN/JA prefix from all items in the set
+        all_item_ids = [item["resultItemId"] for item in items]
+        en_prefix = _find_common_prefix(
+            [name_maps.get(iid, {}).get("en", "") for iid in all_item_ids]
+        )
+        ja_prefix = _find_common_prefix(
+            [name_maps.get(iid, {}).get("ja", "") for iid in all_item_ids]
+        )
 
-        for prefix, group in prefix_groups:
-            # Build localized prefix from shared item name prefixes
-            item_ids = [item["resultItemId"] for item in group]
-            jobs = sorted(set(item["job"] for item in group))
-            crafter_level = group[0]["crafterLevel"]
-
-            # Get EN/JA prefix by finding common prefix of translated names
-            en_prefix = _find_common_prefix(
-                [name_maps.get(iid, {}).get("en", "") for iid in item_ids]
-            )
-            ja_prefix = _find_common_prefix(
-                [name_maps.get(iid, {}).get("ja", "") for iid in item_ids]
-            )
-
-            raw_sets.append({
-                "prefix": {
-                    "zh-CN": prefix,
-                    "en": en_prefix or prefix,
-                    "ja": ja_prefix or prefix,
-                },
-                "ilvl": ilvl,
-                "crafterLevel": crafter_level,
-                "jobs": jobs,
-                "itemIds": sorted(item_ids),
-            })
+        raw_sets.append({
+            "prefix": {
+                "zh-CN": cn_prefix,
+                "en": en_prefix or cn_prefix,
+                "ja": ja_prefix or cn_prefix,
+            },
+            "ilvl": ilvl,
+            "crafterLevel": crafter_level,
+            "roles": roles,
+        })
 
     print(f"  {len(raw_sets)} outfit sets detected")
     return raw_sets
-
-
-def _find_common_prefix(names: list[str]) -> str:
-    """Find the longest common prefix among a list of strings, trimmed to last word boundary."""
-    names = [n for n in names if n]
-    if not names:
-        return ""
-    prefix = names[0]
-    for name in names[1:]:
-        while not name.startswith(prefix) and prefix:
-            prefix = prefix[:-1]
-        if not prefix:
-            return ""
-    # Trim to word boundary for Latin scripts
-    if prefix and prefix[-1] != " " and any(c.isascii() and c.isalpha() for c in prefix):
-        last_space = prefix.rfind(" ")
-        if last_space > 0:
-            prefix = prefix[:last_space + 1]
-    return prefix.rstrip()
 
 
 def main():
