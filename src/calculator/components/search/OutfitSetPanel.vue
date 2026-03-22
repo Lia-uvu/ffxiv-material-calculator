@@ -36,22 +36,22 @@
             <button
               type="button"
               class="flex w-full items-center gap-1.5 text-xs transition-colors"
-              :class="selectedSet === set
+              :class="selectedSetKey === set.key
                 ? 'text-[#EDE9F7]'
                 : 'text-[#9B96AD] hover:text-[#EDE9F7]'"
-              @click="toggleSet(set)"
+              @click="toggleSet(set.key)"
             >
               <ChevronRight
                 :size="10"
                 class="shrink-0 transition-transform duration-150"
-                :class="{ 'rotate-90': selectedSet === set }"
+                :class="{ 'rotate-90': selectedSetKey === set.key }"
               />
               <span>{{ t("outfitSets.set." + set.key) }}</span>
               <span class="text-[#6B677A]">ilvl {{ set.ilvl }}</span>
             </button>
 
             <!-- Job buttons grouped by role -->
-            <div v-if="selectedSet === set" class="mt-1 ml-4 space-y-1">
+            <div v-if="selectedSetKey === set.key" class="mt-1 ml-4 space-y-1">
               <div v-for="group in jobGroupsForSet(set)" :key="group.role" class="flex flex-wrap items-center gap-1">
                 <span class="w-14 shrink-0 text-[10px] text-[#6B677A]">{{ group.label }}</span>
                 <button
@@ -86,7 +86,7 @@ const { t } = useI18n();
 
 const expanded = ref(false);
 const expandedTiers = ref(new Set());
-const selectedSet = ref(null);
+const selectedSetKey = ref(null);
 
 const TIER_LABELS = {
   100: "Lv.100 — 7.x",
@@ -162,17 +162,15 @@ function toggleTier(level) {
   const next = new Set(expandedTiers.value);
   if (next.has(level)) {
     next.delete(level);
-    if (selectedSet.value && selectedSet.value.crafterLevel === level) {
-      selectedSet.value = null;
-    }
+    selectedSetKey.value = null;
   } else {
     next.add(level);
   }
   expandedTiers.value = next;
 }
 
-function toggleSet(set) {
-  selectedSet.value = selectedSet.value === set ? null : set;
+function toggleSet(key) {
+  selectedSetKey.value = selectedSetKey.value === key ? null : key;
 }
 
 function addRole(itemIds) {
