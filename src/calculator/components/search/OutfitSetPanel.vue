@@ -32,7 +32,7 @@
 
         <div v-if="expandedTiers.has(tier.level)" class="ml-4 space-y-1.5">
           <!-- Set name + ilvl -->
-          <div v-for="set in tier.sets" :key="setKey(set)">
+          <div v-for="set in tier.sets" :key="set.key">
             <button
               type="button"
               class="flex w-full items-center gap-1.5 text-xs transition-colors"
@@ -46,7 +46,7 @@
                 class="shrink-0 transition-transform duration-150"
                 :class="{ 'rotate-90': selectedSet === set }"
               />
-              <span>{{ resolvePrefix(set) }}</span>
+              <span>{{ t("outfitSets.set." + set.key) }}</span>
               <span class="text-[#6B677A]">ilvl {{ set.ilvl }}</span>
             </button>
 
@@ -61,7 +61,7 @@
                   class="rounded-md border border-[#38364A] bg-[#2D2C34] px-1.5 py-0.5 text-[11px] text-[#9B96AD] transition-colors hover:border-[#B4A5C8]/40 hover:bg-[#3B3A47] hover:text-[#EDE9F7]"
                   @click.stop="addRole(group.itemIds)"
                 >
-                  {{ job.abbr }}
+                  {{ t("jobs." + job.key) }}
                 </button>
               </div>
             </div>
@@ -82,7 +82,7 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["add-set"]);
-const { t, locale } = useI18n();
+const { t } = useI18n();
 
 const expanded = ref(false);
 const expandedTiers = ref(new Set());
@@ -95,45 +95,35 @@ const TIER_LABELS = {
   70: "Lv.70 — 4.x",
 };
 
-// Role suffix → { label, jobs: [{ key, abbr }] }
+// Role key → { label, jobs: [{ key }] }
 const ROLE_JOBS = {
-  御敌: { label: "Tank", jobs: [
-    { key: "PLD", abbr: "PLD" }, { key: "WAR", abbr: "WAR" },
-    { key: "DRK", abbr: "DRK" }, { key: "GNB", abbr: "GNB" },
+  tank: { label: "Tank", jobs: [
+    { key: "PLD" }, { key: "WAR" }, { key: "DRK" }, { key: "GNB" },
   ]},
-  治愈: { label: "Healer", jobs: [
-    { key: "WHM", abbr: "WHM" }, { key: "SCH", abbr: "SCH" },
-    { key: "AST", abbr: "AST" }, { key: "SGE", abbr: "SGE" },
+  healer: { label: "Healer", jobs: [
+    { key: "WHM" }, { key: "SCH" }, { key: "AST" }, { key: "SGE" },
   ]},
-  制敌: { label: "Maiming", jobs: [
-    { key: "DRG", abbr: "DRG" }, { key: "RPR", abbr: "RPR" },
+  maiming: { label: "Maiming", jobs: [
+    { key: "DRG" }, { key: "RPR" },
   ]},
-  强攻: { label: "Maiming", jobs: [
-    { key: "DRG", abbr: "DRG" }, { key: "RPR", abbr: "RPR" },
+  striking: { label: "Striking", jobs: [
+    { key: "MNK" }, { key: "SAM" },
   ]},
-  强袭: { label: "Striking", jobs: [
-    { key: "MNK", abbr: "MNK" }, { key: "SAM", abbr: "SAM" },
+  scouting: { label: "Scouting", jobs: [
+    { key: "NIN" }, { key: "VPR" },
   ]},
-  游击: { label: "Scouting", jobs: [
-    { key: "NIN", abbr: "NIN" }, { key: "VPR", abbr: "VPR" },
+  aiming: { label: "Aiming", jobs: [
+    { key: "BRD" }, { key: "MCH" }, { key: "DNC" },
   ]},
-  精准: { label: "Aiming", jobs: [
-    { key: "BRD", abbr: "BRD" }, { key: "MCH", abbr: "MCH" },
-    { key: "DNC", abbr: "DNC" },
+  casting: { label: "Casting", jobs: [
+    { key: "BLM" }, { key: "SMN" }, { key: "RDM" }, { key: "PCT" },
   ]},
-  咏咒: { label: "Casting", jobs: [
-    { key: "BLM", abbr: "BLM" }, { key: "SMN", abbr: "SMN" },
-    { key: "RDM", abbr: "RDM" }, { key: "PCT", abbr: "PCT" },
+  crafter: { label: "Crafter", jobs: [
+    { key: "CRP" }, { key: "BSM" }, { key: "ARM" }, { key: "GSM" },
+    { key: "LTW" }, { key: "WVR" }, { key: "ALC" }, { key: "CUL" },
   ]},
-  巧匠: { label: "Crafter", jobs: [
-    { key: "CRP", abbr: "CRP" }, { key: "BSM", abbr: "BSM" },
-    { key: "ARM", abbr: "ARM" }, { key: "GSM", abbr: "GSM" },
-    { key: "LTW", abbr: "LTW" }, { key: "WVR", abbr: "WVR" },
-    { key: "ALC", abbr: "ALC" }, { key: "CUL", abbr: "CUL" },
-  ]},
-  大地: { label: "Gatherer", jobs: [
-    { key: "MIN", abbr: "MIN" }, { key: "BTN", abbr: "BTN" },
-    { key: "FSH", abbr: "FSH" },
+  gatherer: { label: "Gatherer", jobs: [
+    { key: "MIN" }, { key: "BTN" }, { key: "FSH" },
   ]},
 };
 
@@ -152,14 +142,6 @@ const tiers = computed(() => {
       sets,
     }));
 });
-
-function setKey(set) {
-  return `${set.prefix["zh-CN"]}-${set.ilvl}`;
-}
-
-function resolvePrefix(set) {
-  return set.prefix[locale.value] || set.prefix["zh-CN"];
-}
 
 function jobGroupsForSet(set) {
   const groups = [];

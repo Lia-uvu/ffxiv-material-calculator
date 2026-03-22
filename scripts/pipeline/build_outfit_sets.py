@@ -1,37 +1,44 @@
 #!/usr/bin/env python3
-"""Generate outfitSets.json from enriched recipes and items data.
+"""Generate outfitSets.json and outfitSetNames i18n from enriched recipes and items data.
 
-Can run standalone (downloads CSVs from GitHub) or be called after the main
-pipeline has produced enriched recipes/items with secretRecipeBook, ilvl, and
-equipSlotCategory fields.
+Only downloads Chinese CSVs from GitHub.  Multilingual set names are derived
+from the already-built items.json (which contains zh-CN / en / ja names).
 """
 from __future__ import annotations
 
 import csv
 import json
+import re
 import urllib.request
 from collections import defaultdict
 from pathlib import Path
 
 BASE_URL_CN = "https://raw.githubusercontent.com/thewakingsands/ffxiv-datamining-cn/master"
-BASE_URL_EN = "https://raw.githubusercontent.com/InfSein/ffxiv-datamining-mixed/master/en"
-BASE_URL_JA = "https://raw.githubusercontent.com/a1hena/ffxiv-datamining-jp/master/csv"
 
 MIN_CRAFTER_LEVEL = 70
 
-# Known role suffixes in Chinese item names.
-# Combat: 制敌(Tank)/咏咒(Caster)/强袭(Striker)/御敌(Defender)/治愈(Healer)/游击(Scouter)/精准(Ranger)/强攻(Maiming)
-# DoH/DoL: 巧匠(Crafter)/大地(Gatherer)
-ROLE_SUFFIXES = ["制敌", "咏咒", "强袭", "御敌", "治愈", "游击", "精准", "强攻", "巧匠", "大地"]
+# Chinese role suffix → English role key
+ROLE_SUFFIX_TO_KEY = {
+    "御敌": "tank",
+    "治愈": "healer",
+    "制敌": "maiming",
+    "强攻": "maiming",
+    "强袭": "striking",
+    "游击": "scouting",
+    "精准": "aiming",
+    "咏咒": "casting",
+    "巧匠": "crafter",
+    "大地": "gatherer",
+}
+
+ROLE_SUFFIXES = list(ROLE_SUFFIX_TO_KEY.keys())
 
 # Equipment slot categories that count as "armor" (left-side gear + accessories).
-# Weapons (1=main hand, 2=off-hand/shield, 13=two-hand) are excluded.
 ARMOR_SLOTS = {3, 4, 5, 7, 8}        # head, body, hands, legs, feet
 ACCESSORY_SLOTS = {9, 10, 11, 12}     # earring, necklace, bracelet, ring
 GEAR_SLOTS = ARMOR_SLOTS | ACCESSORY_SLOTS
 
-# Minimum number of distinct armor slots (from ARMOR_SLOTS) a set must cover
-# to be considered a real equipment set (not just a weapon collection).
+# Minimum number of distinct armor slots a set must cover.
 MIN_ARMOR_SLOT_COVERAGE = 3
 
 
@@ -42,7 +49,6 @@ def fetch_csv(url: str) -> str:
 
 
 def locate_header_row(rows: list[list[str]], required_columns: tuple[str, ...]) -> tuple[int, list[str]]:
-    """Find the header row by looking for required columns (handles BOM and varying formats)."""
     for idx, row in enumerate(rows[:10]):
         normalized = [cell.lstrip("\ufeff") for cell in row]
         if all(column in normalized for column in required_columns):
@@ -54,31 +60,9 @@ def parse_csv_rows(text: str, required: tuple[str, ...] = ("#",)) -> tuple[list[
     rows = list(csv.reader(text.splitlines()))
     header_idx, header = locate_header_row(rows, required)
     data = rows[header_idx + 1:]
-    # Skip type/key rows that start with non-numeric values
     while data and data[0] and not data[0][0].lstrip("-").isdigit():
         data = data[1:]
     return header, data
-
-
-def build_item_name_maps(cn_text: str, en_text: str, ja_text: str) -> dict[int, dict[str, str]]:
-    names: dict[int, dict[str, str]] = {}
-
-    for locale, text in [("zh-CN", cn_text), ("en", en_text), ("ja", ja_text)]:
-        header, data = parse_csv_rows(text, required=("#", "Name"))
-        idx_key = header.index("#")
-        idx_name = header.index("Name")
-        for row in data:
-            if len(row) <= max(idx_key, idx_name):
-                continue
-            try:
-                item_id = int(row[idx_key])
-            except ValueError:
-                continue
-            name = row[idx_name].strip()
-            if name:
-                names.setdefault(item_id, {})[locale] = name
-
-    return names
 
 
 def build_enriched_data(cn_text_recipe: str, cn_text_level: str, cn_text_item: str):
@@ -99,10 +83,12 @@ def build_enriched_data(cn_text_recipe: str, cn_text_level: str, cn_text_item: s
     idx_search_cat = header.index("ItemSearchCategory")
     idx_ilvl = header.index("Level{Item}")
     idx_equip_slot = header.index("EquipSlotCategory")
+    idx_name = header.index("Name")
 
     item_search_cat = {}
     item_ilvl = {}
     item_equip_slot = {}
+    item_cn_name = {}
     for row in data:
         try:
             item_id = int(row[idx_key])
@@ -120,6 +106,9 @@ def build_enriched_data(cn_text_recipe: str, cn_text_level: str, cn_text_item: s
             item_equip_slot[item_id] = int(row[idx_equip_slot])
         except (ValueError, IndexError):
             pass
+        name = row[idx_name].strip() if len(row) > idx_name else ""
+        if name:
+            item_cn_name[item_id] = name
 
     # Parse Recipe.csv
     CRAFT_TYPE_TO_JOB = {
@@ -170,23 +159,13 @@ def build_enriched_data(cn_text_recipe: str, cn_text_level: str, cn_text_item: s
             "equipSlotCategory": item_equip_slot.get(result_item_id, 0),
         })
 
-    return recipes
+    return recipes, item_cn_name
 
 
 def _strip_role_suffix(cn_name: str) -> tuple[str, str]:
-    """Strip a known role suffix from a Chinese item name.
-
-    Returns (base_name_without_suffix, role_suffix).
-    If no known suffix matches, returns (cn_name, "").
-    """
     for suffix in ROLE_SUFFIXES:
         if cn_name.startswith(suffix):
-            # Edge case: the suffix IS the prefix (e.g., item just called "制敌xxx").
-            # Only strip if there's at least 2 chars before the suffix.
             continue
-        # Check if removing this suffix from some position leaves a reasonable base.
-        # Role suffixes appear after the set name prefix in FFXIV Chinese naming.
-        # e.g., "旧日王国制敌头盔" → base="旧日王国", role="制敌", rest="头盔"
         idx = cn_name.find(suffix)
         if idx >= 2:
             return cn_name[:idx], suffix
@@ -194,7 +173,6 @@ def _strip_role_suffix(cn_name: str) -> tuple[str, str]:
 
 
 def _find_common_prefix(names: list[str]) -> str:
-    """Find the longest common prefix among a list of strings, trimmed to word boundary."""
     names = [n for n in names if n]
     if not names:
         return ""
@@ -212,11 +190,17 @@ def _find_common_prefix(names: list[str]) -> str:
     return prefix.rstrip()
 
 
+def _slugify(text: str) -> str:
+    """Convert a text prefix to a slug suitable for use as a key."""
+    text = text.lower().strip().rstrip("'s").rstrip("'")
+    text = re.sub(r"[^a-z0-9]+", "_", text)
+    return text.strip("_")
+
+
 def build_outfit_sets(
     recipes: list[dict],
-    name_maps: dict[int, dict[str, str]],
+    item_cn_names: dict[int, str],
 ) -> list[dict]:
-    # Filter: master recipes, equipment, ilvl > 1, crafter level >= 70
     candidates = []
     for r in recipes:
         if r["secretRecipeBook"] == 0:
@@ -227,7 +211,7 @@ def build_outfit_sets(
             continue
         if r["crafterLevel"] < MIN_CRAFTER_LEVEL:
             continue
-        cn_name = name_maps.get(r["resultItemId"], {}).get("zh-CN", "")
+        cn_name = item_cn_names.get(r["resultItemId"], "")
         if not cn_name:
             continue
         base_name, role = _strip_role_suffix(cn_name)
@@ -235,22 +219,16 @@ def build_outfit_sets(
 
     print(f"  {len(candidates)} candidate items after filtering")
 
-    # Group by (base_name, ilvl) — this merges all role variants into one set.
     groups: dict[tuple[str, int], list[dict]] = defaultdict(list)
     for c in candidates:
-        # Use the first 2+ chars of base_name as a grouping key.
-        # Items within the same ilvl sharing the same base_name belong together.
         groups[(c["base_name"], c["ilvl"])].append(c)
 
-    # Now find the longest common prefix within each group to get the true set name.
     raw_sets: list[dict] = []
     for (base_name, ilvl), items in groups.items():
-        # Check armor slot coverage: must have items in >= MIN_ARMOR_SLOT_COVERAGE armor slots
         armor_slots_covered = {item["equipSlotCategory"] for item in items} & ARMOR_SLOTS
         if len(armor_slots_covered) < MIN_ARMOR_SLOT_COVERAGE:
             continue
 
-        # Find the true prefix (longest common prefix of all base_names in the group)
         base_names = [item["base_name"] for item in items]
         cn_prefix = _find_common_prefix(base_names)
         if len(cn_prefix) < 2:
@@ -258,66 +236,130 @@ def build_outfit_sets(
 
         crafter_level = items[0]["crafterLevel"]
 
-        # Build roles dict: role_name -> sorted list of item IDs
+        # Build roles dict with English keys
         roles: dict[str, list[int]] = defaultdict(list)
         for item in items:
-            role_key = item["role"] if item["role"] else "_weapons"
+            if item["role"]:
+                role_key = ROLE_SUFFIX_TO_KEY.get(item["role"], item["role"])
+            else:
+                role_key = "_weapons"
             roles[role_key].append(item["resultItemId"])
-        # Sort item IDs within each role
         roles = {k: sorted(v) for k, v in roles.items()}
 
-        # Get EN/JA prefix from all items in the set
-        all_item_ids = [item["resultItemId"] for item in items]
-        en_prefix = _find_common_prefix(
-            [name_maps.get(iid, {}).get("en", "") for iid in all_item_ids]
-        )
-        ja_prefix = _find_common_prefix(
-            [name_maps.get(iid, {}).get("ja", "") for iid in all_item_ids]
-        )
+        # Collect all item IDs for i18n generation later
+        all_item_ids = sorted({item["resultItemId"] for item in items})
 
         raw_sets.append({
-            "prefix": {
-                "zh-CN": cn_prefix,
-                "en": en_prefix or cn_prefix,
-                "ja": ja_prefix or cn_prefix,
-            },
+            "cn_prefix": cn_prefix,
             "ilvl": ilvl,
             "crafterLevel": crafter_level,
             "roles": roles,
+            "_all_item_ids": all_item_ids,  # temporary, stripped before output
         })
 
     print(f"  {len(raw_sets)} outfit sets detected")
     return raw_sets
 
 
-def main():
-    publish_dir = Path(__file__).resolve().parent.parent.parent / "src" / "data"
+def generate_keys_and_i18n(
+    raw_sets: list[dict],
+    items_json: list[dict],
+) -> tuple[list[dict], dict[str, dict[str, str]]]:
+    """Add 'key' to each set and generate i18n name mappings.
 
-    print("Downloading CSVs from GitHub...")
+    Returns (output_sets, i18n_dict) where i18n_dict maps
+    set key -> { "zh-CN": ..., "en": ..., "ja": ... }.
+    """
+    # Build item name lookup from items.json
+    name_by_id: dict[int, dict[str, str]] = {}
+    for item in items_json:
+        name_by_id[item["id"]] = item.get("name", {})
+
+    i18n: dict[str, dict[str, str]] = {}
+    output_sets: list[dict] = []
+    key_counter: dict[str, int] = {}
+
+    for s in raw_sets:
+        all_ids = s["_all_item_ids"]
+
+        # Compute trilingual prefixes from items.json
+        prefixes = {}
+        for locale in ("zh-CN", "en", "ja"):
+            names = [name_by_id.get(iid, {}).get(locale, "") for iid in all_ids]
+            prefixes[locale] = _find_common_prefix(names)
+
+        # Generate key from English prefix + ilvl
+        en_slug = _slugify(prefixes.get("en", ""))
+        if not en_slug:
+            en_slug = _slugify(s["cn_prefix"])
+        base_key = f"{en_slug}_{s['ilvl']}"
+
+        # Handle duplicates
+        key_counter[base_key] = key_counter.get(base_key, 0) + 1
+        if key_counter[base_key] > 1:
+            key = f"{base_key}_{key_counter[base_key]}"
+        else:
+            key = base_key
+
+        # Store i18n entry
+        i18n[key] = {
+            "zh-CN": prefixes.get("zh-CN") or s["cn_prefix"],
+            "en": prefixes.get("en") or s["cn_prefix"],
+            "ja": prefixes.get("ja") or s["cn_prefix"],
+        }
+
+        # Build output set (without _all_item_ids)
+        output_sets.append({
+            "key": key,
+            "ilvl": s["ilvl"],
+            "crafterLevel": s["crafterLevel"],
+            "roles": s["roles"],
+        })
+
+    return output_sets, i18n
+
+
+def main():
+    project_root = Path(__file__).resolve().parent.parent.parent
+    publish_dir = project_root / "src" / "data"
+    i18n_dir = project_root / "src" / "i18n" / "generated"
+
+    print("Downloading Chinese CSVs from GitHub...")
     cn_recipe = fetch_csv(f"{BASE_URL_CN}/Recipe.csv")
     cn_level = fetch_csv(f"{BASE_URL_CN}/RecipeLevelTable.csv")
     cn_item = fetch_csv(f"{BASE_URL_CN}/Item.csv")
-    en_item = fetch_csv(f"{BASE_URL_EN}/Item.csv")
-    ja_item = fetch_csv(f"{BASE_URL_JA}/Item.csv")
 
     print("Building enriched recipe data...")
-    recipes = build_enriched_data(cn_recipe, cn_level, cn_item)
+    recipes, item_cn_names = build_enriched_data(cn_recipe, cn_level, cn_item)
     print(f"  {len(recipes)} recipes parsed")
 
-    print("Building item name maps...")
-    name_maps = build_item_name_maps(cn_item, en_item, ja_item)
-    print(f"  {len(name_maps)} items with names")
-
     print("Detecting outfit sets...")
-    sets = build_outfit_sets(recipes, name_maps)
+    raw_sets = build_outfit_sets(recipes, item_cn_names)
 
-    # Sort sets: by crafter level desc, then ilvl desc, then prefix
-    sets.sort(key=lambda s: (-s["crafterLevel"], -s["ilvl"], s["prefix"]["zh-CN"]))
+    # Load items.json for multilingual names
+    items_json_path = publish_dir / "items.json"
+    print(f"Loading {items_json_path} for multilingual names...")
+    with open(items_json_path, encoding="utf-8") as f:
+        items_json = json.load(f)
 
+    print("Generating keys and i18n...")
+    output_sets, i18n_names = generate_keys_and_i18n(raw_sets, items_json)
+
+    # Sort sets: by crafter level desc, then ilvl desc, then key
+    output_sets.sort(key=lambda s: (-s["crafterLevel"], -s["ilvl"], s["key"]))
+
+    # Write outfitSets.json
     output_path = publish_dir / "outfitSets.json"
     with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(sets, f, ensure_ascii=False, indent=2)
-    print(f"Written {len(sets)} outfit sets to {output_path}")
+        json.dump(output_sets, f, ensure_ascii=False, indent=2)
+    print(f"Written {len(output_sets)} outfit sets to {output_path}")
+
+    # Write i18n generated file
+    i18n_dir.mkdir(parents=True, exist_ok=True)
+    i18n_path = i18n_dir / "outfitSetNames.json"
+    with open(i18n_path, "w", encoding="utf-8") as f:
+        json.dump(i18n_names, f, ensure_ascii=False, indent=2)
+    print(f"Written {len(i18n_names)} i18n entries to {i18n_path}")
 
 
 if __name__ == "__main__":

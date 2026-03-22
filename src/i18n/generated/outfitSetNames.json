@@ -1,0 +1,97 @@
+{
+  "chromite_320": {
+    "zh-CN": "铬铁",
+    "en": "Chromite",
+    "ja": "クロマイト"
+  },
+  "true_griffin_320": {
+    "zh-CN": "真狮鹫革",
+    "en": "True Griffin",
+    "ja": "トゥルーグリフィン・"
+  },
+  "ala_mhigan_320": {
+    "zh-CN": "阿拉米格",
+    "en": "Ala Mhigan",
+    "ja": "アラミガン"
+  },
+  "nightsteel_350": {
+    "zh-CN": "夜钢",
+    "en": "Nightsteel",
+    "ja": "ナイトスチール・"
+  },
+  "true_linen_350": {
+    "zh-CN": "真麻",
+    "en": "True Linen",
+    "ja": "トゥルーリネン・"
+  },
+  "facet_450": {
+    "zh-CN": "中庸",
+    "en": "Facet",
+    "ja": "ミーン・"
+  },
+  "facet_460": {
+    "zh-CN": "中庸",
+    "en": "Facet",
+    "ja": "ミーン・"
+  },
+  "neo_ishgardian_480": {
+    "zh-CN": "伊修加德新型",
+    "en": "Neo-Ishgardian",
+    "ja": "ネオイシュガルディアン・"
+  },
+  "aesthete_490": {
+    "zh-CN": "唯美",
+    "en": "Aesthete's",
+    "ja": "エースセチック・"
+  },
+  "exarchic_510": {
+    "zh-CN": "总督",
+    "en": "Exarchic",
+    "ja": "エクサーク・"
+  },
+  "pactmaker_590": {
+    "zh-CN": "条约",
+    "en": "Pactmaker's",
+    "ja": "パクトメーカー・"
+  },
+  "rinascita_610": {
+    "zh-CN": "复兴",
+    "en": "Rinascita",
+    "ja": "リナシータ・"
+  },
+  "indagator_620": {
+    "zh-CN": "研究者",
+    "en": "Indagator's",
+    "ja": "インダガトル・"
+  },
+  "diadocho_640": {
+    "zh-CN": "继业者",
+    "en": "Diadochos",
+    "ja": "ディアドコス・"
+  },
+  "archeo_kingdom_710": {
+    "zh-CN": "旧日王国",
+    "en": "Archeo Kingdom",
+    "ja": "オールドキングダム・"
+  },
+  "everseeker_720": {
+    "zh-CN": "探求永恒",
+    "en": "Everseeker's",
+    "ja": "エバーシーク・"
+  },
+  "ceremonial_740": {
+    "zh-CN": "仪仗",
+    "en": "Ceremonial",
+    "ja": "セレモニアル・"
+  },
+  "crested_750": {
+    "zh-CN": "雀翎",
+    "en": "Crested",
+    "ja": "ピーコック・"
+  },
+  "courtly_lover_770": {
+    "zh-CN": "宫廷爱人",
+    "en": "Courtly Lover's",
+    "ja": "コートリーラヴァー・"
+  }
+}

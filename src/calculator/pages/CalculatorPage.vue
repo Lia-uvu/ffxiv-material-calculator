@@ -1,19 +1,17 @@
 <template>
   <LoadingState v-if="!dataReady" />
   <div v-else class="space-y-4">
-    <OutfitSetPanel
-      :sets="outfitSets"
-      :item-by-id="itemById"
-      :target-amounts="targetAmountsMap"
-      @add-set="addSetToTargets"
-    />
-
     <SearchPanel
       :query="settings.searchQuery"
       :results="results"
       :target-amounts="targetAmountsMap"
       @update:query="setSearchQuery"
       @select="selectResultById"
+    />
+
+    <OutfitSetPanel
+      :sets="outfitSets"
+      @add-set="addSetToTargets"
     />
 
     <TargetItemPanel
