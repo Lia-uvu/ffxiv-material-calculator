@@ -59,7 +59,7 @@
                   :key="job.key"
                   type="button"
                   class="rounded-md border border-[#38364A] bg-[#2D2C34] px-1.5 py-0.5 text-[11px] text-[#9B96AD] transition-colors hover:border-[#B4A5C8]/40 hover:bg-[#3B3A47] hover:text-[#EDE9F7]"
-                  @click.stop="addRole(group.itemIds)"
+                  @click.stop="addJobItems(set, group.itemIds, job.key)"
                 >
                   {{ t("jobs." + job.key) }}
                 </button>
@@ -173,7 +173,8 @@ function toggleSet(key) {
   selectedSetKey.value = selectedSetKey.value === key ? null : key;
 }
 
-function addRole(itemIds) {
-  emit("add-set", itemIds);
+function addJobItems(set, roleItemIds, jobKey) {
+  const weaponIds = (set.weapons && set.weapons[jobKey]) || [];
+  emit("add-set", [...roleItemIds, ...weaponIds]);
 }
 </script>

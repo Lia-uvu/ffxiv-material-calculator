@@ -2,12 +2,12 @@
   "chromite_320": {
     "zh-CN": "铬铁",
     "en": "Chromite",
-    "ja": "クロマイト"
+    "ja": "铬铁"
   },
-  "true_griffin_320": {
+  "_320": {
     "zh-CN": "真狮鹫革",
-    "en": "True Griffin",
-    "ja": "トゥルーグリフィン・"
+    "en": "真狮鹫革",
+    "ja": "トゥルーグリフィン"
   },
   "ala_mhigan_320": {
     "zh-CN": "阿拉米格",
@@ -17,7 +17,7 @@
   "nightsteel_350": {
     "zh-CN": "夜钢",
     "en": "Nightsteel",
-    "ja": "ナイトスチール・"
+    "ja": "夜钢"
   },
   "true_linen_350": {
     "zh-CN": "真麻",
@@ -47,7 +47,7 @@
   "exarchic_510": {
     "zh-CN": "总督",
     "en": "Exarchic",
-    "ja": "エクサーク・"
+    "ja": "エクサーク"
   },
   "pactmaker_590": {
     "zh-CN": "条约",
