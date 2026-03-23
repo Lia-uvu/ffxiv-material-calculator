@@ -375,6 +375,8 @@ def parse_items(
     idx_ui_category = get_index("ItemUICategory")
     idx_untradable = get_index("IsUntradable")
     idx_price_low = get_index("Price{Low}")
+    idx_ilvl = get_index("Level{Item}")
+    idx_equip_slot = get_index("EquipSlotCategory")
 
     items_by_id: Dict[int, Dict] = {}
     stats = {
@@ -405,6 +407,14 @@ def parse_items(
             price_low = int(row[idx_price_low])
         except ValueError:
             price_low = 0
+        try:
+            ilvl = int(row[idx_ilvl])
+        except (ValueError, IndexError):
+            ilvl = 0
+        try:
+            equip_slot_category = int(row[idx_equip_slot])
+        except (ValueError, IndexError):
+            equip_slot_category = 0
         obtain_methods = build_obtain_methods(
             item_id,
             is_crystal,
@@ -424,6 +434,8 @@ def parse_items(
             "id": item_id,
             "name": {"zh-CN": name},
             "isCrystal": is_crystal,
+            "ilvl": ilvl,
+            "equipSlotCategory": equip_slot_category,
             "obtainMethods": obtain_methods,
         }
         if item_id in gil_shop_ids and price_low > 0:

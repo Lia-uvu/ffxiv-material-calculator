@@ -23,6 +23,9 @@ scripts/xivapi/data/*
 scripts/xivapi/cache/*.ndjson
 !scripts/xivapi/cache/.gitkeep
 
+# python
+__pycache__/
+
 # editor
 .vscode/
 .idea/

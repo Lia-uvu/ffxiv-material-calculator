@@ -2,16 +2,19 @@ import { shallowRef } from "vue";
 
 export const items = shallowRef([]);
 export const recipes = shallowRef([]);
+export const outfitSets = shallowRef([]);
 export const dataReady = shallowRef(false);
 
 export async function loadData() {
   if (dataReady.value) return;
-  const [itemsMod, recipesMod] = await Promise.all([
+  const [itemsMod, recipesMod, outfitSetsMod] = await Promise.all([
     import("./items.json"),
     import("./recipes.json"),
+    import("./outfitSets.json"),
   ]);
   items.value = itemsMod.default;
   recipes.value = recipesMod.default;
+  outfitSets.value = outfitSetsMod.default;
   dataReady.value = true;
 }
 

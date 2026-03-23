@@ -6,6 +6,7 @@
     "job": "GOLDSMITH",
     "itemLevel": 6,
     "patch": "1.23",
+    "secretRecipeBook": 0,
     "materials": [
       {
         "itemId": 3240,
@@ -24,6 +25,7 @@
     "job": "GOLDSMITH",
     "itemLevel": 9,
     "patch": "1.23",
+    "secretRecipeBook": 0,
     "materials": [
       {
         "itemId": 1370,
@@ -50,6 +52,7 @@
     "job": "GOLDSMITH",
     "itemLevel": 4,
     "patch": "1.23",
+    "secretRecipeBook": 0,
     "materials": [
       {
         "itemId": 1371,
@@ -68,6 +71,7 @@
     "job": "GOLDSMITH",
     "itemLevel": 3,
     "patch": "1.23",
+    "secretRecipeBook": 0,
     "materials": [
       {
         "itemId": 3241,
@@ -86,6 +90,7 @@
     "job": "ALCHEMIST",
     "itemLevel": 12,
     "patch": "7.20",
+    "secretRecipeBook": 0,
     "materials": [
       {
         "itemId": 9001,
