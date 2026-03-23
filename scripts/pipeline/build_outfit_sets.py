@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
-"""Generate outfitSets.json and outfitSetNames i18n from enriched recipes and items data.
+"""Generate outfitSets.json and outfitSetNames i18n from local static data.
 
-Only downloads Chinese CSVs from GitHub.  Multilingual set names are derived
-from the already-built items.json (which contains zh-CN / en / ja names).
+Reads from:
+  - src/data/items.json          (multilingual names)
+  - src/data/recipes.json        (recipe → resultItemId, itemLevel)
+  - src/data/outfitSetMeta.json  (ilvl, equipSlotCategory, classJobCategory, secretRecipeBook)
+
+No network access required.
 """
 from __future__ import annotations
 
-import csv
 import json
 import re
-import urllib.request
 from collections import defaultdict
 from pathlib import Path
-
-BASE_URL_CN = "https://raw.githubusercontent.com/thewakingsands/ffxiv-datamining-cn/master"
 
 MIN_CRAFTER_LEVEL = 70
 
@@ -38,12 +38,10 @@ ARMOR_SLOTS = {3, 4, 5, 7, 8}        # head, body, hands, legs, feet
 ACCESSORY_SLOTS = {9, 10, 11, 12}     # earring, necklace, bracelet, ring
 WEAPON_SLOTS = {1, 2, 13}             # main hand, off-hand/shield, two-hand
 RING_SLOT = 12
-GEAR_SLOTS = ARMOR_SLOTS | ACCESSORY_SLOTS
 
 MIN_ARMOR_SLOT_COVERAGE = 3
 
 # In FFXIV, some roles share accessories (Slaying accessories for all melee DPS).
-# This maps each display role → which role's accessories it uses.
 ACCESSORY_ROLE_FOR = {
     "tank": "tank",
     "healer": "healer",
@@ -65,170 +63,60 @@ BATTLE_JOB_ABBRS = {
 }
 
 
-def fetch_csv(url: str) -> str:
-    print(f"  Downloading {url.split('/')[-1]}...")
-    with urllib.request.urlopen(url, timeout=30) as resp:
-        return resp.read().decode("utf-8")
+# ── Data loading from static files ──────────────────────────────────────────
 
 
-def locate_header_row(rows: list[list[str]], required_columns: tuple[str, ...]) -> tuple[int, list[str]]:
-    for idx, row in enumerate(rows[:10]):
-        normalized = [cell.lstrip("\ufeff") for cell in row]
-        if all(column in normalized for column in required_columns):
-            return idx, normalized
-    raise ValueError(f"Could not find CSV header containing columns: {required_columns}")
+def load_local_data(data_dir: Path) -> tuple[list[dict], dict[int, str], dict[int, set[str]]]:
+    """Load and merge items.json, recipes.json, and outfitSetMeta.json.
 
+    Returns:
+        enriched_recipes: list of dicts with keys:
+            resultItemId, crafterLevel, secretRecipeBook, ilvl,
+            equipSlotCategory, classJobCategory
+        item_cn_names: { itemId: CN name }
+        cjc_map: { categoryId: set of job abbreviations }
+    """
+    with open(data_dir / "items.json", encoding="utf-8") as f:
+        items_json = json.load(f)
+    with open(data_dir / "recipes.json", encoding="utf-8") as f:
+        recipes_json = json.load(f)
+    with open(data_dir / "outfitSetMeta.json", encoding="utf-8") as f:
+        meta = json.load(f)
 
-def parse_csv_rows(text: str, required: tuple[str, ...] = ("#",)) -> tuple[list[str], list[list[str]]]:
-    rows = list(csv.reader(text.splitlines()))
-    header_idx, header = locate_header_row(rows, required)
-    data = rows[header_idx + 1:]
-    while data and data[0] and not data[0][0].lstrip("-").isdigit():
-        data = data[1:]
-    return header, data
+    # Build CN name lookup
+    item_cn_names: dict[int, str] = {}
+    for item in items_json:
+        cn_name = item.get("name", {}).get("zh-CN", "")
+        if cn_name:
+            item_cn_names[item["id"]] = cn_name
 
-
-def build_class_job_category_map(cjc_text: str) -> dict[int, set[str]]:
-    """Parse ClassJobCategory.csv → { categoryId: set of job abbreviations }."""
-    rows = list(csv.reader(cjc_text.splitlines()))
-    header_idx = -1
-    header = []
-    for idx, row in enumerate(rows[:10]):
-        normalized = [cell.lstrip("\ufeff") for cell in row]
-        if "#" in normalized and "Name" in normalized:
-            header = normalized
-            header_idx = idx
-            break
-    if header_idx < 0:
-        raise ValueError("Could not find ClassJobCategory header")
-
-    data_start = header_idx + 1
-    while data_start < len(rows) and not rows[data_start][0].lstrip("\ufeff-").isdigit():
-        data_start += 1
-
-    idx_id = header.index("#")
-    job_columns: list[tuple[int, str]] = []
-    for abbr in BATTLE_JOB_ABBRS:
-        if abbr in header:
-            job_columns.append((header.index(abbr), abbr))
-
-    result: dict[int, set[str]] = {}
-    for row in rows[data_start:]:
-        try:
-            cat_id = int(row[idx_id])
-        except (ValueError, IndexError):
-            continue
-        jobs = set()
-        for col_idx, abbr in job_columns:
-            if col_idx < len(row) and row[col_idx].strip().lower() == "true":
-                jobs.add(abbr)
-        if jobs:
-            result[cat_id] = jobs
-    return result
-
-
-def build_enriched_data(cn_text_recipe: str, cn_text_level: str, cn_text_item: str):
-    # Parse RecipeLevelTable
-    header, data = parse_csv_rows(cn_text_level, required=("#", "ClassJobLevel"))
-    idx_key = header.index("#")
-    idx_level = header.index("ClassJobLevel")
-    level_table = {}
-    for row in data:
-        try:
-            level_table[int(row[idx_key])] = int(row[idx_level])
-        except (ValueError, IndexError):
-            continue
-
-    # Parse Item.csv
-    header, data = parse_csv_rows(cn_text_item, required=("#", "ItemSearchCategory", "Level{Item}", "EquipSlotCategory"))
-    idx_key = header.index("#")
-    idx_search_cat = header.index("ItemSearchCategory")
-    idx_ilvl = header.index("Level{Item}")
-    idx_equip_slot = header.index("EquipSlotCategory")
-    idx_name = header.index("Name")
-    idx_cjc = header.index("ClassJobCategory")
-
-    item_search_cat = {}
-    item_ilvl = {}
-    item_equip_slot = {}
-    item_cn_name = {}
-    item_cjc = {}
-    for row in data:
-        try:
-            item_id = int(row[idx_key])
-        except (ValueError, IndexError):
-            continue
-        try:
-            item_search_cat[item_id] = int(row[idx_search_cat])
-        except (ValueError, IndexError):
-            pass
-        try:
-            item_ilvl[item_id] = int(row[idx_ilvl])
-        except (ValueError, IndexError):
-            pass
-        try:
-            item_equip_slot[item_id] = int(row[idx_equip_slot])
-        except (ValueError, IndexError):
-            pass
-        try:
-            item_cjc[item_id] = int(row[idx_cjc])
-        except (ValueError, IndexError):
-            pass
-        name = row[idx_name].strip() if len(row) > idx_name else ""
-        if name:
-            item_cn_name[item_id] = name
-
-    # Parse Recipe.csv
-    CRAFT_TYPE_TO_JOB = {
-        0: "CARPENTER", 1: "BLACKSMITH", 2: "ARMORER", 3: "GOLDSMITH",
-        4: "LEATHERWORKER", 5: "WEAVER", 6: "ALCHEMIST", 7: "CULINARIAN",
+    # Build metadata lookups
+    master_ids = set(meta["masterRecipeItemIds"])
+    item_meta = {int(k): v for k, v in meta["items"].items()}
+    cjc_map: dict[int, set[str]] = {
+        int(k): set(v) for k, v in meta["cjcJobs"].items()
     }
 
-    header, data = parse_csv_rows(cn_text_recipe, required=("#", "CraftType", "SecretRecipeBook"))
-    idx_id = header.index("#")
-    idx_craft = header.index("CraftType")
-    idx_level_table = header.index("RecipeLevelTable")
-    idx_result_item = header.index("Item{Result}")
-    idx_secret = header.index("SecretRecipeBook")
-
-    recipes = []
-    for row in data:
-        try:
-            recipe_id = int(row[idx_id])
-            result_item_id = int(row[idx_result_item])
-        except (ValueError, IndexError):
+    # Merge recipes with metadata
+    enriched: list[dict] = []
+    for r in recipes_json:
+        result_id = r["resultItemId"]
+        im = item_meta.get(result_id)
+        if not im:
             continue
-        if recipe_id <= 0 or result_item_id <= 0:
-            continue
-        if item_search_cat.get(result_item_id, 0) == 0:
-            continue
-        try:
-            level_table_id = int(row[idx_level_table])
-        except ValueError:
-            level_table_id = 0
-        crafter_level = level_table.get(level_table_id, 0)
-        try:
-            secret_book = int(row[idx_secret])
-        except (ValueError, IndexError):
-            secret_book = 0
-        try:
-            craft_type = int(row[idx_craft])
-        except ValueError:
-            craft_type = 0
-        job = CRAFT_TYPE_TO_JOB.get(craft_type, "UNKNOWN")
-
-        recipes.append({
-            "recipeId": recipe_id,
-            "resultItemId": result_item_id,
-            "job": job,
-            "crafterLevel": crafter_level,
-            "secretRecipeBook": secret_book,
-            "ilvl": item_ilvl.get(result_item_id, 0),
-            "equipSlotCategory": item_equip_slot.get(result_item_id, 0),
-            "classJobCategory": item_cjc.get(result_item_id, 0),
+        enriched.append({
+            "resultItemId": result_id,
+            "crafterLevel": r["itemLevel"],
+            "secretRecipeBook": 1 if result_id in master_ids else 0,
+            "ilvl": im["ilvl"],
+            "equipSlotCategory": im["slot"],
+            "classJobCategory": im["cjc"],
         })
 
-    return recipes, item_cn_name
+    return enriched, item_cn_names, cjc_map
+
+
+# ── Outfit set detection (unchanged logic) ──────────────────────────────────
 
 
 def _strip_role_suffix(cn_name: str) -> tuple[str, str]:
@@ -282,7 +170,7 @@ def build_outfit_sets(
     item_cn_names: dict[int, str],
     cjc_map: dict[int, set[str]],
 ) -> list[dict]:
-    # ── Step 1: Filter candidates (non-weapon gear with role suffixes) ──
+    # ── Step 1: Filter candidates ──
     gear_candidates = []
     weapon_candidates = []
 
@@ -369,7 +257,6 @@ def build_outfit_sets(
         })
 
     # ── Step 4: Match weapons to sets by name prefix ──
-    # Sort sets by prefix length descending for longest-match-first
     sets_by_prefix = sorted(raw_sets, key=lambda s: -len(s["cn_prefix"]))
     for w in weapon_candidates:
         cn_name = w["cn_name"]
@@ -383,7 +270,6 @@ def build_outfit_sets(
                     s["_all_item_ids"].append(w["resultItemId"])
                 break
 
-    # Sort weapon lists
     for s in raw_sets:
         s["weapons"] = {k: sorted(v) for k, v in s["weapons"].items()}
         s["_all_item_ids"] = sorted(s["_all_item_ids"])
@@ -445,27 +331,17 @@ def generate_keys_and_i18n(
 
 def main():
     project_root = Path(__file__).resolve().parent.parent.parent
-    publish_dir = project_root / "src" / "data"
+    data_dir = project_root / "src" / "data"
     i18n_dir = project_root / "src" / "i18n" / "generated"
 
-    print("Downloading Chinese CSVs from GitHub...")
-    cn_recipe = fetch_csv(f"{BASE_URL_CN}/Recipe.csv")
-    cn_level = fetch_csv(f"{BASE_URL_CN}/RecipeLevelTable.csv")
-    cn_item = fetch_csv(f"{BASE_URL_CN}/Item.csv")
-    cn_cjc = fetch_csv(f"{BASE_URL_CN}/ClassJobCategory.csv")
-
-    print("Building ClassJobCategory map...")
-    cjc_map = build_class_job_category_map(cn_cjc)
-    print(f"  {len(cjc_map)} categories with battle jobs")
-
-    print("Building enriched recipe data...")
-    recipes, item_cn_names = build_enriched_data(cn_recipe, cn_level, cn_item)
-    print(f"  {len(recipes)} recipes parsed")
+    print("Loading local static data...")
+    recipes, item_cn_names, cjc_map = load_local_data(data_dir)
+    print(f"  {len(recipes)} enriched recipes loaded")
 
     print("Detecting outfit sets...")
     raw_sets = build_outfit_sets(recipes, item_cn_names, cjc_map)
 
-    items_json_path = publish_dir / "items.json"
+    items_json_path = data_dir / "items.json"
     print(f"Loading {items_json_path} for multilingual names...")
     with open(items_json_path, encoding="utf-8") as f:
         items_json = json.load(f)
@@ -475,7 +351,7 @@ def main():
 
     output_sets.sort(key=lambda s: (-s["crafterLevel"], -s["ilvl"], s["key"]))
 
-    output_path = publish_dir / "outfitSets.json"
+    output_path = data_dir / "outfitSets.json"
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(output_sets, f, ensure_ascii=False, indent=2)
     print(f"Written {len(output_sets)} outfit sets to {output_path}")

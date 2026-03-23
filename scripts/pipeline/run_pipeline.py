@@ -4,9 +4,10 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from lib.io_utils import ensure_files_exist, try_git_rev_parse, utc_now_iso, write_json
+from lib.io_utils import ensure_files_exist, read_text_from_dir, try_git_rev_parse, utc_now_iso, write_json
 from lib.items_cn import build_items_base_cn
 from lib.items_i18n import build_i18n_name_rows, merge_items_with_i18n
+from lib.outfit_meta import build_outfit_meta
 from lib.pipeline_state import (
     create_publish_diff,
     extract_needed_item_ids,
@@ -42,7 +43,7 @@ def run_pipeline(
     publish_dir: Path,
     state_path: Path | None = None,
 ) -> dict:
-    ensure_files_exist(cn_repo, ["Recipe.csv", "RecipeLevelTable.csv", "Item.csv"])
+    ensure_files_exist(cn_repo, ["Recipe.csv", "RecipeLevelTable.csv", "Item.csv", "ClassJobCategory.csv"])
     ensure_files_exist(
         cn_repo,
         [
@@ -98,6 +99,13 @@ def run_pipeline(
     write_json(publish_diff_path, publish_diff)
 
     publish_outputs(publish_dir, recipes, merged_items, validation_report=validation_report)
+
+    # Build outfit set metadata (uses full recipes with secretRecipeBook + CN CSVs)
+    item_csv_text = read_text_from_dir(cn_repo, "Item.csv")
+    cjc_csv_text = read_text_from_dir(cn_repo, "ClassJobCategory.csv")
+    outfit_meta = build_outfit_meta(recipes, item_csv_text, cjc_csv_text)
+    write_json(publish_dir / "outfitSetMeta.json", outfit_meta)
+
     if state_path is not None:
         write_state_manifest(state_path, manifest)
 
