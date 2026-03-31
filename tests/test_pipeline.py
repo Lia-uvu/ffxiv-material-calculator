@@ -107,7 +107,7 @@ class PipelineFixtureTest(unittest.TestCase):
 
             self.assertEqual(actual_recipes, self.expected_recipes)
             self.assertEqual(actual_items, self.expected_items)
-            self.assertEqual(sorted(path.name for path in publish_dir.iterdir()), ["items.json", "recipes.json"])
+            self.assertEqual(sorted(path.name for path in publish_dir.iterdir()), ["items.json", "outfitSetMeta.json", "recipes.json"])
             self.assertEqual(result["publishDiff"]["recipes"]["addedCount"], 5)
             self.assertEqual(result["publishDiff"]["items"]["addedCount"], 15)
             self.assertTrue(state_path.exists())

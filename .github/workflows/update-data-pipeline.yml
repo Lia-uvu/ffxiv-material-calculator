@@ -153,6 +153,10 @@ jobs:
           --publish-dir "${{ github.workspace }}/src/data"
           --state-path "${{ env.STATE_PATH }}"
 
+      - name: Build outfit sets
+        if: steps.decision.outputs.should_run == 'true'
+        run: python scripts/pipeline/build_outfit_sets.py
+
       - name: Build frontend
         if: steps.decision.outputs.should_run == 'true'
         run: npm run build
@@ -170,7 +174,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add src/data/items.json src/data/recipes.json src/data/outfitSetMeta.json scripts/pipeline/state/last_successful_manifest.json
+          git add src/data/items.json src/data/recipes.json src/data/outfitSetMeta.json src/data/outfitSets.json src/i18n/generated/outfitSetNames.json scripts/pipeline/state/last_successful_manifest.json
           if git diff --cached --quiet; then
             echo "No published data changes detected."
             exit 0
