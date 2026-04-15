@@ -1,7 +1,7 @@
 ---
 name: pipeline-ops
 description: Use this skill when the user asks about running, debugging, or modifying the data pipeline for this project. Trigger phrases include "run pipeline", "update data", "pipeline steps", "build outfit sets", "pipeline failed", "force run", "pipeline operations", "流水线", "pipeline 怎么运行", "数据更新", "pipeline 报错".
-version: 1.0.0
+version: 1.1.0
 ---
 
 # FFXIV Material Calculator — Pipeline Operations Guide
@@ -49,6 +49,7 @@ python scripts/pipeline/run_pipeline.py \
 ```
 
 Artifacts are written to `tmp/pipeline/` (debug) and final output to `src/data/`.
+Use `python3` instead of `python` if the local shell does not provide a `python` alias.
 
 ### Run Individual Steps
 
@@ -128,6 +129,7 @@ python -m unittest discover -s tests -p "test_*.py"
 ```
 
 Tests use fixture CSVs in `tests/fixtures/pipeline/` (CN/EN/JA subdirs). Expected outputs are in `tests/fixtures/pipeline/expected/`.
+Use `python3` instead of `python` if needed locally.
 
 ---
 
@@ -139,7 +141,11 @@ Tests use fixture CSVs in `tests/fixtures/pipeline/` (CN/EN/JA subdirs). Expecte
 
 ### How Skip Detection Works
 
-CI compares current upstream git SHAs against `scripts/pipeline/state/last_successful_manifest.json`. If all three repos (CN/EN/JA) are unchanged, the pipeline is **skipped**.
+CI compares the current upstream git SHAs and the current repository SHA against `scripts/pipeline/state/last_successful_manifest.json`. The pipeline is skipped only when:
+
+- all three upstream repos (CN/EN/JA) are unchanged
+- the current repository SHA matches the last successful publish
+- `force_run` is false
 
 To force a run regardless:
 - Go to Actions → "Update Data Pipeline" → "Run workflow"
@@ -163,7 +169,7 @@ Files committed:
 
 ## State Manifest
 
-`scripts/pipeline/state/last_successful_manifest.json` tracks the upstream SHAs from the last successful run:
+`scripts/pipeline/state/last_successful_manifest.json` tracks the upstream SHAs and the repository SHA from the last successful run:
 
 ```json
 {
@@ -178,14 +184,18 @@ Files committed:
 }
 ```
 
-This file is committed to the repo. Updating it is how CI detects "no changes needed" on subsequent runs.
+This file is committed to the repo. CI uses it to detect whether the pipeline inputs are unchanged on subsequent runs.
 
 ---
 
 ## Troubleshooting
 
 ### Pipeline skipped when it shouldn't run
-Check `last_successful_manifest.json` — SHAs match upstream. Use `force_run: true` in CI or update the manifest manually.
+Check `last_successful_manifest.json`:
+
+- if upstream SHAs match, confirm whether the current repo SHA also matches
+- if pipeline code changed but the workflow still skipped, use `force_run: true`
+- do not update the manifest manually unless you intentionally want to override CI's change detection
 
 ### Step 6 validation fails: "recipes reference missing items"
 A recipe material or result item ID is not in `items.json`. Likely cause: upstream CSV data has a new item not yet parsed. Check `06_validation_report.json` → `errors.missingRecipeItemRefs`.
@@ -225,7 +235,7 @@ upstream/cn (CSVs)          upstream/en         upstream/ja
                                          src/data/outfitSets.json
                                          src/i18n/generated/outfitSetNames.json
                                                        │
-                                              CI: git add + commit all 5 files
+                                              CI: git add + commit all generated data files + state manifest
 ```
 
 ---
