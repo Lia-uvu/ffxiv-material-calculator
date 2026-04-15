@@ -1,15 +1,15 @@
 <template>
   <div ref="searchContainerRef" class="relative">
+    <p class="mb-1.5 px-1 text-xs text-[#9B96AD]">
+      {{ multiSelectMode ? t("search.hintCtrlActive") : t("search.hintCtrl") }}
+    </p>
+
     <ItemSearchBar
       :query="query"
       :pinned="Boolean(multiSelectMode)"
       @update:query="emit('update:query', $event)"
       @toggle-pinned="togglePinned"
     />
-
-    <p class="mt-1.5 px-1 text-xs text-[#9B96AD]">
-      {{ multiSelectMode ? t("search.hintCtrlActive") : t("search.hintCtrl") }}
-    </p>
 
     <ItemSearchResults
       :results="results"
