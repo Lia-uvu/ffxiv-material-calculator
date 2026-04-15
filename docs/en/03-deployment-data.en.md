@@ -52,14 +52,20 @@ The default pipeline work directory is `tmp/pipeline/`. These files are not comm
 
 A small state file is committed back to the repo:
 - `scripts/pipeline/state/last_successful_manifest.json`
-- Purpose: record the upstream SHAs from the last successful publish so CI can skip unchanged runs
+- Purpose: record the upstream SHAs and current repo SHA from the last successful publish so CI can skip unchanged runs
 
 ## Runtime Data Directory
-The frontend runtime directory `src/data/` now contains only:
+The frontend runtime directory `src/data/` contains:
 
 - `items.json`
 - `recipes.json`
+- `outfitSetMeta.json`
+- `outfitSets.json`
 - `index.js`
+
+Generated locale data also includes:
+
+- `src/i18n/generated/outfitSetNames.json`
 
 Minimal sample data moved to `tests/fixtures/pipeline/` and no longer lives under the runtime directory.
 
@@ -123,18 +129,19 @@ Workflow: `.github/workflows/update-data-pipeline.yml`
 Triggers:
 - `schedule`: once per day
 - `workflow_dispatch`: manual runs with optional `force_run`
-- “Upstream update detection”: compare the last successful upstream SHAs with the current remote HEAD SHAs inside the workflow
+- “Pipeline input change detection”: compare the last successful upstream SHAs and repo SHA with the current workflow inputs
 
 Workflow outline:
 1. Checkout the current repo
 2. Resolve the current CN / EN / JA upstream HEAD SHAs
-3. Exit early when all SHAs are unchanged and `force_run` is false
+3. Exit early when upstream SHAs are unchanged, the current repo SHA matches the last successful publish, and `force_run` is false
 4. Checkout the three upstream CSV repositories
 5. Run Python pipeline tests
 6. Run `scripts/pipeline/run_pipeline.py`
-7. Upload the full `tmp/pipeline/` directory as an artifact
+7. Run `scripts/pipeline/build_outfit_sets.py`
 8. Run `npm run build`
-9. If runtime outputs changed, commit `src/data/items.json`, `src/data/recipes.json`, and the state manifest in one atomic commit
+9. Upload the full `tmp/pipeline/` directory as an artifact
+10. If runtime outputs changed, commit `src/data/items.json`, `src/data/recipes.json`, `src/data/outfitSetMeta.json`, `src/data/outfitSets.json`, `src/i18n/generated/outfitSetNames.json`, and the state manifest in one atomic commit
 
 Blocking failures:
 - Recipe generation failure

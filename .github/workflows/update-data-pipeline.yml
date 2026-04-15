@@ -24,6 +24,7 @@ jobs:
       WORK_DIR: ${{ github.workspace }}/tmp/pipeline
       STATE_PATH: ${{ github.workspace }}/scripts/pipeline/state/last_successful_manifest.json
       FORCE_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.force_run || 'false' }}
+      CURRENT_REPO_SHA: ${{ github.sha }}
     steps:
       - name: Checkout current repository
         uses: actions/checkout@v4
@@ -82,6 +83,7 @@ jobs:
           CN_SHA: ${{ steps.upstream.outputs.cn_repo_sha }}
           EN_SHA: ${{ steps.upstream.outputs.en_repo_sha }}
           JA_SHA: ${{ steps.upstream.outputs.ja_repo_sha }}
+          CURRENT_REPO_SHA: ${{ env.CURRENT_REPO_SHA }}
           FORCE_RUN: ${{ env.FORCE_RUN }}
           STATE_PATH: ${{ env.STATE_PATH }}
         run: |
@@ -97,22 +99,25 @@ jobs:
               state = {"upstream": {}}
 
           previous = state.get("upstream", {})
+          previous_repo_sha = state.get("currentRepoSha")
           current = {
               "cn": os.environ["CN_SHA"],
               "en": os.environ["EN_SHA"],
               "ja": os.environ["JA_SHA"],
           }
-          unchanged = all(previous.get(name, {}).get("sha") == sha for name, sha in current.items())
+          upstream_unchanged = all(previous.get(name, {}).get("sha") == sha for name, sha in current.items())
+          repo_changed = previous_repo_sha != os.environ["CURRENT_REPO_SHA"]
           force_run = os.environ.get("FORCE_RUN", "false").lower() == "true"
-          should_run = force_run or not unchanged
+          should_run = force_run or repo_changed or not upstream_unchanged
           print(f"should_run={'true' if should_run else 'false'}")
-          print(f"unchanged={'true' if unchanged else 'false'}")
+          print(f"upstream_unchanged={'true' if upstream_unchanged else 'false'}")
+          print(f"repo_changed={'true' if repo_changed else 'false'}")
           print(f"force_run={'true' if force_run else 'false'}")
           PY
 
-      - name: Exit early when upstream data is unchanged
+      - name: Exit early when pipeline inputs are unchanged
         if: steps.decision.outputs.should_run != 'true'
-        run: echo "No upstream changes detected; skipping pipeline run."
+        run: echo "No upstream or pipeline changes detected; skipping pipeline run."
 
       - name: Checkout CN upstream repository
         if: steps.decision.outputs.should_run == 'true'

@@ -28,6 +28,9 @@ class PipelineFixtureTest(unittest.TestCase):
         self.expected_recipes = json.loads(
             (fixture_root / "expected" / "recipes.json").read_text(encoding="utf-8")
         )
+        self.expected_outfit_meta = json.loads(
+            (fixture_root / "expected" / "outfitSetMeta.json").read_text(encoding="utf-8")
+        )
 
     def test_recipe_filter_excludes_item_search_category_zero(self) -> None:
         recipes, needed_ids = build_recipes(self.cn_dir, allow_remote=False)
@@ -104,12 +107,18 @@ class PipelineFixtureTest(unittest.TestCase):
 
             actual_recipes = json.loads((publish_dir / "recipes.json").read_text(encoding="utf-8"))
             actual_items = json.loads((publish_dir / "items.json").read_text(encoding="utf-8"))
+            actual_outfit_meta = json.loads((publish_dir / "outfitSetMeta.json").read_text(encoding="utf-8"))
 
             self.assertEqual(actual_recipes, self.expected_recipes)
             self.assertEqual(actual_items, self.expected_items)
-            self.assertEqual(sorted(path.name for path in publish_dir.iterdir()), ["items.json", "outfitSetMeta.json", "recipes.json"])
+            self.assertEqual(actual_outfit_meta, self.expected_outfit_meta)
+            self.assertEqual(
+                sorted(path.name for path in publish_dir.iterdir()),
+                ["items.json", "outfitSetMeta.json", "recipes.json"],
+            )
             self.assertEqual(result["publishDiff"]["recipes"]["addedCount"], 5)
             self.assertEqual(result["publishDiff"]["items"]["addedCount"], 15)
+            self.assertTrue(Path(result["paths"]["outfitMeta"]).exists())
             self.assertTrue(state_path.exists())
 
 

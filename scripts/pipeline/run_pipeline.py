@@ -104,7 +104,8 @@ def run_pipeline(
     item_csv_text = read_text_from_dir(cn_repo, "Item.csv")
     cjc_csv_text = read_text_from_dir(cn_repo, "ClassJobCategory.csv")
     outfit_meta = build_outfit_meta(recipes, item_csv_text, cjc_csv_text)
-    write_json(publish_dir / "outfitSetMeta.json", outfit_meta)
+    outfit_meta_path = publish_dir / "outfitSetMeta.json"
+    write_json(outfit_meta_path, outfit_meta)
 
     if state_path is not None:
         write_state_manifest(state_path, manifest)
@@ -123,6 +124,7 @@ def run_pipeline(
             "mergedItems": str(merged_items_path),
             "validation": str(validation_path),
             "publishDiff": str(publish_diff_path),
+            "outfitMeta": str(outfit_meta_path),
         },
     }
 

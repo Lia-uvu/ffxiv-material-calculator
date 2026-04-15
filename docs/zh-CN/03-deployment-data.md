@@ -52,14 +52,20 @@ Pipeline 工作目录默认是 `tmp/pipeline/`，中间产物不进入 Git，仅
 
 另有一个轻量状态文件会提交回仓库：
 - `scripts/pipeline/state/last_successful_manifest.json`
-- 用途：记录最近一次成功发布时对应的上游 SHA，供 CI 判断是否需要重跑
+- 用途：记录最近一次成功发布时对应的上游 SHA 和当前仓库 SHA，供 CI 判断是否需要重跑
 
 ## 运行时数据目录
-前端运行时目录 `src/data/` 只保留三类文件：
+前端运行时目录 `src/data/` 当前包含：
 
 - `items.json`
 - `recipes.json`
+- `outfitSetMeta.json`
+- `outfitSets.json`
 - `index.js`
+
+另有生成的多语言套装名文件：
+
+- `src/i18n/generated/outfitSetNames.json`
 
 最小测试样例已迁出到 `tests/fixtures/pipeline/`，不再放在运行时目录下。
 
@@ -123,18 +129,19 @@ Pipeline 工作目录默认是 `tmp/pipeline/`，中间产物不进入 Git，仅
 触发方式：
 - `schedule`：每天轮询一次
 - `workflow_dispatch`：手动触发，可选 `force_run`
-- “检测到上游更新”：在工作流内部比对上次成功发布记录的上游 SHA 与当前远端 HEAD SHA
+- “检测到 pipeline 输入变化”：在工作流内部比对上次成功发布记录的上游 SHA、仓库 SHA 与当前输入
 
 执行流程：
 1. checkout 当前仓库
 2. 获取 CN / EN / JA 三个上游仓库当前 HEAD SHA
-3. 若 SHA 未变化且不是 `force_run`，提前成功退出
+3. 若上游 SHA 未变化、当前仓库 SHA 与上次成功发布一致，且不是 `force_run`，提前成功退出
 4. checkout 三个上游仓库到工作目录
 5. 跑 Python pipeline 测试
 6. 执行 `scripts/pipeline/run_pipeline.py`
-7. 上传 `tmp/pipeline/` 全部中间产物为 artifact
+7. 执行 `scripts/pipeline/build_outfit_sets.py`
 8. 执行 `npm run build`
-9. 若有 diff，则原子提交 `src/data/items.json`、`src/data/recipes.json` 和状态文件
+9. 上传 `tmp/pipeline/` 全部中间产物为 artifact
+10. 若有 diff，则原子提交 `src/data/items.json`、`src/data/recipes.json`、`src/data/outfitSetMeta.json`、`src/data/outfitSets.json`、`src/i18n/generated/outfitSetNames.json` 和状态文件
 
 失败阻断规则：
 - recipes 生成失败：阻断
