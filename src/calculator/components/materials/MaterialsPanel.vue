@@ -68,30 +68,16 @@ const crystals = computed(() => {
   return out;
 });
 
-function fallbackCopy(text) {
-  const textarea = document.createElement("textarea");
-  textarea.value = text;
-  textarea.setAttribute("readonly", "readonly");
-  textarea.style.position = "absolute";
-  textarea.style.left = "-9999px";
-  document.body.appendChild(textarea);
-  textarea.select();
-  document.execCommand("copy");
-  document.body.removeChild(textarea);
-}
-
 async function handleCopyMaterials() {
   const text = props.exportText?.trim();
   if (!text) return;
 
-  if (navigator?.clipboard?.writeText) {
-    try {
-      await navigator.clipboard.writeText(text);
-    } catch {
-      fallbackCopy(text);
-    }
-  } else {
-    fallbackCopy(text);
+  if (!navigator?.clipboard?.writeText) return;
+
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch {
+    return;
   }
 
   showCopySuccess();

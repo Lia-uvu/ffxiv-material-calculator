@@ -1,18 +1,7 @@
 import { computed, unref } from "vue";
 import { useI18n } from "vue-i18n";
-import { OBTAIN_PRIORITY_ORDER, getPrimaryMethod } from "../core/obtainMethodUtils";
-
-function getTier(id) {
-  if (id <= 7) return "shard";
-  if (id <= 13) return "crystal";
-  return "cluster";
-}
-
-function getElementName(name, locale) {
-  if (locale === "zh-CN") return name.split("之")[0];
-  if (locale === "ja") return name.replace(/シャード|クリスタル|クラスター$/, "");
-  return name.split(" ")[0];
-}
+import { getCrystalElementName, getCrystalTier } from "../utils/crystalUtils";
+import { OBTAIN_PRIORITY_ORDER, getPrimaryMethod } from "../utils/obtainMethodUtils";
 
 export function useMaterialsExport(uiRef) {
   const { t, te, locale } = useI18n();
@@ -93,7 +82,7 @@ export function useMaterialsExport(uiRef) {
     const TIER_ORDER = ["cluster", "crystal", "shard"];
 
     for (const c of crystals) {
-      const tier = getTier(c.id);
+      const tier = getCrystalTier(c.id);
       if (crystalByTier[tier]) {
         crystalByTier[tier].push(c);
       }
@@ -107,7 +96,7 @@ export function useMaterialsExport(uiRef) {
       lines.push("");
       const sorted = items.slice().sort((a, b) => a.id - b.id);
       const parts = sorted.map((c) => {
-        const elemName = getElementName(c.name, locale.value);
+        const elemName = getCrystalElementName(c.name, locale.value);
         return `${elemName} × ${c.needAmount}`;
       });
       lines.push(parts.join(" | "));

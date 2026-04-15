@@ -174,7 +174,7 @@ function toggleSet(key) {
 }
 
 function addJobItems(set, roleItemIds, jobKey) {
-  const weaponIds = (set.weapons && set.weapons[jobKey]) || [];
+  const weaponIds = set.weapons?.[jobKey] || [];
   emit("add-set", [...roleItemIds, ...weaponIds]);
 }
 </script>

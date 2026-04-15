@@ -8,7 +8,7 @@
     </div>
 
     <div v-if="crystals.length === 0">
-      <span class="inline-flex items-center rounded-full bg-[#3A3547] px-3 py-1 text-xs text-[#6B677A]">无</span>
+      <span class="inline-flex items-center rounded-full bg-[#3A3547] px-3 py-1 text-xs text-[#6B677A]">{{ t("materials.noCrystals") }}</span>
     </div>
 
     <div v-else class="space-y-2">
@@ -38,24 +38,13 @@
 <script setup>
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
+import { getCrystalElementName, getCrystalTier } from "../../utils/crystalUtils";
 
 const props = defineProps({
   crystals: { type: Array, default: () => [] },
 });
 
 const { t, locale } = useI18n();
-
-function getTier(id) {
-  if (id <= 7) return "shard";
-  if (id <= 13) return "crystal";
-  return "cluster";
-}
-
-function getElementName(name, currentLocale) {
-  if (currentLocale === "zh-CN") return name.split("之")[0];
-  if (currentLocale === "ja") return name.replace(/シャード|クリスタル|クラスター$/, "");
-  return name.split(" ")[0];
-}
 
 const TIER_ORDER = ["shard", "crystal", "cluster"];
 
@@ -64,10 +53,10 @@ const crystalGroups = computed(() => {
   const grouped = { shard: [], crystal: [], cluster: [] };
 
   for (const crystal of props.crystals ?? []) {
-    const tier = getTier(crystal.id);
+    const tier = getCrystalTier(crystal.id);
     grouped[tier].push({
       ...crystal,
-      elementName: getElementName(crystal.name, currentLocale),
+      elementName: getCrystalElementName(crystal.name, currentLocale),
     });
   }
 

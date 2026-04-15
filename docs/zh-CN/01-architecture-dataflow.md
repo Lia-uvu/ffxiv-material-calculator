@@ -13,6 +13,7 @@
 - `components/`（UI）：纯展示与交互；仅通过 `props` 接收数据、通过 `emits` 上报事件。
 - `composables/`：负责与ui组件展示直接相关的逻辑，必要时调用 `core`。
 - `core/`：纯计算与工具函数；不依赖 Vue。
+- `utils/`：可被多层复用的轻量纯函数；不依赖 Vue，也不承载业务编排。
 - `settingStore`（State*）：存储运行时状态与用户选择的动态数据。
 - `data/`（Static Data）：静态 `items/recipes` 数据源（更新流程见 03）。
 
@@ -27,7 +28,9 @@
 
 ### 逻辑分界：纯业务逻辑 vs UI 格式化逻辑
 - **纯业务逻辑（Core）**：只关心“输入 → 输出”，不包含任何 UI 语义（例如语言文案、展示格式、排序/分组策略）。  
-  典型例子：材料拆解计算、配方选择、搜索路由策略等。
+  典型例子：材料拆解计算、配方选择、递归展开边界、循环保护等。
+- **通用纯工具（Utils）**：不直接决定核心计算流程，但可被多层复用；通常是通用归一化、领域枚举映射、展示前的轻量派生。  
+  典型例子：数量 clamp、水晶元素名提取、获取途径优先级。
 - **UI 格式化逻辑（Composables / Components）**：与界面呈现直接相关，例如：  
   - 显示字段拼接（`displayAmount` / `displaySuffix`）；  
   - 文案与 i18n（按钮标题、提示语）；  
@@ -95,14 +98,20 @@ flowchart LR
   不允许依赖（import）：`core/`
 
 - `composables/`  
-  允许依赖（import）：`core/` / `data/`  
+  允许依赖（import）：`core/` / `utils/` / `data/`  
   不允许依赖（import）：`components` / `settingStore`
 
 - `core/`  
   不允许依赖`data/`
-  `calcMaterials`：允许导入 `core/` 内其他工具函数
-  `core/` 内其他工具函数：只接收输入并返回结果，不依赖其他层
+  内容应当是：直接参与核心材料计算流程的纯函数
+  例如：配方索引、配方选择、递归拆解、需求汇总、循环保护
+  不应放入：仅用于排序/归类/名称截取/数值归一化的通用工具
+
+- `utils/`
+  允许依赖（import）：无
+  允许被依赖（import）：`components/` / `pages/` / `composables/` / `settingStore`
+  内容应当是：不驱动核心计算，但可跨层复用的轻量纯函数
+  例如：数量 clamp、获取途径优先级、水晶元素名提取
 
 - `data/`  
   只允许被读取，不依赖其他层。
-

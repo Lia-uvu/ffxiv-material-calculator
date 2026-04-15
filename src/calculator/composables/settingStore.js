@@ -1,5 +1,6 @@
 // settingStore.js 存储动态数据（单向数据流根文件）
 import { reactive, readonly } from "vue";
+import { clampPositiveInteger } from "../utils/amountUtils";
 
 // ---- persistence (localStorage) ----
 // 只存“用户交互产生的状态”：targets / 展开锁链 / 勾选 / 输入框内容等
@@ -200,17 +201,11 @@ function setSearchQuery(next) {
   saveToStorage(state);
 }
 
-function clampAmount(n) {
-  const x = Number(n);
-  if (!Number.isFinite(x)) return 1;
-  return Math.max(1, Math.floor(x));
-}
-
 function addTarget(itemId, amount = 1) {
   const id = Number(itemId);
   if (!Number.isFinite(id)) return;
 
-  const amt = clampAmount(amount);
+  const amt = clampPositiveInteger(amount);
 
   const hit = state.targets.find((t) => t.id === id);
   if (hit) {
@@ -239,7 +234,7 @@ function updateTargetAmount({ id, amount }) {
   const t = state.targets.find((x) => x.id === n);
   if (!t) return;
 
-  t.amount = clampAmount(amount);
+  t.amount = clampPositiveInteger(amount);
   saveToStorage(state);
 }
 

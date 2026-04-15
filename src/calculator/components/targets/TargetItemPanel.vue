@@ -63,6 +63,7 @@
 <script setup>
 import { computed, toRefs } from "vue";
 import { useI18n } from "vue-i18n";
+import { clampPositiveInteger } from "../../utils/amountUtils";
 
 const props = defineProps({
   targets: {
@@ -80,12 +81,6 @@ const totalAmount = computed(() =>
 
 const emit = defineEmits(["remove", "update-amount", "clear"]);
 
-function clampAmount(raw) {
-  const n = Number(raw);
-  if (!Number.isFinite(n)) return 1;
-  return Math.max(1, Math.floor(n));
-}
-
 function onRemove(id) {
   emit("remove", id);
 }
@@ -95,12 +90,12 @@ function onClear() {
 }
 
 function onAmountInput(id, e) {
-  const next = clampAmount(e.target.value);
+  const next = clampPositiveInteger(e.target.value);
   emit("update-amount", { id, amount: next });
 }
 
 function onAmountBlur(id, e) {
-  const next = clampAmount(e.target.value);
+  const next = clampPositiveInteger(e.target.value);
   e.target.value = String(next);
   emit("update-amount", { id, amount: next });
 }

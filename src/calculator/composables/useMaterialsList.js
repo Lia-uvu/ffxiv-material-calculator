@@ -4,7 +4,7 @@ import { useI18n } from "vue-i18n";
 import { resolveItemName } from "../../data";
 import { calcMaterials } from "../core/calcMaterials";
 import { buildRecipesByResultId, pickRecipe } from "../core/recipeUtils";
-import { OBTAIN_PRIORITY_ORDER, getPrimaryMethod } from "../core/obtainMethodUtils";
+import { OBTAIN_PRIORITY_ORDER, getPrimaryMethod } from "../utils/obtainMethodUtils";
 
 // 制作职业显示优先级（从高到低）
 const JOB_PRIORITY_ORDER = [

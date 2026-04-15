@@ -13,6 +13,7 @@ This project is layered by responsibility. Layers communicate via explicit input
 - `components/` (UI): pure presentation and interaction; only receive data via `props` and report events upward via `emits`.
 - `composables/`: hold logic that is directly related to what the UI components display, and call into `core` when necessary.
 - `core/`: pure computation and utility functions; does not depend on Vue.
+- `utils/`: lightweight shared pure helpers reusable across layers; no Vue dependency and no orchestration.
 - `settingStore` (State*): stores runtime state and user-selected dynamic data.
 - `data/` (Static Data): static `items/recipes` data source (update flow, see 03).
 
@@ -24,6 +25,12 @@ The current `components/` tree is grouped by feature area:
 - `components/shell/`: app-shell UI such as `TopNav` / `OnboardingModal`.
 
 *Note: `settingStore.js` currently lives physically under `composables/`.
+
+## Logic Boundary
+
+- **Core business logic (`core/`)**: only cares about input -> output and directly participates in the material-calculation pipeline. It should not contain UI semantics such as copy text, display formatting, or presentation-oriented grouping/sorting. Typical examples: recipe lookup, recipe picking, recursive expansion, demand aggregation, cycle guards.
+- **Shared pure helpers (`utils/`)**: reusable helpers that do not drive the core calculation flow themselves, but are useful across layers. Typical examples: amount clamping, crystal element-name extraction, obtain-method priority.
+- **UI formatting logic (`composables/` / `components/`)**: logic directly tied to presentation, such as display field composition, i18n text selection, or export-text structure.
 
 ## Data Flow
 
@@ -86,12 +93,19 @@ The following rules keep boundaries clear and the one-way data flow stable:
   Not allowed to depend on (import): `core/`
 
 - `composables/`  
-  Allowed to depend on (import): `core/` / `data/`  
+  Allowed to depend on (import): `core/` / `utils/` / `data/`  
   Not allowed to depend on (import): `components/` / `settingStore`
 
 - `core/`  
-  `calcMaterials`: allowed to depend on (import) `data/` static data, and to import other utility functions within `core/`  
-  other utility functions in `core/`: only take inputs and return results, and do not depend on other layers
+  Contents should be: pure functions that directly participate in the core material-calculation flow
+  Examples: recipe indexing, recipe selection, recursive expansion, demand aggregation, cycle guards
+  Should not contain: generic helpers used only for sorting, grouping, string trimming, or value normalization
+
+- `utils/`
+  Allowed imports: none
+  May be imported by: `components/` / `pages/` / `composables/` / `settingStore`
+  Contents should be: lightweight pure helpers reusable across layers without owning the core calculation flow
+  Examples: amount clamping, obtain-method priority, crystal element-name extraction
 
 - `data/`  
   Read-only; does not depend on other layers.
