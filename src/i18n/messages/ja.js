@@ -10,7 +10,7 @@ export default {
     loading: "データ読み込み中…",
   },
   outfitSets: {
-    title: "秘伝書セット速選",
+    title: "セット別選択",
     pieces: "点",
     addAll: "すべて追加",
   },

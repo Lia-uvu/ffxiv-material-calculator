@@ -10,7 +10,7 @@ export default {
     loading: "数据加载中…",
   },
   outfitSets: {
-    title: "秘籍套装速选",
+    title: "按套装选择",
     pieces: "件",
     addAll: "全部添加",
   },

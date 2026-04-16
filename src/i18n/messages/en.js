@@ -10,7 +10,7 @@ export default {
     loading: "Loading data…",
   },
   outfitSets: {
-    title: "Master Recipe Sets",
+    title: "Select by Set",
     pieces: "pcs",
     addAll: "Add all",
   },
