@@ -11,6 +11,7 @@ export default {
   },
   outfitSets: {
     title: "按套装选择",
+    selectVersion: "选择版本",
     pieces: "件",
     addAll: "全部添加",
   },
@@ -35,6 +36,10 @@ export default {
     remove: "移除",
     removeAria: "移除目标",
     removeTitle: "移除",
+    includeWeapon: "含武器",
+    weaponLabel: "武器",
+    bundleExpand: "展开",
+    bundleCollapse: "折叠",
   },
   materials: {
     title: "材料列表",

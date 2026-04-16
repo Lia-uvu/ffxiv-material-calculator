@@ -28,7 +28,7 @@
             class="text-[11px] text-[#9B96AD] transition-colors hover:text-[#B4A5C8]"
             @click="resetToRoot"
           >
-            {{ t("outfitSets.title") }}
+            {{ t("outfitSets.selectVersion") }}
           </button>
           <ChevronRight :size="9" class="shrink-0 text-[#4A4858]" />
           <template v-if="selectedSetKey === null">
@@ -72,9 +72,13 @@
               class="flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs text-[#9B96AD] transition-colors hover:bg-[#2D2C34] hover:text-[#EDE9F7]"
               @click="selectedSetKey = set.key"
             >
-              <span>{{ t("outfitSets.set." + set.key) }}</span>
-              <span class="text-[#6B677A]">ilvl {{ set.ilvl }}</span>
-              <ChevronRight :size="10" class="ml-auto shrink-0 text-[#4A4858]" />
+              <span class="min-w-0 flex-1 truncate text-left">{{ t("outfitSets.set." + set.key) }}</span>
+              <!-- item count badge -->
+              <span class="shrink-0 rounded border border-[#38364A] bg-[#2D2C34] px-1.5 py-0.5 text-[10px] text-[#6B677A]">
+                {{ piecesForSet(set) }}{{ t("outfitSets.pieces") }}
+              </span>
+              <span class="shrink-0 text-[10px] text-[#6B677A]">ilvl {{ set.ilvl }}</span>
+              <ChevronRight :size="10" class="shrink-0 text-[#4A4858]" />
             </button>
           </div>
 
@@ -90,10 +94,15 @@
                 v-for="job in group.jobs"
                 :key="job.key"
                 type="button"
-                class="rounded-md border border-[#38364A] bg-[#2D2C34] px-1.5 py-0.5 text-[11px] text-[#9B96AD] transition-colors hover:border-[#B4A5C8]/40 hover:bg-[#3B3A47] hover:text-[#EDE9F7]"
+                class="relative rounded-md border border-[#38364A] bg-[#2D2C34] px-1.5 py-0.5 text-[11px] text-[#9B96AD] transition-colors hover:border-[#B4A5C8]/40 hover:bg-[#3B3A47] hover:text-[#EDE9F7]"
                 @click="addJobItems(job.key)"
               >
                 {{ t("jobs." + job.key) }}
+                <!-- weapon count badge on job if weapon exists -->
+                <span
+                  v-if="currentSet && currentSet.weapons?.[job.key]?.length"
+                  class="ml-0.5 rounded bg-[#3B3A47] px-0.5 text-[9px] text-[#6B677A]"
+                >+{{ currentSet.weapons[job.key].length }}</span>
               </button>
             </div>
           </div>
@@ -182,6 +191,12 @@ const currentJobGroups = computed(() => {
   });
 });
 
+/** 套装每职业的防具件数（取第一个角色的 itemIds 长度，各角色相同） */
+function piecesForSet(set) {
+  const firstRole = Object.values(set.roles ?? {})[0];
+  return firstRole?.length ?? 0;
+}
+
 function togglePanel() {
   if (panelOpen.value) {
     panelOpen.value = false;
@@ -209,8 +224,14 @@ function resetToTier() {
 function addJobItems(jobKey) {
   if (!currentSet.value) return;
   const group = currentJobGroups.value.find((g) => g.jobs.some((j) => j.key === jobKey));
-  const weaponIds = currentSet.value.weapons?.[jobKey] || [];
-  emit("add-set", [...(group?.itemIds ?? []), ...weaponIds]);
+  const weaponIds = currentSet.value.weapons?.[jobKey] ?? [];
+  emit("add-set", {
+    setKey: currentSet.value.key,
+    tierLevel: selectedTierLevel.value,
+    jobKey,
+    itemIds: group?.itemIds ?? [],
+    weaponIds,
+  });
 }
 </script>
 

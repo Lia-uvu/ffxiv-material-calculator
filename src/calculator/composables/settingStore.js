@@ -3,7 +3,7 @@ import { reactive, readonly } from "vue";
 import { clampPositiveInteger } from "../utils/amountUtils";
 
 // ---- persistence (localStorage) ----
-// 只存“用户交互产生的状态”：targets / 展开锁链 / 勾选 / 输入框内容等
+// 只存"用户交互产生的状态"：targets / 展开锁链 / 勾选 / 输入框内容等
 const STORAGE_KEY = "msjcalc.settingStore.v1";
 
 function safeParse(raw) {
@@ -43,6 +43,30 @@ function loadFromStorage(state) {
     state.targets.push({ id, amount: Math.max(1, Math.floor(amount)) });
   }
 
+  // outfit bundle targets
+  state.outfitTargets.splice(0, state.outfitTargets.length);
+  for (const b of data.outfitTargets || []) {
+    if (!b?.setKey || !b?.jobKey) continue;
+    const uid = toFiniteNumber(b.uid) ?? 0;
+    const itemIds = (b.itemIds || []).map(Number).filter(Number.isFinite);
+    const weaponIds = (b.weaponIds || []).map(Number).filter(Number.isFinite);
+    state.outfitTargets.push({
+      uid,
+      setKey: String(b.setKey),
+      tierLevel: toFiniteNumber(b.tierLevel) ?? 0,
+      jobKey: String(b.jobKey),
+      itemIds,
+      weaponIds,
+      includeWeapon: Boolean(b.includeWeapon),
+      expanded: Boolean(b.expanded),
+    });
+  }
+  const seq = toFiniteNumber(data.outfitTargetSeq);
+  state.outfitTargetSeq =
+    seq != null
+      ? seq
+      : state.outfitTargets.reduce((max, t) => Math.max(max, t.uid), 0) + 1;
+
   // expanded ids
   state.expandedResultItemIds.clear();
   for (const rawId of data.expandedIds || []) {
@@ -59,8 +83,8 @@ function loadFromStorage(state) {
     if (id == null || order == null) continue;
     state.expandedOrderById.set(id, order);
   }
-  const seq = toFiniteNumber(data.expandSeq);
-  state.expandSeq = seq != null ? seq : state.expandedOrderById.size;
+  const seq2 = toFiniteNumber(data.expandSeq);
+  state.expandSeq = seq2 != null ? seq2 : state.expandedOrderById.size;
 
   // checked ids
   state.checkedItemIds.clear();
@@ -87,6 +111,17 @@ function saveToStorage(state) {
         searchQuery: state.settings.searchQuery,
       },
       targets: state.targets.map((t) => ({ id: t.id, amount: t.amount })),
+      outfitTargets: state.outfitTargets.map((b) => ({
+        uid: b.uid,
+        setKey: b.setKey,
+        tierLevel: b.tierLevel,
+        jobKey: b.jobKey,
+        itemIds: b.itemIds,
+        weaponIds: b.weaponIds,
+        includeWeapon: b.includeWeapon,
+        expanded: b.expanded,
+      })),
+      outfitTargetSeq: state.outfitTargetSeq,
       expandedIds: [...state.expandedResultItemIds],
       expandOrder: [...state.expandedOrderById.entries()],
       expandSeq: state.expandSeq,
@@ -106,7 +141,10 @@ const state = reactive({
   },
   // targets: Array<{ id: number; amount: number }>
   targets: [],
-  // 用 Set：只记录“已拆开”的 resultItemId
+  // outfitTargets: Array<{ uid, setKey, tierLevel, jobKey, itemIds, weaponIds, includeWeapon, expanded }>
+  outfitTargets: [],
+  outfitTargetSeq: 0,
+  // 用 Set：只记录"已拆开"的 resultItemId
   expandedResultItemIds: new Set(),
 
   // ✅ 新增：展开顺序（先拆的序号更小）
@@ -131,7 +169,7 @@ function toId(n) {
   return Number.isFinite(x) ? x : null;
 }
 
-// 查询：某个物品是否处于“已拆开”
+// 查询：某个物品是否处于"已拆开"
 function isExpanded(resultItemId) {
   const id = toId(resultItemId);
   if (id == null) return false;
@@ -176,13 +214,13 @@ function toggleExpand(resultItemId) {
   saveToStorage(state);
 }
 
-// 快捷键：全部锁回去（折叠到“全不拆”）
+// 快捷键：全部锁回去（折叠到"全不拆"）
 function collapseAll() {
   state.expandedResultItemIds.clear();
   saveToStorage(state);
 }
 
-// 快捷键：批量拆开（以后“拆到底”会用到）
+// 快捷键：批量拆开（以后"拆到底"会用到）
 function expandMany(ids) {
   for (const raw of ids || []) {
     const id = toId(raw);
@@ -243,6 +281,47 @@ function clearTargets() {
   saveToStorage(state);
 }
 
+// -------- outfit bundle targets --------
+function addOutfitTarget({ setKey, tierLevel, jobKey, itemIds, weaponIds }) {
+  const uid = ++state.outfitTargetSeq;
+  state.outfitTargets.push({
+    uid,
+    setKey,
+    tierLevel,
+    jobKey,
+    itemIds: [...itemIds],
+    weaponIds: [...weaponIds],
+    includeWeapon: weaponIds.length > 0,
+    expanded: false,
+  });
+  saveToStorage(state);
+}
+
+function removeOutfitTarget(uid) {
+  const idx = state.outfitTargets.findIndex((t) => t.uid === uid);
+  if (idx !== -1) state.outfitTargets.splice(idx, 1);
+  saveToStorage(state);
+}
+
+function toggleOutfitWeapon(uid) {
+  const t = state.outfitTargets.find((t) => t.uid === uid);
+  if (!t) return;
+  t.includeWeapon = !t.includeWeapon;
+  saveToStorage(state);
+}
+
+function toggleOutfitExpanded(uid) {
+  const t = state.outfitTargets.find((t) => t.uid === uid);
+  if (!t) return;
+  t.expanded = !t.expanded;
+  saveToStorage(state);
+}
+
+function clearOutfitTargets() {
+  state.outfitTargets.splice(0, state.outfitTargets.length);
+  saveToStorage(state);
+}
+
 // -------- 勾选：读写接口（用于 MaterialsList） --------
 function isChecked(itemId) {
   const id = toId(itemId);
@@ -283,7 +362,17 @@ export function useSettingStore() {
     add: addTarget,
     remove: removeTarget,
     updateAmount: updateTargetAmount,
-    clear: clearTargets
+    clear: clearTargets,
+  };
+
+  const outfitTargetsCtrl = {
+    outfitTargets: readonly(state.outfitTargets),
+
+    add: addOutfitTarget,
+    remove: removeOutfitTarget,
+    toggleWeapon: toggleOutfitWeapon,
+    toggleExpanded: toggleOutfitExpanded,
+    clear: clearOutfitTargets,
   };
 
   const materialsCtrl = {
@@ -315,6 +404,7 @@ export function useSettingStore() {
     setSearchQuery,
 
     targetsCtrl,
+    outfitTargetsCtrl,
     materialsCtrl,
   };
 }

@@ -11,6 +11,7 @@ export default {
   },
   outfitSets: {
     title: "Select by Set",
+    selectVersion: "Select Version",
     pieces: "pcs",
     addAll: "Add all",
   },
@@ -35,6 +36,10 @@ export default {
     remove: "Remove",
     removeAria: "Remove target",
     removeTitle: "Remove",
+    includeWeapon: "w/ weapon",
+    weaponLabel: "Weapon",
+    bundleExpand: "Expand",
+    bundleCollapse: "Collapse",
   },
   materials: {
     title: "Materials",
