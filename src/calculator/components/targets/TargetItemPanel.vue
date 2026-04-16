@@ -100,7 +100,6 @@
                 :key="item.id"
                 class="flex items-center gap-2 px-3 py-1.5"
               >
-                <span class="shrink-0 text-[10px] text-[#6B677A]">#{{ item.id }}</span>
                 <span class="min-w-0 flex-1 truncate text-xs text-[#9B96AD]">{{ item.name }}</span>
                 <span
                   v-if="item.isWeapon"
@@ -119,14 +118,9 @@
         <li
           v-for="target in targets"
           :key="target.id"
-          class="flex items-center gap-3 rounded-xl bg-[#302F3B] px-3 py-2"
+          class="flex items-center gap-3 rounded-xl border border-[#4A4858] bg-[#302F3B] px-3 py-2"
         >
-          <div class="min-w-0 flex-1">
-            <div class="truncate text-sm font-medium text-[#EDE9F7]">
-              {{ target.name }}
-            </div>
-            <div class="text-xs text-[#9B96AD]">#{{ target.id }}</div>
-          </div>
+          <span class="min-w-0 flex-1 truncate text-sm font-medium text-[#EDE9F7]">{{ target.name }}</span>
 
           <input
             class="h-9 w-20 rounded-xl border border-[#4A4858] bg-[#2D2C34] px-2 text-sm text-[#EDE9F7] outline-none focus:ring-2 focus:ring-[#B4A5C8]/30"

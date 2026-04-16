@@ -73,10 +73,6 @@
               @click="selectedSetKey = set.key"
             >
               <span class="min-w-0 flex-1 truncate text-left">{{ t("outfitSets.set." + set.key) }}</span>
-              <!-- item count badge -->
-              <span class="shrink-0 rounded border border-[#38364A] bg-[#2D2C34] px-1.5 py-0.5 text-[10px] text-[#6B677A]">
-                {{ piecesForSet(set) }}{{ t("outfitSets.pieces") }}
-              </span>
               <span class="shrink-0 text-[10px] text-[#6B677A]">ilvl {{ set.ilvl }}</span>
               <ChevronRight :size="10" class="shrink-0 text-[#4A4858]" />
             </button>
@@ -98,11 +94,6 @@
                 @click="addJobItems(job.key)"
               >
                 {{ t("jobs." + job.key) }}
-                <!-- weapon count badge on job if weapon exists -->
-                <span
-                  v-if="currentSet && currentSet.weapons?.[job.key]?.length"
-                  class="ml-0.5 rounded bg-[#3B3A47] px-0.5 text-[9px] text-[#6B677A]"
-                >+{{ currentSet.weapons[job.key].length }}</span>
               </button>
             </div>
           </div>
@@ -190,12 +181,6 @@ const currentJobGroups = computed(() => {
     return [{ role, label: meta.label, jobs: meta.jobs, itemIds }];
   });
 });
-
-/** 套装每职业的防具件数（取第一个角色的 itemIds 长度，各角色相同） */
-function piecesForSet(set) {
-  const firstRole = Object.values(set.roles ?? {})[0];
-  return firstRole?.length ?? 0;
-}
 
 function togglePanel() {
   if (panelOpen.value) {
