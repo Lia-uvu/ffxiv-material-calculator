@@ -27,18 +27,22 @@ This document records the interfaces and field contracts between modules in data
 ---
 
 ### 1.2 TargetItemPanel
-**Purpose**: Shows target items, edits amount, and clears all.
+**Purpose**: Shows target items, outfit bundle targets, edits amount, and clears all.
 
 **Props**
 - `targets: Array<{ id: number, name: string, amount: number }>` - Page maps store targets for display.
+- `outfitBundles: Array<{ uid: number, setLabel: string, ilvl: number, jobLabel: string, amount: number, itemCount: number, expanded: boolean, items: Array<{ id: number, name: string, isWeapon: boolean }> }>` - Page maps outfit targets for display; `amount` is the target-list count for the whole bundle, `itemCount` is the number of gear pieces in expanded details, and weapon inclusion remains in Page/store rather than being toggled inside the component.
 
 **Emits**
 - `remove(id: number)` - Removes a target.
 - `update-amount(payload: { id: number, amount: number })` - Updates amount (input + blur).
 - `clear()` - Clears all targets.
+- `remove-bundle(uid: number)` - Removes one outfit bundle target.
+- `update-bundle-amount(payload: { uid: number, amount: number })` - Updates an outfit bundle target amount; the unit is one whole set, and materials are multiplied by that set count.
+- `toggle-bundle-expand(uid: number)` - Expands/collapses an outfit bundle's item details.
 
 **Source**
-- Page receives events and calls `targetsCtrl.remove / updateAmount / clear`.
+- Page receives events and calls `targetsCtrl.remove / updateAmount / clear` and `outfitTargetsCtrl.remove / updateAmount / toggleExpanded`.
 
 ---
 

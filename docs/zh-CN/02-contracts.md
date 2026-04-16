@@ -27,18 +27,22 @@
 ---
 
 ### 1.2 TargetItemPanel
-**用途**：展示目标成品列表、数量调整、清空。
+**用途**：展示目标成品列表、套装目标列表、数量调整、清空。
 
 **Props**
 - `targets: Array<{ id: number, name: string, amount: number }>` - Page 将 store 中 targets 映射为可展示结构。
+- `outfitBundles: Array<{ uid: number, setLabel: string, ilvl: number, jobLabel: string, amount: number, itemCount: number, expanded: boolean, items: Array<{ id: number, name: string, isWeapon: boolean }> }>` - Page 将 store 中 outfit targets 映射为可展示结构；`amount` 表示成品栏中按套装整体计数的数量，`itemCount` 表示展开明细中的装备件数；武器是否计入由 Page/store 保留，不在组件内切换。
 
 **Emits**
 - `remove(id: number)` - 删除单个目标。
 - `update-amount(payload: { id: number, amount: number })` - 修改数量（输入/失焦都会触发）。
 - `clear()` - 清空所有目标。
+- `remove-bundle(uid: number)` - 删除单个套装目标。
+- `update-bundle-amount(payload: { uid: number, amount: number })` - 修改套装目标数量；数量单位是整套，材料计算会按套数倍增套内物品。
+- `toggle-bundle-expand(uid: number)` - 展开/收起套装目标的物品明细。
 
 **来源**
-- Page 接收到事件后分别调用 `targetsCtrl.remove / updateAmount / clear`。
+- Page 接收到事件后分别调用 `targetsCtrl.remove / updateAmount / clear` 与 `outfitTargetsCtrl.remove / updateAmount / toggleExpanded`。
 
 ---
 

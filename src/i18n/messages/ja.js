@@ -10,7 +10,9 @@ export default {
     loading: "データ読み込み中…",
   },
   outfitSets: {
-    title: "秘伝書セット速選",
+    title: "セット別選択",
+    selectVersion: "バージョン選択",
+    ilvl: "IL {value}",
     pieces: "点",
     addAll: "すべて追加",
   },
@@ -35,6 +37,10 @@ export default {
     remove: "削除",
     removeAria: "目標を削除",
     removeTitle: "削除",
+    includeWeapon: "武器込み",
+    weaponLabel: "武器",
+    bundleExpand: "展開",
+    bundleCollapse: "折りたたむ",
   },
   materials: {
     title: "素材一覧",

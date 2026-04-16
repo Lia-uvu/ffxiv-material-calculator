@@ -10,7 +10,9 @@ export default {
     loading: "Loading data…",
   },
   outfitSets: {
-    title: "Master Recipe Sets",
+    title: "Select by Set",
+    selectVersion: "Select Version",
+    ilvl: "ilvl {value}",
     pieces: "pcs",
     addAll: "Add all",
   },
@@ -35,6 +37,10 @@ export default {
     remove: "Remove",
     removeAria: "Remove target",
     removeTitle: "Remove",
+    includeWeapon: "w/ weapon",
+    weaponLabel: "Weapon",
+    bundleExpand: "Expand",
+    bundleCollapse: "Collapse",
   },
   materials: {
     title: "Materials",

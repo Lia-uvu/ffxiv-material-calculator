@@ -11,14 +11,18 @@
 
     <OutfitSetPanel
       :sets="outfitSets"
-      @add-set="addSetToTargets"
+      @add-set="addSetBundle"
     />
 
     <TargetItemPanel
       :targets="targetEntries"
+      :outfit-bundles="outfitBundleEntries"
       @remove="targetsCtrl.remove"
       @update-amount="targetsCtrl.updateAmount"
-      @clear="targetsCtrl.clear"
+      @clear="handleClear"
+      @remove-bundle="outfitTargetsCtrl.remove"
+      @update-bundle-amount="outfitTargetsCtrl.updateAmount"
+      @toggle-bundle-expand="outfitTargetsCtrl.toggleExpanded"
     />
 
     <MaterialsPanel
@@ -56,10 +60,11 @@ const {
   settings,
   setSearchQuery,
   targetsCtrl,
+  outfitTargetsCtrl,
   materialsCtrl,
 } = useSettingStore();
 
-const { locale, t } = useI18n();
+const { locale, t, te } = useI18n();
 
 loadData();
 
@@ -89,19 +94,82 @@ const targetAmountsMap = computed(() => {
   return map;
 });
 
+const outfitSetByKey = computed(() => {
+  const map = new Map();
+  for (const set of outfitSets.value) map.set(set.key, set);
+  return map;
+});
+
+/** Outfit bundles enriched with resolved item names for display */
+const outfitBundleEntries = computed(() => {
+  return outfitTargetsCtrl.outfitTargets.map((bundle) => {
+    const set = outfitSetByKey.value.get(bundle.setKey);
+    const effectiveItemIds = [
+      ...bundle.itemIds,
+      ...(bundle.includeWeapon ? bundle.weaponIds : []),
+    ];
+    const weaponIdSet = new Set(bundle.weaponIds);
+
+    const items_ = effectiveItemIds.map((id) => {
+      const item = itemById.value.get(id);
+      return {
+        id,
+        name: resolveItemName(item, locale.value) ?? t("common.unknown"),
+        isWeapon: weaponIdSet.has(id),
+      };
+    });
+
+    return {
+      uid: bundle.uid,
+      setLabel: t("outfitSets.set." + bundle.setKey),
+      ilvl: set?.ilvl ?? bundle.tierLevel,
+      jobLabel: te("jobs." + bundle.jobKey) ? t("jobs." + bundle.jobKey) : bundle.jobKey,
+      amount: bundle.amount ?? 1,
+      expanded: bundle.expanded,
+      itemCount: effectiveItemIds.length,
+      items: items_,
+    };
+  });
+});
+
+/** Combined targets for materials calculation: individual + outfit bundle items */
+const combinedTargets = computed(() => {
+  const totals = new Map();
+
+  for (const t of targetsCtrl.targets) {
+    totals.set(t.id, (totals.get(t.id) ?? 0) + t.amount);
+  }
+
+  for (const bundle of outfitTargetsCtrl.outfitTargets) {
+    const ids = [
+      ...bundle.itemIds,
+      ...(bundle.includeWeapon ? bundle.weaponIds : []),
+    ];
+    const amount = bundle.amount ?? 1;
+    for (const id of ids) {
+      totals.set(id, (totals.get(id) ?? 0) + amount);
+    }
+  }
+
+  return [...totals.entries()].map(([id, amount]) => ({ id, amount }));
+});
+
 function selectResultById({ id, keepOpen }) {
   targetsCtrl.add(id);
   if (!keepOpen) setSearchQuery("");
 }
 
-function addSetToTargets(itemIds) {
-  for (const id of itemIds) {
-    targetsCtrl.add(id);
-  }
+function addSetBundle({ setKey, tierLevel, jobKey, itemIds, weaponIds }) {
+  outfitTargetsCtrl.add({ setKey, tierLevel, jobKey, itemIds, weaponIds });
+}
+
+function handleClear() {
+  targetsCtrl.clear();
+  outfitTargetsCtrl.clear();
 }
 
 const { ui, reachableCraftableIds } = useMaterialsList({
-  targets: targetsCtrl.targets,
+  targets: combinedTargets,
   items,
   recipes,
   expandedIds: materialsCtrl.expandedIds,
