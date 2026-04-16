@@ -12,6 +12,7 @@ export default {
   outfitSets: {
     title: "按套装选择",
     selectVersion: "选择版本",
+    ilvl: "品级 {value}",
     pieces: "件",
     addAll: "全部添加",
   },

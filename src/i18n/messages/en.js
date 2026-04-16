@@ -12,6 +12,7 @@ export default {
   outfitSets: {
     title: "Select by Set",
     selectVersion: "Select Version",
+    ilvl: "ilvl {value}",
     pieces: "pcs",
     addAll: "Add all",
   },

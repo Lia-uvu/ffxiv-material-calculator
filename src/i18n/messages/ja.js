@@ -12,6 +12,7 @@ export default {
   outfitSets: {
     title: "セット別選択",
     selectVersion: "バージョン選択",
+    ilvl: "IL {value}",
     pieces: "点",
     addAll: "すべて追加",
   },

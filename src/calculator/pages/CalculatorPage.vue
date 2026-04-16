@@ -21,7 +21,7 @@
       @update-amount="targetsCtrl.updateAmount"
       @clear="handleClear"
       @remove-bundle="outfitTargetsCtrl.remove"
-      @toggle-weapon="outfitTargetsCtrl.toggleWeapon"
+      @update-bundle-amount="outfitTargetsCtrl.updateAmount"
       @toggle-bundle-expand="outfitTargetsCtrl.toggleExpanded"
     />
 
@@ -64,7 +64,7 @@ const {
   materialsCtrl,
 } = useSettingStore();
 
-const { locale, t } = useI18n();
+const { locale, t, te } = useI18n();
 
 loadData();
 
@@ -94,9 +94,16 @@ const targetAmountsMap = computed(() => {
   return map;
 });
 
+const outfitSetByKey = computed(() => {
+  const map = new Map();
+  for (const set of outfitSets.value) map.set(set.key, set);
+  return map;
+});
+
 /** Outfit bundles enriched with resolved item names for display */
 const outfitBundleEntries = computed(() => {
   return outfitTargetsCtrl.outfitTargets.map((bundle) => {
+    const set = outfitSetByKey.value.get(bundle.setKey);
     const effectiveItemIds = [
       ...bundle.itemIds,
       ...(bundle.includeWeapon ? bundle.weaponIds : []),
@@ -115,9 +122,9 @@ const outfitBundleEntries = computed(() => {
     return {
       uid: bundle.uid,
       setLabel: t("outfitSets.set." + bundle.setKey),
-      jobKey: bundle.jobKey,
-      includeWeapon: bundle.includeWeapon,
-      hasWeapon: bundle.weaponIds.length > 0,
+      ilvl: set?.ilvl ?? bundle.tierLevel,
+      jobLabel: te("jobs." + bundle.jobKey) ? t("jobs." + bundle.jobKey) : bundle.jobKey,
+      amount: bundle.amount ?? 1,
       expanded: bundle.expanded,
       itemCount: effectiveItemIds.length,
       items: items_,
@@ -138,8 +145,9 @@ const combinedTargets = computed(() => {
       ...bundle.itemIds,
       ...(bundle.includeWeapon ? bundle.weaponIds : []),
     ];
+    const amount = bundle.amount ?? 1;
     for (const id of ids) {
-      totals.set(id, (totals.get(id) ?? 0) + 1);
+      totals.set(id, (totals.get(id) ?? 0) + amount);
     }
   }
 

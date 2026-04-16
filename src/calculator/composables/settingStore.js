@@ -55,6 +55,7 @@ function loadFromStorage(state) {
       setKey: String(b.setKey),
       tierLevel: toFiniteNumber(b.tierLevel) ?? 0,
       jobKey: String(b.jobKey),
+      amount: Math.max(1, Math.floor(toFiniteNumber(b.amount) ?? 1)),
       itemIds,
       weaponIds,
       includeWeapon: Boolean(b.includeWeapon),
@@ -116,6 +117,7 @@ function saveToStorage(state) {
         setKey: b.setKey,
         tierLevel: b.tierLevel,
         jobKey: b.jobKey,
+        amount: b.amount,
         itemIds: b.itemIds,
         weaponIds: b.weaponIds,
         includeWeapon: b.includeWeapon,
@@ -289,6 +291,7 @@ function addOutfitTarget({ setKey, tierLevel, jobKey, itemIds, weaponIds }) {
     setKey,
     tierLevel,
     jobKey,
+    amount: 1,
     itemIds: [...itemIds],
     weaponIds: [...weaponIds],
     includeWeapon: weaponIds.length > 0,
@@ -300,6 +303,14 @@ function addOutfitTarget({ setKey, tierLevel, jobKey, itemIds, weaponIds }) {
 function removeOutfitTarget(uid) {
   const idx = state.outfitTargets.findIndex((t) => t.uid === uid);
   if (idx !== -1) state.outfitTargets.splice(idx, 1);
+  saveToStorage(state);
+}
+
+function updateOutfitTargetAmount({ uid, amount }) {
+  const t = state.outfitTargets.find((t) => t.uid === uid);
+  const next = Math.max(1, Math.floor(Number(amount) || 1));
+  if (!t) return;
+  t.amount = next;
   saveToStorage(state);
 }
 
@@ -370,6 +381,7 @@ export function useSettingStore() {
 
     add: addOutfitTarget,
     remove: removeOutfitTarget,
+    updateAmount: updateOutfitTargetAmount,
     toggleWeapon: toggleOutfitWeapon,
     toggleExpanded: toggleOutfitExpanded,
     clear: clearOutfitTargets,
