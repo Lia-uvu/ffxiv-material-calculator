@@ -9,7 +9,7 @@
         <button
           v-if="targets.length || outfitBundles.length"
           type="button"
-          class="inline-flex h-8 items-center justify-center rounded-xl border border-[#4A4858] bg-[#302F3B] px-3 text-xs text-[#9B96AD] transition-colors hover:bg-[#4A4858]"
+          class="inline-flex h-8 items-center justify-center rounded-xl border border-[#4A4858] bg-[#302F3B] px-3 text-xs text-[#9B96AD] transition-colors hover:border-[#E07070]/40 hover:bg-[#E07070]/10 hover:text-[#E07070]"
           :aria-label="t('targets.clearAria')"
           :title="t('targets.clearTitle')"
           @click="onClear"
@@ -34,7 +34,7 @@
         class="overflow-hidden rounded-xl border border-[#4A4858] bg-[#302F3B]"
       >
         <!-- Bundle header row -->
-        <div class="flex items-center gap-2 px-3 py-2">
+        <div class="flex items-center gap-3 px-4 py-2">
           <button
             type="button"
             class="inline-flex h-9 w-5 shrink-0 items-center justify-center text-[#9B96AD] transition-colors hover:text-[#EDE9F7]"
@@ -49,7 +49,7 @@
             />
           </button>
 
-          <div class="min-w-0 flex-1 pl-1">
+          <div class="min-w-0 flex-1">
             <div class="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1">
               <span class="min-w-0 truncate text-sm font-medium text-[#EDE9F7]">{{ bundle.setLabel }}</span>
               <span class="shrink-0 text-xs font-medium text-[#9B96AD]">
@@ -75,12 +75,12 @@
             <!-- Remove bundle -->
             <button
               type="button"
-              class="inline-flex h-9 items-center justify-center rounded-xl border border-[#4A4858] bg-[#302F3B] px-3 text-sm text-[#9B96AD] transition-colors hover:border-[#E07070]/40 hover:bg-[#E07070]/10 hover:text-[#E07070]"
+              class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-[#9B96AD] transition-colors hover:text-[#E07070]"
               :aria-label="t('targets.removeAria')"
               :title="t('targets.removeTitle')"
               @click="$emit('remove-bundle', bundle.uid)"
             >
-              {{ t("targets.remove") }}
+              <Trash2 :size="16" :stroke-width="2" />
             </button>
           </div>
         </div>
@@ -128,12 +128,12 @@
 
           <button
             type="button"
-            class="inline-flex h-9 items-center justify-center rounded-xl border border-[#4A4858] bg-[#302F3B] px-3 text-sm text-[#9B96AD] transition-colors hover:bg-[#4A4858]"
+            class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-[#9B96AD] transition-colors hover:text-[#E07070]"
             :aria-label="t('targets.removeAria')"
             :title="t('targets.removeTitle')"
             @click="onRemove(target.id)"
           >
-            {{ t("targets.remove") }}
+            <Trash2 :size="16" :stroke-width="2" />
           </button>
         </li>
       </ul>
@@ -144,7 +144,7 @@
 <script setup>
 import { computed, toRefs } from "vue";
 import { useI18n } from "vue-i18n";
-import { ChevronDown } from "lucide-vue-next";
+import { ChevronDown, Trash2 } from "lucide-vue-next";
 import { clampPositiveInteger } from "../../utils/amountUtils";
 
 const props = defineProps({

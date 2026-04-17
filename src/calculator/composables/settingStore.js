@@ -54,6 +54,7 @@ function loadFromStorage(state) {
       uid,
       setKey: String(b.setKey),
       tierLevel: toFiniteNumber(b.tierLevel) ?? 0,
+      roleKey: b.roleKey ? String(b.roleKey) : null,
       jobKey: String(b.jobKey),
       amount: Math.max(1, Math.floor(toFiniteNumber(b.amount) ?? 1)),
       itemIds,
@@ -116,6 +117,7 @@ function saveToStorage(state) {
         uid: b.uid,
         setKey: b.setKey,
         tierLevel: b.tierLevel,
+        roleKey: b.roleKey,
         jobKey: b.jobKey,
         amount: b.amount,
         itemIds: b.itemIds,
@@ -143,7 +145,7 @@ const state = reactive({
   },
   // targets: Array<{ id: number; amount: number }>
   targets: [],
-  // outfitTargets: Array<{ uid, setKey, tierLevel, jobKey, itemIds, weaponIds, includeWeapon, expanded }>
+  // outfitTargets: Array<{ uid, setKey, tierLevel, roleKey, jobKey, itemIds, weaponIds, includeWeapon, expanded }>
   outfitTargets: [],
   outfitTargetSeq: 0,
   // 用 Set：只记录"已拆开"的 resultItemId
@@ -284,17 +286,45 @@ function clearTargets() {
 }
 
 // -------- outfit bundle targets --------
-function addOutfitTarget({ setKey, tierLevel, jobKey, itemIds, weaponIds }) {
+function sameNumberList(a, b) {
+  if (a.length !== b.length) return false;
+  for (let i = 0; i < a.length; i += 1) {
+    if (a[i] !== b[i]) return false;
+  }
+  return true;
+}
+
+function addOutfitTarget({ setKey, tierLevel, roleKey, jobKey, itemIds, weaponIds }) {
+  const nextItemIds = [...itemIds];
+  const nextWeaponIds = [...weaponIds];
+  const includeWeapon = nextWeaponIds.length > 0;
+  const hit = state.outfitTargets.find((t) =>
+    t.setKey === setKey
+    && t.tierLevel === tierLevel
+    && (!t.roleKey || !roleKey || t.roleKey === roleKey)
+    && t.jobKey === jobKey
+    && t.includeWeapon === includeWeapon
+    && sameNumberList(t.itemIds, nextItemIds)
+    && sameNumberList(t.weaponIds, nextWeaponIds)
+  );
+
+  if (hit) {
+    hit.amount += 1;
+    saveToStorage(state);
+    return;
+  }
+
   const uid = ++state.outfitTargetSeq;
   state.outfitTargets.push({
     uid,
     setKey,
     tierLevel,
+    roleKey: roleKey ?? null,
     jobKey,
     amount: 1,
-    itemIds: [...itemIds],
-    weaponIds: [...weaponIds],
-    includeWeapon: weaponIds.length > 0,
+    itemIds: nextItemIds,
+    weaponIds: nextWeaponIds,
+    includeWeapon,
     expanded: false,
   });
   saveToStorage(state);

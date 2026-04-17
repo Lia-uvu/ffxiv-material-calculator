@@ -104,9 +104,14 @@ const outfitSetByKey = computed(() => {
 const outfitBundleEntries = computed(() => {
   return outfitTargetsCtrl.outfitTargets.map((bundle) => {
     const set = outfitSetByKey.value.get(bundle.setKey);
+    const roleKey = bundle.roleKey ?? inferOutfitRoleKey(set, bundle.itemIds);
+    const roleLabel = roleKey && te("outfitSets.roles." + roleKey)
+      ? t("outfitSets.roles." + roleKey)
+      : "";
+    const baseSetLabel = t("outfitSets.set." + bundle.setKey);
     const effectiveItemIds = [
-      ...bundle.itemIds,
       ...(bundle.includeWeapon ? bundle.weaponIds : []),
+      ...bundle.itemIds,
     ];
     const weaponIdSet = new Set(bundle.weaponIds);
 
@@ -121,7 +126,7 @@ const outfitBundleEntries = computed(() => {
 
     return {
       uid: bundle.uid,
-      setLabel: t("outfitSets.set." + bundle.setKey),
+      setLabel: roleLabel ? t("outfitSets.setWithRole", { set: baseSetLabel, role: roleLabel }) : baseSetLabel,
       ilvl: set?.ilvl ?? bundle.tierLevel,
       jobLabel: te("jobs." + bundle.jobKey) ? t("jobs." + bundle.jobKey) : bundle.jobKey,
       amount: bundle.amount ?? 1,
@@ -131,6 +136,22 @@ const outfitBundleEntries = computed(() => {
     };
   });
 });
+
+function inferOutfitRoleKey(set, itemIds) {
+  if (!set?.roles) return null;
+  for (const [roleKey, roleItemIds] of Object.entries(set.roles)) {
+    if (sameNumberList(roleItemIds, itemIds)) return roleKey;
+  }
+  return null;
+}
+
+function sameNumberList(a, b) {
+  if (!a || !b || a.length !== b.length) return false;
+  for (let i = 0; i < a.length; i += 1) {
+    if (a[i] !== b[i]) return false;
+  }
+  return true;
+}
 
 /** Combined targets for materials calculation: individual + outfit bundle items */
 const combinedTargets = computed(() => {
@@ -159,8 +180,8 @@ function selectResultById({ id, keepOpen }) {
   if (!keepOpen) setSearchQuery("");
 }
 
-function addSetBundle({ setKey, tierLevel, jobKey, itemIds, weaponIds }) {
-  outfitTargetsCtrl.add({ setKey, tierLevel, jobKey, itemIds, weaponIds });
+function addSetBundle({ setKey, tierLevel, roleKey, jobKey, itemIds, weaponIds }) {
+  outfitTargetsCtrl.add({ setKey, tierLevel, roleKey, jobKey, itemIds, weaponIds });
 }
 
 function handleClear() {

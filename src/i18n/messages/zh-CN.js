@@ -15,6 +15,18 @@ export default {
     ilvl: "品级 {value}",
     pieces: "件",
     addAll: "全部添加",
+    setWithRole: "{set}{role}",
+    roles: {
+      aiming: "精准",
+      casting: "咏咒",
+      crafter: "巧匠",
+      gatherer: "大地",
+      healer: "治愈",
+      maiming: "制敌",
+      scouting: "游击",
+      striking: "强袭",
+      tank: "御敌",
+    },
   },
   search: {
     placeholder: "搜索物品...",

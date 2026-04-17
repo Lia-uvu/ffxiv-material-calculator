@@ -15,6 +15,18 @@ export default {
     ilvl: "IL {value}",
     pieces: "点",
     addAll: "すべて追加",
+    setWithRole: "{set}{role}",
+    roles: {
+      aiming: "レンジャー",
+      casting: "キャスター",
+      crafter: "クラフター",
+      gatherer: "ギャザラー",
+      healer: "ヒーラー",
+      maiming: "スレイヤー",
+      scouting: "スカウト",
+      striking: "ストライカー",
+      tank: "ディフェンダー",
+    },
   },
   search: {
     placeholder: "アイテムを検索...",

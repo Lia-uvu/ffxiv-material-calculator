@@ -25,13 +25,13 @@ No JavaScript test framework is configured; there are no JS/Vue unit tests.
 
 Vue 3 app using Composition API, Tailwind CSS v4, and vue-i18n. Entry: `main.js` → `App.vue` → `CalculatorPage.vue`.
 
-- **`src/data/`** — Static JSON data (`items.json`, `recipes.json`, `outfitSets.json`, `outfitSetMeta.json`) loaded lazily via dynamic imports. `index.js` exports reactive refs (`items`, `recipes`, `outfitSets`, `dataReady`) and `resolveItemName()` for locale-aware name lookup.
+- **`src/data/`** — Static JSON data. `items.json`, `recipes.json`, and `outfitSets.json` are loaded lazily via dynamic imports. `outfitSetMeta.json` is generated runtime data used by the pipeline/outfit-set derivation. `index.js` exports reactive refs (`items`, `recipes`, `outfitSets`, `dataReady`) and `resolveItemName()` for locale-aware name lookup.
 - **`src/calculator/core/`** — Pure computation logic, no Vue dependencies:
   - `calcMaterials.js` — Core algorithm: recursive recipe tree expansion with cycle detection, override support, and expand/collapse control via `expandedIds`.
   - `recipeUtils.js` — Recipe lookup helpers (`buildRecipesByResultId`, `pickRecipe`).
-  - `obtainMethodUtils.js` — Item obtain-method classification.
 - **`src/calculator/composables/`** — Vue composables: `useItemSearch` (Fuse.js fuzzy search), `useMaterialsList`, `useMaterialsExport`, `useOnboarding`, `settingStore`.
 - **`src/calculator/components/`** — Vue components organized by feature area: `search/`, `targets/`, `materials/`, `shell/`, `common/`.
+- **`src/calculator/utils/`** — Shared UI/data helpers, including obtain-method classification (`obtainMethodUtils.js`), crystal grouping (`crystalUtils.js`), and amount clamping (`amountUtils.js`).
 - **`src/i18n/`** — Locale messages in `messages/{zh-CN,en,ja}.js`. Auto-generated outfit set name translations in `generated/outfitSetNames.json`, merged at i18n init time.
 
 ### Data Pipeline (`scripts/pipeline/`)

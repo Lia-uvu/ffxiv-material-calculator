@@ -85,7 +85,9 @@
               :key="group.role"
               class="flex flex-wrap items-center gap-1"
             >
-              <span class="w-14 shrink-0 text-[10px] text-[#6B677A]">{{ group.label }}</span>
+              <span class="w-14 shrink-0 text-[10px] text-[#6B677A]">
+                {{ te("outfitSets.roles." + group.role) ? t("outfitSets.roles." + group.role) : group.label }}
+              </span>
               <button
                 v-for="job in group.jobs"
                 :key="job.key"
@@ -113,7 +115,7 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["add-set"]);
-const { t } = useI18n();
+const { t, te } = useI18n();
 
 const panelOpen = ref(false);
 const selectedTierLevel = ref(null);
@@ -213,6 +215,7 @@ function addJobItems(jobKey) {
   emit("add-set", {
     setKey: currentSet.value.key,
     tierLevel: selectedTierLevel.value,
+    roleKey: group?.role ?? null,
     jobKey,
     itemIds: group?.itemIds ?? [],
     weaponIds,

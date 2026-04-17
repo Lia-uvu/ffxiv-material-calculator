@@ -15,6 +15,18 @@ export default {
     ilvl: "ilvl {value}",
     pieces: "pcs",
     addAll: "Add all",
+    setWithRole: "{set} {role}",
+    roles: {
+      aiming: "Aiming",
+      casting: "Casting",
+      crafter: "Crafter",
+      gatherer: "Gatherer",
+      healer: "Healing",
+      maiming: "Maiming",
+      scouting: "Scouting",
+      striking: "Striking",
+      tank: "Fending",
+    },
   },
   search: {
     placeholder: "Search item...",
