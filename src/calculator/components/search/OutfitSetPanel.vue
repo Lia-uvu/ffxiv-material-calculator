@@ -6,13 +6,12 @@
     <!-- Tab corner: notebook divider tab style, tucks under the panel below -->
     <button
       type="button"
-      class="inline-flex min-h-16 items-center gap-3 self-start rounded-t-[28px] border border-b-0 border-[#38364A] bg-[#252430] px-8 pt-3 text-left transition-colors hover:bg-[#2A2932]"
-      :class="panelOpen ? 'relative z-10 -mb-px pb-4' : 'pb-7'"
+      class="inline-flex items-center gap-2 self-start rounded-t-2xl border border-b-0 border-[#38364A] bg-[#252430] px-4 pt-2.5 pb-6 text-left transition-colors hover:bg-[#2A2932]"
       @click="togglePanel"
     >
-      <span class="text-base font-semibold text-[#EDE9F7]">{{ t("outfitSets.title") }}</span>
+      <span class="text-sm font-semibold text-[#EDE9F7]">{{ t("outfitSets.title") }}</span>
       <ChevronUp
-        :size="17"
+        :size="16"
         class="shrink-0 text-[#9B96AD] transition-transform duration-200"
         :class="panelOpen ? 'rotate-180' : 'animate-hint-up'"
       />
@@ -22,46 +21,46 @@
     <Transition name="outfit-reveal">
       <div
         v-if="panelOpen"
-        class="overflow-hidden rounded-tr-[28px] rounded-bl-[28px] rounded-br-[28px] border border-[#38364A] bg-[#252430] shadow-[0_2px_10px_rgba(0,0,0,0.35)]"
+        class="relative z-10 -mt-4 overflow-hidden rounded-2xl border border-[#38364A] bg-[#252430] shadow-[0_2px_10px_rgba(0,0,0,0.35)]"
       >
         <!-- Breadcrumb nav -->
         <nav
           v-if="selectedTierLevel !== null"
-          class="flex flex-wrap items-center gap-x-1 gap-y-0.5 border-b border-[#2D2C34] px-3 py-1.5"
+          class="flex flex-wrap items-center gap-x-1.5 gap-y-1 border-b border-[#38364A] px-4 py-2.5"
           aria-label="outfit set navigation"
         >
           <button
             type="button"
-            class="text-[11px] text-[#9B96AD] transition-colors hover:text-[#B4A5C8]"
+            class="rounded-lg px-1.5 py-1 text-xs font-medium text-[#9B96AD] transition-colors hover:bg-[#2A2932] hover:text-[#EDE9F7]"
             @click="resetToRoot"
           >
             {{ t("outfitSets.selectVersion") }}
           </button>
-          <ChevronRight :size="9" class="shrink-0 text-[#4A4858]" />
+          <ChevronRight :size="13" class="shrink-0 text-[#4A4858]" />
           <template v-if="selectedSetKey === null">
-            <span class="text-[11px] text-[#EDE9F7]">{{ currentTierLabel }}</span>
+            <span class="px-1.5 py-1 text-xs font-semibold text-[#EDE9F7]">{{ currentTierLabel }}</span>
           </template>
           <template v-else>
             <button
               type="button"
-              class="text-[11px] text-[#9B96AD] transition-colors hover:text-[#B4A5C8]"
+              class="rounded-lg px-1.5 py-1 text-xs font-medium text-[#9B96AD] transition-colors hover:bg-[#2A2932] hover:text-[#EDE9F7]"
               @click="resetToTier"
             >
               {{ currentTierLabel }}
             </button>
-            <ChevronRight :size="9" class="shrink-0 text-[#4A4858]" />
-            <span class="text-[11px] text-[#EDE9F7]">{{ currentSetLabel }}</span>
+            <ChevronRight :size="13" class="shrink-0 text-[#4A4858]" />
+            <span class="px-1.5 py-1 text-xs font-semibold text-[#EDE9F7]">{{ currentSetLabel }}</span>
           </template>
         </nav>
 
-        <div class="px-7 py-6">
+        <div class="px-4 pt-5 pb-6">
           <!-- Level 0: tier list -->
-          <div v-if="selectedTierLevel === null" class="space-y-2">
+          <div v-if="selectedTierLevel === null" class="space-y-1">
             <button
               v-for="tier in tiers"
               :key="tier.level"
               type="button"
-              class="flex w-full items-center gap-3 rounded-xl px-4 py-2 text-base text-[#9B96AD] transition-colors hover:bg-[#2A2932] hover:text-[#EDE9F7]"
+              class="flex w-full items-center gap-2 rounded-xl px-3 py-2 text-sm text-[#9B96AD] transition-colors hover:bg-[#2A2932] hover:text-[#EDE9F7]"
               @click="selectTier(tier.level)"
             >
               <span class="font-medium">{{ tier.label }}</span>
@@ -71,12 +70,12 @@
           </div>
 
           <!-- Level 1: set list for selected tier -->
-          <div v-else-if="selectedSetKey === null" class="space-y-2">
+          <div v-else-if="selectedSetKey === null" class="space-y-1">
             <button
               v-for="set in currentTierSets"
               :key="set.key"
               type="button"
-              class="flex w-full items-center gap-3 rounded-xl px-4 py-2 text-sm text-[#9B96AD] transition-colors hover:bg-[#2A2932] hover:text-[#EDE9F7]"
+              class="flex w-full items-center gap-2 rounded-xl px-3 py-2 text-sm text-[#9B96AD] transition-colors hover:bg-[#2A2932] hover:text-[#EDE9F7]"
               @click="selectedSetKey = set.key"
             >
               <span class="min-w-0 flex-1 truncate text-left">{{ t("outfitSets.set." + set.key) }}</span>
