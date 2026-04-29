@@ -35342,531 +35342,6 @@
     }
   },
   {
-    "id": 5729,
-    "name": {
-      "zh-CN": "素雪白染剂",
-      "en": "Snow White Dye",
-      "ja": "カララント:スノウホワイト"
-    },
-    "isCrystal": false,
-    "ilvl": 30,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "CRAFT",
-      "SHOP_NPC",
-      "SHOP_MARKET"
-    ],
-    "obtainMethodDetails": {
-      "SHOP_NPC": {
-        "priceLow": 4
-      }
-    }
-  },
-  {
-    "id": 5734,
-    "name": {
-      "zh-CN": "煤烟黑染剂",
-      "en": "Soot Black Dye",
-      "ja": "カララント:スートブラック"
-    },
-    "isCrystal": false,
-    "ilvl": 30,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "CRAFT",
-      "SHOP_NPC",
-      "SHOP_MARKET"
-    ],
-    "obtainMethodDetails": {
-      "SHOP_NPC": {
-        "priceLow": 4
-      }
-    }
-  },
-  {
-    "id": 5738,
-    "name": {
-      "zh-CN": "卫月红染剂",
-      "en": "Dalamud Red Dye",
-      "ja": "カララント:ダラガブレッド"
-    },
-    "isCrystal": false,
-    "ilvl": 30,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "CRAFT",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 5740,
-    "name": {
-      "zh-CN": "果酒红染剂",
-      "en": "Wine Red Dye",
-      "ja": "カララント:ワインレッド"
-    },
-    "isCrystal": false,
-    "ilvl": 30,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "CRAFT",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 5744,
-    "name": {
-      "zh-CN": "日落橙染剂",
-      "en": "Sunset Orange Dye",
-      "ja": "カララント:サンセットオレンジ"
-    },
-    "isCrystal": false,
-    "ilvl": 30,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "CRAFT",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 5745,
-    "name": {
-      "zh-CN": "台地红染剂",
-      "en": "Mesa Red Dye",
-      "ja": "カララント:メサレッド"
-    },
-    "isCrystal": false,
-    "ilvl": 1,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "SHOP_NPC",
-      "SHOP_MARKET"
-    ],
-    "obtainMethodDetails": {
-      "SHOP_NPC": {
-        "priceLow": 1
-      }
-    }
-  },
-  {
-    "id": 5749,
-    "name": {
-      "zh-CN": "钴铁棕染剂",
-      "en": "Kobold Brown Dye",
-      "ja": "カララント:コボルドブラウン"
-    },
-    "isCrystal": false,
-    "ilvl": 30,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "CRAFT",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 5754,
-    "name": {
-      "zh-CN": "南瓜橙染剂",
-      "en": "Pumpkin Orange Dye",
-      "ja": "カララント:パンプキンオレンジ"
-    },
-    "isCrystal": false,
-    "ilvl": 30,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "CRAFT",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 5761,
-    "name": {
-      "zh-CN": "沃土棕染剂",
-      "en": "Loam Brown Dye",
-      "ja": "カララント:ロームブラウン"
-    },
-    "isCrystal": false,
-    "ilvl": 30,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "CRAFT",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 5764,
-    "name": {
-      "zh-CN": "沙漠黄染剂",
-      "en": "Desert Yellow Dye",
-      "ja": "カララント:デザートイエロー"
-    },
-    "isCrystal": false,
-    "ilvl": 1,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "SHOP_NPC",
-      "SHOP_MARKET"
-    ],
-    "obtainMethodDetails": {
-      "SHOP_NPC": {
-        "priceLow": 1
-      }
-    }
-  },
-  {
-    "id": 5765,
-    "name": {
-      "zh-CN": "蜂蜜黄染剂",
-      "en": "Honey Yellow Dye",
-      "ja": "カララント:ハニーイエロー"
-    },
-    "isCrystal": false,
-    "ilvl": 30,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "CRAFT",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 5766,
-    "name": {
-      "zh-CN": "玉米黄染剂",
-      "en": "Millioncorn Yellow Dye",
-      "ja": "カララント:ミリオンコーンイエロー"
-    },
-    "isCrystal": false,
-    "ilvl": 30,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "CRAFT",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 5774,
-    "name": {
-      "zh-CN": "苔藓绿染剂",
-      "en": "Moss Green Dye",
-      "ja": "カララント:モスグリーン"
-    },
-    "isCrystal": false,
-    "ilvl": 1,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "SHOP_NPC",
-      "SHOP_MARKET"
-    ],
-    "obtainMethodDetails": {
-      "SHOP_NPC": {
-        "priceLow": 1
-      }
-    }
-  },
-  {
-    "id": 5780,
-    "name": {
-      "zh-CN": "猎人绿染剂",
-      "en": "Hunter Green Dye",
-      "ja": "カララント:ハンターグリーン"
-    },
-    "isCrystal": false,
-    "ilvl": 30,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "CRAFT",
-      "SHOP_NPC",
-      "SHOP_MARKET"
-    ],
-    "obtainMethodDetails": {
-      "SHOP_NPC": {
-        "priceLow": 4
-      }
-    }
-  },
-  {
-    "id": 5781,
-    "name": {
-      "zh-CN": "口花绿染剂",
-      "en": "Ochu Green Dye",
-      "ja": "カララント:オチューグリーン"
-    },
-    "isCrystal": false,
-    "ilvl": 30,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "CRAFT",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 5784,
-    "name": {
-      "zh-CN": "深林绿染剂",
-      "en": "Deepwood Green Dye",
-      "ja": "カララント:ディープウッドグリーン"
-    },
-    "isCrystal": false,
-    "ilvl": 30,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "CRAFT",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 5785,
-    "name": {
-      "zh-CN": "天上蓝染剂",
-      "en": "Celeste Green Dye",
-      "ja": "カララント:セレストグリーン"
-    },
-    "isCrystal": false,
-    "ilvl": 30,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "CRAFT",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 5787,
-    "name": {
-      "zh-CN": "魔花绿染剂",
-      "en": "Morbol Green Dye",
-      "ja": "カララント:モルボルグリーン"
-    },
-    "isCrystal": false,
-    "ilvl": 30,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "CRAFT",
-      "SHOP_NPC",
-      "SHOP_MARKET"
-    ],
-    "obtainMethodDetails": {
-      "SHOP_NPC": {
-        "priceLow": 4
-      }
-    }
-  },
-  {
-    "id": 5789,
-    "name": {
-      "zh-CN": "天空蓝染剂",
-      "en": "Sky Blue Dye",
-      "ja": "カララント:スカイブルー"
-    },
-    "isCrystal": false,
-    "ilvl": 1,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "SHOP_NPC",
-      "SHOP_MARKET"
-    ],
-    "obtainMethodDetails": {
-      "SHOP_NPC": {
-        "priceLow": 1
-      }
-    }
-  },
-  {
-    "id": 5792,
-    "name": {
-      "zh-CN": "罗海蓝染剂",
-      "en": "Rhotano Blue Dye",
-      "ja": "カララント:ロータノブルー"
-    },
-    "isCrystal": false,
-    "ilvl": 1,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "SHOP_NPC",
-      "SHOP_MARKET"
-    ],
-    "obtainMethodDetails": {
-      "SHOP_NPC": {
-        "priceLow": 1
-      }
-    }
-  },
-  {
-    "id": 5795,
-    "name": {
-      "zh-CN": "靛青蓝染剂",
-      "en": "Woad Blue Dye",
-      "ja": "カララント:ウォードブルー"
-    },
-    "isCrystal": false,
-    "ilvl": 30,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "CRAFT",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 5797,
-    "name": {
-      "zh-CN": "盗龙蓝染剂",
-      "en": "Raptor Blue Dye",
-      "ja": "カララント:ラプトルブルー"
-    },
-    "isCrystal": false,
-    "ilvl": 1,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "SHOP_NPC",
-      "SHOP_MARKET"
-    ],
-    "obtainMethodDetails": {
-      "SHOP_NPC": {
-        "priceLow": 1
-      }
-    }
-  },
-  {
-    "id": 5798,
-    "name": {
-      "zh-CN": "东洲蓝染剂",
-      "en": "Othard Blue Dye",
-      "ja": "カララント:オサードブルー"
-    },
-    "isCrystal": false,
-    "ilvl": 30,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "CRAFT",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 5799,
-    "name": {
-      "zh-CN": "风暴蓝染剂",
-      "en": "Storm Blue Dye",
-      "ja": "カララント:ストームブルー"
-    },
-    "isCrystal": false,
-    "ilvl": 30,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "CRAFT",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 5800,
-    "name": {
-      "zh-CN": "虚空蓝染剂",
-      "en": "Void Blue Dye",
-      "ja": "カララント:ヴォイドブルー"
-    },
-    "isCrystal": false,
-    "ilvl": 30,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "CRAFT",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 5801,
-    "name": {
-      "zh-CN": "皇室蓝染剂",
-      "en": "Royal Blue Dye",
-      "ja": "カララント:ロイヤルブルー"
-    },
-    "isCrystal": false,
-    "ilvl": 30,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "CRAFT",
-      "SHOP_NPC",
-      "SHOP_MARKET"
-    ],
-    "obtainMethodDetails": {
-      "SHOP_NPC": {
-        "priceLow": 4
-      }
-    }
-  },
-  {
-    "id": 5804,
-    "name": {
-      "zh-CN": "深渊蓝染剂",
-      "en": "Abyssal Blue Dye",
-      "ja": "カララント:アビサルブルー"
-    },
-    "isCrystal": false,
-    "ilvl": 30,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "CRAFT",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 5810,
-    "name": {
-      "zh-CN": "莲花粉染剂",
-      "en": "Lotus Pink Dye",
-      "ja": "カララント:ロータスピンク"
-    },
-    "isCrystal": false,
-    "ilvl": 30,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "CRAFT",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 5811,
-    "name": {
-      "zh-CN": "蜂鸟粉染剂",
-      "en": "Colibri Pink Dye",
-      "ja": "カララント:コリブリピンク"
-    },
-    "isCrystal": false,
-    "ilvl": 30,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "CRAFT",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 5812,
-    "name": {
-      "zh-CN": "仙子梅染剂",
-      "en": "Plum Purple Dye",
-      "ja": "カララント:プラムパープル"
-    },
-    "isCrystal": false,
-    "ilvl": 30,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "CRAFT",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 5813,
-    "name": {
-      "zh-CN": "帝王紫染剂",
-      "en": "Regal Purple Dye",
-      "ja": "カララント:リーガルパープル"
-    },
-    "isCrystal": false,
-    "ilvl": 30,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "CRAFT",
-      "SHOP_MARKET"
-    ]
-  },
-  {
     "id": 5814,
     "name": {
       "zh-CN": "蓝色色素",
@@ -38755,7 +38230,7 @@
   {
     "id": 6488,
     "name": {
-      "zh-CN": "半高花盆",
+      "zh-CN": "半高盆栽",
       "en": "Half Barrel Planter",
       "ja": "ハーフバレルプランター"
     },
@@ -38770,7 +38245,7 @@
   {
     "id": 6489,
     "name": {
-      "zh-CN": "低矮花盆",
+      "zh-CN": "低矮盆栽",
       "en": "Low Barrel Planter",
       "ja": "ロウバレルプランター"
     },
@@ -47831,7 +47306,6 @@
     "equipSlotCategory": 4,
     "obtainMethods": [
       "CRAFT",
-      "EXCHANGE_TOME",
       "SHOP_MARKET"
     ]
   },
@@ -47847,7 +47321,6 @@
     "equipSlotCategory": 7,
     "obtainMethods": [
       "CRAFT",
-      "EXCHANGE_TOME",
       "SHOP_MARKET"
     ]
   },
@@ -51927,7 +51400,7 @@
   {
     "id": 9734,
     "name": {
-      "zh-CN": "橡木低矮花盆",
+      "zh-CN": "橡木低矮盆栽",
       "en": "Oak Low Barrel Planter",
       "ja": "オーク・ロウバレルプランター"
     },
@@ -111619,7 +111092,7 @@
   {
     "id": 24526,
     "name": {
-      "zh-CN": "壁挂式花盆架",
+      "zh-CN": "壁挂式盆栽架",
       "en": "Hanging Planter Shelf",
       "ja": "プランターウォールシェルフ"
     },
@@ -115127,7 +114600,7 @@
   {
     "id": 25843,
     "name": {
-      "zh-CN": "虹茧咏咒斗上装",
+      "zh-CN": "虹茧咏咒上装",
       "en": "Iridescent Top of Casting",
       "ja": "イリディセントキャスタートップス"
     },
@@ -134932,20 +134405,6 @@
     "equipSlotCategory": 13,
     "obtainMethods": [
       "CRAFT",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 30116,
-    "name": {
-      "zh-CN": "宝石红染剂",
-      "en": "Ruby Red Dye",
-      "ja": "カララント:ルビーレッド"
-    },
-    "isCrystal": false,
-    "ilvl": 1,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
       "SHOP_MARKET"
     ]
   },
@@ -159501,7 +158960,6 @@
     "equipSlotCategory": 0,
     "obtainMethods": [
       "CRAFT",
-      "EXCHANGE_TOME",
       "SHOP_MARKET"
     ]
   },
@@ -159517,7 +158975,6 @@
     "equipSlotCategory": 0,
     "obtainMethods": [
       "CRAFT",
-      "EXCHANGE_TOME",
       "SHOP_MARKET"
     ]
   },
@@ -159533,7 +158990,6 @@
     "equipSlotCategory": 0,
     "obtainMethods": [
       "CRAFT",
-      "EXCHANGE_TOME",
       "SHOP_MARKET"
     ]
   },
@@ -159549,7 +159005,6 @@
     "equipSlotCategory": 0,
     "obtainMethods": [
       "CRAFT",
-      "EXCHANGE_TOME",
       "SHOP_MARKET"
     ]
   },
@@ -159581,7 +159036,6 @@
     "equipSlotCategory": 0,
     "obtainMethods": [
       "CRAFT",
-      "EXCHANGE_TOME",
       "SHOP_MARKET"
     ]
   },
@@ -193017,5 +192471,823 @@
         "priceLow": 1
       }
     }
+  },
+  {
+    "id": 51190,
+    "name": {
+      "zh-CN": "红色矢车菊",
+      "en": "Red Cornflowers",
+      "ja": "红色矢车菊"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51191,
+    "name": {
+      "zh-CN": "蓝色矢车菊",
+      "en": "Blue Cornflowers",
+      "ja": "蓝色矢车菊"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51192,
+    "name": {
+      "zh-CN": "黄色矢车菊",
+      "en": "Yellow Cornflowers",
+      "ja": "黄色矢车菊"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51193,
+    "name": {
+      "zh-CN": "绿色矢车菊",
+      "en": "Green Cornflowers",
+      "ja": "绿色矢车菊"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51194,
+    "name": {
+      "zh-CN": "橙色矢车菊",
+      "en": "Orange Cornflowers",
+      "ja": "橙色矢车菊"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51195,
+    "name": {
+      "zh-CN": "紫色矢车菊",
+      "en": "Purple Cornflowers",
+      "ja": "紫色矢车菊"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51196,
+    "name": {
+      "zh-CN": "白色矢车菊",
+      "en": "White Cornflowers",
+      "ja": "白色矢车菊"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51197,
+    "name": {
+      "zh-CN": "黑色矢车菊",
+      "en": "Black Cornflowers",
+      "ja": "黑色矢车菊"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51198,
+    "name": {
+      "zh-CN": "混色矢车菊",
+      "en": "Rainbow Cornflowers",
+      "ja": "混色矢车菊"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51199,
+    "name": {
+      "zh-CN": "红色矢车菊手链",
+      "en": "Red Cornflower Wristlets",
+      "ja": "红色矢车菊手链"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 11,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51200,
+    "name": {
+      "zh-CN": "蓝色矢车菊手链",
+      "en": "Blue Cornflower Wristlets",
+      "ja": "蓝色矢车菊手链"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 11,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51201,
+    "name": {
+      "zh-CN": "黄色矢车菊手链",
+      "en": "Yellow Cornflower Wristlets",
+      "ja": "黄色矢车菊手链"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 11,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51202,
+    "name": {
+      "zh-CN": "绿色矢车菊手链",
+      "en": "Green Cornflower Wristlets",
+      "ja": "绿色矢车菊手链"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 11,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51203,
+    "name": {
+      "zh-CN": "橙色矢车菊手链",
+      "en": "Orange Cornflower Wristlets",
+      "ja": "橙色矢车菊手链"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 11,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51204,
+    "name": {
+      "zh-CN": "紫色矢车菊手链",
+      "en": "Purple Cornflower Wristlets",
+      "ja": "紫色矢车菊手链"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 11,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51205,
+    "name": {
+      "zh-CN": "白色矢车菊手链",
+      "en": "White Cornflower Wristlets",
+      "ja": "白色矢车菊手链"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 11,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51206,
+    "name": {
+      "zh-CN": "黑色矢车菊手链",
+      "en": "Black Cornflower Wristlets",
+      "ja": "黑色矢车菊手链"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 11,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51207,
+    "name": {
+      "zh-CN": "混色矢车菊手链",
+      "en": "Rainbow Cornflower Wristlets",
+      "ja": "混色矢车菊手链"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 11,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51251,
+    "name": {
+      "zh-CN": "格子窗长椅",
+      "en": "Lattice Window Seat",
+      "ja": "格子窗长椅"
+    },
+    "isCrystal": false,
+    "ilvl": 690,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51252,
+    "name": {
+      "zh-CN": "恩欧之杖展示台",
+      "en": "Rod of Nihility Display",
+      "ja": "恩欧之杖展示台"
+    },
+    "isCrystal": false,
+    "ilvl": 770,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51255,
+    "name": {
+      "zh-CN": "永护矮床",
+      "en": "Everkeep Platform Bed",
+      "ja": "永护矮床"
+    },
+    "isCrystal": false,
+    "ilvl": 690,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51256,
+    "name": {
+      "zh-CN": "永护沙发",
+      "en": "Everkeep Sofa",
+      "ja": "永护沙发"
+    },
+    "isCrystal": false,
+    "ilvl": 690,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51257,
+    "name": {
+      "zh-CN": "永护圆沙发",
+      "en": "Curved Everkeep Sofa",
+      "ja": "永护圆沙发"
+    },
+    "isCrystal": false,
+    "ilvl": 690,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51258,
+    "name": {
+      "zh-CN": "永护餐桌",
+      "en": "Everkeep Dining Table",
+      "ja": "永护餐桌"
+    },
+    "isCrystal": false,
+    "ilvl": 690,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51259,
+    "name": {
+      "zh-CN": "永护圆桌",
+      "en": "Everkeep Round Table",
+      "ja": "永护圆桌"
+    },
+    "isCrystal": false,
+    "ilvl": 690,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51260,
+    "name": {
+      "zh-CN": "永护边柜",
+      "en": "Everkeep Sideboard",
+      "ja": "永护边柜"
+    },
+    "isCrystal": false,
+    "ilvl": 690,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51261,
+    "name": {
+      "zh-CN": "永护储物柜",
+      "en": "Everkeep Chest",
+      "ja": "永护储物柜"
+    },
+    "isCrystal": false,
+    "ilvl": 690,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51265,
+    "name": {
+      "zh-CN": "永护地毯",
+      "en": "Everkeep Rug",
+      "ja": "永护地毯"
+    },
+    "isCrystal": false,
+    "ilvl": 690,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51266,
+    "name": {
+      "zh-CN": "永护厨台",
+      "en": "Everkeep Kitchen Counter",
+      "ja": "永护厨台"
+    },
+    "isCrystal": false,
+    "ilvl": 690,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51267,
+    "name": {
+      "zh-CN": "永护隔离墙",
+      "en": "Everkeep Partition",
+      "ja": "永护隔离墙"
+    },
+    "isCrystal": false,
+    "ilvl": 690,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51271,
+    "name": {
+      "zh-CN": "半圆花园舞台",
+      "en": "Semicircular Outdoor Stage",
+      "ja": "半圆花园舞台"
+    },
+    "isCrystal": false,
+    "ilvl": 690,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52254,
+    "name": {
+      "zh-CN": "通用染剂",
+      "en": "Standard Spectrum Dye",
+      "ja": "通用染剂"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_NPC",
+      "SHOP_MARKET"
+    ],
+    "obtainMethodDetails": {
+      "SHOP_NPC": {
+        "priceLow": 1
+      }
+    }
+  },
+  {
+    "id": 52285,
+    "name": {
+      "zh-CN": "虚王装甲",
+      "en": "Barding of Naught",
+      "ja": "虚王装甲"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52612,
+    "name": {
+      "zh-CN": "素色卫衣",
+      "en": "Plain Hooded Tunic",
+      "ja": "素色卫衣"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 4,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52613,
+    "name": {
+      "zh-CN": "大码素色卫衣",
+      "en": "Oversized Plain Hooded Tunic",
+      "ja": "大码素色卫衣"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 4,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52614,
+    "name": {
+      "zh-CN": "紧身素色卫衣",
+      "en": "Form-fitting Plain Hooded Tunic",
+      "ja": "紧身素色卫衣"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 4,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52615,
+    "name": {
+      "zh-CN": "梦魔卫衣",
+      "en": "Succubus Hooded Tunic",
+      "ja": "梦魔卫衣"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 4,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52616,
+    "name": {
+      "zh-CN": "大码梦魔卫衣",
+      "en": "Oversized Succubus Hooded Tunic",
+      "ja": "大码梦魔卫衣"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 4,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52617,
+    "name": {
+      "zh-CN": "紧身梦魔卫衣",
+      "en": "Form-fitting Succubus Hooded Tunic",
+      "ja": "紧身梦魔卫衣"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 4,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52618,
+    "name": {
+      "zh-CN": "欢庆卫衣",
+      "en": "Festival Hooded Tunic",
+      "ja": "欢庆卫衣"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 4,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52619,
+    "name": {
+      "zh-CN": "大码欢庆卫衣",
+      "en": "Oversized Festival Hooded Tunic",
+      "ja": "大码欢庆卫衣"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 4,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52620,
+    "name": {
+      "zh-CN": "紧身欢庆卫衣",
+      "en": "Form-fitting Festival Hooded Tunic",
+      "ja": "紧身欢庆卫衣"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 4,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52621,
+    "name": {
+      "zh-CN": "直筒斜纹裤",
+      "en": "Straight-cut Twill Trousers",
+      "ja": "直筒斜纹裤"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 7,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52622,
+    "name": {
+      "zh-CN": "喇叭斜纹裤",
+      "en": "Bell-bottom Twill Trousers",
+      "ja": "喇叭斜纹裤"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 7,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52623,
+    "name": {
+      "zh-CN": "宽松斜纹裤",
+      "en": "Baggy Twill Trousers",
+      "ja": "宽松斜纹裤"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 7,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52624,
+    "name": {
+      "zh-CN": "破损的直筒斜纹裤",
+      "en": "Worn Twill Trousers",
+      "ja": "破损的直筒斜纹裤"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 7,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52625,
+    "name": {
+      "zh-CN": "破损的喇叭斜纹裤",
+      "en": "Worn Bell-bottom Twill Trousers",
+      "ja": "破损的喇叭斜纹裤"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 7,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52626,
+    "name": {
+      "zh-CN": "破损的宽松斜纹裤",
+      "en": "Worn Baggy Twill Trousers",
+      "ja": "破损的宽松斜纹裤"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 7,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52627,
+    "name": {
+      "zh-CN": "水洗直筒斜纹裤",
+      "en": "Stonewashed Twill Trousers",
+      "ja": "水洗直筒斜纹裤"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 7,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52628,
+    "name": {
+      "zh-CN": "水洗喇叭斜纹裤",
+      "en": "Stonewashed Bell-bottom Twill Trousers",
+      "ja": "水洗喇叭斜纹裤"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 7,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52629,
+    "name": {
+      "zh-CN": "水洗宽松斜纹裤",
+      "en": "Stonewashed Baggy Twill Trousers",
+      "ja": "水洗宽松斜纹裤"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 7,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52630,
+    "name": {
+      "zh-CN": "运动布",
+      "en": "Sweatcloth",
+      "ja": "运动布"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52631,
+    "name": {
+      "zh-CN": "靛蓝斜纹布",
+      "en": "Indigo Twill Cloth",
+      "ja": "靛蓝斜纹布"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52632,
+    "name": {
+      "zh-CN": "耐候合板",
+      "en": "Weatherproof Plywood",
+      "ja": "耐候合板"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52633,
+    "name": {
+      "zh-CN": "虚无触手",
+      "en": "Arm of Unmaking",
+      "ja": "虚无触手"
+    },
+    "isCrystal": false,
+    "ilvl": 785,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
   }
 ]
