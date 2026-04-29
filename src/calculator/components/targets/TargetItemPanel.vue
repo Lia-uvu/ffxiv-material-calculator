@@ -112,7 +112,7 @@
         <li
           v-for="target in targets"
           :key="target.id"
-          class="flex items-center gap-3 rounded-xl border border-[#4A4858] bg-[#302F3B] px-4 py-2"
+          class="flex items-center gap-3 rounded-xl border border-[#4A4858] bg-[#302F3B] px-5 py-2"
         >
           <span class="min-w-0 flex-1 truncate text-sm font-medium text-[#EDE9F7]">{{ target.name }}</span>
 

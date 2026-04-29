@@ -1,22 +1,29 @@
 <template>
-  <div class="overflow-hidden rounded-xl border border-[#38364A] bg-[#252430] shadow-[0_2px_10px_rgba(0,0,0,0.35)]">
-    <!-- Tab corner: always-visible strip -->
+  <div
+    class="flex flex-col transition-[margin] duration-300 ease-out"
+    :class="panelOpen ? '' : '-mb-4'"
+  >
+    <!-- Tab corner: notebook divider tab style, tucks under the panel below -->
     <button
       type="button"
-      class="flex w-full items-center gap-2 px-3 py-2 text-left transition-colors hover:bg-[#2D2C34]"
+      class="ml-4 inline-flex items-center gap-2 self-start rounded-t-2xl border border-b-0 border-[#38364A] bg-[#252430] px-4 pt-2 text-left transition-colors hover:bg-[#2D2C34]"
+      :class="panelOpen ? 'relative z-10 -mb-px pb-2' : 'pb-5'"
       @click="togglePanel"
     >
-      <span class="text-xs font-medium text-[#9B96AD]">{{ t("outfitSets.title") }}</span>
+      <span class="text-sm font-semibold text-[#EDE9F7]">{{ t("outfitSets.title") }}</span>
       <ChevronUp
-        :size="13"
-        class="ml-auto shrink-0 text-[#6B677A] transition-transform duration-200"
+        :size="14"
+        class="shrink-0 text-[#9B96AD] transition-transform duration-200"
         :class="panelOpen ? 'rotate-180' : 'animate-hint-up'"
       />
     </button>
 
-    <!-- Expandable content: "pulled out" reveal -->
+    <!-- Expandable body: "pulled out" reveal -->
     <Transition name="outfit-reveal">
-      <div v-if="panelOpen" class="border-t border-[#38364A]">
+      <div
+        v-if="panelOpen"
+        class="overflow-hidden rounded-tr-2xl rounded-bl-2xl rounded-br-2xl border border-[#38364A] bg-[#252430] shadow-[0_2px_10px_rgba(0,0,0,0.35)]"
+      >
         <!-- Breadcrumb nav -->
         <nav
           v-if="selectedTierLevel !== null"

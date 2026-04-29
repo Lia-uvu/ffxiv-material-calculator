@@ -15,6 +15,7 @@
     />
 
     <TargetItemPanel
+      class="relative z-10"
       :targets="targetEntries"
       :outfit-bundles="outfitBundleEntries"
       @remove="targetsCtrl.remove"
