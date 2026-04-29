@@ -6,13 +6,13 @@
     <!-- Tab corner: notebook divider tab style, tucks under the panel below -->
     <button
       type="button"
-      class="ml-4 inline-flex items-center gap-2 self-start rounded-t-2xl border border-b-0 border-[#38364A] bg-[#252430] px-4 pt-2 text-left transition-colors hover:bg-[#2D2C34]"
-      :class="panelOpen ? 'relative z-10 -mb-px pb-2' : 'pb-5'"
+      class="inline-flex min-h-16 items-center gap-3 self-start rounded-t-[28px] border border-b-0 border-[#38364A] bg-[#252430] px-8 pt-3 text-left transition-colors hover:bg-[#2A2932]"
+      :class="panelOpen ? 'relative z-10 -mb-px pb-4' : 'pb-7'"
       @click="togglePanel"
     >
-      <span class="text-sm font-semibold text-[#EDE9F7]">{{ t("outfitSets.title") }}</span>
+      <span class="text-base font-semibold text-[#EDE9F7]">{{ t("outfitSets.title") }}</span>
       <ChevronUp
-        :size="14"
+        :size="17"
         class="shrink-0 text-[#9B96AD] transition-transform duration-200"
         :class="panelOpen ? 'rotate-180' : 'animate-hint-up'"
       />
@@ -22,7 +22,7 @@
     <Transition name="outfit-reveal">
       <div
         v-if="panelOpen"
-        class="overflow-hidden rounded-tr-2xl rounded-bl-2xl rounded-br-2xl border border-[#38364A] bg-[#252430] shadow-[0_2px_10px_rgba(0,0,0,0.35)]"
+        class="overflow-hidden rounded-tr-[28px] rounded-bl-[28px] rounded-br-[28px] border border-[#38364A] bg-[#252430] shadow-[0_2px_10px_rgba(0,0,0,0.35)]"
       >
         <!-- Breadcrumb nav -->
         <nav
@@ -54,34 +54,34 @@
           </template>
         </nav>
 
-        <div class="p-3">
+        <div class="px-7 py-6">
           <!-- Level 0: tier list -->
-          <div v-if="selectedTierLevel === null" class="space-y-0.5">
+          <div v-if="selectedTierLevel === null" class="space-y-2">
             <button
               v-for="tier in tiers"
               :key="tier.level"
               type="button"
-              class="flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs text-[#9B96AD] transition-colors hover:bg-[#2D2C34] hover:text-[#EDE9F7]"
+              class="flex w-full items-center gap-3 rounded-xl px-4 py-2 text-base text-[#9B96AD] transition-colors hover:bg-[#2A2932] hover:text-[#EDE9F7]"
               @click="selectTier(tier.level)"
             >
               <span class="font-medium">{{ tier.label }}</span>
               <span class="text-[#6B677A]">({{ tier.sets.length }})</span>
-              <ChevronRight :size="10" class="ml-auto shrink-0 text-[#4A4858]" />
+              <ChevronRight :size="14" class="ml-auto shrink-0 text-[#4A4858]" />
             </button>
           </div>
 
           <!-- Level 1: set list for selected tier -->
-          <div v-else-if="selectedSetKey === null" class="space-y-0.5">
+          <div v-else-if="selectedSetKey === null" class="space-y-2">
             <button
               v-for="set in currentTierSets"
               :key="set.key"
               type="button"
-              class="flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs text-[#9B96AD] transition-colors hover:bg-[#2D2C34] hover:text-[#EDE9F7]"
+              class="flex w-full items-center gap-3 rounded-xl px-4 py-2 text-sm text-[#9B96AD] transition-colors hover:bg-[#2A2932] hover:text-[#EDE9F7]"
               @click="selectedSetKey = set.key"
             >
               <span class="min-w-0 flex-1 truncate text-left">{{ t("outfitSets.set." + set.key) }}</span>
               <span class="shrink-0 text-[10px] text-[#6B677A]">ilvl {{ set.ilvl }}</span>
-              <ChevronRight :size="10" class="shrink-0 text-[#4A4858]" />
+              <ChevronRight :size="14" class="shrink-0 text-[#4A4858]" />
             </button>
           </div>
 
