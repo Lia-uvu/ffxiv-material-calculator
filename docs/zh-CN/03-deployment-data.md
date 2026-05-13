@@ -154,7 +154,7 @@ Pipeline 工作目录默认是 `tmp/pipeline/`，中间产物不进入 Git，仅
 ## 当前验证策略
 - `tests/test_pipeline.py` 使用 `tests/fixtures/pipeline/` 的本地 CSV fixture
 - 覆盖：
-  - `ItemSearchCategory == 0` 的 result item 被排除
+  - `ItemSearchCategory == 0` 的 result item 默认被排除，但“第四期重建用”配方会被恢复
   - `needed_item_ids` 同时包含产物与材料
   - 票据、双色宝石、神典石、军票、钓鱼等 `obtainMethods` 规则不回归
   - EN / JA 缺失名称时回退 `zh-CN`

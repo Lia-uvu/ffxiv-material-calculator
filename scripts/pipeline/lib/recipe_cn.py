@@ -19,6 +19,8 @@ CRAFT_TYPE_TO_JOB = {
     7: "CULINARIAN",
 }
 
+RESTORED_UNMARKETABLE_RESULT_NAME_KEYWORDS = ("第四期重建用",)
+
 
 def load_recipe_inputs(
     input_dir: Path | None,
@@ -54,25 +56,39 @@ def parse_recipe_level_table(text: str) -> Dict[int, int]:
     return levels
 
 
-def parse_item_search_categories(text: str) -> Dict[int, int]:
+def parse_item_recipe_filter_metadata(text: str) -> Dict[int, tuple[int, str]]:
     rows = list(csv.reader(text.splitlines()))
     header = rows[1]
     idx_key = header.index("#")
+    idx_name = header.index("Name")
     idx_cat = header.index("ItemSearchCategory")
-    result: Dict[int, int] = {}
+    result: Dict[int, tuple[int, str]] = {}
     for row in rows[4:]:
-        if len(row) <= max(idx_key, idx_cat):
+        if len(row) <= max(idx_key, idx_name, idx_cat):
             continue
         try:
             item_id = int(row[idx_key])
             category = int(row[idx_cat])
         except ValueError:
             continue
-        result[item_id] = category
+        result[item_id] = (category, row[idx_name].strip())
     return result
 
 
-def parse_recipe_csv(text: str, item_search_categories: Dict[int, int]) -> Tuple[List[Dict], List[int]]:
+def should_keep_recipe_result(
+    item_id: int,
+    item_filter_metadata: Dict[int, tuple[int, str]],
+) -> bool:
+    item_search_category, item_name = item_filter_metadata.get(item_id, (0, ""))
+    if item_search_category != 0:
+        return True
+    return any(keyword in item_name for keyword in RESTORED_UNMARKETABLE_RESULT_NAME_KEYWORDS)
+
+
+def parse_recipe_csv(
+    text: str,
+    item_filter_metadata: Dict[int, tuple[int, str]],
+) -> Tuple[List[Dict], List[int]]:
     rows = list(csv.reader(text.splitlines()))
     header = rows[1]
 
@@ -113,7 +129,7 @@ def parse_recipe_csv(text: str, item_search_categories: Dict[int, int]) -> Tuple
         if result_item_id <= 0:
             continue
 
-        if item_search_categories.get(result_item_id, 0) == 0:
+        if not should_keep_recipe_result(result_item_id, item_filter_metadata):
             continue
 
         try:
@@ -187,7 +203,7 @@ def update_item_levels(recipes: Iterable[Dict], level_table: Dict[int, int]) -> 
 def build_recipes(input_dir: Path | None, *, allow_remote: bool) -> tuple[List[Dict], List[int]]:
     recipe_text, level_text, item_text = load_recipe_inputs(input_dir, allow_remote=allow_remote)
     level_table = parse_recipe_level_table(level_text)
-    item_search_categories = parse_item_search_categories(item_text)
-    recipes, needed_item_ids = parse_recipe_csv(recipe_text, item_search_categories)
+    item_filter_metadata = parse_item_recipe_filter_metadata(item_text)
+    recipes, needed_item_ids = parse_recipe_csv(recipe_text, item_filter_metadata)
     update_item_levels(recipes, level_table)
     return recipes, needed_item_ids

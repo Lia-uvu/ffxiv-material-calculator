@@ -263,11 +263,13 @@ type TargetItemList = TargetItem[];
 
 **类型**：数据管线 / CI自动化
 
-**结论**：`convert_recipe_cn.py` 只收录满足以下条件的配方：
+**结论**：`convert_recipe_cn.py` / pipeline 配方构建默认只收录满足以下条件的配方：
 
 ```
 resultItem.ItemSearchCategory != 0
 ```
+
+例外：产物中文名包含“第四期重建用”的伊修加德重建配方会被额外保留，即使 `ItemSearchCategory = 0`。这些配方进入 `recipes.json` 后，其产物和材料会通过 `needed_item_ids` 自动进入 `items.json`。
 
 中间素材无条件收录（凡出现在已收录配方的 `materials[]` 里的物品，`convert_item_cn.py` 均保留）。
 

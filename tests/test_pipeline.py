@@ -32,10 +32,11 @@ class PipelineFixtureTest(unittest.TestCase):
             (fixture_root / "expected" / "outfitSetMeta.json").read_text(encoding="utf-8")
         )
 
-    def test_recipe_filter_excludes_item_search_category_zero(self) -> None:
+    def test_recipe_filter_excludes_item_search_category_zero_except_restored_ishgard_phase_4(self) -> None:
         recipes, needed_ids = build_recipes(self.cn_dir, allow_remote=False)
 
-        self.assertEqual([recipe["resultItemId"] for recipe in recipes], [2210, 4421, 1370, 3240, 9100])
+        self.assertEqual([recipe["resultItemId"] for recipe in recipes], [2210, 4421, 1370, 3240, 9100, 9997])
+        self.assertIn(9997, needed_ids)
         self.assertNotIn(9999, needed_ids)
 
     def test_needed_item_ids_include_results_and_materials(self) -> None:
@@ -44,7 +45,25 @@ class PipelineFixtureTest(unittest.TestCase):
 
         self.assertEqual(
             needed_ids,
-            [1000, 1001, 1370, 1371, 2210, 3240, 3241, 4421, 9001, 9002, 9003, 9004, 9005, 9006, 9100],
+            [
+                1000,
+                1001,
+                1370,
+                1371,
+                2210,
+                3240,
+                3241,
+                4421,
+                9001,
+                9002,
+                9003,
+                9004,
+                9005,
+                9006,
+                9100,
+                9997,
+                9998,
+            ],
         )
 
     def test_obtain_methods_rules_cover_special_sources(self) -> None:
@@ -116,8 +135,8 @@ class PipelineFixtureTest(unittest.TestCase):
                 sorted(path.name for path in publish_dir.iterdir()),
                 ["items.json", "outfitSetMeta.json", "recipes.json"],
             )
-            self.assertEqual(result["publishDiff"]["recipes"]["addedCount"], 5)
-            self.assertEqual(result["publishDiff"]["items"]["addedCount"], 15)
+            self.assertEqual(result["publishDiff"]["recipes"]["addedCount"], 6)
+            self.assertEqual(result["publishDiff"]["items"]["addedCount"], 17)
             self.assertTrue(Path(result["paths"]["outfitMeta"]).exists())
             self.assertTrue(state_path.exists())
 

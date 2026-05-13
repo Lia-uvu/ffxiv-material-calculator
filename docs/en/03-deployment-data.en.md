@@ -156,7 +156,7 @@ Non-blocking warnings:
 ## Validation Coverage
 - `tests/test_pipeline.py` uses the local CSV fixture set in `tests/fixtures/pipeline/`
 - Coverage includes:
-  - result-item filtering via `ItemSearchCategory == 0`
+  - result-item filtering via `ItemSearchCategory == 0`, with a restore exception for Phase 4 Ishgardian Restoration recipes
   - `needed_item_ids` containing both recipe outputs and materials
   - obtain-method regression checks for scrips, gemstones, tomestones, GC seals, fishing, and crystals
   - EN / JA fallback to `zh-CN`

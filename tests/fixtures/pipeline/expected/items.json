@@ -251,5 +251,31 @@
       "CRAFT",
       "SHOP_MARKET"
     ]
+  },
+  {
+    "id": 9997,
+    "name": {
+      "zh-CN": "第四期重建用的测试资材",
+      "en": "Grade 4 Skybuilders' Test Supply",
+      "ja": "第四次復興用の試験資材"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 9998,
+    "name": {
+      "zh-CN": "重建用测试素材",
+      "en": "Skybuilders' Test Material",
+      "ja": "復興用試験素材"
+    },
+    "isCrystal": false,
+    "ilvl": 1,
+    "equipSlotCategory": 0,
+    "obtainMethods": []
   }
 ]

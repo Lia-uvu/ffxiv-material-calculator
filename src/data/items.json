@@ -138088,6 +138088,1294 @@
     ]
   },
   {
+    "id": 31913,
+    "name": {
+      "zh-CN": "第四期重建用的合板",
+      "en": "Grade 4 Skybuilders' Plywood",
+      "ja": "第四次復興用の合板"
+    },
+    "isCrystal": false,
+    "ilvl": 20,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31914,
+    "name": {
+      "zh-CN": "第四期重建用的合金",
+      "en": "Grade 4 Skybuilders' Alloy",
+      "ja": "第四次復興用の合金"
+    },
+    "isCrystal": false,
+    "ilvl": 20,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31915,
+    "name": {
+      "zh-CN": "第四期重建用的金属板",
+      "en": "Grade 4 Skybuilders' Steel Plate",
+      "ja": "第四次復興用の金属板"
+    },
+    "isCrystal": false,
+    "ilvl": 20,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31916,
+    "name": {
+      "zh-CN": "第四期重建用的金属锭",
+      "en": "Grade 4 Skybuilders' Ingot",
+      "ja": "第四次復興用の地金"
+    },
+    "isCrystal": false,
+    "ilvl": 20,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31917,
+    "name": {
+      "zh-CN": "第四期重建用的鞣革",
+      "en": "Grade 4 Skybuilders' Leather",
+      "ja": "第四次復興用のなめし革"
+    },
+    "isCrystal": false,
+    "ilvl": 20,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31918,
+    "name": {
+      "zh-CN": "第四期重建用的草绳",
+      "en": "Grade 4 Skybuilders' Rope",
+      "ja": "第四次復興用の荒縄"
+    },
+    "isCrystal": false,
+    "ilvl": 20,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31919,
+    "name": {
+      "zh-CN": "第四期重建用的墨水",
+      "en": "Grade 4 Skybuilders' Ink",
+      "ja": "第四次復興用のインク"
+    },
+    "isCrystal": false,
+    "ilvl": 20,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31920,
+    "name": {
+      "zh-CN": "第四期重建用的麻乳",
+      "en": "Grade 4 Skybuilders' Hemp Milk",
+      "ja": "第四次復興用のヘンプミルク"
+    },
+    "isCrystal": false,
+    "ilvl": 20,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31921,
+    "name": {
+      "zh-CN": "第四期重建用的木箱",
+      "en": "Grade 4 Skybuilders' Crate",
+      "ja": "第四次復興用の木箱"
+    },
+    "isCrystal": false,
+    "ilvl": 40,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31922,
+    "name": {
+      "zh-CN": "第四期重建用的铁钉",
+      "en": "Grade 4 Skybuilders' Nails",
+      "ja": "第四次復興用の鉄釘"
+    },
+    "isCrystal": false,
+    "ilvl": 40,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31923,
+    "name": {
+      "zh-CN": "第四期重建用的铆钉",
+      "en": "Grade 4 Skybuilders' Rivets",
+      "ja": "第四次復興用のリベット"
+    },
+    "isCrystal": false,
+    "ilvl": 40,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31924,
+    "name": {
+      "zh-CN": "第四期重建用的铁环",
+      "en": "Grade 4 Skybuilders' Rings",
+      "ja": "第四次復興用の鉄環"
+    },
+    "isCrystal": false,
+    "ilvl": 40,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31925,
+    "name": {
+      "zh-CN": "第四期重建用的皮绳",
+      "en": "Grade 4 Skybuilders' Leather Straps",
+      "ja": "第四次復興用の革紐"
+    },
+    "isCrystal": false,
+    "ilvl": 40,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31926,
+    "name": {
+      "zh-CN": "第四期重建用的布料",
+      "en": "Grade 4 Skybuilders' Cloth",
+      "ja": "第四次復興用の生地"
+    },
+    "isCrystal": false,
+    "ilvl": 40,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31927,
+    "name": {
+      "zh-CN": "第四期重建用的植物油",
+      "en": "Grade 4 Skybuilders' Plant Oil",
+      "ja": "第四次復興用の植物油"
+    },
+    "isCrystal": false,
+    "ilvl": 40,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31928,
+    "name": {
+      "zh-CN": "第四期重建用的芝麻饼干",
+      "en": "Grade 4 Skybuilders' Sesame Cookie",
+      "ja": "第四次復興用のセサミクッキー"
+    },
+    "isCrystal": false,
+    "ilvl": 40,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31929,
+    "name": {
+      "zh-CN": "第四期重建用的纺车",
+      "en": "Grade 4 Skybuilders' Spinning Wheel",
+      "ja": "第四次復興用のスピニングホイール"
+    },
+    "isCrystal": false,
+    "ilvl": 150,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31930,
+    "name": {
+      "zh-CN": "第四期重建用的手斧",
+      "en": "Grade 4 Skybuilders' Hatchet",
+      "ja": "第四次復興用のハチェット"
+    },
+    "isCrystal": false,
+    "ilvl": 150,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31931,
+    "name": {
+      "zh-CN": "第四期重建用的吊锅",
+      "en": "Grade 4 Skybuilders' Cookpot",
+      "ja": "第四次復興用のクッキングポット"
+    },
+    "isCrystal": false,
+    "ilvl": 150,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31932,
+    "name": {
+      "zh-CN": "第四期重建用的裁缝工具",
+      "en": "Grade 4 Skybuilders' Embroidery Frame",
+      "ja": "第四次復興用の裁縫道具"
+    },
+    "isCrystal": false,
+    "ilvl": 150,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31933,
+    "name": {
+      "zh-CN": "第四期重建用的皮袋",
+      "en": "Grade 4 Skybuilders' Leather Sack",
+      "ja": "第四次復興用の革袋"
+    },
+    "isCrystal": false,
+    "ilvl": 150,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31934,
+    "name": {
+      "zh-CN": "第四期重建用的扫把",
+      "en": "Grade 4 Skybuilders' Broom",
+      "ja": "第四次復興用のホウキ"
+    },
+    "isCrystal": false,
+    "ilvl": 150,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31935,
+    "name": {
+      "zh-CN": "第四期重建用的圣水",
+      "en": "Grade 4 Skybuilders' Holy Water",
+      "ja": "第四次復興用の聖水"
+    },
+    "isCrystal": false,
+    "ilvl": 150,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31936,
+    "name": {
+      "zh-CN": "第四期重建用的红茶",
+      "en": "Grade 4 Skybuilders' Tea",
+      "ja": "第四次復興用の紅茶"
+    },
+    "isCrystal": false,
+    "ilvl": 150,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31937,
+    "name": {
+      "zh-CN": "第四期重建用的梯子",
+      "en": "Grade 4 Skybuilders' Stepladder",
+      "ja": "第四次復興用の脚立"
+    },
+    "isCrystal": false,
+    "ilvl": 290,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31938,
+    "name": {
+      "zh-CN": "第四期重建用的锯子",
+      "en": "Grade 4 Skybuilders' Crosscut Saw",
+      "ja": "第四次復興用の大鋸"
+    },
+    "isCrystal": false,
+    "ilvl": 290,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31939,
+    "name": {
+      "zh-CN": "第四期重建用的口罩",
+      "en": "Grade 4 Skybuilders' Mesail",
+      "ja": "第四次復興用のメセイル"
+    },
+    "isCrystal": false,
+    "ilvl": 290,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31940,
+    "name": {
+      "zh-CN": "第四期重建用的石材",
+      "en": "Grade 4 Skybuilders' Stone",
+      "ja": "第四次復興用の石材"
+    },
+    "isCrystal": false,
+    "ilvl": 290,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31941,
+    "name": {
+      "zh-CN": "第四期重建用的长靴",
+      "en": "Grade 4 Skybuilders' Longboots",
+      "ja": "第四次復興用の長靴"
+    },
+    "isCrystal": false,
+    "ilvl": 290,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31942,
+    "name": {
+      "zh-CN": "第四期重建用的手套",
+      "en": "Grade 4 Skybuilders' Gloves",
+      "ja": "第四次復興用の手袋"
+    },
+    "isCrystal": false,
+    "ilvl": 290,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31943,
+    "name": {
+      "zh-CN": "第四期重建用的肥皂",
+      "en": "Grade 4 Skybuilders' Soap",
+      "ja": "第四次復興用の石鹸"
+    },
+    "isCrystal": false,
+    "ilvl": 290,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31944,
+    "name": {
+      "zh-CN": "第四期重建用的药汤",
+      "en": "Grade 4 Skybuilders' All-purpose Infusion",
+      "ja": "第四次復興用の薬湯"
+    },
+    "isCrystal": false,
+    "ilvl": 290,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31945,
+    "name": {
+      "zh-CN": "第四期重建用的睡床",
+      "en": "Grade 4 Skybuilders' Bed",
+      "ja": "第四次復興用の寝台"
+    },
+    "isCrystal": false,
+    "ilvl": 430,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31946,
+    "name": {
+      "zh-CN": "第四期重建用的火炉",
+      "en": "Grade 4 Skybuilders' Oven",
+      "ja": "第四次復興用の焜炉"
+    },
+    "isCrystal": false,
+    "ilvl": 430,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31947,
+    "name": {
+      "zh-CN": "第四期重建用的街灯",
+      "en": "Grade 4 Skybuilders' Lamppost",
+      "ja": "第四次復興用の街灯"
+    },
+    "isCrystal": false,
+    "ilvl": 430,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31948,
+    "name": {
+      "zh-CN": "第四期重建用的篝火台",
+      "en": "Grade 4 Skybuilders' Brazier",
+      "ja": "第四次復興用の篝火台"
+    },
+    "isCrystal": false,
+    "ilvl": 430,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31949,
+    "name": {
+      "zh-CN": "第四期重建用的工作服",
+      "en": "Grade 4 Skybuilders' Overalls",
+      "ja": "第四次復興用の作業着"
+    },
+    "isCrystal": false,
+    "ilvl": 430,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31950,
+    "name": {
+      "zh-CN": "第四期重建用的遮蓬",
+      "en": "Grade 4 Skybuilders' Awning",
+      "ja": "第四次復興用のオーニング"
+    },
+    "isCrystal": false,
+    "ilvl": 430,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31951,
+    "name": {
+      "zh-CN": "第四期重建用的植物成长剂",
+      "en": "Grade 4 Skybuilders' Growth Formula",
+      "ja": "第四次復興用のグロースフォーミュラ"
+    },
+    "isCrystal": false,
+    "ilvl": 430,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31952,
+    "name": {
+      "zh-CN": "第四期重建用的炖菜",
+      "en": "Grade 4 Skybuilders' Stew",
+      "ja": "第四次復興用のシチュー"
+    },
+    "isCrystal": false,
+    "ilvl": 430,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31953,
+    "name": {
+      "zh-CN": "第四期重建用的特供冰盒",
+      "en": "Grade 4 Artisanal Skybuilders' Icebox",
+      "ja": "第四次復興用の特注アイスボックス"
+    },
+    "isCrystal": false,
+    "ilvl": 511,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31954,
+    "name": {
+      "zh-CN": "第四期重建用的特供风向陆行鸟",
+      "en": "Grade 4 Artisanal Skybuilders' Chocobo Weathervane",
+      "ja": "第四次復興用の特注ウェザーチョコボ"
+    },
+    "isCrystal": false,
+    "ilvl": 511,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31955,
+    "name": {
+      "zh-CN": "第四期重建用的特供部队储物柜",
+      "en": "Grade 4 Artisanal Skybuilders' Company Chest",
+      "ja": "第四次復興用の特注カンパニーチェスト"
+    },
+    "isCrystal": false,
+    "ilvl": 511,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31956,
+    "name": {
+      "zh-CN": "第四期重建用的特供天文仪",
+      "en": "Grade 4 Artisanal Skybuilders' Astroscope",
+      "ja": "第四次復興用の特注アストロスコープ"
+    },
+    "isCrystal": false,
+    "ilvl": 511,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31957,
+    "name": {
+      "zh-CN": "第四期重建用的特供工具腰带",
+      "en": "Grade 4 Artisanal Skybuilders' Tool Belt",
+      "ja": "第四次復興用の特注ツールベルト"
+    },
+    "isCrystal": false,
+    "ilvl": 511,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31958,
+    "name": {
+      "zh-CN": "第四期重建用的特供坎肩",
+      "en": "Grade 4 Artisanal Skybuilders' Vest",
+      "ja": "第四次復興用の特注ベスト"
+    },
+    "isCrystal": false,
+    "ilvl": 511,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31959,
+    "name": {
+      "zh-CN": "第四期重建用的特供幻药",
+      "en": "Grade 4 Artisanal Skybuilders' Tincture",
+      "ja": "第四次復興用の特注幻薬"
+    },
+    "isCrystal": false,
+    "ilvl": 511,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31960,
+    "name": {
+      "zh-CN": "第四期重建用的特供冰糕",
+      "en": "Grade 4 Artisanal Skybuilders' Sorbet",
+      "ja": "第四次復興用の特注ソルベ"
+    },
+    "isCrystal": false,
+    "ilvl": 511,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT"
+    ]
+  },
+  {
+    "id": 31961,
+    "name": {
+      "zh-CN": "第四期重建用的小树枝（检）",
+      "en": "Approved Grade 4 Skybuilders' Switch",
+      "ja": "第四次復興用の小枝【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 20,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31962,
+    "name": {
+      "zh-CN": "第四期重建用的麻草（检）",
+      "en": "Approved Grade 4 Skybuilders' Hemp",
+      "ja": "第四次復興用の麻【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 20,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31963,
+    "name": {
+      "zh-CN": "第四期重建用的铁矿（检）",
+      "en": "Approved Grade 4 Skybuilders' Iron Ore",
+      "ja": "第四次復興用の鉄鉱【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 20,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31964,
+    "name": {
+      "zh-CN": "第四期重建用的沙铁（检）",
+      "en": "Approved Grade 4 Skybuilders' Iron Sand",
+      "ja": "第四次復興用の砂鉄【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 20,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31965,
+    "name": {
+      "zh-CN": "第四期重建用的中级红木原木（检）",
+      "en": "Approved Grade 4 Skybuilders' Mahogany Log",
+      "ja": "第四次復興用の中級マホガニー原木【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 40,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31966,
+    "name": {
+      "zh-CN": "第四期重建用的中级芝麻（检）",
+      "en": "Approved Grade 4 Skybuilders' Sesame",
+      "ja": "第四次復興用の中級セサミ【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 40,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31967,
+    "name": {
+      "zh-CN": "第四期重建用的中级棉花（检）",
+      "en": "Approved Grade 4 Skybuilders' Cotton Boll",
+      "ja": "第四次復興用の中級綿花【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 40,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31968,
+    "name": {
+      "zh-CN": "第四期重建用的中级赤铜矿（检）",
+      "en": "Approved Grade 4 Skybuilders' Ore",
+      "ja": "第四次復興用の中級赤銅鉱【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 40,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31969,
+    "name": {
+      "zh-CN": "第四期重建用的中级岩盐（检）",
+      "en": "Approved Grade 4 Skybuilders' Rock Salt",
+      "ja": "第四次復興用の中級岩塩【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 40,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31970,
+    "name": {
+      "zh-CN": "第四期重建用的中级灵银沙（检）",
+      "en": "Approved Grade 4 Skybuilders' Mythrite Sand",
+      "ja": "第四次復興用の中級精霊銀砂【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 40,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31971,
+    "name": {
+      "zh-CN": "第四期重建用的上级云杉原木（检）",
+      "en": "Approved Grade 4 Skybuilders' Spruce Log",
+      "ja": "第四次復興用の上級スプルース原木【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 150,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31972,
+    "name": {
+      "zh-CN": "第四期重建用的上级槲寄生（检）",
+      "en": "Approved Grade 4 Skybuilders' Mistletoe",
+      "ja": "第四次復興用の上級ミスルトゥ【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 150,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31973,
+    "name": {
+      "zh-CN": "第四期重建用的上级蟾蜍（检）",
+      "en": "Approved Grade 4 Skybuilders' Toad",
+      "ja": "第四次復興用の上級トード【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 150,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31974,
+    "name": {
+      "zh-CN": "第四期重建用的上级藤条（检）",
+      "en": "Approved Grade 4 Skybuilders' Vine",
+      "ja": "第四次復興用の上級つる【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 150,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31975,
+    "name": {
+      "zh-CN": "第四期重建用的上级茶叶（检）",
+      "en": "Approved Grade 4 Skybuilders' Tea Leaves",
+      "ja": "第四次復興用の上級茶葉【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 150,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31976,
+    "name": {
+      "zh-CN": "第四期重建用的上级绿金矿（检）",
+      "en": "Approved Grade 4 Skybuilders' Electrum Ore",
+      "ja": "第四次復興用の上級青金鉱【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 150,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31977,
+    "name": {
+      "zh-CN": "第四期重建用的上级明矾（检）",
+      "en": "Approved Grade 4 Skybuilders' Alumen",
+      "ja": "第四次復興用の上級アルメン【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 150,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31978,
+    "name": {
+      "zh-CN": "第四期重建用的上级天然水（检）",
+      "en": "Approved Grade 4 Skybuilders' Spring Water",
+      "ja": "第四次復興用の上級天然水【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 150,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31979,
+    "name": {
+      "zh-CN": "第四期重建用的上级金沙（检）",
+      "en": "Approved Grade 4 Skybuilders' Gold Sand",
+      "ja": "第四次復興用の上級金砂【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 150,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31980,
+    "name": {
+      "zh-CN": "第四期重建用的上级砂岩（检）",
+      "en": "Approved Grade 4 Skybuilders' Ragstone",
+      "ja": "第四次復興用の上級砂岩【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 150,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31981,
+    "name": {
+      "zh-CN": "第四期重建用的最高级白雪松原木（检）",
+      "en": "Approved Grade 4 Skybuilders' White Cedar Log",
+      "ja": "第四次復興用の最高級ホワイトシーダー原木【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 430,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31982,
+    "name": {
+      "zh-CN": "第四期重建用的最高级古代树脂（检）",
+      "en": "Approved Grade 4 Skybuilders' Primordial Resin",
+      "ja": "第四次復興用の最高級古代樹脂【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 430,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31983,
+    "name": {
+      "zh-CN": "第四期重建用的最高级小麦（检）",
+      "en": "Approved Grade 4 Skybuilders' Wheat",
+      "ja": "第四次復興用の最高級小麦【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 430,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31984,
+    "name": {
+      "zh-CN": "第四期重建用的最高级棉花（检）",
+      "en": "Approved Grade 4 Skybuilders' Gossamer Cotton Boll",
+      "ja": "第四次復興用の最高級綿花【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 430,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31985,
+    "name": {
+      "zh-CN": "第四期重建用的最高级陆龟（检）",
+      "en": "Approved Grade 4 Skybuilders' Tortoise",
+      "ja": "第四次復興用の最高級陸亀【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 430,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31986,
+    "name": {
+      "zh-CN": "第四期重建用的最高级金矿（检）",
+      "en": "Approved Grade 4 Skybuilders' Gold Ore",
+      "ja": "第四次復興用の最高級金鉱【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 430,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31987,
+    "name": {
+      "zh-CN": "第四期重建用的最高级岩盐（检）",
+      "en": "Approved Grade 4 Skybuilders' Finest Rock Salt",
+      "ja": "第四次復興用の最高級岩塩【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 430,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31988,
+    "name": {
+      "zh-CN": "第四期重建用的最高级天然水（检）",
+      "en": "Approved Grade 4 Skybuilders' Truespring Water",
+      "ja": "第四次復興用の最高級天然水【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 430,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31989,
+    "name": {
+      "zh-CN": "第四期重建用的最高级矿砂（检）",
+      "en": "Approved Grade 4 Skybuilders' Mineral Sand",
+      "ja": "第四次復興用の最高級鉱砂【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 430,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31990,
+    "name": {
+      "zh-CN": "第四期重建用的最高级灵青岩（检）",
+      "en": "Approved Grade 4 Skybuilders' Bluespirit Ore",
+      "ja": "第四次復興用の最高級霊青岩【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 430,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31991,
+    "name": {
+      "zh-CN": "第四期重建用的特供原木（检）",
+      "en": "Approved Grade 4 Artisanal Skybuilders' Log",
+      "ja": "第四次復興用の特注原木【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 511,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31992,
+    "name": {
+      "zh-CN": "第四期重建用的特供蔓越莓（检）",
+      "en": "Approved Grade 4 Artisanal Skybuilders' Raspberry",
+      "ja": "第四次復興用の特注ラズベリー【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 511,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31993,
+    "name": {
+      "zh-CN": "第四期重建用的特供凯门鳄（检）",
+      "en": "Approved Grade 4 Artisanal Skybuilders' Caiman",
+      "ja": "第四次復興用の特注カイマン【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 511,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31994,
+    "name": {
+      "zh-CN": "第四期重建用的特供蚕茧（检）",
+      "en": "Approved Grade 4 Artisanal Skybuilders' Cocoon",
+      "ja": "第四次復興用の特注マユ【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 511,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31995,
+    "name": {
+      "zh-CN": "第四期重建用的特供木贼草（检）",
+      "en": "Approved Grade 4 Artisanal Skybuilders' Barbgrass",
+      "ja": "第四次復興用の特注研草【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 511,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31996,
+    "name": {
+      "zh-CN": "第四期重建用的特供矿石（检）",
+      "en": "Approved Grade 4 Artisanal Skybuilders' Cloudstone",
+      "ja": "第四次復興用の特注鉱石【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 511,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31997,
+    "name": {
+      "zh-CN": "第四期重建用的特供天然水（检）",
+      "en": "Approved Grade 4 Artisanal Skybuilders' Spring Water",
+      "ja": "第四次復興用の特注天然水【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 511,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31998,
+    "name": {
+      "zh-CN": "第四期重建用的特供冰笋（检）",
+      "en": "Approved Grade 4 Artisanal Skybuilders' Ice Stalagmite",
+      "ja": "第四次復興用の特注氷筍【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 511,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 31999,
+    "name": {
+      "zh-CN": "第四期重建用的特供硅沙（检）",
+      "en": "Approved Grade 4 Artisanal Skybuilders' Silex",
+      "ja": "第四次復興用の特注珪砂【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 511,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 32000,
+    "name": {
+      "zh-CN": "第四期重建用的特供彩虹晶（检）",
+      "en": "Approved Grade 4 Artisanal Skybuilders' Prismstone",
+      "ja": "第四次復興用の特注虹結晶【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 511,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 32001,
+    "name": {
+      "zh-CN": "第四期重建用的幻风树枝（检）",
+      "en": "Approved Grade 4 Skybuilders' Umbral Galewood Branch",
+      "ja": "第四次復興用の幻風枝【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 511,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 32002,
+    "name": {
+      "zh-CN": "第四期重建用的幻土草（检）",
+      "en": "Approved Grade 4 Skybuilders' Umbral Dirtleaf",
+      "ja": "第四次復興用の幻土草【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 511,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 32003,
+    "name": {
+      "zh-CN": "第四期重建用的幻火石（检）",
+      "en": "Approved Grade 4 Skybuilders' Umbral Flarerock",
+      "ja": "第四次復興用の幻火石【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 511,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 32004,
+    "name": {
+      "zh-CN": "第四期重建用的幻雷矿砂（检）",
+      "en": "Approved Grade 4 Skybuilders' Umbral Levinsand",
+      "ja": "第四次復興用の幻雷鉱砂【検】"
+    },
+    "isCrystal": false,
+    "ilvl": 511,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
     "id": 32202,
     "name": {
       "zh-CN": "鳗鱼食盒",

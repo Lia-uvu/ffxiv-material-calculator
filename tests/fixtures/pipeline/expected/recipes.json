@@ -125,5 +125,24 @@
         "amount": 2
       }
     ]
+  },
+  {
+    "id": 4001,
+    "resultItemId": 9997,
+    "resultAmount": 1,
+    "job": "ALCHEMIST",
+    "itemLevel": 12,
+    "patch": "5.10",
+    "secretRecipeBook": 0,
+    "materials": [
+      {
+        "itemId": 9998,
+        "amount": 2
+      },
+      {
+        "itemId": 1000,
+        "amount": 1
+      }
+    ]
   }
 ]
