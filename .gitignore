@@ -1,0 +1,41 @@
+# dependencies
+node_modules/
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+
+# build
+dist/
+build/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+scripts/logs/*
+!scripts/logs/.gitkeep
+tmp/pipeline/
+
+# script outputs
+scripts/xivapi/data/*
+!scripts/xivapi/data/.gitkeep
+scripts/xivapi/cache/*.ndjson
+!scripts/xivapi/cache/.gitkeep
+
+# python
+__pycache__/
+
+# editor
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# env
+.env
+.env.*
+
+draft.md
+roadmap.md
+architecture.zhCNdraft.md
