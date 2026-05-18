@@ -11,6 +11,11 @@
       @click="togglePanel"
     >
       <span class="text-sm font-semibold text-[#EDE9F7]">{{ t("outfitSets.title") }}</span>
+      <span
+        class="rounded-full border border-[#B4A5C8]/30 bg-[#2D2C34] px-1.5 py-0.5 text-[10px] font-semibold uppercase leading-none text-[#B4A5C8]"
+      >
+        Beta
+      </span>
       <ChevronUp
         :size="14"
         class="shrink-0 text-[#9B96AD] transition-transform duration-200"
@@ -243,16 +248,17 @@ function addJobItems(jobKey) {
 /* Smooth pull-out reveal */
 .outfit-reveal-enter-active {
   overflow: hidden;
-  transition: max-height 0.28s ease, opacity 0.2s ease;
+  transition: max-height 0.28s ease, opacity 0.2s ease, margin-top 0.28s ease;
   max-height: 480px;
 }
 .outfit-reveal-leave-active {
   overflow: hidden;
-  transition: max-height 0.22s ease, opacity 0.18s ease;
+  transition: max-height 0.22s ease, opacity 0.18s ease, margin-top 0.22s ease;
   max-height: 480px;
 }
 .outfit-reveal-enter-from,
 .outfit-reveal-leave-to {
+  margin-top: 0;
   max-height: 0;
   opacity: 0;
 }
