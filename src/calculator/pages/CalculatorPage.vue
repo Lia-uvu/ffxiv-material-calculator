@@ -1,5 +1,5 @@
 <template>
-  <LoadingState v-if="!dataReady" />
+  <LoadingState v-if="!catalogReady" />
   <div v-else class="space-y-4">
     <SearchPanel
       :query="settings.searchQuery"
@@ -26,7 +26,9 @@
       @toggle-bundle-expand="outfitTargetsCtrl.toggleExpanded"
     />
 
+    <LoadingState v-if="materialsLoading" />
     <MaterialsPanel
+      v-else
       :ui="ui"
       :checked-ids="materialsCtrl.checkedIds"
       :expand-order="materialsCtrl.expandOrder"
@@ -41,10 +43,19 @@
 </template>
 
 <script setup>
-import { toRef, computed } from "vue";
+import { toRef, computed, watch } from "vue";
 import { useI18n } from "vue-i18n";
 
-import { items, recipes, outfitSets, resolveItemName, dataReady, loadData } from "../../data";
+import {
+  items,
+  recipes,
+  outfitSets,
+  resolveItemName,
+  catalogReady,
+  recipesReady,
+  loadCatalogData,
+  loadRecipeData,
+} from "../../data";
 
 import LoadingState from "../components/common/LoadingState.vue";
 import OutfitSetPanel from "../components/search/OutfitSetPanel.vue";
@@ -67,7 +78,7 @@ const {
 
 const { locale, t, te } = useI18n();
 
-loadData();
+loadCatalogData();
 
 const queryRef = toRef(settings, "searchQuery");
 const { results } = useItemSearch(items, queryRef, 20);
@@ -175,6 +186,17 @@ const combinedTargets = computed(() => {
 
   return [...totals.entries()].map(([id, amount]) => ({ id, amount }));
 });
+
+const hasMaterialTargets = computed(() => combinedTargets.value.length > 0);
+const materialsLoading = computed(() => hasMaterialTargets.value && !recipesReady.value);
+
+watch(
+  hasMaterialTargets,
+  (hasTargets) => {
+    if (hasTargets) loadRecipeData();
+  },
+  { immediate: true }
+);
 
 function selectResultById({ id, keepOpen }) {
   targetsCtrl.add(id);

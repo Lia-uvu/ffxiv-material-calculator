@@ -25,7 +25,7 @@ No JavaScript test framework is configured; there are no JS/Vue unit tests.
 
 Vue 3 app using Composition API, Tailwind CSS v4, and vue-i18n. Entry: `main.js` → `App.vue` → `CalculatorPage.vue`.
 
-- **`src/data/`** — Static JSON data. `items.json`, `recipes.json`, and `outfitSets.json` are loaded lazily via dynamic imports. `outfitSetMeta.json` is generated runtime data used by the pipeline/outfit-set derivation. `index.js` exports reactive refs (`items`, `recipes`, `outfitSets`, `dataReady`) and `resolveItemName()` for locale-aware name lookup.
+- **`src/data/`** — Static JSON data. `items.json`, `recipes.json`, and `outfitSets.json` are loaded lazily via dynamic imports; `items` + `outfitSets` form the first-screen catalog load, while `recipes` can be deferred until material calculation is needed. `outfitSetMeta.json` is generated runtime data used by the pipeline/outfit-set derivation. `index.js` exports reactive refs (`items`, `recipes`, `outfitSets`, `catalogReady`, `recipesReady`, `dataReady`) plus loader functions and `resolveItemName()` for locale-aware name lookup.
 - **`src/calculator/core/`** — Pure computation logic, no Vue dependencies:
   - `calcMaterials.js` — Core algorithm: recursive recipe tree expansion with cycle detection, override support, and expand/collapse control via `expandedIds`.
   - `recipeUtils.js` — Recipe lookup helpers (`buildRecipesByResultId`, `pickRecipe`).
