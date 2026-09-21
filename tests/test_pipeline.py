@@ -12,7 +12,7 @@ if str(PIPELINE_DIR) not in sys.path:
     sys.path.insert(0, str(PIPELINE_DIR))
 
 from lib.items_cn import build_items_base_cn
-from lib.items_i18n import build_i18n_name_rows, merge_items_with_i18n
+from lib.items_i18n import build_i18n_name_rows, extract_item_names, merge_items_with_i18n
 from lib.pipeline_state import extract_needed_item_ids, validate_outputs
 from lib.recipe_cn import build_recipes
 from run_pipeline import run_pipeline
@@ -90,6 +90,11 @@ class PipelineFixtureTest(unittest.TestCase):
 
         self.assertEqual(items_by_id[9004]["name"]["en"], items_by_id[9004]["name"]["zh-CN"])
         self.assertEqual(items_by_id[9006]["name"]["ja"], items_by_id[9006]["name"]["zh-CN"])
+
+    def test_extract_item_names_supports_headerless_upstream_csv(self) -> None:
+        item_text = "0,,unused\n1,ギル,unused\n2,ファイアシャード,unused\n"
+
+        self.assertEqual(extract_item_names(item_text, [1, 2, 3]), {1: "ギル", 2: "ファイアシャード"})
 
     def test_validation_blocks_missing_items_but_only_warns_on_missing_i18n(self) -> None:
         recipes, _ = build_recipes(self.cn_dir, allow_remote=False)
