@@ -17,11 +17,19 @@ def locate_header_row(rows: list[list[str]], required_columns: tuple[str, ...]) 
 def extract_item_names(item_text: str, needed_ids: list[int]) -> dict[int, str]:
     needed_set = set(needed_ids)
     rows = list(csv.reader(item_text.splitlines()))
-    header_idx, header = locate_header_row(rows, ("#", "Name"))
-    idx_key = header.index("#")
-    idx_name = header.index("Name")
+    try:
+        header_idx, header = locate_header_row(rows, ("#", "Name"))
+        idx_key = header.index("#")
+        idx_name = header.index("Name")
+        data_rows = rows[header_idx + 1 :]
+    except ValueError:
+        # The Japanese upstream stopped publishing header rows in July 2026,
+        # but still exports the item id and name as the first two columns.
+        idx_key = 0
+        idx_name = 1
+        data_rows = rows
     result: dict[int, str] = {}
-    for row in rows[header_idx + 1 :]:
+    for row in data_rows:
         if len(row) <= max(idx_key, idx_name):
             continue
         try:
