@@ -9743,6 +9743,7 @@
     "equipSlotCategory": 3,
     "obtainMethods": [
       "CRAFT",
+      "EXCHANGE_TOME",
       "SHOP_MARKET"
     ]
   },
@@ -12432,6 +12433,7 @@
     "equipSlotCategory": 4,
     "obtainMethods": [
       "CRAFT",
+      "EXCHANGE_TOME",
       "SHOP_MARKET"
     ]
   },
@@ -34231,7 +34233,7 @@
   {
     "id": 5519,
     "name": {
-      "zh-CN": "朱砂",
+      "zh-CN": "辰砂",
       "en": "Cinnabar",
       "ja": "辰砂"
     },
@@ -35340,118 +35342,6 @@
         "priceLow": 1
       }
     }
-  },
-  {
-    "id": 5814,
-    "name": {
-      "zh-CN": "蓝色色素",
-      "en": "Blue Pigment",
-      "ja": "ブルーピグメント"
-    },
-    "isCrystal": false,
-    "ilvl": 28,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "GATHER_MINER",
-      "GATHER_BOTANIST",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 5815,
-    "name": {
-      "zh-CN": "红色色素",
-      "en": "Red Pigment",
-      "ja": "レッドピグメント"
-    },
-    "isCrystal": false,
-    "ilvl": 28,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "GATHER_MINER",
-      "GATHER_BOTANIST",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 5816,
-    "name": {
-      "zh-CN": "黄色色素",
-      "en": "Yellow Pigment",
-      "ja": "イエローピグメント"
-    },
-    "isCrystal": false,
-    "ilvl": 28,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "GATHER_MINER",
-      "GATHER_BOTANIST",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 5817,
-    "name": {
-      "zh-CN": "灰色色素",
-      "en": "Grey Pigment",
-      "ja": "グレイピグメント"
-    },
-    "isCrystal": false,
-    "ilvl": 28,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "GATHER_MINER",
-      "GATHER_BOTANIST",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 5818,
-    "name": {
-      "zh-CN": "棕色色素",
-      "en": "Brown Pigment",
-      "ja": "ブラウンピグメント"
-    },
-    "isCrystal": false,
-    "ilvl": 28,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "GATHER_MINER",
-      "GATHER_BOTANIST",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 5819,
-    "name": {
-      "zh-CN": "绿色色素",
-      "en": "Green Pigment",
-      "ja": "グリーンピグメント"
-    },
-    "isCrystal": false,
-    "ilvl": 28,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "GATHER_MINER",
-      "GATHER_BOTANIST",
-      "SHOP_MARKET"
-    ]
-  },
-  {
-    "id": 5820,
-    "name": {
-      "zh-CN": "紫色色素",
-      "en": "Purple Pigment",
-      "ja": "パープルピグメント"
-    },
-    "isCrystal": false,
-    "ilvl": 28,
-    "equipSlotCategory": 0,
-    "obtainMethods": [
-      "GATHER_MINER",
-      "GATHER_BOTANIST",
-      "SHOP_MARKET"
-    ]
   },
   {
     "id": 5998,
@@ -40738,7 +40628,7 @@
   {
     "id": 6653,
     "name": {
-      "zh-CN": "毛绒绒莫古力",
+      "zh-CN": "毛茸茸莫古力",
       "en": "Stuffed Moogle",
       "ja": "モーグリのぬいぐるみ"
     },
@@ -40753,7 +40643,7 @@
   {
     "id": 6654,
     "name": {
-      "zh-CN": "毛绒绒陆行鸟",
+      "zh-CN": "毛茸茸陆行鸟",
       "en": "Stuffed Chocobo",
       "ja": "チョコボのぬいぐるみ"
     },
@@ -42259,7 +42149,7 @@
   {
     "id": 7085,
     "name": {
-      "zh-CN": "毛绒绒冥鬼之眼",
+      "zh-CN": "毛茸茸冥鬼之眼",
       "en": "Stuffed Ahriman",
       "ja": "アーリマンのぬいぐるみ"
     },
@@ -44873,7 +44763,7 @@
   {
     "id": 7966,
     "name": {
-      "zh-CN": "毛绒绒哥布林",
+      "zh-CN": "毛茸茸哥布林",
       "en": "Stuffed Goblin",
       "ja": "ゴブリンのぬいぐるみ"
     },
@@ -74269,7 +74159,7 @@
   {
     "id": 14047,
     "name": {
-      "zh-CN": "毛绒绒洋葱王子",
+      "zh-CN": "毛茸茸洋葱王子",
       "en": "Stuffed Onion Prince",
       "ja": "オニオンプリンスのぬいぐるみ"
     },
@@ -77292,7 +77182,7 @@
   {
     "id": 14900,
     "name": {
-      "zh-CN": "毛绒绒茄子骑士",
+      "zh-CN": "毛茸茸茄子骑士",
       "en": "Stuffed Eggplant Knight",
       "ja": "エッグナイトのぬいぐるみ"
     },
@@ -77307,7 +77197,7 @@
   {
     "id": 14901,
     "name": {
-      "zh-CN": "毛绒绒蒜头明星",
+      "zh-CN": "毛茸茸蒜头明星",
       "en": "Stuffed Garlic Jester",
       "ja": "ガーリックスターのぬいぐるみ"
     },
@@ -77322,7 +77212,7 @@
   {
     "id": 14902,
     "name": {
-      "zh-CN": "毛绒绒番茄国王",
+      "zh-CN": "毛茸茸番茄国王",
       "en": "Stuffed Tomato King",
       "ja": "キングトマトのぬいぐるみ"
     },
@@ -77337,7 +77227,7 @@
   {
     "id": 14903,
     "name": {
-      "zh-CN": "毛绒绒蔓德拉王后",
+      "zh-CN": "毛茸茸蔓德拉王后",
       "en": "Stuffed Mandragora Queen",
       "ja": "マンドラクイーンのぬいぐるみ"
     },
@@ -77890,7 +77780,7 @@
   {
     "id": 15145,
     "name": {
-      "zh-CN": "毛绒绒小熊",
+      "zh-CN": "毛茸茸小熊",
       "en": "Stuffed Bear",
       "ja": "ベアーのぬいぐるみ"
     },
@@ -88868,7 +88758,7 @@
     "id": 18381,
     "name": {
       "zh-CN": "猛虎革精准护手",
-      "en": "Tigerskin Gloves of Aiming",
+      "en": "Tigerskin Wristgloves of Aiming",
       "ja": "タイガー・レンジャーリストグローブ"
     },
     "isCrystal": false,
@@ -88973,7 +88863,7 @@
     "id": 18387,
     "name": {
       "zh-CN": "猛虎革游击护手",
-      "en": "Tigerskin Gloves of Scouting",
+      "en": "Tigerskin Wristgloves of Scouting",
       "ja": "タイガー・スカウトリストグローブ"
     },
     "isCrystal": false,
@@ -107582,6 +107472,7 @@
     "equipSlotCategory": 0,
     "obtainMethods": [
       "CRAFT",
+      "EXCHANGE_TOME",
       "SHOP_MARKET"
     ]
   },
@@ -138356,7 +138247,7 @@
   {
     "id": 31932,
     "name": {
-      "zh-CN": "第四期重建用的裁缝工具",
+      "zh-CN": "第四期重建用的裁衣工具",
       "en": "Grade 4 Skybuilders' Embroidery Frame",
       "ja": "第四次復興用の裁縫道具"
     },
@@ -139294,7 +139185,7 @@
   {
     "id": 31999,
     "name": {
-      "zh-CN": "第四期重建用的特供硅沙（检）",
+      "zh-CN": "第四期重建用的特供硅砂（检）",
       "en": "Approved Grade 4 Artisanal Skybuilders' Silex",
       "ja": "第四次復興用の特注珪砂【検】"
     },
@@ -140012,6 +139903,7 @@
     "equipSlotCategory": 0,
     "obtainMethods": [
       "CRAFT",
+      "EXCHANGE_TOME",
       "SHOP_MARKET"
     ]
   },
@@ -163123,6 +163015,7 @@
     "equipSlotCategory": 0,
     "obtainMethods": [
       "CRAFT",
+      "EXCHANGE_TOME",
       "SHOP_MARKET"
     ]
   },
@@ -163153,6 +163046,7 @@
     "equipSlotCategory": 0,
     "obtainMethods": [
       "CRAFT",
+      "EXCHANGE_TOME",
       "SHOP_MARKET"
     ]
   },
@@ -163168,6 +163062,7 @@
     "equipSlotCategory": 0,
     "obtainMethods": [
       "CRAFT",
+      "EXCHANGE_TOME",
       "SHOP_MARKET"
     ]
   },
@@ -163198,6 +163093,7 @@
     "equipSlotCategory": 0,
     "obtainMethods": [
       "CRAFT",
+      "EXCHANGE_TOME",
       "SHOP_MARKET"
     ]
   },
@@ -163258,6 +163154,7 @@
     "equipSlotCategory": 0,
     "obtainMethods": [
       "CRAFT",
+      "EXCHANGE_TOME",
       "SHOP_MARKET"
     ]
   },
@@ -163303,6 +163200,7 @@
     "equipSlotCategory": 0,
     "obtainMethods": [
       "CRAFT",
+      "EXCHANGE_TOME",
       "SHOP_MARKET"
     ]
   },
@@ -171444,7 +171342,7 @@
     "id": 41991,
     "name": {
       "zh-CN": "钌金旋棍",
-      "en": "Ruthenium Tonfas",
+      "en": "Ruthenium Tonfa",
       "ja": "ルテニウム・トンファー"
     },
     "isCrystal": false,
@@ -176295,7 +176193,7 @@
     "id": 42453,
     "name": {
       "zh-CN": "卡扎纳尔旋棍",
-      "en": "Ra'Kaznar Tonfas",
+      "en": "Ra'Kaznar Tonfa",
       "ja": "カザナル・トンファー"
     },
     "isCrystal": false,
@@ -193761,11 +193659,56 @@
     }
   },
   {
+    "id": 50971,
+    "name": {
+      "zh-CN": "强化菜刀用的握柄材料",
+      "en": "Ascendant Twine",
+      "ja": "包丁強化用グリップ材"
+    },
+    "isCrystal": false,
+    "ilvl": 770,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 50972,
+    "name": {
+      "zh-CN": "强化菜刀用的合金",
+      "en": "Ancestral Alloy Ingot",
+      "ja": "包丁強化用合金"
+    },
+    "isCrystal": false,
+    "ilvl": 770,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 50973,
+    "name": {
+      "zh-CN": "研磨菜刀用的磨刀油",
+      "en": "Majestic Polish",
+      "ja": "包丁研磨用オイル"
+    },
+    "isCrystal": false,
+    "ilvl": 770,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
     "id": 51190,
     "name": {
       "zh-CN": "红色矢车菊",
       "en": "Red Cornflowers",
-      "ja": "红色矢车菊"
+      "ja": "コーンフラワー:レッド"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -193779,7 +193722,7 @@
     "name": {
       "zh-CN": "蓝色矢车菊",
       "en": "Blue Cornflowers",
-      "ja": "蓝色矢车菊"
+      "ja": "コーンフラワー:ブルー"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -193793,7 +193736,7 @@
     "name": {
       "zh-CN": "黄色矢车菊",
       "en": "Yellow Cornflowers",
-      "ja": "黄色矢车菊"
+      "ja": "コーンフラワー:イエロー"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -193807,7 +193750,7 @@
     "name": {
       "zh-CN": "绿色矢车菊",
       "en": "Green Cornflowers",
-      "ja": "绿色矢车菊"
+      "ja": "コーンフラワー:グリーン"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -193821,7 +193764,7 @@
     "name": {
       "zh-CN": "橙色矢车菊",
       "en": "Orange Cornflowers",
-      "ja": "橙色矢车菊"
+      "ja": "コーンフラワー:オレンジ"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -193835,7 +193778,7 @@
     "name": {
       "zh-CN": "紫色矢车菊",
       "en": "Purple Cornflowers",
-      "ja": "紫色矢车菊"
+      "ja": "コーンフラワー:パープル"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -193849,7 +193792,7 @@
     "name": {
       "zh-CN": "白色矢车菊",
       "en": "White Cornflowers",
-      "ja": "白色矢车菊"
+      "ja": "コーンフラワー:ホワイト"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -193863,7 +193806,7 @@
     "name": {
       "zh-CN": "黑色矢车菊",
       "en": "Black Cornflowers",
-      "ja": "黑色矢车菊"
+      "ja": "コーンフラワー:ブラック"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -193877,7 +193820,7 @@
     "name": {
       "zh-CN": "混色矢车菊",
       "en": "Rainbow Cornflowers",
-      "ja": "混色矢车菊"
+      "ja": "コーンフラワー:ブレンド"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -193891,7 +193834,7 @@
     "name": {
       "zh-CN": "红色矢车菊手链",
       "en": "Red Cornflower Wristlets",
-      "ja": "红色矢车菊手链"
+      "ja": "コーンフラワーリストレット:レッド"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -193906,7 +193849,7 @@
     "name": {
       "zh-CN": "蓝色矢车菊手链",
       "en": "Blue Cornflower Wristlets",
-      "ja": "蓝色矢车菊手链"
+      "ja": "コーンフラワーリストレット:ブルー"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -193921,7 +193864,7 @@
     "name": {
       "zh-CN": "黄色矢车菊手链",
       "en": "Yellow Cornflower Wristlets",
-      "ja": "黄色矢车菊手链"
+      "ja": "コーンフラワーリストレット:イエロー"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -193936,7 +193879,7 @@
     "name": {
       "zh-CN": "绿色矢车菊手链",
       "en": "Green Cornflower Wristlets",
-      "ja": "绿色矢车菊手链"
+      "ja": "コーンフラワーリストレット:グリーン"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -193951,7 +193894,7 @@
     "name": {
       "zh-CN": "橙色矢车菊手链",
       "en": "Orange Cornflower Wristlets",
-      "ja": "橙色矢车菊手链"
+      "ja": "コーンフラワーリストレット:オレンジ"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -193966,7 +193909,7 @@
     "name": {
       "zh-CN": "紫色矢车菊手链",
       "en": "Purple Cornflower Wristlets",
-      "ja": "紫色矢车菊手链"
+      "ja": "コーンフラワーリストレット:パープル"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -193981,7 +193924,7 @@
     "name": {
       "zh-CN": "白色矢车菊手链",
       "en": "White Cornflower Wristlets",
-      "ja": "白色矢车菊手链"
+      "ja": "コーンフラワーリストレット:ホワイト"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -193996,7 +193939,7 @@
     "name": {
       "zh-CN": "黑色矢车菊手链",
       "en": "Black Cornflower Wristlets",
-      "ja": "黑色矢车菊手链"
+      "ja": "コーンフラワーリストレット:ブラック"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -194011,7 +193954,7 @@
     "name": {
       "zh-CN": "混色矢车菊手链",
       "en": "Rainbow Cornflower Wristlets",
-      "ja": "混色矢车菊手链"
+      "ja": "コーンフラワーリストレット:ブレンド"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -194026,7 +193969,7 @@
     "name": {
       "zh-CN": "格子窗长椅",
       "en": "Lattice Window Seat",
-      "ja": "格子窗长椅"
+      "ja": "ラティスウィンドウ・ベンチ"
     },
     "isCrystal": false,
     "ilvl": 690,
@@ -194041,7 +193984,7 @@
     "name": {
       "zh-CN": "恩欧之杖展示台",
       "en": "Rod of Nihility Display",
-      "ja": "恩欧之杖展示台"
+      "ja": "エヌオー・ロッドスタンド"
     },
     "isCrystal": false,
     "ilvl": 770,
@@ -194056,7 +193999,7 @@
     "name": {
       "zh-CN": "永护矮床",
       "en": "Everkeep Platform Bed",
-      "ja": "永护矮床"
+      "ja": "エバーキープ・ローベッド"
     },
     "isCrystal": false,
     "ilvl": 690,
@@ -194071,7 +194014,7 @@
     "name": {
       "zh-CN": "永护沙发",
       "en": "Everkeep Sofa",
-      "ja": "永护沙发"
+      "ja": "エバーキープ・ソファ"
     },
     "isCrystal": false,
     "ilvl": 690,
@@ -194086,7 +194029,7 @@
     "name": {
       "zh-CN": "永护圆沙发",
       "en": "Curved Everkeep Sofa",
-      "ja": "永护圆沙发"
+      "ja": "エバーキープ・ラウンドソファ"
     },
     "isCrystal": false,
     "ilvl": 690,
@@ -194101,7 +194044,7 @@
     "name": {
       "zh-CN": "永护餐桌",
       "en": "Everkeep Dining Table",
-      "ja": "永护餐桌"
+      "ja": "エバーキープ・ダイニングテーブル"
     },
     "isCrystal": false,
     "ilvl": 690,
@@ -194116,7 +194059,7 @@
     "name": {
       "zh-CN": "永护圆桌",
       "en": "Everkeep Round Table",
-      "ja": "永护圆桌"
+      "ja": "エバーキープ・ラウンドテーブル"
     },
     "isCrystal": false,
     "ilvl": 690,
@@ -194131,7 +194074,7 @@
     "name": {
       "zh-CN": "永护边柜",
       "en": "Everkeep Sideboard",
-      "ja": "永护边柜"
+      "ja": "エバーキープ・サイドボード"
     },
     "isCrystal": false,
     "ilvl": 690,
@@ -194146,7 +194089,7 @@
     "name": {
       "zh-CN": "永护储物柜",
       "en": "Everkeep Chest",
-      "ja": "永护储物柜"
+      "ja": "エバーキープ・チェスト"
     },
     "isCrystal": false,
     "ilvl": 690,
@@ -194161,7 +194104,7 @@
     "name": {
       "zh-CN": "永护地毯",
       "en": "Everkeep Rug",
-      "ja": "永护地毯"
+      "ja": "エバーキープ・ラグ"
     },
     "isCrystal": false,
     "ilvl": 690,
@@ -194176,7 +194119,7 @@
     "name": {
       "zh-CN": "永护厨台",
       "en": "Everkeep Kitchen Counter",
-      "ja": "永护厨台"
+      "ja": "エバーキープ・キッチンカウンター"
     },
     "isCrystal": false,
     "ilvl": 690,
@@ -194191,7 +194134,22 @@
     "name": {
       "zh-CN": "永护隔离墙",
       "en": "Everkeep Partition",
-      "ja": "永护隔离墙"
+      "ja": "エバーキープ・パーティション"
+    },
+    "isCrystal": false,
+    "ilvl": 690,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51270,
+    "name": {
+      "zh-CN": "花园水渠",
+      "en": "Garden Canal",
+      "ja": "ガーデン・カナル"
     },
     "isCrystal": false,
     "ilvl": 690,
@@ -194206,10 +194164,25 @@
     "name": {
       "zh-CN": "半圆花园舞台",
       "en": "Semicircular Outdoor Stage",
-      "ja": "半圆花园舞台"
+      "ja": "セミサークル・ガーデンステージ"
     },
     "isCrystal": false,
     "ilvl": 690,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 51272,
+    "name": {
+      "zh-CN": "损毁的水道",
+      "en": "Crumbling Aqueduct",
+      "ja": "ルインド・アクアダクト"
+    },
+    "isCrystal": false,
+    "ilvl": 770,
     "equipSlotCategory": 0,
     "obtainMethods": [
       "CRAFT",
@@ -194221,7 +194194,7 @@
     "name": {
       "zh-CN": "通用染剂",
       "en": "Standard Spectrum Dye",
-      "ja": "通用染剂"
+      "ja": "カララント:ノーマルカラー"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -194242,7 +194215,7 @@
     "name": {
       "zh-CN": "虚王装甲",
       "en": "Barding of Naught",
-      "ja": "虚王装甲"
+      "ja": "ニヒリティ・バード"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -194257,7 +194230,7 @@
     "name": {
       "zh-CN": "素色卫衣",
       "en": "Plain Hooded Tunic",
-      "ja": "素色卫衣"
+      "ja": "プレーンフーディー"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -194272,7 +194245,7 @@
     "name": {
       "zh-CN": "大码素色卫衣",
       "en": "Oversized Plain Hooded Tunic",
-      "ja": "大码素色卫衣"
+      "ja": "プレーンフーディー:オーバーサイズ"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -194287,7 +194260,7 @@
     "name": {
       "zh-CN": "紧身素色卫衣",
       "en": "Form-fitting Plain Hooded Tunic",
-      "ja": "紧身素色卫衣"
+      "ja": "プレーンフーディー:タイトサイズ"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -194302,7 +194275,7 @@
     "name": {
       "zh-CN": "梦魔卫衣",
       "en": "Succubus Hooded Tunic",
-      "ja": "梦魔卫衣"
+      "ja": "サキュバスフーディー"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -194317,7 +194290,7 @@
     "name": {
       "zh-CN": "大码梦魔卫衣",
       "en": "Oversized Succubus Hooded Tunic",
-      "ja": "大码梦魔卫衣"
+      "ja": "サキュバスフーディー:オーバーサイズ"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -194332,7 +194305,7 @@
     "name": {
       "zh-CN": "紧身梦魔卫衣",
       "en": "Form-fitting Succubus Hooded Tunic",
-      "ja": "紧身梦魔卫衣"
+      "ja": "サキュバスフーディー:タイトサイズ"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -194347,7 +194320,7 @@
     "name": {
       "zh-CN": "欢庆卫衣",
       "en": "Festival Hooded Tunic",
-      "ja": "欢庆卫衣"
+      "ja": "フェスティバルフーディー"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -194362,7 +194335,7 @@
     "name": {
       "zh-CN": "大码欢庆卫衣",
       "en": "Oversized Festival Hooded Tunic",
-      "ja": "大码欢庆卫衣"
+      "ja": "フェスティバルフーディー:オーバーサイズ"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -194377,7 +194350,7 @@
     "name": {
       "zh-CN": "紧身欢庆卫衣",
       "en": "Form-fitting Festival Hooded Tunic",
-      "ja": "紧身欢庆卫衣"
+      "ja": "フェスティバルフーディー:タイトサイズ"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -194392,7 +194365,7 @@
     "name": {
       "zh-CN": "直筒斜纹裤",
       "en": "Straight-cut Twill Trousers",
-      "ja": "直筒斜纹裤"
+      "ja": "ストレート・ツイルパンツ"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -194407,7 +194380,7 @@
     "name": {
       "zh-CN": "喇叭斜纹裤",
       "en": "Bell-bottom Twill Trousers",
-      "ja": "喇叭斜纹裤"
+      "ja": "ベルボトム・ツイルパンツ"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -194422,7 +194395,7 @@
     "name": {
       "zh-CN": "宽松斜纹裤",
       "en": "Baggy Twill Trousers",
-      "ja": "宽松斜纹裤"
+      "ja": "バギー・ツイルパンツ"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -194437,7 +194410,7 @@
     "name": {
       "zh-CN": "破损的直筒斜纹裤",
       "en": "Worn Twill Trousers",
-      "ja": "破损的直筒斜纹裤"
+      "ja": "ダメージド・ツイルパンツ"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -194452,7 +194425,7 @@
     "name": {
       "zh-CN": "破损的喇叭斜纹裤",
       "en": "Worn Bell-bottom Twill Trousers",
-      "ja": "破损的喇叭斜纹裤"
+      "ja": "ダメージドベルボトム・ツイルパンツ"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -194467,7 +194440,7 @@
     "name": {
       "zh-CN": "破损的宽松斜纹裤",
       "en": "Worn Baggy Twill Trousers",
-      "ja": "破损的宽松斜纹裤"
+      "ja": "ダメージドバギー・ツイルパンツ"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -194482,7 +194455,7 @@
     "name": {
       "zh-CN": "水洗直筒斜纹裤",
       "en": "Stonewashed Twill Trousers",
-      "ja": "水洗直筒斜纹裤"
+      "ja": "ウォッシュド・ツイルパンツ"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -194497,7 +194470,7 @@
     "name": {
       "zh-CN": "水洗喇叭斜纹裤",
       "en": "Stonewashed Bell-bottom Twill Trousers",
-      "ja": "水洗喇叭斜纹裤"
+      "ja": "ウォッシュドベルボトム・ツイルパンツ"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -194512,7 +194485,7 @@
     "name": {
       "zh-CN": "水洗宽松斜纹裤",
       "en": "Stonewashed Baggy Twill Trousers",
-      "ja": "水洗宽松斜纹裤"
+      "ja": "ウォッシュドバギー・ツイルパンツ"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -194527,7 +194500,7 @@
     "name": {
       "zh-CN": "运动布",
       "en": "Sweatcloth",
-      "ja": "运动布"
+      "ja": "スウェットクロス"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -194541,7 +194514,7 @@
     "name": {
       "zh-CN": "靛蓝斜纹布",
       "en": "Indigo Twill Cloth",
-      "ja": "靛蓝斜纹布"
+      "ja": "インディゴツイルクロス"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -194555,7 +194528,7 @@
     "name": {
       "zh-CN": "耐候合板",
       "en": "Weatherproof Plywood",
-      "ja": "耐候合板"
+      "ja": "耐候性合板"
     },
     "isCrystal": false,
     "ilvl": 1,
@@ -194569,12 +194542,73 @@
     "name": {
       "zh-CN": "虚无触手",
       "en": "Arm of Unmaking",
-      "ja": "虚无触手"
+      "ja": "虚無の触腕"
     },
     "isCrystal": false,
     "ilvl": 785,
     "equipSlotCategory": 0,
     "obtainMethods": [
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52641,
+    "name": {
+      "zh-CN": "损毁的水道部件",
+      "en": "Crumbling Aqueduct Fragment",
+      "ja": "ルインド・アクアダクトの部材"
+    },
+    "isCrystal": false,
+    "ilvl": 770,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52642,
+    "name": {
+      "zh-CN": "损毁的水道金属材料",
+      "en": "Crumbling Aqueduct Metal",
+      "ja": "ルインド・アクアダクトの金属材"
+    },
+    "isCrystal": false,
+    "ilvl": 770,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52643,
+    "name": {
+      "zh-CN": "损毁的水道炼金树脂",
+      "en": "Crumbling Aqueduct Resin",
+      "ja": "ルインド・アクアダクトの錬金樹脂"
+    },
+    "isCrystal": false,
+    "ilvl": 770,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "CRAFT",
+      "SHOP_MARKET"
+    ]
+  },
+  {
+    "id": 52712,
+    "name": {
+      "zh-CN": "色素",
+      "en": "All-purpose Pigment",
+      "ja": "ピグメント"
+    },
+    "isCrystal": false,
+    "ilvl": 28,
+    "equipSlotCategory": 0,
+    "obtainMethods": [
+      "GATHER_MINER",
+      "GATHER_BOTANIST",
       "SHOP_MARKET"
     ]
   }

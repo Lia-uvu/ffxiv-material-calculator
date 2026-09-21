@@ -139819,12 +139819,8 @@
         "amount": 2
       },
       {
-        "itemId": 5815,
-        "amount": 1
-      },
-      {
-        "itemId": 5820,
-        "amount": 1
+        "itemId": 52712,
+        "amount": 2
       },
       {
         "itemId": 13,
@@ -196998,6 +196994,41 @@
       },
       {
         "itemId": 9,
+        "amount": 8
+      }
+    ]
+  },
+  {
+    "id": 6343,
+    "resultItemId": 51270,
+    "resultAmount": 1,
+    "job": "GOLDSMITH",
+    "itemLevel": 100,
+    "patch": "0.0",
+    "secretRecipeBook": 0,
+    "materials": [
+      {
+        "itemId": 44013,
+        "amount": 3
+      },
+      {
+        "itemId": 7009,
+        "amount": 4
+      },
+      {
+        "itemId": 7008,
+        "amount": 5
+      },
+      {
+        "itemId": 7016,
+        "amount": 3
+      },
+      {
+        "itemId": 10,
+        "amount": 8
+      },
+      {
+        "itemId": 8,
         "amount": 8
       }
     ]
@@ -325418,6 +325449,550 @@
     ]
   },
   {
+    "id": 38238,
+    "resultItemId": 50971,
+    "resultAmount": 1,
+    "job": "CARPENTER",
+    "itemLevel": 100,
+    "patch": "0.0",
+    "secretRecipeBook": 104,
+    "materials": [
+      {
+        "itemId": 49207,
+        "amount": 2
+      },
+      {
+        "itemId": 49210,
+        "amount": 2
+      },
+      {
+        "itemId": 49211,
+        "amount": 2
+      },
+      {
+        "itemId": 44137,
+        "amount": 2
+      },
+      {
+        "itemId": 44139,
+        "amount": 2
+      },
+      {
+        "itemId": 44138,
+        "amount": 2
+      },
+      {
+        "itemId": 16,
+        "amount": 3
+      },
+      {
+        "itemId": 15,
+        "amount": 3
+      }
+    ]
+  },
+  {
+    "id": 38239,
+    "resultItemId": 50972,
+    "resultAmount": 1,
+    "job": "BLACKSMITH",
+    "itemLevel": 100,
+    "patch": "0.0",
+    "secretRecipeBook": 105,
+    "materials": [
+      {
+        "itemId": 49208,
+        "amount": 4
+      },
+      {
+        "itemId": 49209,
+        "amount": 2
+      },
+      {
+        "itemId": 44135,
+        "amount": 4
+      },
+      {
+        "itemId": 44136,
+        "amount": 2
+      },
+      {
+        "itemId": 14,
+        "amount": 3
+      },
+      {
+        "itemId": 17,
+        "amount": 3
+      }
+    ]
+  },
+  {
+    "id": 38240,
+    "resultItemId": 50972,
+    "resultAmount": 1,
+    "job": "ARMORER",
+    "itemLevel": 100,
+    "patch": "0.0",
+    "secretRecipeBook": 106,
+    "materials": [
+      {
+        "itemId": 49208,
+        "amount": 4
+      },
+      {
+        "itemId": 49209,
+        "amount": 2
+      },
+      {
+        "itemId": 44135,
+        "amount": 4
+      },
+      {
+        "itemId": 44136,
+        "amount": 2
+      },
+      {
+        "itemId": 15,
+        "amount": 3
+      },
+      {
+        "itemId": 17,
+        "amount": 3
+      }
+    ]
+  },
+  {
+    "id": 38241,
+    "resultItemId": 50972,
+    "resultAmount": 1,
+    "job": "GOLDSMITH",
+    "itemLevel": 100,
+    "patch": "0.0",
+    "secretRecipeBook": 107,
+    "materials": [
+      {
+        "itemId": 49208,
+        "amount": 4
+      },
+      {
+        "itemId": 49209,
+        "amount": 2
+      },
+      {
+        "itemId": 44135,
+        "amount": 4
+      },
+      {
+        "itemId": 44136,
+        "amount": 2
+      },
+      {
+        "itemId": 16,
+        "amount": 3
+      },
+      {
+        "itemId": 14,
+        "amount": 3
+      }
+    ]
+  },
+  {
+    "id": 38242,
+    "resultItemId": 50971,
+    "resultAmount": 1,
+    "job": "LEATHERWORKER",
+    "itemLevel": 100,
+    "patch": "0.0",
+    "secretRecipeBook": 108,
+    "materials": [
+      {
+        "itemId": 49207,
+        "amount": 2
+      },
+      {
+        "itemId": 49210,
+        "amount": 2
+      },
+      {
+        "itemId": 49211,
+        "amount": 2
+      },
+      {
+        "itemId": 44137,
+        "amount": 2
+      },
+      {
+        "itemId": 44139,
+        "amount": 2
+      },
+      {
+        "itemId": 44138,
+        "amount": 2
+      },
+      {
+        "itemId": 17,
+        "amount": 3
+      },
+      {
+        "itemId": 16,
+        "amount": 3
+      }
+    ]
+  },
+  {
+    "id": 38243,
+    "resultItemId": 50971,
+    "resultAmount": 1,
+    "job": "WEAVER",
+    "itemLevel": 100,
+    "patch": "0.0",
+    "secretRecipeBook": 109,
+    "materials": [
+      {
+        "itemId": 49207,
+        "amount": 2
+      },
+      {
+        "itemId": 49210,
+        "amount": 2
+      },
+      {
+        "itemId": 49211,
+        "amount": 2
+      },
+      {
+        "itemId": 44137,
+        "amount": 2
+      },
+      {
+        "itemId": 44139,
+        "amount": 2
+      },
+      {
+        "itemId": 44138,
+        "amount": 2
+      },
+      {
+        "itemId": 18,
+        "amount": 3
+      },
+      {
+        "itemId": 16,
+        "amount": 3
+      }
+    ]
+  },
+  {
+    "id": 38244,
+    "resultItemId": 50973,
+    "resultAmount": 1,
+    "job": "ALCHEMIST",
+    "itemLevel": 100,
+    "patch": "0.0",
+    "secretRecipeBook": 110,
+    "materials": [
+      {
+        "itemId": 49212,
+        "amount": 2
+      },
+      {
+        "itemId": 49210,
+        "amount": 2
+      },
+      {
+        "itemId": 44140,
+        "amount": 4
+      },
+      {
+        "itemId": 19,
+        "amount": 3
+      },
+      {
+        "itemId": 18,
+        "amount": 3
+      }
+    ]
+  },
+  {
+    "id": 38245,
+    "resultItemId": 50973,
+    "resultAmount": 1,
+    "job": "CULINARIAN",
+    "itemLevel": 100,
+    "patch": "0.0",
+    "secretRecipeBook": 111,
+    "materials": [
+      {
+        "itemId": 49212,
+        "amount": 2
+      },
+      {
+        "itemId": 49210,
+        "amount": 2
+      },
+      {
+        "itemId": 44140,
+        "amount": 4
+      },
+      {
+        "itemId": 14,
+        "amount": 3
+      },
+      {
+        "itemId": 19,
+        "amount": 3
+      }
+    ]
+  },
+  {
+    "id": 38246,
+    "resultItemId": 52641,
+    "resultAmount": 1,
+    "job": "CARPENTER",
+    "itemLevel": 100,
+    "patch": "0.0",
+    "secretRecipeBook": 104,
+    "materials": [
+      {
+        "itemId": 46856,
+        "amount": 1
+      },
+      {
+        "itemId": 50055,
+        "amount": 1
+      },
+      {
+        "itemId": 50971,
+        "amount": 1
+      },
+      {
+        "itemId": 16,
+        "amount": 5
+      },
+      {
+        "itemId": 15,
+        "amount": 5
+      }
+    ]
+  },
+  {
+    "id": 38247,
+    "resultItemId": 52642,
+    "resultAmount": 1,
+    "job": "BLACKSMITH",
+    "itemLevel": 100,
+    "patch": "0.0",
+    "secretRecipeBook": 105,
+    "materials": [
+      {
+        "itemId": 46855,
+        "amount": 1
+      },
+      {
+        "itemId": 50056,
+        "amount": 1
+      },
+      {
+        "itemId": 50972,
+        "amount": 1
+      },
+      {
+        "itemId": 14,
+        "amount": 5
+      },
+      {
+        "itemId": 17,
+        "amount": 5
+      }
+    ]
+  },
+  {
+    "id": 38248,
+    "resultItemId": 52642,
+    "resultAmount": 1,
+    "job": "ARMORER",
+    "itemLevel": 100,
+    "patch": "0.0",
+    "secretRecipeBook": 106,
+    "materials": [
+      {
+        "itemId": 46855,
+        "amount": 1
+      },
+      {
+        "itemId": 50056,
+        "amount": 1
+      },
+      {
+        "itemId": 50972,
+        "amount": 1
+      },
+      {
+        "itemId": 15,
+        "amount": 5
+      },
+      {
+        "itemId": 17,
+        "amount": 5
+      }
+    ]
+  },
+  {
+    "id": 38249,
+    "resultItemId": 52642,
+    "resultAmount": 1,
+    "job": "GOLDSMITH",
+    "itemLevel": 100,
+    "patch": "0.0",
+    "secretRecipeBook": 107,
+    "materials": [
+      {
+        "itemId": 46855,
+        "amount": 1
+      },
+      {
+        "itemId": 50056,
+        "amount": 1
+      },
+      {
+        "itemId": 50972,
+        "amount": 1
+      },
+      {
+        "itemId": 16,
+        "amount": 5
+      },
+      {
+        "itemId": 14,
+        "amount": 5
+      }
+    ]
+  },
+  {
+    "id": 38250,
+    "resultItemId": 52641,
+    "resultAmount": 1,
+    "job": "LEATHERWORKER",
+    "itemLevel": 100,
+    "patch": "0.0",
+    "secretRecipeBook": 108,
+    "materials": [
+      {
+        "itemId": 46856,
+        "amount": 1
+      },
+      {
+        "itemId": 50055,
+        "amount": 1
+      },
+      {
+        "itemId": 50971,
+        "amount": 1
+      },
+      {
+        "itemId": 17,
+        "amount": 5
+      },
+      {
+        "itemId": 16,
+        "amount": 5
+      }
+    ]
+  },
+  {
+    "id": 38251,
+    "resultItemId": 52641,
+    "resultAmount": 1,
+    "job": "WEAVER",
+    "itemLevel": 100,
+    "patch": "0.0",
+    "secretRecipeBook": 109,
+    "materials": [
+      {
+        "itemId": 46856,
+        "amount": 1
+      },
+      {
+        "itemId": 50055,
+        "amount": 1
+      },
+      {
+        "itemId": 50971,
+        "amount": 1
+      },
+      {
+        "itemId": 18,
+        "amount": 5
+      },
+      {
+        "itemId": 16,
+        "amount": 5
+      }
+    ]
+  },
+  {
+    "id": 38252,
+    "resultItemId": 52643,
+    "resultAmount": 1,
+    "job": "ALCHEMIST",
+    "itemLevel": 100,
+    "patch": "0.0",
+    "secretRecipeBook": 110,
+    "materials": [
+      {
+        "itemId": 46857,
+        "amount": 1
+      },
+      {
+        "itemId": 50057,
+        "amount": 1
+      },
+      {
+        "itemId": 50973,
+        "amount": 1
+      },
+      {
+        "itemId": 19,
+        "amount": 5
+      },
+      {
+        "itemId": 18,
+        "amount": 5
+      }
+    ]
+  },
+  {
+    "id": 38253,
+    "resultItemId": 52643,
+    "resultAmount": 1,
+    "job": "CULINARIAN",
+    "itemLevel": 100,
+    "patch": "0.0",
+    "secretRecipeBook": 111,
+    "materials": [
+      {
+        "itemId": 46857,
+        "amount": 1
+      },
+      {
+        "itemId": 50057,
+        "amount": 1
+      },
+      {
+        "itemId": 50973,
+        "amount": 1
+      },
+      {
+        "itemId": 14,
+        "amount": 5
+      },
+      {
+        "itemId": 19,
+        "amount": 5
+      }
+    ]
+  },
+  {
     "id": 38254,
     "resultItemId": 52254,
     "resultAmount": 1,
@@ -325427,7 +326002,7 @@
     "secretRecipeBook": 0,
     "materials": [
       {
-        "itemId": 5817,
+        "itemId": 52712,
         "amount": 1
       },
       {
@@ -325450,7 +326025,7 @@
     "secretRecipeBook": 0,
     "materials": [
       {
-        "itemId": 5817,
+        "itemId": 52712,
         "amount": 1
       },
       {
@@ -325473,7 +326048,7 @@
     "secretRecipeBook": 0,
     "materials": [
       {
-        "itemId": 5817,
+        "itemId": 52712,
         "amount": 1
       },
       {
@@ -325496,7 +326071,7 @@
     "secretRecipeBook": 0,
     "materials": [
       {
-        "itemId": 5817,
+        "itemId": 52712,
         "amount": 1
       },
       {
@@ -325519,7 +326094,7 @@
     "secretRecipeBook": 0,
     "materials": [
       {
-        "itemId": 5817,
+        "itemId": 52712,
         "amount": 1
       },
       {
@@ -325542,7 +326117,7 @@
     "secretRecipeBook": 0,
     "materials": [
       {
-        "itemId": 5817,
+        "itemId": 52712,
         "amount": 1
       },
       {
@@ -325565,7 +326140,7 @@
     "secretRecipeBook": 0,
     "materials": [
       {
-        "itemId": 5817,
+        "itemId": 52712,
         "amount": 1
       },
       {
@@ -325588,7 +326163,7 @@
     "secretRecipeBook": 0,
     "materials": [
       {
-        "itemId": 5817,
+        "itemId": 52712,
         "amount": 1
       },
       {
@@ -325671,6 +326246,45 @@
       },
       {
         "itemId": 17,
+        "amount": 3
+      }
+    ]
+  },
+  {
+    "id": 38264,
+    "resultItemId": 51272,
+    "resultAmount": 1,
+    "job": "GOLDSMITH",
+    "itemLevel": 100,
+    "patch": "0.0",
+    "secretRecipeBook": 107,
+    "materials": [
+      {
+        "itemId": 52641,
+        "amount": 2
+      },
+      {
+        "itemId": 52642,
+        "amount": 2
+      },
+      {
+        "itemId": 52643,
+        "amount": 2
+      },
+      {
+        "itemId": 7009,
+        "amount": 7
+      },
+      {
+        "itemId": 44034,
+        "amount": 7
+      },
+      {
+        "itemId": 16,
+        "amount": 3
+      },
+      {
+        "itemId": 14,
         "amount": 3
       }
     ]
@@ -326302,1110 +326916,6 @@
       {
         "itemId": 16,
         "amount": 3
-      }
-    ]
-  },
-  {
-    "id": 38283,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "CARPENTER",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5815,
-        "amount": 1
-      },
-      {
-        "itemId": 10,
-        "amount": 1
-      },
-      {
-        "itemId": 9,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38284,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "CARPENTER",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5818,
-        "amount": 1
-      },
-      {
-        "itemId": 10,
-        "amount": 1
-      },
-      {
-        "itemId": 9,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38285,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "CARPENTER",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5816,
-        "amount": 1
-      },
-      {
-        "itemId": 10,
-        "amount": 1
-      },
-      {
-        "itemId": 9,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38286,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "CARPENTER",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5819,
-        "amount": 1
-      },
-      {
-        "itemId": 10,
-        "amount": 1
-      },
-      {
-        "itemId": 9,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38287,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "CARPENTER",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5814,
-        "amount": 1
-      },
-      {
-        "itemId": 10,
-        "amount": 1
-      },
-      {
-        "itemId": 9,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38288,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "CARPENTER",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5820,
-        "amount": 1
-      },
-      {
-        "itemId": 10,
-        "amount": 1
-      },
-      {
-        "itemId": 9,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38289,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "BLACKSMITH",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5815,
-        "amount": 1
-      },
-      {
-        "itemId": 8,
-        "amount": 1
-      },
-      {
-        "itemId": 11,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38290,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "BLACKSMITH",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5818,
-        "amount": 1
-      },
-      {
-        "itemId": 8,
-        "amount": 1
-      },
-      {
-        "itemId": 11,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38291,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "BLACKSMITH",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5816,
-        "amount": 1
-      },
-      {
-        "itemId": 8,
-        "amount": 1
-      },
-      {
-        "itemId": 11,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38292,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "BLACKSMITH",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5819,
-        "amount": 1
-      },
-      {
-        "itemId": 8,
-        "amount": 1
-      },
-      {
-        "itemId": 11,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38293,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "BLACKSMITH",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5814,
-        "amount": 1
-      },
-      {
-        "itemId": 8,
-        "amount": 1
-      },
-      {
-        "itemId": 11,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38294,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "BLACKSMITH",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5820,
-        "amount": 1
-      },
-      {
-        "itemId": 8,
-        "amount": 1
-      },
-      {
-        "itemId": 11,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38295,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "ARMORER",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5815,
-        "amount": 1
-      },
-      {
-        "itemId": 9,
-        "amount": 1
-      },
-      {
-        "itemId": 11,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38296,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "ARMORER",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5818,
-        "amount": 1
-      },
-      {
-        "itemId": 9,
-        "amount": 1
-      },
-      {
-        "itemId": 11,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38297,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "ARMORER",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5816,
-        "amount": 1
-      },
-      {
-        "itemId": 9,
-        "amount": 1
-      },
-      {
-        "itemId": 11,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38298,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "ARMORER",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5819,
-        "amount": 1
-      },
-      {
-        "itemId": 9,
-        "amount": 1
-      },
-      {
-        "itemId": 11,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38299,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "ARMORER",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5814,
-        "amount": 1
-      },
-      {
-        "itemId": 9,
-        "amount": 1
-      },
-      {
-        "itemId": 11,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38300,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "ARMORER",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5820,
-        "amount": 1
-      },
-      {
-        "itemId": 9,
-        "amount": 1
-      },
-      {
-        "itemId": 11,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38301,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "GOLDSMITH",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5815,
-        "amount": 1
-      },
-      {
-        "itemId": 10,
-        "amount": 1
-      },
-      {
-        "itemId": 8,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38302,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "GOLDSMITH",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5818,
-        "amount": 1
-      },
-      {
-        "itemId": 10,
-        "amount": 1
-      },
-      {
-        "itemId": 8,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38303,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "GOLDSMITH",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5816,
-        "amount": 1
-      },
-      {
-        "itemId": 10,
-        "amount": 1
-      },
-      {
-        "itemId": 8,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38304,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "GOLDSMITH",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5819,
-        "amount": 1
-      },
-      {
-        "itemId": 10,
-        "amount": 1
-      },
-      {
-        "itemId": 8,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38305,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "GOLDSMITH",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5814,
-        "amount": 1
-      },
-      {
-        "itemId": 10,
-        "amount": 1
-      },
-      {
-        "itemId": 8,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38306,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "GOLDSMITH",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5820,
-        "amount": 1
-      },
-      {
-        "itemId": 10,
-        "amount": 1
-      },
-      {
-        "itemId": 8,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38307,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "LEATHERWORKER",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5815,
-        "amount": 1
-      },
-      {
-        "itemId": 11,
-        "amount": 1
-      },
-      {
-        "itemId": 10,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38308,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "LEATHERWORKER",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5818,
-        "amount": 1
-      },
-      {
-        "itemId": 11,
-        "amount": 1
-      },
-      {
-        "itemId": 10,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38309,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "LEATHERWORKER",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5816,
-        "amount": 1
-      },
-      {
-        "itemId": 11,
-        "amount": 1
-      },
-      {
-        "itemId": 10,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38310,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "LEATHERWORKER",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5819,
-        "amount": 1
-      },
-      {
-        "itemId": 11,
-        "amount": 1
-      },
-      {
-        "itemId": 10,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38311,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "LEATHERWORKER",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5814,
-        "amount": 1
-      },
-      {
-        "itemId": 11,
-        "amount": 1
-      },
-      {
-        "itemId": 10,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38312,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "LEATHERWORKER",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5820,
-        "amount": 1
-      },
-      {
-        "itemId": 11,
-        "amount": 1
-      },
-      {
-        "itemId": 10,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38313,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "WEAVER",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5815,
-        "amount": 1
-      },
-      {
-        "itemId": 12,
-        "amount": 1
-      },
-      {
-        "itemId": 10,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38314,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "WEAVER",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5818,
-        "amount": 1
-      },
-      {
-        "itemId": 12,
-        "amount": 1
-      },
-      {
-        "itemId": 10,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38315,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "WEAVER",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5816,
-        "amount": 1
-      },
-      {
-        "itemId": 12,
-        "amount": 1
-      },
-      {
-        "itemId": 10,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38316,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "WEAVER",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5819,
-        "amount": 1
-      },
-      {
-        "itemId": 12,
-        "amount": 1
-      },
-      {
-        "itemId": 10,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38317,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "WEAVER",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5814,
-        "amount": 1
-      },
-      {
-        "itemId": 12,
-        "amount": 1
-      },
-      {
-        "itemId": 10,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38318,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "WEAVER",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5820,
-        "amount": 1
-      },
-      {
-        "itemId": 12,
-        "amount": 1
-      },
-      {
-        "itemId": 10,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38319,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "ALCHEMIST",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5815,
-        "amount": 1
-      },
-      {
-        "itemId": 13,
-        "amount": 1
-      },
-      {
-        "itemId": 12,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38320,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "ALCHEMIST",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5818,
-        "amount": 1
-      },
-      {
-        "itemId": 13,
-        "amount": 1
-      },
-      {
-        "itemId": 12,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38321,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "ALCHEMIST",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5816,
-        "amount": 1
-      },
-      {
-        "itemId": 13,
-        "amount": 1
-      },
-      {
-        "itemId": 12,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38322,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "ALCHEMIST",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5819,
-        "amount": 1
-      },
-      {
-        "itemId": 13,
-        "amount": 1
-      },
-      {
-        "itemId": 12,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38323,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "ALCHEMIST",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5814,
-        "amount": 1
-      },
-      {
-        "itemId": 13,
-        "amount": 1
-      },
-      {
-        "itemId": 12,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38324,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "ALCHEMIST",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5820,
-        "amount": 1
-      },
-      {
-        "itemId": 13,
-        "amount": 1
-      },
-      {
-        "itemId": 12,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38325,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "CULINARIAN",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5815,
-        "amount": 1
-      },
-      {
-        "itemId": 8,
-        "amount": 1
-      },
-      {
-        "itemId": 13,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38326,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "CULINARIAN",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5818,
-        "amount": 1
-      },
-      {
-        "itemId": 8,
-        "amount": 1
-      },
-      {
-        "itemId": 13,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38327,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "CULINARIAN",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5816,
-        "amount": 1
-      },
-      {
-        "itemId": 8,
-        "amount": 1
-      },
-      {
-        "itemId": 13,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38328,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "CULINARIAN",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5819,
-        "amount": 1
-      },
-      {
-        "itemId": 8,
-        "amount": 1
-      },
-      {
-        "itemId": 13,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38329,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "CULINARIAN",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5814,
-        "amount": 1
-      },
-      {
-        "itemId": 8,
-        "amount": 1
-      },
-      {
-        "itemId": 13,
-        "amount": 1
-      }
-    ]
-  },
-  {
-    "id": 38330,
-    "resultItemId": 52254,
-    "resultAmount": 1,
-    "job": "CULINARIAN",
-    "itemLevel": 30,
-    "patch": "0.0",
-    "secretRecipeBook": 0,
-    "materials": [
-      {
-        "itemId": 5820,
-        "amount": 1
-      },
-      {
-        "itemId": 8,
-        "amount": 1
-      },
-      {
-        "itemId": 13,
-        "amount": 1
       }
     ]
   }
