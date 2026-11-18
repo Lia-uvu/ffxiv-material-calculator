@@ -49,14 +49,6 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-
-      - name: Install frontend dependencies
-        run: npm install --no-fund --no-audit
-
       - name: Resolve upstream HEAD SHAs
         id: upstream
         env:
@@ -161,6 +153,27 @@ jobs:
       - name: Build outfit sets
         if: steps.decision.outputs.should_run == 'true'
         run: python scripts/pipeline/build_outfit_sets.py
+
+      - name: Set up Node.js
+        if: steps.decision.outputs.should_run == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install frontend dependencies
+        if: steps.decision.outputs.should_run == 'true'
+        run: |
+          for attempt in 1 2 3; do
+            if npm install --no-fund --no-audit; then
+              exit 0
+            fi
+            if [ "$attempt" -lt 3 ]; then
+              echo "npm install failed (attempt $attempt/3); retrying in $((attempt * 15))s..."
+              rm -rf node_modules package-lock.json
+              sleep $((attempt * 15))
+            fi
+          done
+          exit 1
 
       - name: Build frontend
         if: steps.decision.outputs.should_run == 'true'
